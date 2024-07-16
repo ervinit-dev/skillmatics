@@ -1,0 +1,14 @@
+<div id="top_menu">
+  {% assign top_menu = linklists[section.settings.top_menu.handle] %}
+  {% if top_menu %}
+    <ul>
+      {% for link in top_menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No top menu found.</p>
+  {% endif %}
+</div>

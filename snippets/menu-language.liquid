@@ -1,0 +1,25 @@
+{%- if menu_language != '' and menu_language.linklist != blank and menu_language.language_menu_settings == "links" -%}
+<ul>
+  {%- for link in linklists[menu_language.linklist].links -%}
+  <li{% if menu_language.default_language == link.title %} class="active"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {%- endfor -%}
+</ul>
+{%- endif -%}
+{%- if localization.available_languages.size > 1 and menu_language.language_menu_settings == "default" -%}
+{%- form 'localization', class: "small--hide" -%}
+<input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+<ul class="language-selector" data-language-selector>
+  {%- for language in localization.available_languages -%}
+  <li data-language="{{language.iso_code}}"{% if language.iso_code == localization.language.iso_code %} class="active"{% endif %}>
+    <a href="#">
+      {{ language.endonym_name | capitalize }}
+    </a>
+  </li>
+  {%- endfor -%}
+</ul>
+{%- endform -%}
+{%- endif -%}
+{%- if menu_language.language_menu_settings == "weglot_theme" -%}
+<ul class="menu_language_holder" data-css="{{ 'weglot_app.css' | asset_url }}">
+</ul>
+{%- endif -%}

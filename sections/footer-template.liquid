@@ -1,3 +1,4 @@
+{% section 'footer-section' %}
 {%- assign item = section.settings -%}
 
 {%- capture image_size -%}{{ item.logo_max_width }}x{%- endcapture -%}
@@ -50,7 +51,6 @@
   }
 </style>
 {% endif %}
-{% section 'footer-section' %}
 {% schema %}
   {
     "name": "Footer",

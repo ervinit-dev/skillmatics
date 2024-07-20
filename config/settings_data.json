@@ -996,25 +996,10 @@
               "color_21": "#ffffff",
               "color_22": "#ffffff"
             }
-          },
-          "topbar_a3qEmr": {
-            "type": "topbar",
-            "settings": {
-              "show_content": false,
-              "text": "<div class=\"tt-box-info\">\n<ul>\n<li><a href=\"#\">Shop All\n<\/a><\/li>\n<li>\n<\/li>\n<li><a href=\"#\">About US\n<\/a><\/li>\n<\/ul>\n<\/div>",
-              "show_socials": false,
-              "facebook_url": "",
-              "twitter_url": "",
-              "gmail_url": "",
-              "instagram_url": "",
-              "pinterest_url": "",
-              "whatsapp_url": ""
-            }
           }
         },
         "block_order": [
-          "megamenu_7PwwUB",
-          "topbar_a3qEmr"
+          "megamenu_7PwwUB"
         ],
         "settings": {
           "header_sticky_header": true,

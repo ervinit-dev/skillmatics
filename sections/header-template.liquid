@@ -72,7 +72,7 @@
 
 <header class="desctop-menu-large{% if item.small_header_height %} small-header{% endif %}{% if item.hoverunderline %} tt-hover-03{% endif %}{% if item.logo_bar =="allinlinelogocenter" %} parentallinlinelogocenter{% endif %}">
   {%- include "main-menu-mobile" mm: item.main_menu_selected -%}
-  {%- include "header_infobar" -%}
+
  
   {% if settings.use_header_inline %}{%- include "header_mobile_inline" -%}
   {% else %}{%- include "header_mobile" -%}

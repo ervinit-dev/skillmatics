@@ -999,7 +999,6 @@
           },
           "topbar_a3qEmr": {
             "type": "topbar",
-            "disabled": true,
             "settings": {
               "show_content": false,
               "text": "<div class=\"tt-box-info\">\n<ul>\n<li><a href=\"#\">Shop All\n<\/a><\/li>\n<li>\n<\/li>\n<li><a href=\"#\">About US\n<\/a><\/li>\n<\/ul>\n<\/div>",

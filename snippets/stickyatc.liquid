@@ -1,0 +1,134 @@
+<style>
+  /* Sticky ATC Container */
+.sticky-atc-container {
+  display: none; /* Initially hidden */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 9999;
+  padding: 10px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Info inside sticky bar */
+.sticky-atc .product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky-atc .product-title {
+  font-size: 16px;
+}
+
+.sticky-atc .product-price {
+  font-size: 16px;
+  color: #333;
+}
+
+.compare-price {
+  text-decoration: line-through;
+  margin-right: 10px;
+  color: red;
+}
+
+.sale-price {
+  color: green;
+}
+
+/* Button */
+.sticky-atc .atc-button {
+  background-color: #f76b1c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Show sticky add to cart only on mobile */
+@media screen and (max-width: 767px) {
+  .sticky-atc-container {
+    display: block;
+  }
+
+  /* add flex inline to mobile bottom sticky bar */
+  .sticky-atc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* add flex column to mobile - sale price on top and regular price on bottom */
+  .sticky-atc .product-price {
+    display: flex;
+    flex-direction: column;
+  }
+}
+</style>
+<!-- Sticky Add to Cart Button (Hidden by default) -->
+<div id="sticky-atc-container" class="sticky-atc-container mobile-only">
+  <div class="sticky-atc">
+    <div class="product-info">
+      <span class="product-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="sale-price">{{ product.price | money }}</span>
+          <span class="compare-price">{{ product.compare_at_price | money }}</span>
+        {% else %}
+          <span class="regular-price">{{ product.price | money }}</span>
+        {% endif %}
+      </span>
+    </div>
+    <button id="sticky-atc-button" class="atc-button">Add to Cart</button>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const stickyAtcContainer = document.getElementById('sticky-atc-container');
+  const atcButton = document.getElementById('sticky-atc-button');
+  let isProductInCart = false;
+
+  // Show sticky add to cart on 30% page scroll
+  window.addEventListener('scroll', function () {
+    const scrollPercentage = (window.scrollY / document.documentElement.scrollHeight) * 100;
+    if (scrollPercentage > 30) {
+      stickyAtcContainer.style.display = 'block';
+    } else {
+      stickyAtcContainer.style.display = 'none';
+    }
+  });
+
+  // Add to cart function
+  atcButton.addEventListener('click', function () {
+    if (!isProductInCart) {
+      // Add product to cart via AJAX request to Shopify
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: {{ product.variants.first.id }},
+          quantity: 1
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Product added to cart:', data);
+        // Change button text to 'View Cart'
+        atcButton.textContent = 'View Cart';
+        isProductInCart = true;
+        // Open the cart drawer (if you have a cart drawer functionality)
+        window.location.href = '/cart';
+      })
+      .catch(error => console.error('Error adding to cart:', error));
+    } else {
+      // Redirect to cart page if product already in cart
+      // window.location.href = '/cart';
+    }
+  });
+});
+</script>

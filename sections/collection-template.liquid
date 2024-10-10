@@ -1,0 +1,147 @@
+{{ 'collection-template.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  The contents of the collection.liquid template can be found in /snippets/collection-template.liquid
+{%- endcomment -%}
+{% if section.settings.showimage1 and collection.handle == section.settings.coll-handle %}
+<div class="all-collection-{{ collection.handle }}">
+{% if section.settings.link2 != blank %}
+    <a href="{{section.settings.link2 }}" aria-label="{{ collection.handle }} link">{% endif %}
+      <img src="{{ section.settings.image2 | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img src="{{ section.settings.mob-image2 | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+ {% if section.settings.link2 != blank %}</a>{% endif %}
+
+</div> 
+{% elsif section.settings.showimage1 %}
+<div class="all-collection-{{ collection.handle }}">
+{% if section.settings.link1 != blank %}
+    <a href="{{section.settings.link1 }}" aria-label="{{ collection.handle }} link">{% endif %}
+      <img src="{{ section.settings.image1 | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img src="{{ section.settings.mob-image1 | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+ {% if section.settings.link1 != blank %}</a>{% endif %}
+
+</div>
+  {% endif %}
+{% include 'collection-template' current_pagination_limit: settings.pagination_limit %}
+{% if section.settings.showimagebtm2 %}
+<div class="collection-{{ collection.handle }}">
+  {% if section.settings.btmlink2 != blank %}
+    <a href="{{section.settings.btmlink2 }}" aria-label="{{ collection.handle }} link">{% endif %}
+      <img src="{{ section.settings.imagebtm2 | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img src="{{ section.settings.mob-imagebtm2 | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+ {% if section.settings.btmlink2 != blank %}   </a>{% endif %}
+</div>
+  {% endif %}
+  {% if section.settings.showimagebtm %}
+<div class="collection-{{ collection.handle }}">
+  {% if section.settings.btmlink != blank %}      <a href="{{section.settings.btmlink }}" aria-label="{{ collection.handle }} link">{% endif %}
+      <img src="{{ section.settings.imagebtm | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img src="{{ section.settings.mob-imagebtm | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+  {% if section.settings.btmlink != blank %}      </a>{% endif %}
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Collection Template",    
+    "settings": [
+        {
+        "type": "header",
+        "content": "Collection Page Banners"
+      },
+       {
+          "type": "checkbox",
+          "id": "showimage1",       
+          "label": "Show Custom Banner 1"
+        },
+       {
+          "type": "image_picker",
+          "id": "image1",
+         "info": "Image will show On all collection desktop Only",
+          "label": "Custom Banner 1"
+        },
+         {
+          "type": "image_picker",
+          "id": "mob-image1",
+          "info": "Image will show On all collection Mobile only",
+          "label": "Custom Mobile Banner 1"
+        },
+        {
+          "label": "All collection Link",
+          "id": "link1",
+          "type": "url",
+        },
+        {
+          "type": "checkbox",
+          "id": "showimage2",       
+          "label": "Show Custom Banner 2"
+        },
+      {
+          "type": "text",
+          "id": "coll-handle",       
+          "label": "Collection Handle ",
+         "info": "Custom Banner 2 will for only this Collection Only"
+        },
+       {
+          "type": "image_picker",
+          "id": "image2",
+          "info": "Image will show On selected collection",
+          "label": "Custom Banner 2"
+        },
+       {
+          "type": "image_picker",
+          "id": "mob-image2",
+         "info": "Image will show On selected collection",
+          "label": "Custom Mobile Banner2"
+        },
+       {
+          "label": "Selected collection Link",
+          "id": "link2",
+          "type": "url",
+        },
+        {
+        "type": "header",
+        "content": "Bottom section Banners"
+      },
+        {
+          "type": "checkbox",
+          "id": "showimagebtm2",       
+          "label": "Show Bottom Image 2"
+        },
+       {
+          "type": "image_picker",
+          "id": "imagebtm2",          
+          "label": "Bottom Image 2"
+        },
+       {
+          "type": "image_picker",
+          "id": "mob-imagebtm2",
+          "label": "Bottom Mobile Image 2"
+        },
+       {
+          "label": "Bottom banner Link2",
+          "id": "btmlink2",
+          "type": "url",
+        },
+       {
+          "type": "checkbox",
+          "id": "showimagebtm",       
+          "label": "Show Bottom Image "
+        },
+       {
+          "type": "image_picker",
+          "id": "imagebtm",
+          "label": "Bottom Image"
+        },
+       {
+          "type": "image_picker",
+          "id": "mob-imagebtm",
+          "label": "Bottom Mobile Image"
+        },
+      {
+          "label": "Bottom banner Link",
+          "id": "btmlink1",
+          "type": "url"
+        }
+    ]
+     
+  }
+{% endschema %}

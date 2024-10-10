@@ -1,0 +1,382 @@
+<script src="script.js" defer></script>
+<style>
+.hs--content--success {   display: flex !important; align-items: center;}
+     .coupontext span img {    margin-bottom: 1px;}
+     .coupon p { margin: 0;font-size: 13px;}
+    @media only screen and (max-width: 360px) {
+     .coupon p { margin: 0;font-size: 12px;} 
+    }
+    .hs-content-discount-add {visibility: hidden; height: 0;}
+    .hs-content-discount-add.active {visibility: visible;height: auto;}
+    .hs-add-discount{border-top:0!important;}
+    .hs-add-discount:after{display:none;}
+    .coupon-container-heading{    
+    font-size: 14px;
+    font-family: AvenirRegular;
+    }
+    .coupon.activecodestrip button { 
+    border: 1px solid #62bd81;
+    color: #62bd81; 
+}
+    button.applycode-trigger {  font-weight: 800;  min-width: 50px;}
+    .coupontext {    display: flex;font-family:'AvenirRegular'!important;align-items: center;}
+   .dropdown-header-heading img,.coupontext span {margin:1px;margin-right:4px;}
+    .coupon-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    padding: 0 0px;     
+    }
+    .customer-info {margin-bottom: 20px;}
+    .customer-info p {margin: 5px 0;font-size: 14px;}
+   .coupon.warningcodestrip  .offer-added,.coupon:not(.activecodestrip) .offer-added{display:none;}
+  .coupon.warningcodestrip .offer-code,.coupon:not(.warningcodestrip) .offer-error,.coupon:not(.warningcodestrip).activecodestrip .offer-code{display:none;}
+    .coupon {     
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }    
+    .coupon button {font-family:'AvenirRegular'!important;
+      border-radius:4px;
+       background-color: #ffffff; 
+      border:1px solid #FF805A;      
+      color:#FF805A;font-size:10px;     
+      padding: 5px 5px;
+      cursor: pointer;
+    }
+    .dropdown-header {
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;    
+      margin-bottom: 10px;
+    }
+    span.dropdown-header-heading {font-family:'AvenirRegular'!important; display: flex;align-items: center;}
+    .dropdown-header-heading img{object-fit:contain;max-width: 18px;max-height: 18px;}
+    .dropdown-header .dropdown-arrow { transform:rotate(0deg); transition: transform 0.3s ease;}
+    .dropdown-header.active .dropdown-arrow {transform: rotate(180deg);}
+    .dropdown-content {display: none;flex-direction: column;}
+    .dropdown-content.active { display: flex;}
+    .coupon-input {margin-top: 20px;}
+    .hidden {display: none;}
+    .visible { display: inline-block;}
+/*confetti css*/
+.confetti {
+  position: absolute;
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  color: #e67e22; /* Color for the confetti (can be different from background) */
+  font-size: 16px; /* Adjust size of the character */
+  opacity: 0.9;
+  pointer-events: none;
+  animation: fall 3s ease-out infinite;
+}
+ 
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+</style>
+
+<script>
+
+//start appending
+   let contentInserted = false;
+window.HS_SLIDE_CART_OPENED = function() {
+
+  var parentElement = document.querySelector('.hs-add-discount');
+  
+ var newHtmlContent = ` <div id="discount-grid-drawer" class="coupon-container"> 
+<span class="coupon-container-heading">*Discounts are applicable on the MRP only</span>
+
+  <!-- Collapsible Coupons Section -->
+    <div class="dropdown-header" onclick="toggleDropdown(this)">
+      <span class="dropdown-header-heading"><img src="{{'coupon-code.svg'|asset_url }}" alt="customer discounttag" width="18px" height="18px">Have another coupon?</span><span><img class="dropdown-arrow" src="{{'dropdown-arrow.svg'|asset_url }}" alt="dropdown arrrow" width="18px" height="18px"></span>
+    </div>
+    <div class="dropdown-content">
+    <!-- Static Coupons Section -->
+     {% if settings.show_discount2 %}
+    <div class="coupon">
+     <div class="coupontext"><span><img  class="offer-code" src="{{ 'offer-code.svg' |asset_url }}" alt="discounttag" width="18px" height="18px">
+       <img  class="offer-added" src="{{ 'offer-added.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"> <img  class="offer-error" src="{{ 'Alert icon.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"></span>  
+      <p>Get <b>{{settings.coupon_discount_sticky2}}</b> using <strong>{{settings.coupon_name2 | strip}}</strong> on {{settings.minQunat2}} products</p></div>     
+      <button class="applycode-trigger" onclick="setCouponCode('{{settings.coupon_name2 | strip}}', this)" data-code="{{settings.coupon_name2 | strip}}">Apply</button>
+     
+    </div>
+    {% endif %}
+    {% if settings.show_discount %}
+    <div class="coupon">
+     <div class="coupontext"><span><img  class="offer-code" src="{{ 'offer-code.svg' |asset_url }}" alt="discounttag" width="18px" height="18px">
+      <img  class="offer-added" src="{{ 'offer-added.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"><img  class="offer-error" src="{{ 'Alert icon.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"></span> 
+      <p>Get <b>{{settings.coupon_discount_sticky}}</b> using <strong>{{settings.coupon_name | strip}}</strong> on {{settings.minQunat}} products</p></div>
+      <button class="applycode-trigger" onclick="setCouponCode('{{settings.coupon_name | strip}}', this)" data-code="{{settings.coupon_name | strip}}">Apply</button>
+    </div>
+      {% endif %}
+    <!-- Collapsible Coupons Section -->
+ 
+  
+        {% if settings.show_discount3 %} 
+      <div class="coupon">
+      <div class="coupontext"><span><img  class="offer-code" src="{{ 'offer-code.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"><img  class="offer-added" src="{{ 'offer-added.svg' |asset_url }}" alt="discounttag" width="18px" height="18px">
+       <img  class="offer-error" src="{{ 'Alert icon.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"></span>  
+        <p>{{settings.coupon_detail3 | strip}}</p></div>
+        <button class="applycode-trigger" onclick="setCouponCode('{{settings.coupon_name3 | strip}}', this)" data-code="{{settings.coupon_name3 | strip}}">Apply</button>
+      </div>
+        {% endif %}
+        
+      {% if settings.show_discount-meta and customer.metafields.custom.discount_coupon %}
+      <div class="coupon">
+       <div class="coupontext"><span><img  class="offer-code" src="{{ 'offer-code.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"><img  class="offer-added" src="{{ 'offer-added.svg' |asset_url }}" alt="discounttag" width="18px" height="18px">
+        <img  class="offer-error" src="{{ 'Alert icon.svg' |asset_url }}" alt="discounttag" width="18px" height="18px"></span> 
+        <p>{{settings.coupon_detailmeta | strip}}&nbsp<strong>{{customer.metafields.custom.discount_coupon | strip }}</strong></p></div>
+        <button class="applycode-trigger" onclick="setCouponCode('{{customer.metafields.custom.discount_coupon | strip}}', this)" data-code="{{customer.metafields.custom.discount_coupon | strip}}">Apply</button>
+      </div>
+        
+    {% endif %}
+    </div>
+  </div>
+
+ `;
+ //insert coupon code in drawer 
+ //parentElement.insertAdjacentHTML('afterend', newHtmlContent);
+  // Check if content has already been inserted
+        if (!contentInserted) {
+            // Insert new HTML content before the parent element
+            parentElement.insertAdjacentHTML('afterbegin', newHtmlContent);
+            // Set flag to true to indicate content has been inserted
+            contentInserted = true;
+        }
+
+
+//select and apply code start from here
+const couponInput = document.getElementById('hs-id-discount');
+const applyDiscountButton = document.querySelector('.hs-apply-discount.btn.hs-event-static');
+ const couponValue = couponInput.value.trim();
+function setCouponCode(couponCode, button) {     
+    couponInput.value = couponCode;
+    applyDiscountButton.click();
+//console.log("applyDiscountButton clicked");
+}
+
+function applyCoupon(button) {
+    const couponCode = button.getAttribute('data-code').trim();
+    setCouponCode(couponCode, button);
+}
+
+document.querySelectorAll('.applycode-trigger').forEach(button => {
+    button.addEventListener('click', function() {
+        applyCoupon(this);
+   // console.log("applyCoupon clicked",button);
+    document.querySelectorAll('.applycode-trigger').forEach(otherButton => {
+            if (otherButton !== button) {
+                otherButton.textContent = 'Apply';
+                otherButton.disabled = false;
+                otherButton.closest('.coupon').classList.remove('activecodestrip');
+               otherButton.classList.remove('warningactive');
+              otherButton.closest('.coupon').classList.remove('warningcodestrip');
+            }
+        });
+     /* if (button.textContent === 'Apply') {
+            button.textContent = 'Applied';
+            button.disabled = true;
+           // button.classList.remove('warningactive');
+         //  button.closest('.coupon').classList.remove('warningcodestrip');
+           button.closest('.coupon').classList.add('activecodestrip');
+        } */
+    });
+});
+
+// Event listener for clicking applyDiscountButton
+applyDiscountButton.addEventListener('click', applyDiscount);
+
+//manualaddition code
+//const applyDiscountButton = document.querySelector('.hs-apply-discount.btn.hs-event-static');
+// Function to handle applying the discount
+function applyDiscount() {
+    const couponInput = document.getElementById('hs-id-discount');
+    const couponValue = couponInput.value.trim(); // Get the trimmed value of the input field
+   const applyButtons = document.querySelectorAll('.applycode-trigger');
+   const dsctoTags = document.querySelectorAll('.hs-dscto-tag');  
+    dsctoTags.forEach(dsctoTag => {
+    
+        const tagButton = dsctoTag.querySelector('.hs-dscto-tag-button');
+        
+        if (tagButton) { 
+          const dataName = tagButton.getAttribute('data-name').trim();
+              if (dataName === couponValue) {
+             //   console.log('Discount code applied successfully',tagButton);
+             // console.log('if couponInput couponValue successfully', couponValue);
+             // console.log('if dataName couponValue successfully', dataName);
+   
+                
+              } else {
+             // console.log('else couponInput couponValue successfully', couponValue);
+              //console.log('else dataName couponValue successfully', dataName);
+              //   console.log('else manuall Button clicked:', tagButton);
+                tagButton.click();                  
+             
+            }           
+        } 
+    });
+  
+
+}
+
+// Attempt to find applyDiscountButton
+if (applyDiscountButton) {
+    // Event listener for clicking applyDiscountButton
+    //applyDiscountButton.addEventListener('click', applyDiscount);   
+          applyDiscountButton.addEventListener('click', function() {
+            //  console.log('Button clicked!');
+            // Select the parent element with the constant class name
+              const parentElement = document.querySelector('.hs-success-code-discount');
+                // Create a new MutationObserver
+                const observer = new MutationObserver((mutationsList) => {
+                  // Iterate through each mutation
+                  for (let mutation of mutationsList) {
+                    // Check if nodes were added
+                    if (mutation.type === 'childList') {
+                      // Iterate through added nodes
+                      mutation.addedNodes.forEach(node => {
+                        // Check if the added node is a div with class hs--content--success
+                        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'DIV' && node.classList.contains('hs--content--success')) {
+                          // Log "success" to the console
+                           createConfettiBurst();
+                      //  console.log('success');
+                          // Select the element with class .hs-dscto-tag-button
+                              const successdtag = document.querySelector('.hs-dscto-tag-button');
+                                let successValue; 
+                              // Check if the button element exists
+                              if (successdtag) {
+                                  // Get the value of the data-name attribute
+                                  const dataNameValue = successdtag.getAttribute('data-name');
+                                 const successCodeTrigger = document.querySelector('[data-code="' + dataNameValue + '"]');
+                                       if (successCodeTrigger) {
+                                          successCodeTrigger.classList.remove('warningactive');
+                                         successCodeTrigger.textContent = 'Applied';
+                                          successCodeTrigger.disabled = true;
+                                          successCodeTrigger.closest('.coupon').classList.remove('warningcodestrip');
+                                          successCodeTrigger.closest('.coupon').classList.add('activecodestrip');
+                                      }
+                                  
+                                  // Log the value to the console
+                                 // console.log(dataNameValue);
+                              } 
+                         }else
+                        {
+                       //   console.log('warning');   
+                            const strongText = parentElement.querySelector('.notice__text strong');
+                              let warningvalue; // Declare the variable
+                              
+                              if (strongText) {
+                                  // Assign the trimmed text content of the strong element to 'warning'
+                                  warningvalue = strongText.textContent.trim();
+                                 // console.log(warningvalue); // Log the assigned value
+                                const warningCodeTrigger = document.querySelector('[data-code="' + warningvalue + '"]');
+                                       if (warningCodeTrigger) {
+                                          warningCodeTrigger.classList.add('warningactive');
+                                         warningCodeTrigger.textContent = 'Apply';
+                                          warningCodeTrigger.disabled = false;
+                                          warningCodeTrigger.closest('.coupon').classList.add('warningcodestrip');
+                                          warningCodeTrigger.closest('.coupon').classList.remove('activecodestrip');
+                                      } 
+                              }
+                          
+                        }
+                      });
+                    }
+                  }
+                });
+      
+      // Configure the observer to watch for childList changes
+      const config = { childList: true };
+      
+      // Start observing the parent element
+      observer.observe(parentElement, config);
+              applyDiscount();
+            
+          });
+} else {
+   // console.error('Apply discount button not found.');
+}
+
+ //slideropenfunction close   
+}
+  //cartupdate
+window.HS_SLIDE_CART_UPDATED = function(cart) {
+  const dsctoButtons = document.querySelectorAll('.hs-dscto-tag-button');
+    if (dsctoButtons.length > 0) {
+        dsctoButtons.forEach(dsctoButton => {  
+            const dataName = dsctoButton.getAttribute('data-name');
+         const applycodeButton = document.querySelector(`.applycode-trigger[data-code="${dataName}"]`);
+           applycodeButton.textContent = 'Applied';
+                applycodeButton.disabled = true;
+                applycodeButton.closest('.coupon').classList.add('activecodestrip');
+               applycodeButton.classList.remove('warningactive');
+              applycodeButton.closest('.coupon').classList.remove('warningcodestrip');
+      
+       });
+    }
+    else{
+      // console.log('notfound');
+         const allApplycodeButtons = document.querySelectorAll('.applycode-trigger');
+      allApplycodeButtons.forEach(apbutton => {
+        // Remove class 'activecodestrip' from the closest coupon element
+        apbutton.textContent = 'Apply';
+                apbutton.disabled = false;
+                apbutton.closest('.coupon').classList.remove('activecodestrip');
+               apbutton.classList.remove('warningactive');
+              apbutton.closest('.coupon').classList.remove('warningcodestrip');
+      
+      });
+  }
+ 
+}
+
+//togglebutton button
+
+  function toggleDropdown(header) {
+    const content = header.nextElementSibling;
+    header.classList.toggle('active');
+    content.classList.toggle('active');
+     var discontent = document.querySelector('.hs-content-discount-add');
+    discontent.classList.toggle('active');
+}
+
+//confetti
+function createConfettiBurst() {
+  const confettiContainer = document.querySelector('.hs-site-cart-popup-layout');
+  if (!confettiContainer) {
+    console.error('Confetti container not found!');
+    return;
+  }
+  const confettiColors = ['#3980C3'];
+   // Create a burst of confetti
+  for (let i = 0; i < 30; i++) { // Increase the number for a denser burst
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.textContent = '★'; // Use a different character or image for different confetti type
+    confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.animationDelay = `${Math.random() * 3}s`; // Adjust the delay for the burst effect
+    confettiContainer.appendChild(confetti);
+  }
+ 
+  // Remove confetti after 2 seconds
+  setTimeout(() => {
+   const confettiElements = document.querySelectorAll('.confetti');
+    confettiElements.forEach(confetti => {
+      confetti.remove();
+    });
+
+  }, 2000); // Adjust the duration as needed (2000ms = 2 seconds)
+}
+
+</script>
+

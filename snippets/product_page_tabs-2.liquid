@@ -1,0 +1,59 @@
+{%- capture html_tabs -%}  
+    {%- for block in section.blocks -%}
+    {%- assign b_i = block.settings -%}
+    {%- case block.type -%}
+      {%- when 'tab_desc' -%}
+        <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+          <div class="tt-collapse-title"{% if b_i.title == "" %} style="pointer-events: none; padding-bottom: 0px;"{% endif %}>{{ b_i.title }}</div>
+          <div class="tt-collapse-content">{{ product.description }}</div>
+        </div>
+      {%- when 'tab_same_html' -%}
+        <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+          <div class="tt-collapse-title">{{ b_i.title }}  <img src="{{'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/image_2.png?v=1623303023'}}" class="accordian-img" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+          </div>
+          <div class="tt-collapse-content">{{ b_i.html }}</div>
+        </div>
+       {%- when 'offer_same_html' -%}
+      {% assign offer_count = 0 %}
+    {% if b_i.offer1 != blank %}{% assign offer_count = offer_count | plus: 1 %}{% endif %}
+    {% if b_i.offer2 != blank %}{% assign offer_count = offer_count | plus: 1 %}{% endif %}
+    {% if b_i.offer3 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
+    {% if b_i.offer4 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
+      {% if b_i.offer5 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
+       {% if b_i.offer6 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
+      
+         {% if settings.show-callout %}
+          {% if product.tags contains 'single product' and product.tags contains 'GETMORE' %}   
+            <div class="custom-avaible-offer">
+             {% assign per-amt = settings.per-amt | strip | plus: 0 %}
+                    <div class="salestags pdp-callout">
+                    <span class="textsaletag">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp | &nbsp{{ settings.usecode }} </span> 
+                   </div>
+                   </div>
+         {% endif %}   
+       {% endif %}
+     
+      {%- when 'tab_unique' -%}
+        {%- if product_meta[b_i.key] != blank -%}
+        <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+          <div class="tt-collapse-title">{{ b_i.title }}</div>
+          <div class="tt-collapse-content">{{ product_meta[b_i.key] }}</div>
+        </div>
+        {%- endif -%}
+      {%- when 'tab_review' -%}
+        {%- unless settings.selectedreviewaapp == 'alireviewapp' -%}
+        <div id="tab_review" class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+          <div class="tt-collapse-title">{{ b_i.title }}</div>
+          <div class="tt-collapse-content">
+            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+          </div>
+        </div>
+        {%- endunless -%}
+    {%- endcase -%}
+    {%- endfor -%}
+    {%- endcapture -%}
+    
+    
+    {%- if html_tabs != '' -%}
+    <div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
+    {%- endif -%}

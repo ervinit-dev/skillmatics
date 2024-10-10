@@ -1,0 +1,11 @@
+.blog-bestseller-section { text-align: center;}
+.bestsellercard {max-width: 250px;padding: 10px;margin: 10px auto;}
+.bestsellercard .tt-image-box img{ max-width: 100%;}
+.bestsellercard  h2.tt-title { font-size: 18px;}
+.bestsellercard  .tt-price.product_prices {justify-content: center; margin-bottom: 10px;}
+.bestsellercard  .new-price {font-weight: 600;}
+.blog-bestseller_btn {width: 100%;}
+.disable.blog-bestseller_btn {  background: #ff805a !important;}
+  @media (max-width: 767px) {
+     .bestsellercard {max-width: 100%;} 
+  }

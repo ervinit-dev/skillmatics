@@ -1,0 +1,69 @@
+<div class="{% if count == 1 %}tt-footer-center{% else %}tt-footer-col{% endif %} tt-color-scheme-03">
+  <div class="{{ template.name  }} container{% if item.fullwidth %}-fluid-custom-mobile-padding container-fluid-custom{% endif %}">    
+{%- if section.settings.fmenu != blank and  section.settings.show-footer-bottom -%}
+ {%- if item.menu-title  != blank -%} <h5>{{ item.menu-title }}</h5>    {%- endif -%}
+  
+                      <ul class="tt-list footer-block__details-content list-unstyled">
+                        {%- for link in section.settings.fmenu.links -%}
+                          <li>
+                            <a
+                              href="{{ link.url }}"
+                              class="text-decoration-hover bottom-links link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                            >
+                              {{ link.title }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                       {%- endif -%}
+<!--footertext content -->
+{% if template.name contains "collection" and collection.metafields.collection.footer_text.value !=blank %}  
+     
+            <div class="tt-collapse-block footer-btn-tab"> 
+            <div class="accordion"> {{collection.title  }}
+              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+             </div>
+            <div class="panel">{{ collection.metafields.collection.footer_text.value }}
+             </div>              
+            </div>
+         
+{% elsif template.name contains "product" and  product.metafields.pdp.footer_text2.value !=blank %}
+
+            <div class="tt-collapse-block footer-btn-tab"> 
+             <div class="accordion">{{product.title  }}          
+              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+             </div>
+            <div class="panel">            
+            {% assign footer_text = product.metafields.pdp.footer_text2.value | parse_json %}
+            {% for child in footer_text.children %}
+              {% if child.type == "heading" %}
+                <h2>{{ child.children | map: 'value' | join: '' }}</h2>  <!-- Print heading -->
+              {% elsif child.type == "paragraph" %}
+                <p>{{ child.children | map: 'value' | join: '' }}</p>  <!-- Print paragraph -->
+              {% endif %}
+            {% endfor %}
+            
+            </div>              
+            </div>
+
+{% elsif template.name contains 'index'%}
+
+       
+         {% if item.bottom-title != blank %} 
+        <div class="tt-collapse-block footer-btn-tab">
+         <div class="accordion">  
+           {{ item.bottom-title }}   
+           <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+         </div>
+        <div class="panel">
+           {% if item.bottom-content != blank %}{{ item.bottom-content }}{% endif %}
+        </div>  
+          
+        </div>
+       {%- endif -%}
+       
+{%- endif -%}
+       <!--footertext content -->
+</div>
+</div>
+

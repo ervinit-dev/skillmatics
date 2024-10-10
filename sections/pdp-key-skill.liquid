@@ -1,0 +1,228 @@
+<style>
+  .pdp-key-skill .container {padding:40px 0;}
+  .skill-conatiner {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-rows: repeat(1, 1fr);   
+    width: 100%;
+    margin: 0 auto;
+}
+     @media (max-width: 890px) {
+       .skill-item img {
+    width: 60px;
+    height: 60px;
+}
+    .skill-conatiner {
+        display: grid;
+        grid-gap: 10px;       
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+    }
+}
+.skill-item {  text-align: center;}
+  @media (min-width: 1025px) {
+  .skill-conatiner {
+    justify-content: space-around;
+}}
+  p.key_skills {
+    font-family: AvenirMedium;
+    font-size: 16px;
+    font-weight: 500;
+    color: #06374f;
+}
+
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+ {%- if product.metafields.pdp.key_skills != blank -%}
+<div class="container-indent pdp-key-skill">
+  <div class="container ">
+    <div class="tt-categories-listing">     
+      <div class="tt-block-title">
+      <p class="tt-title">{{ item.text1 }}</p>
+      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    </div>
+      <div class="row skill-conatiner">
+  {% assign customKeywords = product.metafields.pdp.key_skills | split: ',' %}
+
+  {% for keyword in customKeywords %}
+  <div class="skill-item">
+    {% if keyword contains 'Language Skills' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon.png">
+    {% endif %}
+    {% if keyword contains 'Sensory Capabilities' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon.png">
+      {% endif %}
+    {% if keyword contains 'Cognitive Abilities' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon.png">
+      {% endif %}
+    {% if keyword contains 'Concentration' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon.png">
+      {% endif %}
+    {% if keyword contains 'Hand-eye Coordination' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon.png">
+      {% endif %}
+    {% if keyword contains 'Vocabulary' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Vocabulary-icon.png">
+      {% endif %}
+ {% if keyword contains 'Observation' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation.webp">
+      {% endif %}
+ {% if keyword contains 'Focus & Attention' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention.webp">
+      {% endif %}
+ {% if keyword contains 'Spatial Reasoning' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning.webp">
+      {% endif %}
+ {% if keyword contains 'Social & Communication' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication.webp">
+      {% endif %}
+ {% if keyword contains 'Fine Motor' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor.webp">
+      {% endif %}
+ {% if keyword contains 'Process Planning' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning.webp">
+      {% endif %}
+ {% if keyword contains 'Problem Solving' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving.webp">
+      {% endif %}
+ {% if keyword contains 'Reflective Thinking' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking.webp">
+      {% endif %}
+ {% if keyword contains 'Mental Processing' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing.webp">
+      {% endif %}
+ {% if keyword contains 'Decision Making' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making.webp">
+      {% endif %}
+ {% if keyword contains 'Writing' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing.webp">
+      {% endif %}
+ {% if keyword contains 'Critical Thinking' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Critical_Thinking.webp">
+      {% endif %}
+ {% if keyword contains 'Creative Thinking' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking.webp">
+      {% endif %}
+{% if keyword contains 'Reading & Comprehension' %}
+    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension.png">
+      {% endif %}
+{% if keyword contains 'Logical Reasoning' %}
+    <img loading="lazy" alt="Logical Reasoning" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning.webp">
+      {% endif %}
+    <p class="key_skills">{{ keyword }}</p>
+  </div>
+  {% endfor %}
+    </div></div></div></div>
+     {% endif %}
+  {% schema %}
+  {
+    "name": "Key Skills",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "WELCOME!"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#191919"
+        },
+       {
+      "type": "select",
+      "id": "items",
+      "label": "Items In Line",
+      "default": "4",
+      "options": [
+        {
+          "value": "12",
+          "label": "1"
+        },
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    },
+       {
+      "type": "select",
+      "id": "mob-items",
+      "label": "Mobile Items In Line",
+      "default": "4",
+      "options": [
+        {
+          "value": "12",
+          "label": "1"
+        },
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    }
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "label": "Link",
+          "id": "collection",
+          "type": "url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        }
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Key Skills",
+      "category": "Multicolumn",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

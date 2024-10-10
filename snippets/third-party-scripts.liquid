@@ -1,0 +1,150 @@
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "gxngtpv2jn");
+</script>
+
+{% render 'kwikpass-add-button' %}
+<!-- KwikPass -->
+{% render 'kwikpass' %}
+<!-- Gokwik -->
+{% render 'gokwik' %}
+
+<!-- hrefLang -->
+    <link rel="alternate" hreflang="en-IN" href="{{ canonical_url | replace: shop.domain, 'www.skillmatics.in' }}" />
+    <link rel="alternate" href="{{ canonical_url | replace: shop.domain, 'www.skillmaticsworld.co.uk' }}" hreflang="en-GB" />
+    <link rel="alternate" href="{{ canonical_url | replace: shop.domain, 'www.skillmaticsworld.com' }}" hreflang="x-default" />
+
+<!-- Start Areviews Collection Rating Code -->
+<script src="https://areviewsapp.com/js_codes/collection_rating.js" async></script>
+<!-- End Areviews Collection Rating Code -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H859PZ1L94"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config','G-H859PZ1L94',{ 'groups': 'GA4'});
+  </script>
+    
+<!-- Google Tag Manager -->
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M79T2FM');
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+<script src="https://www.googletagmanager.com/gtag/js?id=AW-11090385901"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-11090385901', {'send_page_view': false});
+  </script>
+
+  <script>
+    gtag('event', 'page_view', {'send_to': 'AW-11090385901',
+                                  'ecomm_prodid':window.google_tag_params.ecomm_prodid,
+                                  'ecomm_pagetype': window.google_tag_params.ecomm_pagetype,
+                                  'ecomm_totalvalue':window.google_tag_params.ecomm_totalvalue
+                                 });
+  </script>
+
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+  window._qevents = window._qevents || [];
+    (function() {
+      var elem = document.createElement('script');
+      elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+      elem.async = true;
+      elem.type = "text/javascript";
+      var scpt = document.getElementsByTagName('script')[0];
+      scpt.parentNode.insertBefore(elem, scpt);
+      })();
+
+      window._qevents.push({
+      qacct:"p-wR3qke_XmbqUp",
+      uid:"__INSERT_EMAIL_HERE__"
+      });
+</script>
+
+<noscript>
+    <div style="display:none;">
+        <img src="//pixel.quantserve.com/pixel/p-wR3qke_XmbqUp.gif" border="0" height="1" width="1" alt="Quantcast">
+      </div>
+</noscript>
+<!-- End Quantcast tag -->
+
+<!-- RazorPay MagicCheckout -->
+{% comment %}{% render 'magicCheckoutScript' %} {% endcomment %}
+
+<!-- Google Dynamic remarketing tag for theme.liquid -->
+{% if template contains 'product' %}
+  <script type="text/javascript">
+        var json_product = {{ product | json }};
+  </script>
+    
+  <script>
+      var ecomm_prodid=[];
+      for(var i=0;i<json_product.variants.length;i++)
+        ecomm_prodid.push('shopify_IN_{{product.id}}_'+json_product.variants[i].id);
+  </script>
+      
+  <script type="text/javascript">
+      var google_tag_params = {
+        ecomm_prodid: ecomm_prodid,
+        ecomm_pagetype: 'product',
+        ecomm_totalvalue: parseFloat('{{ product.price | money_without_currency | remove: ","}}')
+      };
+  </script>
+    
+{% elsif template contains 'collection' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'category'
+    };
+  </script>
+    
+{% elsif template contains 'cart' %}
+  <script type="text/javascript">
+    var id = new Array();
+    {% for item in cart.items %}
+    id.push('shopify_IN_{{item.product.id}}_{{item.variant.id}}');
+      {% endfor %}
+
+    var google_tag_params = {
+      ecomm_prodid: id,
+      ecomm_pagetype: 'cart',
+      ecomm_totalvalue: parseFloat('{{ cart.total_price | money_without_currency | remove: ","}}')
+      };
+  </script>
+    
+{% elsif template contains 'search' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'searchresults'
+      };
+  </script>
+    
+{% elsif template contains 'index' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'home'
+      };
+  </script>
+    
+{% else %}
+  <script type="text/javascript">
+    var google_tag_params = {
+        ecomm_pagetype: 'other'
+      };
+  </script>
+{% endif %}

@@ -1,0 +1,163 @@
+{{ 'section-testimonial.css' | asset_url | stylesheet_tag }}
+<style>
+  #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+  }
+    }
+    {% endif %}
+    {% if section.settings.bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+  }
+    }
+    {% endif %}
+.testimonial-content img.lazyload:hover {
+    transform: scale(1.02);
+    transition: 1s ease;
+    z-index: 1;
+    position: relative;
+}
+  .testimonial-content.slick-active:hover {
+    transform: translate(0) rotate(-5deg) skew(0) skewY(0) scaleX(1) scaleY(1);
+    transition: 1s ease-in;
+}
+  .testimonial-content {
+    transform: translate(0) rotate(0deg) skew(0) skewY(0) scaleX(1) scaleY(1);
+    transition: 1s ease-out;
+}
+
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div class="container-indent">
+  <div class="container-fullwidth ">
+    <div class="section-testimonial2 container">     
+      <div class="tt-block-title">
+      <h1 class="tt-title"> <span>{{ item.text1 }}</span></h1>
+      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    </div>
+      <div class="row arrow-location-tab  custom-testimonial2">
+        {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}    
+           {%- case block.type -%}
+              {%- when 'column' -%}
+        <div class="custom-test-container  col-6 col-md-6 col-12-440width">
+             <div class="custom-testimonial-content">    
+              {%- if item.image != blank -%}
+              <img class="lazyload"
+                  src="{{ block.settings.image | img_url:'large'}}"                                  
+                   alt="{{ item.image.alt }}" width="auto" height="auto">
+            
+              {%- endif -%}
+               <div class="testimonial-item"> 
+                 {% render 'five-star-svg' %}
+                {% if item.custom_text != ''%} {{ item.custom_text }}{% endif %}
+              {% if item.custom_name != ''%} <p class="tt-authorname">-{{ item.custom_name }}</p>{% endif %}
+               </div>
+             </div>
+        </div> 
+    
+               {%- endcase -%}{%- endfor -%}{%- endif -%}
+      </div></div></div></div>
+
+
+
+{% schema %}
+  {
+    "name": "Section Testimonial 2",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "1 crore + Happy Families"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#191919"
+        },      
+     {
+          "type": "image_picker",
+          "id": "bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "bg-mobile",
+          "label": "mobile background Image "
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_video_looping",
+          "default":true,
+          "label": "Enable Video Looping "
+        }
+    ],
+    "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+         {
+          "type": "richtext",
+          "id": "custom_text",
+          "label": "Custom text"          
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Author Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        }
+       
+      ]
+    },
+      {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+         {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          }
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Testimonial 2",
+      "category": "Multicolumn",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

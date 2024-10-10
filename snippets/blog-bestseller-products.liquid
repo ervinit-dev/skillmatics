@@ -1,0 +1,122 @@
+{{ 'blog-bestseller-products.css' | asset_url | stylesheet_tag }}
+
+{% assign product1 = all_products[article.metafields.blog.bestseller_product_1] %}
+{% assign product2 = all_products[article.metafields.blog.bestseller_product_2] %}
+{% assign product3 = all_products[article.metafields.blog.bestseller_product_3] %}
+{% assign product4 = all_products[article.metafields.blog.bestseller_product_4] %}
+
+  <div class="blog-bestseller-section">
+  {%- if section.settings.product-title!= blank -%}  <h2 class="tt-title">{{ section.settings.product-title }}</h2>{% endif %}
+    <div class="blog-bestseller-carousel ">
+      {%- if article.metafields.blog.bestseller_product_1 != blank -%}
+      <div class="bestsellercard tt-product">
+         <a class="tt-image-box product_title" href="{{ product1.url }}" target="_self">
+        <img src="{{ product1.featured_image | img_url: 'medium' }}" alt="{{ product1.title }}">         
+       <div class="tt-description"> 
+         <h2 class="tt-title prod-thumb-title-color">  {{ product1.title }}</h2>
+         <div
+          product-id="{{ product1.id }}"
+          product-handle="{{ product1.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="tt-price product_prices">
+         <span class="new-price"> {{ product1.price | money }}</span>
+          {% if product1.compare_at_price > product1.price %}
+            <span class="old-price">{{ product1.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+         </div>
+         </a>
+         <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="{{product1.variants.first.id  }}">
+                      <button class="btn blog-bestseller_btn {% if settings.ajax_addtocart %} addtocart-item-js{% endif %}{% unless product1.available %} disable{% endunless %} thumbprod-button-bg"
+                              {%- if settings.show_addtocart_popup_related -%}{%- unless product.metafields.description.related_collection == blank -%}data-relatedcollection="{{ product.metafields.description.related_collection }}"{%- endunless -%}{%- endif -%}
+                              > {% unless product1.available %} {{ 'products.general.unavailable_html' | t }} {% else %} {{ 'products.general.add_to_cart_html' | t }}{% endunless %}
+                      </button>
+          </form>
+      </div>
+      {% endif %}
+      {%- if article.metafields.blog.bestseller_product_2 != blank -%}
+      <div class="bestsellercard tt-product">
+         <a class="tt-image-box product_title" href="{{ product2.url }}" target="_self">
+        <img src="{{ product2.featured_image | img_url: 'medium' }}" alt="{{ product2.title }}">
+            <div class="tt-description"> 
+         <h2 class="tt-title prod-thumb-title-color">  {{ product2.title }}</h2>
+        <div
+          product-id="{{ product2.id }}"
+          product-handle="{{ product2.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="tt-price product_prices">
+         <span class="new-price"> {{ product2.price | money }}</span>
+          {% if product2.compare_at_price > product2.price %}
+            <span class="old-price">{{ product2.compare_at_price | money }}</span>
+          {% endif %}
+        </div></div>
+         </a>
+         <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="{{product2.variants.first.id  }}">
+                      <button class="btn blog-bestseller_btn {% if settings.ajax_addtocart %} addtocart-item-js{% endif %}{% unless product2.available %} disable{% endunless %} thumbprod-button-bg"
+                              {%- if settings.show_addtocart_popup_related -%}{%- unless product.metafields.description.related_collection == blank -%}data-relatedcollection="{{ product.metafields.description.related_collection }}"{%- endunless -%}{%- endif -%}
+                              > {% unless product2.available %} {{ 'products.general.unavailable_html' | t }} {% else %} {{ 'products.general.add_to_cart_html' | t }}{% endunless %}
+                      </button>
+          </form>
+      </div>
+        {% endif %}
+      {%- if article.metafields.blog.bestseller_product_3 != blank -%}
+      <div class="bestsellercard tt-product">
+         <a class="tt-image-box product_title" href="{{ product3.url }}" target="_self">
+        <img src="{{ product3.featured_image | img_url: 'medium' }}" alt="{{ product3.title }}">
+            <div class="tt-description"> 
+         <h2 class="tt-title prod-thumb-title-color">  {{ product3.title }}</h2>
+        <div
+          product-id="{{ product3.id }}"
+          product-handle="{{ product3.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="tt-price product_prices">
+         <span class="new-price"> {{ product3.price | money }}</span>
+          {% if product3.compare_at_price > product3.price %}
+            <span class="old-price">{{ product3.compare_at_price | money }}</span>
+          {% endif %}
+        </div></div>
+         </a>
+         <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="{{product3.variants.first.id  }}">
+                      <button class="tt-btn-addtocart btn blog-bestseller_btn {% if settings.ajax_addtocart %} addtocart-item-js{% endif %}{% unless product3.available %} disable{% endunless %} thumbprod-button-bg"
+                              {%- if settings.show_addtocart_popup_related -%}{%- unless product.metafields.description.related_collection == blank -%}data-relatedcollection="{{ product.metafields.description.related_collection }}"{%- endunless -%}{%- endif -%}
+                              > {% unless product3.available %} {{ 'products.general.unavailable_html' | t }} {% else %} {{ 'products.general.add_to_cart_html' | t }}{% endunless %}
+                      </button>
+          </form>
+      </div>
+          {% endif %}
+      {%- if article.metafields.blog.bestseller_product_4 != blank -%}
+     <div class="bestsellercard tt-product">
+         <a class="tt-image-box product_title" href="{{ product4.url }}" target="_self">
+        <img src="{{ product4.featured_image | img_url: 'medium' }}" alt="{{ product4.title }}">
+            <div class="tt-description"> 
+         <h2 class="tt-title prod-thumb-title-color">  {{ product4.title }}</h2>
+        <div
+          product-id="{{ product4.id }}"
+          product-handle="{{ product4.handle }}"
+          class="alireviews-review-star-rating"
+        ></div>
+        <div class="tt-price product_prices">
+         <span class="new-price"> {{ product4.price | money }}</span>
+          {% if product4.compare_at_price > product4.price %}
+            <span class="old-price">{{ product4.compare_at_price | money }}</span>
+          {% endif %}
+        </div></div>
+         </a>
+         <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="{{product4.variants.first.id  }}">
+                      <button class="btn blog-bestseller_btn {% if settings.ajax_addtocart %} addtocart-item-js{% endif %}{% unless product4.available %} disable{% endunless %} thumbprod-button-bg"
+                              {%- if settings.show_addtocart_popup_related -%}{%- unless product.metafields.description.related_collection == blank -%}data-relatedcollection="{{ product.metafields.description.related_collection }}"{%- endunless -%}{%- endif -%}
+                              >
+                        {% unless product4.available %} {{ 'products.general.unavailable_html' | t }} {% else %} {{ 'products.general.add_to_cart_html' | t }}{% endunless %}
+                      </button>
+          </form>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

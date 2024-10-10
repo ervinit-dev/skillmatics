@@ -1,0 +1,103 @@
+{{ 'section-gift.css' | asset_url | stylesheet_tag }}
+{%- assign item = section.settings -%}
+<style>
+    #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+  }
+    }
+    {% endif %}
+    {% if section.settings.bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+  }
+    }
+    {% endif %}
+ 
+</style>
+
+<div id="section-{{ section-id }}" class="giffting-sec ">
+  <div class="container">
+    <div class="offer-block-title">
+    
+    
+    </div>
+   <div class="gifting-container center text-center">
+  {% if section.settings.text1 != blank %}
+     <h1 class="tt-title section-giftheading">{{ section.settings.text1 }}</h1>{% endif %}
+   {% if section.settings.text2 != blank %}   <span class="font-d-Mikado color-brand font-Mikado section-gifting-subtitle">{{ section.settings.text2 }}</span>{% endif %}
+      {% if section.settings.show-btn %} 
+     <div class="btn-contacts"> 
+    <a class="mailbtn" href="mailto:{{ section.settings.emailid }}"><img src="{{ 'email-white.png'| asset_url }}" alt="email" width="25px" height="25px"><span class="color-brand">{{ section.settings.emailid }}</span></a>
+    <a class="mailbtn" href="https://api.whatsapp.com/send?phone={{ section.settings.phoneno }}"><img src="{{ 'whatsapp-icon.png' | asset_url }}" alt="whatslink" width="25px" height="25px"><span class="color-brand">{{ section.settings.phoneno }}</span></a>
+     </div>
+     {% endif %}
+   </div>
+       
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section Gift text",
+  "class": "index-section",
+  "settings": [
+      {
+        "type": "text",
+        "id": "text1",
+        "label": "Heading",
+        "default": "Have a birthday party or  an event coming up?!"
+      },
+     {
+        "type": "richtext",
+        "id": "text2",
+        "label": "text",
+        "default": "<p>Contact us for product recommendations and special discounts!</p>"
+      },
+        {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color"         
+        },      
+     {
+          "type": "image_picker",
+          "id": "bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "bg-mobile",
+          "label": "mobile background Image "
+        },
+     {
+          "type": "checkbox",
+          "id": "show-btn",
+          "label": "Show contacts"          
+   },  
+      {
+          "type": "text",
+          "id": "emailid",
+          "label": "Emailid"          
+   } ,
+      {
+          "type": "text",
+          "id": "phoneno",
+          "label": "Phone Number"          
+   } 
+  ],
+  "presets": [
+    {
+      "name": "Section Gift text",
+      "category": "Simple Section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,200 @@
+<style>
+  @media (min-width: 1000px) {
+#section-{{ section.id }} .custom-scroll-container{width:{{section.settings.sec-width}}px;max-width:100%;}}
+@media (min-width: 750px) {
+#section-{{ section.id }} .custom-collection-gd {    padding: {{ section.settings.imgpadding}}px;}
+}
+ @media (max-width: 749px) {
+   #section-{{ section.id }} .custom-collection-gd {   max-width: 80px;  max-height: 80px; }
+  .scroll-griditem {  max-width: 104px;} 
+}
+    .scroll-griditem {  text-align: center;}
+</style>
+
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- capture info_image_size -%}
+{%- case grid -%}
+{%- when '6' -%}600x400px
+{%- when '4' -%}400x350px
+{%- else -%}300x200px
+{%- endcase -%}
+{%- endcapture -%}
+{%- assign img_size = info_image_size | split: 'x' | first | append: 'x' -%}
+
+<div id="section-{{ section.id }}" class=" {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
+  <div class="container section-space custom-scroll-container container-fluid-custom-mobile-padding">
+    <div class="tt-categories-listing">
+       <div class="tt-block-title">
+       {%- if item.title != blank -%} <h1 class="tt-title">{{item.title}}</h1> {%- endif -%}
+      {% unless item.subtitle == '' %}<div class="tt-description">{{item.subtitle}}</div> {% endunless %}
+    </div>
+      <div class="row noarrow scroll-container responsive-brandlogo row custom-collection-row">        
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}
+        {%- assign collection = ricollections[item.collection] -%}     
+        <div class="scroll-griditem-{{ forloop.index }} scroll-griditem col-{{ grid }} col-md-{{ grid }} col-4-440width">
+          <a class="tt-title-block"  {%- if item.collection.url != blank -%} href="{{item.collection.url }}" {%- else -%} href="{{item.link }}"{%- endif -%} aria-label="collection link">  
+          <div class="custom-collection-gd">                      
+              {%- if collection.image == blank -%}
+              {%- unless item.imaged == blank -%}
+              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}" loading="lazy"
+                  src="{{ item.imaged | img_url: 'large'}}"
+                   alt="{{ item.custom_name }} page link" width="400px" height="auto">
+              {%- endunless -%} 
+              {%- unless item.image == blank -%}
+              <img class="lazyload desktop-{%- unless  item.imaged == blank -%}hidden {%- endunless -%}"
+                src="{{ item.image | img_url: 'large'}}"
+                   alt="{{item.custom_name }} page link" width="200px" height="auto">
+              {%- endunless -%}
+              {%- else -%}            
+              <img class="lazyload" loading="lazy"
+                src="{{ collection.image | img_url: 'large'}}"
+                   alt="{{ item.custom_name }} page link" width="400px" height="200px">           
+              {%- endif -%} 
+          </div>
+         <span class="customtitle"> {% if item.custom_name != ''%}{{ item.custom_name }}{% else %}{{ item.collection.title }}{% endif %}</span>
+            </a>
+        </div>
+        {%- endfor -%}
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom Scroll Collections",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "sec-width",
+      "min":800,
+      "max":1200,
+      "step": 50,      
+      "label": "Section width",
+      "default": 1000
+      },
+      {
+        "type": "select",
+        "id": "top_offset",
+        "label": "Top Offset",
+        "default": "normal",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          }
+        ]
+      },
+    {
+      "type": "select",
+      "id": "items",
+      "label": "Items In Line",
+      "default": "4",
+      "options": [
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    },
+     {
+      "type": "range",
+      "id": "imgpadding",
+      "min": 1,
+      "max":50,
+      "step": 1,
+      "label": "Image Padding",
+      "default": 10
+      },
+    {
+      "type": "checkbox",
+      "id": "showtitle",
+      "label": "Show Heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "See All Products"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",     
+      "label": "Sub Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+         {
+          "label": "Link",
+          "id": "link",
+          "type": "url"
+        },
+          {
+          "type": "image_picker",
+          "id": "imaged",
+          "label": "Custom Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        }
+      
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Scroll Collections",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,105 @@
+<style>
+.noactive img.active-no-h,.text-scheme-accent img.active-h {
+    display: none;
+}
+ /*.home-link,.category-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    color: #06374F;
+}
+   .text-scheme-accent {border-top:2px solid #06374F; }*/
+  .text-scheme-accent span{font-weight:800;}
+.bottom-menu-menulist img {
+  width:100%;object-fit: contain;
+    max-width: 62px;
+    max-height:50px;
+}
+
+.bottom-menu-divv {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+span.close-bottom-menu svg {  rotate: 90deg;}
+    
+    .bottom-menu-container {
+      position: relative;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .bottom-menu {
+   position: fixed;
+     border-top: 1px solid #004e804d;
+    bottom: 0;
+    left:0%;
+    right: 0%;
+    padding: 10px;
+    width: 100%;
+    border-radius:0px;
+      color:#004E80;
+  background: #ffffff;
+    padding:0 8px 8px 8px;
+    z-index: 8;
+     
+    }
+
+    /* Media query to show bottom-menu on mobile */
+    /* @media only screen and (max-width: 600px) {
+footer .tt-color-scheme-03 {   padding-bottom: 60px !important;}
+     
+    } */
+    @media only screen and (max-width: 600px) {
+    .custom-footer .newsletter-title{
+margin-top: 25px;
+    }
+}
+  </style>
+
+
+  <div class="{{ template.name }} desktop-hidden  bottom-menu-container gradient "> 
+    <div class="bottom-menu">
+       <div class="bottom-menu-divv">
+      <!-- Bottom menu content goes here -->
+          <a href="{{ shop.url }}"  class="home-link bottom-menu-menulist pge-{{ page.handle }} {% if template  == 'index' %} text-scheme-accent{% else %}noactive{% endif %}">
+    <img src="{{ 'home-empty.webp'|asset_url }}" class="active-h" alt="Home" width="100px" height="100px" loading="lazy">
+   <img src="{{ 'home-fill.webp'|asset_url }}"  class="active-no-h" alt="Home" width="100px" height="100px" loading="lazy">
+            
+    </a>
+    <a href="{{ shop.url }}/pages/category" class="category-link bottom-menu-menulist pge-{{ page.handle }} {% if page.handle == "category" %}text-scheme-accent{% else %}noactive{% endif %}">
+    <img src="{{ 'categories-empty.webp'|asset_url }}" class="active-h" alt="category" width="100px" height="100px" loading="lazy">
+   <img src="{{ 'categories-fill.webp'|asset_url }}"  class="active-no-h" alt="category" width="100px" height="100px" loading="lazy">
+
+    </a>
+             {% comment %}       <a href="{{ shop.url }}/collections/rakhi-gifts-for-kids" class="new-link bottom-menu-menulist pge-{{ collection.handle }} {% if collection.handle =='rakhi-gifts-for-kids' %}text-scheme-accent{% else %}noactive{% endif %}">
+    <img src="{{ 'Sale.webp'|asset_url }}" class="active-h" alt="sale arrival" width="100px" height="100px" loading="lazy">
+    <img src="{{ 'Sale Selected.webp'|asset_url }}" class="active-no-h"  alt="sale arrival" width="100px" height="100px" loading="lazy">
+    </a>{% endcomment %}
+               <a href="{{ shop.url }}/pages/gifting" class="bestseller-link bottom-menu-menulist pge-{{ collection.handle }} {% if  page.handle == "gifting" %}text-scheme-accent{% else %}noactive{% endif %}">
+    <img src="{{ 'gifting-empty.webp'|asset_url }}" class="active-h" alt="offers" width="100px" height="100px" loading="lazy">
+    <img src="{{ 'gifting-fill.webp'|asset_url }}"  class="active-no-h" alt="offers" width="100px" height="100px" loading="lazy">
+    </a>
+               <a href="{{ shop.url }}/collections/bestsellers" class="bestseller-link bottom-menu-menulist pge-{{collection.handle }} {% if collection.handle == "bestsellers" %}text-scheme-accent{% else %}noactive{% endif %}">
+    <img src="{{ 'bestseller-empty.webp'|asset_url }}" class="active-h" alt="bestseller" width="100px" height="100px" loading="lazy">
+       <img src="{{ 'bestseller-fill.webp'|asset_url }}"  class="active-no-h"  alt="bestseller" width="100px" height="100px" loading="lazy">
+    </a>
+               <a href="{{ shop.url }}/collections/new-launches" class="new-link bottom-menu-menulist pge-{{ collection.handle }} {% if collection.handle =='new-launches' %}text-scheme-accent{% else %}noactive{% endif %}">
+    <img src="{{ 'new-empty.webp'|asset_url }}" class="active-h" alt="new arrival" width="100px" height="100px" loading="lazy">
+    <img src="{{ 'new-fill.webp'|asset_url }}" class="active-no-h"  alt="new arrival" width="100px" height="100px" loading="lazy">
+    </a>
+    </div>
+    </div>
+  </div>
+  
+
+
+
+{% schema %}
+  {
+    "name": "Bottom Nav",
+    "settings": []
+  }
+{% endschema %}

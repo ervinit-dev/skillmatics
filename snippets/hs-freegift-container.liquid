@@ -1,0 +1,280 @@
+<script>  
+    var giftamt ={{ settings.free-gift-amt | plus:0 }}; 
+
+  function updatePrices2(data){
+    var m = Shopify.formatMoney(data.total_price, money_format);
+    if($('#grandtotal').length){
+      if($('#grandtotal .money').length){
+        $('#grandtotal .money').replaceWith(m);
+      }
+      else{
+        $('#grandtotal td').html(m);
+      }
+    }
+    if($('#subtotal').length){
+      if($('#subtotal .money').length){
+        $('#subtotal .money').replaceWith(m);
+      }
+      else{
+        $('#subtotal td').html(m);
+      }
+    }
+    $('#wrapper-response').length && $('#wrapper-response').hide();
+    $('#tax').length && $('#tax').hide();
+    $('body').trigger('refreshCurrency');
+  }
+  function getGiftAddedInner(cart){
+    for(let i=0; i<cart.items.length;i++){
+        if(cart.items[i].title.includes('Free Gift')){
+            return cart.items[i].id;
+        }
+      }
+      return 0;
+  }
+  function createGiftRow(data,itemId){
+     const item=data;
+    console.log("item",data)
+    const giftRow=`<tr data-tr='tt-shopcart-table-02-${item.id}' id="${item.id}">
+      <td>
+        <div class="tt-product-img">
+          <img src="${item.image}" alt="${item.alt}">
+        </div>
+      </td>
+      <td>
+        <h2 class="tt-title">
+          <a href="${ item.url }">${item.product_title}</a>
+        </h2>
+        <ul class="tt-list-parameters">
+          <li>
+            <div class="tt-price">Rs. ${item.price}</div>
+          </li>
+          <li>
+            <div class="detach-quantity-mobile"></div>
+          </li>
+          <li>
+            <div class="tt-price subtotal">Rs. ${item.line_price}</div>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <div class="tt-price">Rs. ${item.price}</div>
+      </td>
+      <td>
+        <div class="detach-quantity-desctope">
+          <div class="tt-input-counter style-01 input-counter">
+            
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="tt-price subtotal">Rs. ${item.line_price}</div>
+      </td>
+      <td>
+        <span onclick="removeItemManually(${item.id})" class="tt-btn-close svg-icon-delete js-deleteitem-ajax" title="Delete" >
+          {% include "svg-delete-icon" %}
+        </span>
+      </td>
+    </tr>`
+    const innerBody = document.querySelector("table tbody")
+    innerBody.insertAdjacentHTML('beforebegin',giftRow) ;
+  }
+
+  function removeFreeGiftCartPageInner(lineItemId){
+    var params = {
+        type: 'POST',
+        url: '/cart/change.js',
+        data: {
+            quantity: 0,
+            id: `${lineItemId}`
+        },
+        dataType: 'json',
+        success: function(data) {
+            {% comment %} document.querySelectorAll('.tt-shopcart-table-02 tr')[lineItemId-1].remove() {% endcomment %}
+            document.querySelector(`[data-tr=tt-shopcart-table-02-${lineItemId}]`).remove()
+             updatePrices2(data); 
+             {% comment %} location.reload();  {% endcomment %}
+        }
+      };
+      $.ajax(params);
+  }
+  function removeItemManually(itemId){
+    var params = {
+      type: 'POST',
+      url: '/cart/change.js',
+      data: {
+          quantity: 0,
+          id: `${itemId}`
+      },
+      dataType: 'json',
+      success: function(data) {
+        document.querySelector(`[data-tr=tt-shopcart-table-02-${itemId}]`).remove()
+
+          if((data.total_price/100)<giftamt){
+            const lineItemGift =getGiftAddedInner(data);
+            if(lineItemGift){
+              removeFreeGiftCartPageInner(lineItemGift)
+            }
+            if(document.querySelector('.free-gift-container')){
+              document.querySelector('.free-gift-container').remove();
+            }
+          }else{
+            const lineItemGift =getGiftAddedInner(data);
+            if(lineItemGift<1){
+              showGift(data)
+            }
+          }
+          {% comment %} location.reload();  {% endcomment %}
+          updatePrices2(data); 
+      }
+    };
+    $.ajax(params);
+  }
+  function addGift2(lineItemId){
+    const buttonClicked = document.querySelector(`[data-id="free-gift-${lineItemId}"]`)
+    document.querySelectorAll('.free-gift-container button').forEach((item)=>{
+        item.disabled=true;
+        item.style.opacity='0.8';       
+    });
+    buttonClicked.innerText='Adding...';
+    console.log("addingbtn clicked");
+
+    var params = {
+        type: 'POST',
+        url: '/cart/add.js',
+        data: {
+            quantity: 1,
+            id: lineItemId
+        },
+        dataType: 'json',
+        success: function(data) {
+            localStorage.setItem("_cfg_ad",'true');
+            createGiftRow(data,lineItemId)
+            if(document.querySelector('.free-gift-container')){
+              document.querySelector('.free-gift-container').remove();
+            }
+           
+        }
+    };
+    $.ajax(params);
+  }
+  function showGift(cart){
+    const freeGiftSnippet=`
+      <div class="row free-gift-container cartpagefreegift">
+          
+              {% assign productsData= collections['free-gift'].products %}
+              {% for item in productsData %}
+                  {% if item.variants.first.available %}
+                      <div class="free-product card">
+                        <a href="{{ item.url }}">
+                          <img src="{{ item.featured_image | product_img_url:"large" }}"  alt="product image" loading="lazy" width="150px" height="100px">
+                        </a>
+                        <a href="{{ item.url }}">
+                          <p class="title">{{ item.title }}</p>
+                        </a>
+                          <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                          <p class=" tt-price price">
+                          {{ item.price |money}}
+                          <span class="compare-price"> {{ item.compare_at_price|money }}</span>
+                          </p>
+                          <button class="btn" onclick="addGift({{ item.variants.first.id }})" data-id="free-gift-{{item.variants.first.id}}" >Add</button>
+                    
+                   
+                      </div>
+                {% endif %}
+              {% endfor %}
+          
+        </div>
+    `;
+    
+    if(!((cart.total_price/100)<giftamt) ){
+      if(!getGiftAddedInner(cart)){
+       // console.log(getGiftAddedInner(cart),"getGiftAddedInner(cart)")
+      
+        if(!document.querySelector('.free-gift-container')){
+          document.querySelector('.hs-rewards-content').insertAdjacentHTML("afterend", freeGiftSnippet);
+          {% comment %} document.querySelector('.tt-shopcart-table-02').insertAdjacentHTML("afterend", freeGiftSnippet); {% endcomment %}
+        }
+      }
+    }
+    //cartupdate
+let previousCart = null;
+
+// Function to check the current cart state
+function checkCart() {
+    fetch('/cart.js')
+        .then(response => response.json())
+        .then(cart => {
+            if (JSON.stringify(cart) !== JSON.stringify(previousCart)) {
+              //  console.log("Cart updated");
+                cartUpdated(cart); // Call your cart updated function
+                previousCart = cart; // Update the previous cart state
+                                if(!((cart.total_price/100)<giftamt) ){
+                    if(!getGiftAddedInner(cart)){
+                     // console.log(getGiftAddedInner(cart),"getGiftAddedInner(cart)")
+                    
+                      if(!document.querySelector('.free-gift-container')){
+                        document.querySelector('.hs-rewards-content').insertAdjacentHTML("afterend", freeGiftSnippet);
+                        {% comment %} document.querySelector('.tt-shopcart-table-02').insertAdjacentHTML("afterend", freeGiftSnippet); {% endcomment %}
+                      }
+                    }
+                  }else{
+                           if(document.querySelector('.free-gift-container')){
+                        document.querySelector('.free-gift-container').remove();
+                          }       
+                  }
+              
+            }
+        })
+        .catch(error => console.error('Error fetching cart:', error));
+}
+
+// Function to handle cart updated logic
+ function updateProgressBar(cart) {
+    var cartTotal = cart.total_price / 100; // Convert from cents to dollars
+       // Assuming you have a way to get the cart total, e.g., from a global variable or API
+   // var cartTotal = 1099; // Replace with your method to get the cart total
+    var giftThreshold ={{ settings.free-gift-amt }}; // Minimum amount required for the free gift
+console.log("freegift_amt",giftThreshold);
+    console.log("cartTotal",cartTotal);
+    function updateProgressBar(cartTotal, giftThreshold) {
+        var progressBarFill = document.getElementById('progress-bar-fill');
+        var progressText = document.getElementById('cart-progress-text');
+        var percentage = Math.min((cartTotal / giftThreshold) * 100, 100); // Prevent over 100%
+
+        progressBarFill.style.width = percentage + '%';
+        if (cartTotal >= giftThreshold) {
+            progressText.textContent = 'Congratulations🎉🎊! You have earned your free gift🎁!';
+        } else {
+            var amountNeeded = giftThreshold - cartTotal;
+            progressText.textContent = 'Add ' + amountNeeded.toFixed(2) + ' more to get a free gift🎁!';
+        }
+    }
+
+    updateProgressBar(cartTotal, giftThreshold);
+  }
+          document.addEventListener('DOMContentLoaded', function() {
+         updateProgressBar(cart);;
+      });
+      function cartUpdated(cart) {
+      updateProgressBar(cart);
+         //
+      }
+//
+// Initial check to set the previous cart
+fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+        previousCart = cart; // Set the initial cart state
+    })
+    .catch(error => console.error('Error fetching initial cart:', error));
+
+// Set an interval to check for cart changes every 1 second
+setInterval(checkCart, 1000);
+
+
+    //cartupdate
+    
+  }
+ 
+  showGift({{ cart|json }});
+</script>

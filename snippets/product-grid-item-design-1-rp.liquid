@@ -1,0 +1,244 @@
+{% capture tabshideallelements %}{% if template == "collection.collectiontabshorizontal" and template_ == "index" and settings.hideallelementsonindex %}true{% else %}false{% endif %}{% endcapture %}
+{% if settings.hideallelementsonindex and template == 'index' or tabshideallelements == "true" %}
+<div class="1 product-design1 respimgsize tt-product product-parent">
+  <div class="tt-image-box">
+    <a href="{{ RecommendedProduct.url | within: collection }}">
+      <span class="tt-img">
+        <img class="lazyload"  src="{{ main_url_image | product_img_url: '400x400'}}"
+           {% comment %}  data-mainimageratio = '{{ main_url_image.aspect_ratio }}'
+             data-mainimage="{{ main_url_image | product_img_url: '100x100' | replace: '100x100', 'respimgsize' }}" {% endcomment %}
+             alt="{{ main_url_image.alt | escape }}"/>
+      </span>
+      {%- if hover_url_image != '' -%}
+      {%- assign hover_url_image = hover_url_image | product_img_url: url_images_size -%}
+      {%- if settings.use_cached_images %}{%- assign hover_url_image = hover_url_image | split: '?' | first -%}{%- endif -%}
+      <span class="tt-img-roll-over">
+        <img class="lazyload" src="{{ hover_url_image }}" alt="{{ hover_url_image_alt }}"/>
+      </span>
+      {%- endif -%}
+    </a>
+  </div>
+</div>
+{% else %}
+<div class="2 product-design1 respimgsize tt-product product-parent options-js{% if settings.center_product_information %} thumbprod-center{% endif %}{% if settings.show_product_without_hover %} product-nohover{% endif %}">
+ <span class="custom--share"> <span class="custom-sharebtn"> {% render 'share-btn-code',product:product %}</span></span>
+  <div class="tt-image-box">
+    {%- unless settings.catalogue_mode -%}
+    {%- if settings.product_item_show_quickview and template.suffix != "wishlist" -%}
+    <a href="#"
+       data-toggle="modal"
+       data-target="#ModalquickView"
+       class="tt-btn-quickview"
+       data-firstavavariantid="{{ pr_variant.id }}"
+       data-value="{{ RecommendedProduct.url | within: collection | split: "?" | first }}"
+       data-quantity="{% for variant in RecommendedProduct.variants %}{% if variant.inventory_policy == "continue" %}{{ variant.id }}-continue{{ variant.inventory_quantity }};{% else %}{{ variant.id }}-{{ variant.inventory_quantity }};{% endif %}{% endfor %}"{% if settings.first_variant_column_is_image and settings.use_in_the_small_products %}
+       data-optionimages='{% include 'get_product_images_from_first_column' %}'{% endif %}
+       data-tooltip="{{ 'general.tooltip_texts.quick_view' | t }}"
+       data-tposition="left"
+       ></a>{%- endif -%}
+
+   {% comment %} {{ wishlist_button }}{% endcomment %}
+    {{ compare_button }}
+
+    {%- endunless -%}
+    <a class="tt-img-parent" href="{{ RecommendedProduct.url | within: collection }}">
+      <span class="tt-img">
+        {%- if template == "collection.ajax" -%}
+        <img src="{{ main_url_image | product_img_url: '600x' }}"
+             alt="{{ main_url_image.alt | escape }}"/>
+        {%- else -%}
+        <img class="lazyload"  src="{{ main_url_image | product_img_url: '400x400'}}"
+         {% comment %}    data-mainimageratio = '{{ main_url_image.aspect_ratio }}'
+             data-mainimage="{{ main_url_image | product_img_url: '100x100' | replace: '100x100', 'respimgsize' }}" {% endcomment %}
+             alt="{{ main_url_image.alt | escape }}"/>
+        {%- endif -%}
+      </span>
+      {%- if hover_url_image != '' -%}
+        {%- assign hover_url_image = hover_url_image | product_img_url: url_images_size -%}
+        {%- if settings.use_cached_images %}{%- assign hover_url_image = hover_url_image | split: '?' | first -%}{%- endif -%}
+      <span class="tt-img-roll-over">
+        <img class="lazyload" src="{{ hover_url_image }}" alt="{{ hover_url_image_alt }}"/>
+      </span>
+      {%- endif -%}
+      
+      <span class="tt-label-location product-featured-tag">
+     {% render 'featured-tag',product:RecommendedProduct %}
+      </span>
+    </a>
+
+    {%- unless settings.catalogue_mode -%}
+    {%- if product_meta.countdown != blank and settings.show_product_countdown -%}
+    <div class="tt-countdown_box tt-type-02">
+      <div class="tt-countdown_inner">
+        <div class="tt-countdown" data-date="{{ product_meta.countdown }}"></div>
+      </div>
+    </div>
+    {%- endif -%}
+    {%- endunless -%}
+  </div>
+  <!-----Similar Products- {{ template }}---->
+{% if template.name contains "collection" %}
+  {% unless template contains 'collection.ajax_recently_viewed' or template contains 'collection.collectiontabshorizontal' %}
+{% render 'view-similar-products',product:product %}{% endunless %}
+{% endif %}
+  <!------Similar products ends-------->
+  <div class="tt-description">
+     <a class="ds-link" href="{{ product.url | within: collection }}">
+    {%- if settings.show_product_vendor or settings.show_product_type or settings.product_item_show_rating -%}
+    <div class="tt-row">
+
+      {%- if settings.show_product_vendor or settings.show_product_type -%}
+      <ul class="tt-add-info">
+        {%- if settings.show_product_vendor -%}<li><a href="{{ routes.collections_url }}/{% if collection == blank %}all{% else %}{{ collection.handle }}{% endif %}?filter.p.vendor={{ RecommendedProduct.vendor | downcase | excape | replace: ' ','+' }}"
+                                                      class="text-uppercase"
+                                                      >{{ RecommendedProduct.vendor }}</a></li>{%- endif -%}
+        {%- if settings.show_product_type -%}<li><a href="{{ routes.collections_url }}/{% if collection == blank %}all{% else %}{{ collection.handle }}{% endif %}?filter.p.product_type={{ RecommendedProduct.type | downcase | excape | replace: ' ','+' }}"
+                                                    class="text-uppercase"
+                                                    >{{ RecommendedProduct.type }}</a></li>{%- endif -%}
+      </ul>
+      {%- endif -%}
+
+      {%- unless settings.catalogue_mode -%}
+      {%- if settings.product_item_show_rating -%}
+      <div class="tt-rating" data-url="{{ RecommendedProduct.url | within: collection }}">
+        {%- if settings.selectedreviewaapp == 'alireviewapp' -%}
+        <div product-id="{{ RecommendedProduct.id }}" class="arv-collection arv-collection--{{ RecommendedProduct.id }}"></div>
+        {%- else  %}
+        <span class="shopify-product-reviews-badge" data-id="{{ RecommendedProduct.id }}"></span>
+        {%- endif -%}
+      </div>        
+      {%- endif -%}
+      {%- endunless -%}
+
+    </div>
+    {%- endif -%}
+     
+ <div
+        product-id="{{ RecommendedProduct.id }}"
+        product-handle="{{ RecommendedProduct.handle }}"
+        class="alireviews-review-star-rating"
+      ></div></a>
+    <h2 class="tt-title prod-thumb-title-color">
+      <a href="{{ RecommendedProduct.url | within: collection }}">
+        {%- if settings.truncate_product_title -%}
+        {{ RecommendedProduct.title | strip_html | truncatewords: settings.truncate_product_title_w, settings.truncate_product_title_s }}
+        {%- else -%}
+        {{ RecommendedProduct.title }}
+        {%- endif -%}
+      </a>
+    </h2>   
+  <a class="ds-link" href="{{ product.url | within: collection }}">
+    {%- if product_meta.thumbnail_description != blank -%}
+    <div class="thumbnail_small_description">
+      {{ product_meta.thumbnail_description }}
+    </div>
+    {%- endif -%}
+    
+    {%- unless settings.catalogue_mode -%}
+    {%- if sale_on -%}
+    <div class="tt-price"><span class="new-price">{{ pr_variant.price | money }}</span><span class="old-price">{{ pr_variant.compare_at_price | money }}</span>
+       <span class="tt-label-location-badge">
+        {%- if product_meta.icon_new != 'disable' -%}{%- if date_difference < date_limit or product_meta.icon_new == 'always' -%}<span class="tt-label-new"  style="display: none;">{{ 'products.general.new' | t }}</span>{%- assign shownewicon = true -%}{%- endif -%}{%- endif -%}
+
+        {%- if product_meta.icon_sale != 'disable' and settings.show_sale_badge_product -%}
+        {%- if sale_on -%}
+        {%- assign mc = pr_variant.compare_at_price | money_without_currency | replace: ',', '' -%}
+        {%- assign mo = pr_variant.price | money_without_currency | replace: ',', '' -%}        
+        {%- assign percent = mc | minus: mo | times: 100.0 | divided_by: mc | round | append: '%' -%}
+        {%- endif -%}
+        <span class="tt-label-sale"{% unless sale_on %} style="display: none;"{% endunless %}>{{ 'products.general.sale_html' | t }} <span class="thumb_percent">{{ percent }}</span></span>
+        {%- endif -%}
+
+       {% comment %} {%- unless RecommendedProduct.available -%}<span class="tt-label-our-stock">{{ 'products.general.unavailable' | t }}</span>{%- endunless -%}
+        {%- unless product_meta.featured == blank -%}<span class="tt-label-our-fatured">{{ product_meta.featured }}</span>{%- endunless -%}{% endcomment %}
+      </span>
+    </div>
+    {%- else -%}
+    <div class="tt-price"><span>{{ pr_variant.price | money }}</span><span class="old-price hide"></span></div>
+    {%- endif -%}
+    {%- endunless -%}
+
+    <div class="description" style="display:none;">{%- if product_meta.small_description != blank -%}{{ product_meta.small_description }}{%- else -%}{{ RecommendedProduct.description | strip | strip_html | truncatewords: settings.truncate_product_description, settings.truncate_product_description_last_symbols }}{%- endif -%}</div>
+    
+    {%- if RecommendedProduct.available or settings.show_unavailable_variants -%}
+    {%- include 'product-grid-options' -%}
+	{%- endif -%}
+        
+    <div class="custom-data-strip">
+      {% if settings.freegift-img %}
+          {% assign pprice = pr_variant.price |divided_by: 100 %}
+       {% assign fprice =settings.free-gift-amt | strip | plus: 1 %}
+         <!-- code below will show free gift tag from metafield {{ pprice }}--{{ fprice }} -->
+       <div class="freegift_badge_container">
+          {% if pprice > fprice %}            
+               {% if settings.free-gift-img != blank %}
+              <img src="{{ settings.free-gift-img | img_url:'master' }}"  width="100%" height="40px" alt="freegift" class="freegift_badge">
+            {% endif %}             
+       {% endif %}
+          </div>
+       {% endif %}
+        {% if settings.show-callout %}
+      {% if RecommendedProduct.tags contains 'single product' and RecommendedProduct.tags contains 'PLAYFEST' %}   
+         {% assign per-amt = settings.per-amt | strip | plus: 0 %}
+                <div class="salestags colllectionpg">
+                <span><img class="offer-code" src="//www.skillmatics.in/cdn/shop/t/78/assets/offer-code.svg?v=35280450493682772011719466228" alt="discounttag" width="18px" height="18px"></span>
+                <span class="textsaletag ">{{ settings.get-it-at }} <b>{{ pr_variant.price | times: per-amt | money }}</b><br>{{ settings.usecode }} </span> 
+               </div>
+     {% endif %}   
+        {% endif %}
+   </div> 
+  </a>
+    {%- unless settings.catalogue_mode -%}
+ {% comment %}   {%- if RecommendedProduct.available -%} {% endcomment %}
+    {%- if settings.product_item_show_cart or settings.product_item_show_quickview -%}
+    <div class="tt-product-inside-hover">
+      {%- if settings.product_item_show_cart -%}
+      <div class="productcardatc tt-row-btn">      
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ pr_variant.id }}">
+          <button class="tt-btn-addtocart{% if settings.ajax_addtocart %} addtocart-item-js{% endif %}{% unless pr_variant.available %} disable{% endunless %} thumbprod-button-bg"
+                  {%- if settings.show_addtocart_popup_related -%}{%- unless RecommendedProduct.metafields.description.related_collection == blank -%}data-relatedcollection="{{ RecommendedProduct.metafields.description.related_collection }}"{%- endunless -%}{%- endif -%}
+                  >
+            {% unless pr_variant.available %}
+            {{ 'products.general.unavailable_html' | t }}
+            {% else %}
+            {% if RecommendedProduct.selected_or_first_available_variant.inventory_management == 'shopify' and RecommendedProduct.selected_or_first_available_variant.inventory_policy == 'continue' and RecommendedProduct.selected_or_first_available_variant.inventory_quantity <= 0 %}
+            {{ "products.general.preorder_html" | t }}		
+            {% else %}
+            {{ 'products.general.add_to_cart_html' | t }}
+            {% endif %}
+            {% endunless %}
+          </button>
+        </form>
+       {% comment %}wishlist btn{% endcomment %}
+        <!--<span class="custom-wishlist"> {{ wishlist_button }}</span>-->
+      </div>
+      {%- endif -%}
+      <div class="tt-row-btn">
+      {%- if settings.product_item_show_quickview and template.suffix != "wishlist" -%}
+        <a href="#"
+           data-toggle="modal"
+           data-target="#ModalquickView"
+           class="tt-btn-quickview"
+           data-firstavavariantid="{{ pr_variant.id }}"
+           data-value="{{ RecommendedProduct.url | within: collection | split: "?" | first }}"
+           data-quantity="{% for variant in RecommendedProduct.variants %}{% if variant.inventory_policy == "continue" %}{{ variant.id }}-continue{{ variant.inventory_quantity }};{% else %}{{ variant.id }}-{{ variant.inventory_quantity }};{% endif %}{% endfor %}"{% if settings.first_variant_column_is_image and settings.use_in_the_small_products %}
+           data-optionimages='{% include 'get_product_images_from_first_column' %}'{% endif %}
+           data-tposition="left"
+           data-tooltip="{{ 'general.tooltip_texts.quick_view' | t }}"
+           ></a>{%- endif -%}
+        
+      {% comment %}  {{ wishlist_button }} {% endcomment %}
+        {{ compare_button }}
+
+      </div>
+    </div>
+    {%- endif -%}
+    {% comment %}   {%- endif -%} {% endcomment %}  
+    {%- endunless -%}
+   
+  </div>
+  <div class="tt-description onerowactions">
+  </div>
+</div>
+{% endif %}

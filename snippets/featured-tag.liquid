@@ -1,0 +1,41 @@
+{% assign FeaturedTags = product.metafields.collection.featured_tag | split: ',' %}
+
+{% for FeaturedTag in FeaturedTags %}
+  {% if FeaturedTag contains 'Parents Choice' %}
+    <img class="Parent_Choice" width="130px" height="28px"
+      alt="Parent's Choice"
+      src="{{ settings.parent_choice | img_url:'medium' }}"
+    >  
+  {% endif %}
+
+  {% if FeaturedTag contains 'BestSeller' %}
+    <img class="BestSeller" width="130px" height="28px"
+      alt="BestSeller"
+     src="{{ settings.bestseller | img_url:'medium' }}"
+    >  
+  {% endif %}
+
+  {% if FeaturedTag contains 'Recommended' %}
+   <img class="Recommended" width="130px" height="28px"
+      alt="Recommended"
+      src="{{ settings.recommended | img_url:'medium' }}"
+    >   
+  {% endif %}
+
+  {% if FeaturedTag contains 'New Launch' %}
+    <img class="New_launch" width="130px" height="28px"
+      alt="New Launch"
+       src="{{ settings.new_launch | img_url:'medium' }}"
+    >
+    
+  {% endif %}
+
+  {% if FeaturedTag contains 'Selling Fast' %}
+    <img class="selling_fast" width="130px" height="28px"
+      alt="Selling Fast"
+       src="{{ settings.selling_fast | img_url:'medium' }}"
+    >
+   
+  {% endif %}
+{% endfor %}
+

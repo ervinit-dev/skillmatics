@@ -1,0 +1,86 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div class="container-indent">
+  <div class="container ">
+    <div class="index-faqs">     
+      <div class="tt-block-title">
+      <h1 class="tt-title">{{ item.text1 }}</h1>
+      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    </div>
+      <div class="row faq-container">
+        {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}   
+          <h4 class="faq-tittle tt-tittle">{{ item.title}} </h4>
+          <div class="section-faq">     
+          
+         <div class="accordion faq_question que-tab">{{ item.que}}           
+         <span class="acc-plus">+</span> <span class="acc-minus">-</span>
+         </div>
+          <div class="panel faq_answer">{{ item.ans }}</div>  
+          
+        </div>
+          {%- endfor -%}{%- endif -%}
+      </div></div></div></div>
+
+{% schema %}
+  {
+    "name": "FAQ's",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "WELCOME!"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#ffffff"
+        }
+  
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [        
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"         
+        },
+        {
+          "type": "text",
+          "id": "que",
+          "label": "Question"         
+        },
+        {
+          "type": "richtext",
+          "id": "ans",
+          "label": "Answer"         
+        }
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ's",
+      "category": "column",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

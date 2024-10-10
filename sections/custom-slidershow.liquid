@@ -1,0 +1,106 @@
+<style>
+  .multicolumn{  text-align: center;}
+   @media (max-width: 789px){
+.multicolumn img { max-width: 120px;}
+   }
+ .custom-slideshow  ul.slick-dots{    margin-top: -40px !important;}
+ .custom-slideshow .slick-dots li button {
+    width: 30px;border-radius:0;
+    height: 5px;    
+}
+/* Define the keyframes for the background color animation */
+@keyframes backgroundProgress {
+  0% {
+    background-color: #ffffff;
+  }
+  100% {
+    background-color: #06374f;
+  }
+}
+
+/* Apply styles to the slick-active button */
+.custom-slideshow .slick-dots .slick-active button {
+  background-color: #ffffff; /* Initial background color */
+  animation: backgroundProgress 6s forwards; /* Apply the animation */
+}
+
+/* Optional: Ensure the button's transition is smooth */
+.custom-slideshow .slick-dots button {
+  transition: background-color 0.3s ease;
+}
+
+
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div id="section-{{ section.id }}" class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %} custom-banner-row">
+   <div class=" full-width-container">
+  <div class="{%- if section.blocks.size > 1 -%} custom-{% endif %}slideshow  noarrow custom-slideshow-container">
+    {%- for block in section.blocks -%}
+          {%- assign item = block.settings -%} 
+      <div class="slider-itemslider"><a href="{{item.collection }}" aria-label="bannerlinks" rel="link">      
+        <div class="grid-column-itemslider">    
+          <div class="custom-banner-gd">
+              {%- unless item.image == blank -%}
+              <img class="slidebanner lazyload mobile-{%- unless  item.image == blank -%}hide{%- endunless -%}" 
+                 src="{{ item.image | img_url: 'master'}}" id="{{ section.settings.tracking-id  | strip}}{{ forloop.index }}"
+                   alt="banner image" width="100%" height="100%" srcset>
+              {%- endunless -%} 
+              {%- unless item.image == blank -%}
+              <img class="slidebanner lazyload desktop-{%- unless  item.image == blank -%}hide {%- endunless -%}"
+                src="{{ item.mob-image | img_url: 'master'}}" id="{{ section.settings.tracking-id  | strip}}{{ forloop.index }}"
+                   alt="banner image" width="100%" height="100%" srcset>
+              {%- endunless -%}
+          </div>  
+        </div></a></div>
+        {%- endfor -%}  
+    </div></div>
+</div>
+{% schema %}
+  {
+    "name": "Custom Slidershow",
+    "class": "index-section",
+    "settings": [
+        {
+          "label": "Tracking id",
+          "info": "Do Not Delete",
+          "id": "tracking-id",
+          "type": "text"
+        }
+                
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Slider",
+      "settings": [
+        {
+          "label": "Link",
+          "id": "collection",
+          "type": "url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mob-image",
+          "label": "Custom Mpbile Image"
+        }     
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom slideshow",
+      "category": "Slider",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

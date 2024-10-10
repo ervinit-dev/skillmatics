@@ -1,0 +1,37 @@
+{% comment %}{% render 'share-btn-style' %} in collection-template common javascript css file {% endcomment %}
+  
+    <div class="template-{{ template.name }} product-card-share menu">
+  <div class="pcard-sharebtn menu__btn" onclick="togglesharebtn(this)"><img src="{{ 'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/share-icon.png?v=1711919872'}}" class="shareimg" alt="facebook"  width="30px" height="30px" loading="lazy"></div>
+   <div class="pcard-sharelinks menu__list" class="shareimg" style="opacity:0; visibility:hidden;">
+
+    <div class=" menu__item">
+      <label class= menu__link" for="share-trigger">
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url  }}" target="_blank" aria-label="facebook">
+      <img src="{{ 'Facebook svg.svg' |asset_url}}" class="shareimg" alt="facebook"  width="30px" height="30px" loading="lazy">
+      </a>
+      </label>
+    </div>
+
+    <div class="menu__item">
+      <label class="menu__link " for="share-trigger">
+  <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url  }}" target="_blank" aria-label="twitter">
+   <img src="{{ 'twt.svg' |asset_url}}"  class="shareimg" alt="twitter" width="30px" height="30px" loading="lazy"></a>
+</label>
+    </div>
+
+    <div class="menu__item">
+      <label class="menu__link " for="share-trigger">
+  <a href="https://api.whatsapp.com/send?text=Check out this product: {{ product.title | url_encode }} for {{ product.price | money_with_currency }} at {{ shop.url }}{{ product.url }}" target="_blank" aria-label="api.whatsapp">
+  <img src="{{ 'Whatsapp svg.svg' |asset_url}}" class="shareimg" alt="whatsapp" width="30px" height="30px" loading="lazy"></a></label>
+
+    </div>
+
+<div class="menu__item">
+    <label class="menu__link" for="share-trigger">
+        <a href="#" onclick="copyProductcardUrl('{{ shop.url }}{{ product.url }}'); return false;" target="_blank" aria-label="navigator">
+      <img src="{{ 'Copy svg.svg' |asset_url}}" class="shareimg" alt="copypaste" width="30px" height="30px" loading="lazy">
+        </a>
+    </label>
+</div>
+  </div>
+</div>

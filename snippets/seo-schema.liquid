@@ -1,0 +1,146 @@
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "WebSite",
+      "name": "Skillmatics",
+      "url": "https://www.skillmatics.in/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.skillmatics.in/search?type=product&q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+{% endif %}
+{% if template.name == 'product' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "{{ product.title}}",
+      "image": "{{ shop.url }}{{ product.featured_image }}",
+      "brand": {
+        "@type": "Brand",
+        "name": "Skillmatics"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "url": {{ shop.url | append: product.url | json }},
+        "priceCurrency": "INR",
+        "lowPrice": "{{ product.price | money }}",
+        "highPrice": "{{ product.compare_at_price | money }}",
+        "offerCount": "1"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "4",
+        "ratingCount": "2",
+        "reviewCount": "3"
+      },
+      "review": [{
+        "@type": "Review",
+        "name": "P.P",
+        "reviewBody": "Super fun, at a good price and concept is really good! We play this game repeatedly without getting bored.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "4"
+        },
+        "datePublished": "2022-02-03",
+        "author": {"@type": "Person", "name": "Author"}
+      },{
+        "@type": "Review",
+        "name": "N.S",
+        "reviewBody": "The best clever & fun game ! For the kids and the whole family! Highly Recommended",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "4"
+        },
+        "datePublished": "2022-02-01",
+        "author": {"@type": "Person", "name": "Author"}
+      },{
+        "@type": "Review",
+        "reviewBody": "",
+        "author": {"@type": "Person", "name": "Author"}
+      }]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ shop.url }}"
+      },{
+        "@type": "ListItem",
+        "position": 2, {% for collection in product.collections limit:1 %}
+       "name": "{{ collection.title}}",
+        "item": {{ shop.url | append: collection.url | json }}{% endfor %}
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ product.title}}",
+        "item": {{ shop.url | append: product.url | json }}
+      }]
+    }
+  </script>
+{% endif %}
+{% if template.name == 'collection' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "ItemList",
+      "itemListElement": [
+       {
+          "@type": "ListItem",
+          "position":1,
+          "name": "{{ collection.title }}",
+          "url": "{{ collection.url }}"
+        },
+       {%- assign posi= '1'-%}
+       {%- for product in collection.products limit: 2-%}
+         {%- assign posi= posi | plus:1-%}
+        {
+          "@type": "ListItem",
+          "position": {{ posi }},
+          "name": "{{ product.title }}",
+          "url": "{{ product.url }}"
+        },{% endfor %}
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Guess in 10: Animal Kingdom | Trivia card game (ages 6+)",
+          "url": "https://www.skillmatics.in/products/guess-in-10-animal-kingdom-card-game-of-smart-questions-skill118gak"
+        }
+
+      ]
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": " {{ shop.url | json }}"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ collection.title | json }}",
+        "item": "{{ shop.url | append: collection.url | json }}"
+      }]
+    }
+  </script>
+{% endif %}

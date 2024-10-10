@@ -1,0 +1,96 @@
+<style>
+  #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+
+  }
+  .whatsapp_container p {
+    font-family: AvenirMedium;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    line-height: normal !important;
+    color: #06374F;
+}
+.whatsapp_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: start;
+    justify-content: center;
+    align-items: start;    text-align: center;
+    gap: 1rem;    padding: 30px 0;
+}
+  a.btn.btn-whatapp {  margin: 20px auto 0;font-size:20px;}
+  @media (max-width: 890px) {
+    .whatsapptxt{padding:20px 0!important;}
+    .whatsapp_container {padding: 0px 0;}
+    a.btn.btn-whatapp {font-size: 18px;}
+    .whatsapp_container p { font-size: 14px; text-align: center; }
+    .whatsapp_container p b{font-size:16px;}
+}
+  .whatstext{ padding: 10px;}
+  </style>
+  <div class="container-indent whatsapptxt">
+  <div class="container">
+<div class="whatsapp_container">
+  {% if  section.settings.img != blank %}
+  <div class="desktop-only" ><img src="{{ section.settings.img |img_url:''}}" loading="lazy" alt="WhatsApp" width="64px" height="64px">
+  </div>{% endif %}
+  <div class="whatstext">
+  {% if section.settings.text1  != blank %}  <span class="desktop-only">{{ section.settings.text1 }}</span>  {% endif %}
+  {% if section.settings.text2  != blank %}   <span class="mobile-only">{{ section.settings.text2 }}</span>{% endif %}
+   {% if section.settings.btn-link!= blank %}  <a href="{{section.settings.btn-link }}" target="_self"  class="btn  btn-whatapp">{{ section.settings.btn-text }}</a>{% endif %}
+  </div>
+</div>
+   
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Section Text Content",
+	"class": "index-section",
+    "settings": [  
+       {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image "
+       },
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Desktop Text ",
+        "default": "<p>Join our WhatsApp Community now and be a part of something extraordinary!</p><p>Unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Mobile Text",
+        "default": "<p>Join our WhatsApp Community</p><p>And unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>"		
+      },
+        {
+        "type": "text",
+        "id": "btn-text",
+        "label": "Button Text",
+        "default": "Join now"		
+      },
+        {
+        "type": "url",
+        "id": "btn-link",
+        "label": "Button Link",       	
+      },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#191919"
+        }
+   
+    ],
+    "presets": [
+      {
+        "name": "Section Text Content"
+       
+      }
+    ]
+  }
+{% endschema %}

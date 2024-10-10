@@ -1,0 +1,149 @@
+.tt-age-btn {
+  width: 70%;
+}
+
+@media (max-width: 890px) {
+ .tt-age-btn { 
+  width: 80%;
+  order: 1;
+  }
+  .tt-product .tt-description .tt-title, .tt-product-design02 .tt-description .tt-title {  min-height: 40px;}
+}
+
+.collection-age-btns .filter-button:hover,
+.filter-button.active {
+  background-color: #3980c3;
+  color: #fff;
+}
+
+.collection-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.collection-age-btns {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+
+.collection-age-btns a {
+  padding: 8px 16px;
+  background: #fff;
+  color: #3980c3;
+  border-radius: 4px;
+  border: 1px solid #3980c3;
+  font-family: AvenirRegular;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  text-align: left;
+}
+
+.collection-age-btns.buttons.filtres-js > span {
+  line-height: normal;
+}
+@media (max-width: 767px) {
+  .collection-age-btns .clear_all {
+    padding: 8px 6px 8px 8px !important;
+  }
+}
+@media (max-width: 360px) {
+  .collection-age-btns a {
+    padding: 4px 8px;
+    font-size: 14px !important;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .pagecollection .tt-filters-options .tt-btn-toggle {
+    position: relative;
+  }
+}
+@media (max-width: 890px) {
+  .collection-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .collection-filter-btn {
+    width: 40%;
+    order: 1;
+  }
+
+  .collection-age-btns {
+    order: 3;
+    width: 100%;
+    padding: 1rem 0;
+    order: 3;
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    max-width: 450px;
+  }
+
+  .collection-sort-btn {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .collection-age-btns a {
+        padding: 8px 8px;
+        font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #06374F14;
+  }
+
+  .pagecollection .tt-filters-options .tt-btn-toggle {
+    margin-top: 0 !important;
+    width: 10%;
+  }
+
+  select.sort-position {
+    padding: 6px;
+    font-size: 16px;
+    font-family: "AvenirMedium";
+    border: 1px solid rgba(6, 55, 79, 1);
+    border-radius: 4px;
+    background: #fff !important;
+  }
+
+  .collection-sort-btn > span {
+    font-size: 16px;
+    font-family: "AvenirMedium" !important;
+    color: #06374f !important;
+  }
+
+  .tt-filters-options .tt-btn-toggle a {
+    top: 0;
+  }
+
+  .collection-age-btns.buttons.filtres-js > span {
+    line-height: normal;
+  }
+
+  /* temporary fix */
+  .tt-filters-options .tt-btn-toggle a:before {
+    display: none;
+  }
+}

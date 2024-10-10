@@ -1,0 +1,151 @@
+<style>
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+  }
+  h2.Heading2.tt-title {  font-size: 22px !important;}
+  @media (max-width: 575px) {
+    h2.Heading2.tt-title {  font-size: 18px !important;}
+  }
+ .more-abt-multicolumn2 { padding-bottom: 40px;}
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div class="container-indent">
+  <div class="container ">
+    <div class="tt-categories-listing">     
+      <div class="tt-block-title">
+      <h1 class="tt-title">{{ item.text1 }}</h1>
+      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    </div>
+      <div class="row">
+        {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}             
+        <div class=" multicolumn col-{{ mobgrid }} col-md-{{ grid }} col-{{ mobgrid }}-440width">
+             <a class="tt-title-block" href="{{ item.collection}}" aria-label="Imagelinks">            
+             
+              {%- if item.image != blank -%}
+              <img class="lazyload"
+                  src="{{ block.settings.image | img_url:'master'}}"                                  
+                   alt="{{ item.image.alt }}" width="100%" height="auto">
+            
+              {%- endif -%}
+               {% if item.custom_name != ''%} <h2 class="Heading2 tt-title">{{ item.custom_name }}</h2>{% endif %}             
+            </a>
+           {% if item.custom_name2 != ''%} <div class="multides tt-title">{{ item.custom_name2 }}</div>{% endif %}
+        </div> {%- endfor -%}{%- endif -%}
+      </div></div></div></div>
+
+{% schema %}
+  {
+    "name": "Multicolumn 3",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "WELCOME!"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#ffffff"
+        },
+       {
+      "type": "select",
+      "id": "items",
+      "label": "Items In Line",
+      "default": "4",
+      "options": [
+        {
+          "value": "12",
+          "label": "1"
+        },
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    },
+       {
+      "type": "select",
+      "id": "mob-items",
+      "label": "Mobile Items In Line",
+      "default": "4",
+      "options": [
+        {
+          "value": "12",
+          "label": "1"
+        },
+        {
+          "value": "6",
+          "label": "2"
+        },
+        {
+          "value": "4",
+          "label": "3"
+        },
+        {
+          "value": "3",
+          "label": "4"
+        }
+      ]
+    }
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "label": "Link",
+          "id": "collection",
+          "type": "url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        },
+         {
+          "type": "richtext",
+          "id": "custom_name2",
+          "label": "Custom Name 2"          
+        }
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multicolumn 3",
+      "category": "Multicolumn",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

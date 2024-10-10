@@ -1,0 +1,23 @@
+<div class='item-html-js hide'>
+  <div class="tt-item">
+    <a href="#" title="{{ 'cart.header.view_product' | t }}">
+      <div class="tt-item-img">
+        img
+      </div>
+      <div class="tt-item-descriptions">
+        <p class="tt-title">{{ product.title }}</p>
+
+        <ul class="tt-add-info">
+          <li class="details"></li>
+        </ul>
+
+        <div class="tt-quantity"><span class="qty"></span></div> <div class="tt-price">{{ product.price }}</div>
+      </div>
+    </a>
+    <div class="tt-item-close">
+      <a href="{{ routes.cart_change_url }}?id=0&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js" title="{{ 'cart.header.button_delete' | t }}">
+        {% include "svg-delete-icon" %}
+      </a>
+    </div>
+  </div>
+</div>

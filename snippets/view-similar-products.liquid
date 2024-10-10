@@ -1,0 +1,65 @@
+
+{% assign LikeProducts = product.metafields.collections.view_similar_products.value %}
+<!-- Sliding Drawer -->
+{%- if LikeProducts != blank-%}
+      <!-- view similar section -->
+      {% comment %} <div class="view-similar" style="position:relative;z-index:1;text-align:start">
+        <div class="cart-drawer-btn">
+          <img alt="viewsimilar" width="70px" height="70px"
+            src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/View-Similar-Icon.png"
+          > <span class="viewbtn">View similar</span>
+        </div>
+    </div> {% endcomment %}
+ 
+<div id="cart-drawer" class="cart-drawer">
+  <div class="cart-drawer-content container">
+    <p class="tt-title" style="font-family:'MikadoRegular';">Similar Products</p>
+    <span id="close-cart-drawer" class="close-cart-drawer">&times;</span>
+    <!-- Add your cart content here -->
+   
+      <div class="row noarrow view-similer--product owl-carousel products-real owl-theme ">
+        
+        {% for LikeProduct in LikeProducts ,limit:8 %}
+          <div class="view-p-item">  
+             <a href="{{LikeProduct.url}}">
+              <div class="tt-product custom-similer-item">    
+           
+              <img
+                src="{{ LikeProduct.featured_image | img_url: 'master' }}"
+                class="LikeProduct-Image"
+                alt="{{ LikeProduct.title }}"
+              >
+        
+            <div class="tt-description LikeProduct-Info">
+            
+              <div class="LikeProduct-Title">
+              {{ LikeProduct.title }}
+              </div>
+               
+              <div
+                class="areviews_product_item areviews_stars{{ LikeProduct.id }}"
+                data-product-id="{{ LikeProduct.id }}"
+              ></div>
+              <!-- product pricings -->
+             
+      {%- assign mc = LikeProduct.compare_at_price | money_without_currency | replace: ',', '' -%}
+      {%- assign mo = LikeProduct.price | money_without_currency | replace: ',', '' -%}
+      {%- assign percent = mc | minus: mo | times: 100.0 | divided_by: mc | round | append: '%' -%}
+            <div class="tt-price LikeProduct-Prices">
+                <span class="new-price LikeProduct-Prices-RegularPrice">{{ LikeProduct.price | money }}</span>
+                {% if LikeProduct.compare_at_price > LikeProduct.price %}
+                  <span class="old-price LikeProduct-Prices-SalePrice">{{ LikeProduct.compare_at_price | money }}</span>
+                 
+                {% endif %}
+              </div>
+            </div>
+             <div class="LikeProduct-CTA btn"> View Product </div>
+           </div></a>
+          </div>
+        {% endfor %}
+      </div>
+
+  </div>
+</div>
+
+   {% endif %}

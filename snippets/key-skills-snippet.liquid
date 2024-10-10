@@ -1,0 +1,138 @@
+{% if BundleProduct.metafields.pdp.key_skills %}
+    <div class="ProductInfo-KeySkills-Container">
+      
+              <div class="KeySkills-Heading">
+                <p>Key Skills:</p>
+              </div>
+      
+              {% assign skills = BundleProduct.metafields.pdp.key_skills | split: ',' %}
+              
+      <div class="KeySkills-Skills">
+              {% for skill in skills %}
+
+                  <div class="ProductInfo-Skill">
+                  {% if skill contains 'Language Skills' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon.png">
+                  {% endif %}
+                  {% if skill contains 'Sensory Capabilities' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon.png">
+                  {% endif %}
+                  {% if skill contains 'Cognitive Abilities' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon.png">
+                  {% endif %}
+                  {% if skill contains 'Concentration' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon.png">
+                  {% endif %}
+                  {% if skill contains 'Hand-eye Coordination' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon.png">
+                  {% endif %}
+                  {% if skill contains 'Observation' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation.webp">
+                  {% endif %}
+                  {% if skill contains 'Vocabulary' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon.png">
+                  {% endif %}
+                  {% if skill contains 'Focus & Attention' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention.webp">
+                  {% endif %}
+                  {% if skill contains 'Spatial Reasoning' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning.webp">
+                  {% endif %}
+                  {% if skill contains 'Social & Communication' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication.webp">
+                  {% endif %}
+                   {% if skill contains 'Fine Motor' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor.webp">
+                  {% endif %}
+                  {% if skill contains 'Process Planning' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning.webp">
+                  {% endif %}
+                  {% if skill contains 'Problem Solving' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving.webp">
+                  {% endif %}
+                  {% if skill contains 'Reflective Thinking' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking.webp">
+                  {% endif %}
+                  {% if skill contains 'Mental Processing' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing.webp">
+                  {% endif %}
+                  {% if skill contains 'Decision Making' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making.webp">
+                  {% endif %}
+                  {% if skill contains 'Writing' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing.webp">
+                  {% endif %}
+                  {% if skill contains 'Creative Thinking' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking.webp">
+                  {% endif %}
+                  {% if skill contains 'Reading & Comprehension' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension.png">
+                  {% endif %}
+                  {% if skill contains 'Logical Reasoning' %}
+                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning.webp">
+                  {% endif %}
+                    <span>{{ skill | strip }}</span>{% unless forloop.last %} {% endunless %}
+                  </div>
+               
+              {% endfor %}
+       </div>
+    </div>
+{% endif %}
+
+<style>
+  .ProductInfo-KeySkills-Container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .KeySkills-Heading P {
+    font-family: MikadoMedium;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .KeySkills-Skills {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .ProductInfo-Skill {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: AvenirMedium;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .ProductInfo-Skill span {
+    width: min-content;
+  }
+
+  .ProductInfo-Skill img {
+    width: 48px;
+  }
+
+  @media (max-width: 890px) {
+    .KeySkills-Heading P {
+      font-size: 16px;
+    }
+
+    .ProductInfo-Skill {
+      font-size: 12px;
+      flex: 1 1 40%;
+      justify-content: flex-start;
+    }
+    .ProductInfo-Skill img {
+      width: 48px;
+    }
+  }
+  
+</style>

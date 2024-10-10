@@ -1,0 +1,265 @@
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count %}
+{% endif %}
+
+<style>
+  .blog_container {
+  	max-width: 1140px;
+  	width: 60vw;
+  	margin: 2rem auto;
+  	color: #06374F;
+  	line-height: normal;
+  }
+
+  .blog_body {
+  	margin: 0 auto;
+  }
+
+  .blog_header {
+  	display: flex;
+  	flex-direction: column;
+  	flex-wrap: wrap;
+  	align-content: center;
+  	justify-content: center;
+  	align-items: center;
+  	padding: 2rem 0;
+  }
+
+  .blog_header h1 {
+  	font-family: MikadoRegular;
+  	font-size: 24px;
+  	margin: 0;
+  }
+
+  .blog_body>img:first-child {
+  	margin: 1rem;
+  }
+
+  .blog_body img {
+  	border-radius: 11px;
+  }
+
+  .blog_body p,
+  .blog_body span,
+  .blog_body ul li,
+  .blog_body ol li{
+  	font-family: AvenirRegular;
+  	font-size: 1.22rem;
+  	text-align: left;
+  	margin: 1.2rem 0;
+  	-webkit-font-smoothing: auto;
+  }
+
+  .blog_body ul li,
+  .blog_body ol li {
+    margin: 0.8rem 0;
+  }
+
+  .blog_body h1,
+  .blog_body h2,
+  .blog_body h3,
+  .blog_body h4,
+  .blog_body h5,
+  .blog_body h6,
+  .blog_body strong {
+  	text-align: left;
+  	font-family: 'AvenirBold' !important;
+  	line-height: normal;
+  	font-weight: bold;
+  	all: unset;
+  	font-size: 1.25rem;
+  }
+
+  .blog_body a {
+  	color: #2484c6;
+  }
+
+  .btn a {
+    color: #fff;
+  }
+
+  .section_divider {
+  	text-align: center;
+  	margin: 4rem 0 2rem 0;
+  }
+
+  .section_divider img {
+  	width: 50%;
+  }
+
+  .blog_section {
+  	padding: 4rem 14vw;
+  	color: #06374F;
+  }
+
+  .best-seller_section {
+  	background: #E9F4F9;
+  }
+
+  .blog_section h2 {
+  	font-family: 'MikadoRegular';
+  	font-size: 2.0rem;
+  	text-align: center;
+  	color: #06374F;
+  	line-height: normal;
+  }
+
+  .whatsapp_container h4 {
+    margin: 0;
+  }
+
+  h4:not([class^=tt-title]):not([class^=tt-collapse]):not([class^=tt-aside]) {
+    text-align: center !important;
+  }
+
+  @media (max-width: 890px) {
+
+  	.blog_container {
+  		width: 100%;
+  		padding: 1rem;
+  		margin: 0 auto;
+  	}
+
+  	.blog_header h1 {
+  		font-size: 24px;
+  	}
+
+  	.blog_body p,
+  	.blog_body span {
+  		font-size: 16px;
+
+  	}
+
+  	.blog_body h1,
+  	.blog_body h2,
+  	.blog_body h3,
+  	.blog_body h4,
+  	.blog_body h5,
+  	.blog_body h6,
+  	.blog_body strong {
+  		font-size: 16px;
+  	}
+
+  	.section_divider img {
+  		width: 100%;
+  	}
+
+    .blog_section {
+      padding: 1rem;
+    }
+
+    .blog_section h2 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+      .whatsapp_container h4 {
+    margin: 8px;
+  }
+  }
+</style>
+<div class="all-collection">
+  <a
+    href="/collections/rakhi-gifts-for-kids"
+    aria-label="{{ collection.title }}"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Collection_Page_Banner_Mobile.webp?v=1721264924"
+      class="mobile-only"
+      loading="lazy"
+      alt="rakhi festive sale"
+  ></a>
+  <a
+    href="/collections/rakhi-gifts-for-kids"
+    aria-label="{{ collection.title }}"
+    ><img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Collection_Page_Banner_Desktop.webp?v=1721264924"
+      class="desktop-only"
+      loading="lazy"
+      alt="rakhi festive sale"
+  ></a>
+</div>
+
+<div class="blog_container">
+  <div class="blog_header">
+    <div class="blog_title">
+      <h1>{{ article.title }}</h1>
+    </div>
+
+    <div class="blog_image"></div>
+  </div>
+
+  <div class="blog_body">
+    <div>{{ article.content }}</div>
+  </div>
+
+  <div class="blog_body_comments">
+    {% if blog.comments_enabled? %}
+      <h2>{{ number_of_comments }} comments</h2>
+      {% paginate article.comments by 5 %}
+        {% for comment in article.comments %}
+          <div>
+            <div>{{ comment.content }}</div>
+            {{ comment.author }} @ {{ comment.created_at }}
+          </div>
+        {% endfor %}
+        {% if paginate.pages > 1 %}
+          {{ paginate | default_pagination }}
+        {% endif %}
+      {% endpaginate %}
+
+      <div>
+        {% form 'new_comment', article %}
+          {{ form.errors | default_errors }}
+          <label for="CommentAuthor">name</label>
+          <input
+            type="text"
+            name="comment[author]"
+            id="CommentAuthor"
+            placeholder="name"
+            value="{{ form.author }}"
+            autocapitalize="words"
+          >
+
+          <label for="CommentEmail">email</label>
+          <input
+            type="email"
+            name="comment[email]"
+            id="CommentEmail"
+            placeholder="email"
+            value="{{ form.email }}"
+            autocorrect="off"
+            autocapitalize="off"
+          >
+
+          <label for="CommentBody">message</label>
+          <textarea name="comment[body]" id="CommentBody" placeholder="message">{{ form.body }}</textarea>
+
+          <input type="submit" value="post">
+        {% endform %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="section_divider">
+    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Group_37451.png?v=1715710343">
+  </div>
+</div>
+{%- if article.metafields.blog.bestseller_product_1 != blank -%}
+  <div class="blog_section best-seller_section">
+    <h2>Shop the Featured</h2>
+    {% section 'bestseller-carousel' %}
+  </div>
+{%- endif -%}
+
+<div class="blog_section" style="padding:0rem;">
+  <iframe
+    id="contlo_embedded_iframe"
+    style="border: none;overflow: hidden;"
+    width="100%"
+    height="100%"
+    scrolling="no"
+    src=""
+  ></iframe>
+</div>
+

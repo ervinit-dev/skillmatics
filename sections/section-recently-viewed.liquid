@@ -1,0 +1,79 @@
+<script src="{{ 'jquery.relproducts.min.js' | asset_url }}" defer="defer"></script>
+
+  
+<div class="container-indent recently_view_products_wokiee hide " data-item="{{ section.settings.slickdesktoptoshow }}" data-count="{{ section.settings.product_upsell_collection_count }}">
+  <div class="container{% if section.settings.fullscreen %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding">
+    <div class="tt-block-title{% if section.settings.titleincenter %} text-center{% else %} text-left{% endif %}">
+      {%- if section.settings.title != '' -%}<h2 class="tt-title">{{ section.settings.title }}</h2>{%- endif -%}
+    </div>
+	<div class="recently_view_products-box">
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "section Recently Viewed",
+    "class": "index-section",
+    "settings": [
+           {
+            "type": "checkbox",
+            "id": "fullscreen",
+            "label": "Fullscreen",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "titleincenter",
+            "label": "Title in center",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+			"default": "Recently Viewed Products"
+          },
+          {
+            "type": "text",
+            "id": "product_upsell_collection_count",
+            "label": "Count",
+            "default": "8",
+            "info": "Integer"
+          },
+          {
+            "type": "select",
+            "id": "slickdesktoptoshow",
+            "label": "Show items in desktop",
+            "options": [
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              },
+              {
+                "value": "5",
+                "label": "5"
+              },
+              {
+                "value": "6",
+                "label": "6"
+              }
+            ],
+            "default": "4"
+          }
+    ], 
+  "presets": [
+    {
+      "name": "section Recently Viewed",
+      "category": "Product",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

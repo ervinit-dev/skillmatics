@@ -1,0 +1,214 @@
+<script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  p.tab-des-title { font-size: 24px;}
+.read-more {
+  color: #007bff; /* Adjust the color as needed */
+  cursor: pointer;
+}
+.read-more:hover {
+  text-decoration: underline;
+}
+ .hidden {
+  display: none;
+} 
+  #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.bgcolor}};
+    background-repeat: no-repeat;
+background-size: cover;background-position: center;
+  }
+  {% if section.settings.bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+  }
+    }
+    {% endif %}
+    {% if section.settings.bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+  }
+         p.tab-des-title {  font-size: 18px;}
+    }
+    {% endif %}
+    
+</style>
+{%- assign item = section.settings -%}
+  {%- if product.metafields.pdp.description.value != blank -%}
+<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent" data-sectionname="index_horizontaltabs" data-respjs="index_sectiontabs">
+ 
+  <div class="container{% if item.fullwidth %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding">
+    <div class="row">
+      <div class="desktop-only col-img col-md-6 respimgsize">
+        {%- if item.image != blank -%}
+          <img class="lazyload"
+               data-mainimage="{{ item.image | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+               alt="{{ item.image.alt }}">
+          {%- endif -%}
+      </div>
+      <div class="col-description col-md-6 text-left">
+   
+
+      <ul class="pdp-nav-tabs nav nav-tabs tt-tabs-default" role="tablist">
+        {%- for block in section.blocks -%}
+        <li class="pdp-nav-item nav-item" aria-label="tablist-div" role="tab" >
+          <a href="#{{ section.id }}{{ forloop.index }}"  aria-controls="{{ section.id }}{{ forloop.index }}" class="pdp-nav-link nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" >{{ block.settings.tab_name }}</a>
+        </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="tab-content">
+        {%- for block in section.blocks -%}
+        {%- assign name_collection = block.settings.collection -%}
+        {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+        {%- assign collection = collections[name_collection] -%}
+        <div id="{{ section.id }}{{ forloop.index }}"  aria-labelledby="tab-{{ section.id }}{{ forloop.index }}"  class="tab-pane{% if forloop.first %} active{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
+          {%- if block.type == 'item2' -%}
+        <div class="pdp-tab-content">{{  block.settings.tab_content }}
+            {%- if product.metafields.pdp.product_size.value != blank -%}
+          <p class="tab-des-title tt-title">Product details</p>
+         {{ product.metafields.pdp.product_size.value }}{% endif %}
+        </div>
+          
+          {%- else -%}
+           {%- if product.metafields.pdp.description.value != blank  or product.metafields.pdp.whats_included.value != blank -%}
+          <div class="pdp-tab-content">       
+           <div id="custom-product-description" class="pdp-description">
+             <p class="tab-des-title tt-title"> Description</p>
+              <div id="short-description"> {{ product.metafields.pdp.description.value | truncate: 400}}</div>
+              <div id="full-description" class="hidden">{{product.metafields.pdp.description.value }}</div>
+              <a href="#" id="toggle-description" class="read-more">Read more</a>
+            </div>
+            {%- if product.metafields.pdp.whats_included.value != blank -%}  <p class="tab-des-title tt-title"> What’s Inside</p>{%- endif -%}
+            {{ product.metafields.pdp.whats_included.value }}
+          </div>
+          {% endif %}
+          {%- endif -%}
+        </div>
+        {%- endfor -%}
+      </div>
+      </div>
+    </div>
+  
+  </div>
+</div>
+ {%- endif -%}
+{% schema %}
+{
+  "name": "Image with Text Tabs",
+  "class": "index-section",
+  "max_blocks":2,
+  "settings": [
+      {
+        "type": "select",
+        "id": "top_offset",
+        "label": "Top Offset",
+        "default": "normal",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "fullwidth",
+        "label": "Fullwidth size",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_title",
+        "label": "Show Title",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "WOMEN’S"
+      },
+     {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+      {
+          "type": "color",
+          "id": "bgcolor",
+          "label": "Background Color"
+        },
+     {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image "
+        }
+     
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "default": "Tab"
+        }  
+         
+      ]
+    },
+    {
+      "type": "item2",
+      "name": "Tab Item",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "default": "Tab"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Tab Content",
+          "default": "<p>Tab Content</p>"
+        } 
+     
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text Tabs",
+      "category": "Products",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

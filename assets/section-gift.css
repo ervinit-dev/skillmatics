@@ -1,0 +1,51 @@
+ .giffting-sec{  
+    background-position: center;      
+        background-size: cover;
+ background-repeat: no-repeat;
+ background-size: cover;}
+
+  .giffting-sec {
+    min-height: 280px;
+    align-content: center;
+}
+  .mailbtn img{
+    width: 23px;
+    margin-right: 10px;
+    object-fit: contain;
+    height: 23px;;
+}
+  a.mailbtn {
+    max-width: 300px;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    margin: 5px 8px;
+    background: rgba(233, 244, 249, 1);
+    border: 1px solid rgba(57, 128, 195, 0.24);
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+.btn-contacts {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin: 10px 0;
+}
+  a.mailbtn span{ text-decoration: underline;font-weight:500;text-align: center;}
+  .gifting-container{ padding: 10px 0;margin:0 auto;}
+      @media screen and (min-width: 750px) {
+        .btn-contacts {  margin: 22px 0;}
+        .section-gifting-subtitle { line-height: 26px; font-size: 20px!important;}
+   a.mailbtn span{font-size:18px;}
+     .gifting-container {  max-width: 450px;}
+  
+} 
+    @media screen and (max-width: 749px) {
+      a.mailbtn span{font-size:16px;}
+    .gifting-container  {    max-width: 295px;}  
+       .btn-contacts {    flex-direction: column; place-items: center;}   
+
+}
+ 
+  

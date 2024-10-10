@@ -1,0 +1,199 @@
+
+{%- assign item = section.settings -%}
+{%- assign grid = item.items-desk -%}
+{%- assign mobgrid = item.items -%}
+{% style %}
+
+   @media (min-width: 750px) and (max-width:1024px) {
+     .customtitle {
+    font-size: 14px;
+}
+#section-{{ section.id }} .custom-collection-row2 {  grid-template-columns: repeat({{item.items}}, 1fr);gap:10px; }
+#section-{{ section.id }} .custom-collection-gd {    padding:10px;}
+ }
+  @media (min-width: 1025px) {
+#section-{{ section.id }} .custom-collection-gd {    padding: {{item.imgpadding}}px;}
+}
+   @media (min-width: 750px) and (max-width:1024px) {
+#section-{{ section.id }} .custom-collection-gd {    padding:10px;}
+ }
+
+  #section-{{ section.id }} .custom-collection-row2 {   display:grid;grid-template-columns: repeat({{item.items}}, 1fr);gap:10px; }
+      @media (min-width: 1025px) {
+#section-{{ section.id }} .custom-collection-row2 {  grid-template-columns: repeat({{item.items-desk}}, 1fr);gap:20px; }
+#section-{{ section.id }} .custom-collection-gd {    padding: {{item.imgpadding}}px;}
+}
+  @media (max-width:1024px) {
+     .customtitle {  font-size: 14px;}
+
+   }  
+.respimgsize.custom-collection-gd.tt-items-categories {    margin-top: 10px;} 
+.custom-collection-gd {  margin: 10px;}
+{% endstyle %}
+
+<div id="section-{{ section.id }}" class=" {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
+{% comment %}<div class="section--hide">
+<img class="desktop-hidden img-vecmob-right" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/mob-rightibg-img.png?v=1721190151"  width="100%" height="auto" alt="vector">
+</div>{% endcomment %}
+  <div class="container section-space custom-collection-container container-fluid-custom-mobile-padding">
+    <div class="tt-categories-listing">
+     <div class="tt-block-title">
+       {%- if item.title != blank -%} <h1 class="tt-title">{{item.title}}</h1> {%- endif -%}
+      {% unless item.subtitle == '' %}<div class="tt-description">{{item.subtitle}}</div> {% endunless %}
+    </div>
+      <div class=" custom-collection-row2">      
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}
+        {%- assign collection = ricollections[item.collection] -%}     
+        <div class="grid-column-item grid-column-item-{{ forloop.index }}">
+            <a aria-label="collection link" class="tt-title-block"   {%- if item.collection.url != blank -%} href="{{item.collection.url }}" {%- else -%} href="{{item.link }}"{%- endif -%}>  
+          <div class="custom-collection-gd">                      
+               {%- if collection.image == blank -%}
+              {%- unless item.imaged == blank -%}
+              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}" loading="lazy"
+                  src="{{ item.imaged | img_url: 'large'}}"
+                   alt="{{ item.image.alt }}" width="100%" height="auto">
+              {%- endunless -%} 
+              {%- unless item.image == blank -%}
+              <img class="lazyload desktop-{%- unless  item.imaged == blank -%}hidden {%- endunless -%}"
+               src="{{ item.image | img_url: 'large'}}"
+                    alt="{{ item.image.alt }}" width="100%" height="auto">
+              {%- endunless -%}
+              {%- else -%}            
+              <img class="lazyload" loading="lazy"
+               src="{{ collection.image | img_url: 'large'}}"
+                   alt="{{ item.image.alt }}" width="100%" height="auto">           
+              {%- endif -%} 
+          </div>
+         <div class="customtitle "> {% if item.custom_name != ''%}{{ item.custom_name }}{% endif %}</div>
+            </a>
+        </div>
+        {%- endfor -%}       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom Collection list",
+  "class": "index-section",
+  "settings": [
+      {
+        "type": "select",
+        "id": "top_offset",
+        "label": "Top Offset",
+        "default": "normal",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          }
+        ]
+      },
+       {
+      "type": "range",
+      "id": "items-desk",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Item show in line",
+      "default": 4
+      },
+      {
+      "type": "range",
+      "id": "items",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Item show in line mobile",
+      "default": 3
+      },
+     {
+      "type": "range",
+      "id": "imgpadding",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "Image Padding",
+      "default": 10
+      },
+    {
+      "type": "checkbox",
+      "id": "showtitle",
+      "label": "Show Heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "See All Products"
+    },
+      {
+      "type": "inline_richtext",
+      "id": "subtitle",     
+      "label": "Sub Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Collection",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "label": "Link",
+          "id": "link",
+          "type": "url"
+        },
+          {
+          "type": "image_picker",
+          "id": "imaged",
+          "label": "Custom Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Custom Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Collection list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

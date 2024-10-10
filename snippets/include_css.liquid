@@ -1,0 +1,13 @@
+{% comment %}<link rel="preload" href="{{ 'custom-font.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'custom-font.css' | asset_url }}"></noscript>
+<link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'theme.css' | asset_url }}"></noscript>
+{% endcomment %}
+{{ 'custom-font.css' | asset_url | stylesheet_tag }}
+{{ 'theme.css' | asset_url | stylesheet_tag }}
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+{{ 'custom-cart.css' | asset_url | stylesheet_tag }}
+{% if settings.use_rtl %}{{ 'style-rtl.css' | asset_url | stylesheet_tag }}{% endif %}
+{%- if template contains 'page' -%}
+{{ 'lead-gen-form.css' | asset_url | stylesheet_tag }}
+  {% endif %}

@@ -1,0 +1,103 @@
+<script>
+   var giftamt ={{ settings.free-gift-amt | plus:0 }}; 
+    function removeQuantity(items){
+        for(let i=0; i<items.length;i++){
+            if(items[i].title.includes('Free Gift')){
+                try{
+                    document.querySelector(`.hs-item-${items[i].variant_id}`).remove()
+                }catch(e){
+                    console.log(e)
+                }                
+            }
+        }
+    }
+    function validateOfferRefresh(cart){
+        if((cart.total_price/100)<giftamt){
+          localStorage.setItem("_cfg_vld",'false');
+          return;
+        }
+        localStorage.setItem("_cfg_vld",'true');
+        checkFreeGift(cart)
+        {% comment %} removeQuantity(cart) {% endcomment %}
+      }
+
+    validateOfferRefresh({{ cart |json }})
+    function addGift(lineItemId){
+        const buttonClicked = document.querySelector(`[data-id="free-gift-${lineItemId}"]`)
+        document.querySelectorAll('.free-gift-container button').forEach((item)=>{
+            item.disabled=true;
+            item.style.opacity='0.8';                   
+        });
+        buttonClicked.innerText='Adding...';
+        var params = {
+            type: 'POST',
+            url: '/cart/add.js',
+            data: {
+                quantity: 1,
+                id: lineItemId
+            },
+            dataType: 'json',
+            success: function() {
+                console.log('free gift added');      
+                window.HS_SLIDE_CART_UPDATE();
+                localStorage.setItem("_cfg_ad",'true');              
+               console.log("addingbtn clicked");
+           
+            }
+        };
+        $.ajax(params);
+    }
+
+    window.HS_SLIDE_CART_OPENED = function() {
+        if(FreeGiftOfferActive){
+            if(localStorage.getItem("_cfg_vld")=='true'){
+                const freeGiftSnippet=`
+                         <div class="row free-gift-container freegift-scroll">
+          
+              {% assign productsData= collections['free-gift'].products %}
+              {% for item in productsData %}
+                  {% if item.variants.first.available %}
+                      <div class="free-product card">
+                        <a href="{{ item.url }}">
+                          <img src="{{ item.featured_image | product_img_url:"large" }}"  alt="product image" loading="lazy" width="150px" height="100px">
+                        </a>
+                        <a href="{{ item.url }}">
+                          <p class="title">{{ item.title }}</p>
+                        </a>
+                          <div product-id="{{ item.id }}" class="arv-collection arv-collection--{{ item.id }}"></div>
+                          <p class=" tt-price price">
+                          {{ item.price |money}}
+                          <span class="compare-price"> {{ item.compare_at_price|money }}</span>
+                          </p>
+                          <button class="btn" onclick="addGift({{ item.variants.first.id }})" data-id="free-gift-{{item.variants.first.id}}" >Add</button>
+                    
+                   
+                      </div>
+                {% endif %}
+              {% endfor %}
+          
+        </div>`;
+                if(localStorage.getItem("_cfg_ad")=='false'){
+                    if(!document.querySelector('.free-gift-container')){
+                        document.querySelector('.hs-rewards-content').insertAdjacentHTML("afterend", freeGiftSnippet);
+                        try{
+                            aliReviewsAddRatingCollection()
+                        }catch(e){
+                            console.log(e)
+                        }
+                    }
+                }else{
+                    if(document.querySelector('.free-gift-container')){
+                        document.querySelector('.free-gift-container').remove();
+                    }
+                }
+                removeQuantity(JSON.parse(localStorage.getItem('items')))
+            }else{
+                if(document.querySelector('.free-gift-container')){
+                    document.querySelector('.free-gift-container').remove();
+                }
+            }
+        }
+    }
+
+</script>

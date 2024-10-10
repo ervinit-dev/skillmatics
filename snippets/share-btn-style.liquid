@@ -1,0 +1,196 @@
+{{ 'view-similer-product.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
+<style>
+  span.custom--share {
+    position: relative;    float: right;
+}
+  span.custom-sharebtn {
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    top: 5px;
+    
+}
+  .productcardatc.tt-row-btn {
+    display: grid;
+    grid-template-columns:auto;
+    gap: 5px;
+    padding: 0px 8px;    width: 100%;
+    align-items: center;
+}
+  img.shareimg {    object-fit: contain;
+    max-width: 15px;margin:0 auto;
+    max-height: 15px;
+}
+
+  .productcardatc { max-height: 40px;}
+  .prouctatc-cardbtn {
+    display: grid;
+    align-content: center;
+    grid-template-columns: auto 20%;
+    max-width: 100%;
+    align-items: center;
+}
+ 
+   @media only screen and (min-width: 768px) {
+     .prouctatc-cardbtn   .tt-btn-addtocart { max-height: 44px;}
+    .product-card-share.menu { max-height: 32px;width:32px; margin-right: 6px; border-radius: 6px; }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 800px) {
+    .product-card-share.menu {   margin-top: 13px; }
+}
+  @media only screen and (min-width:801px) {
+   .template-search.product-card-share.menu { margin-left: 5px; margin-right: 0!important;}
+   .product-card-share.menu {margin-right: 6px;}
+}
+ .product-card-share i.menu__btn-icon,.product-card-share  i.menu__icon {
+    font-size: 20px;line-height: 20px;
+}
+.product-card-share.menu {
+    position: relative;    cursor: pointer;
+    text-align: center;
+    background: #E9F4F9;    
+}
+.pcard-sharebtn.menu__btn {
+      background: #E9F4F9;
+    text-align: center;
+    max-width: 100%;
+    color: #3980c3;width:32px;height:32px;
+    max-height: 100%; border-radius: 6px; 
+    align-content: center;
+}
+   @media only screen and (max-width: 767px) {
+   .product-card-share.menu { max-height: 28px; border-radius: 4px; }
+     .pcard-sharebtn.menu__btn{ max-height: 28px;width:28px;}
+    .prouctatc-cardbtn {gap:2px;}
+    span.custom-sharebtn {top: 0px;padding: 2px;}
+}
+   .pcard-sharebtn.menu__btn.active{   
+    color: #E9F4F9!important;   
+  }
+.pcard-sharelinks.menu__list {
+  
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.pcard-sharelinks .menu__item {
+    padding: 5px 0;
+}
+.pcard-sharelinks.menu__list--open  {  
+    background: white;    border-top: 3px solid #3980c3;
+    opacity: 1!important;
+    visibility: visible!important;
+    transition: opacity 0.3s ease, visibility 0s;
+    /* Additional animation properties */
+    /* Example animation */
+    animation-name: fade-in;
+    animation-duration: 0.5s;  
+    width: 100%;
+    z-index:2;
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.linkcopymsg{font-size:10px;color:#3980c3;line-height:10px;font-family:'AvenirRegular';}
+</style>
+<script>
+    function copyProductcardUrl(url) {
+        navigator.clipboard.writeText(url);
+        var tooltipHtml = '<div class="linkcopymsg linktooltips-container">Link copied</div>';
+        var linkElement = event.target.closest('a');
+        linkElement.insertAdjacentHTML('afterend', tooltipHtml);
+        setTimeout(() => {
+            document.querySelectorAll('.linktooltips-container').forEach(el => el.remove());
+        },1000);
+    }
+  //toggle btn
+
+  function togglesharebtn(header) {
+    const content = header.nextElementSibling;
+    header.classList.toggle('active');
+    content.classList.toggle('menu__list--open');
+   
+  }
+
+//
+</script>
+<script>
+  //viewsimilar popup
+document.addEventListener('DOMContentLoaded', function() {
+    // Use event delegation to handle button clicks
+    document.body.addEventListener('click', function(event) {
+        // Check if the clicked element is a cart-drawer button
+        const button = event.target.closest('.cart-drawer-btn');
+        if (button) {
+            console.log("Cart Drawer button clicked");
+
+            // Close any open cart drawers
+            const openDrawers = document.querySelectorAll('.cart-drawer.open');
+            openDrawers.forEach(drawer => {
+                drawer.classList.remove('open');
+                console.log("Closed an open cart drawer");
+            });
+
+            // Find the nearest cart drawer
+            const cartDrawer = button.closest('.view-similar').nextElementSibling;
+            if (cartDrawer && cartDrawer.id === 'cart-drawer') {
+                cartDrawer.classList.add('open');
+                console.log("Open class added to cart drawer");
+            } else {
+                console.log("No corresponding cart drawer found");
+            }
+        }
+
+        // Check if the clicked element is the close button
+        const closeButton = event.target.closest('.close-cart-drawer');
+        if (closeButton) {
+            const cartDrawer = closeButton.closest('.cart-drawer');
+            if (cartDrawer) {
+                cartDrawer.classList.remove('open');
+                console.log("Closed the cart drawer");
+            }
+        }
+    });
+});
+  //scroll slider
+
+      $(document).ready(function(){
+        $(".products-real").owlCarousel({
+          items: 4,
+          loop:false,
+          center:false,
+          nav:false,
+          dots:false,
+          margin: 10,
+          responsive:{
+            0:{
+              items:2,
+              dots:true,
+              arrow:false
+            },
+            600:{
+              items:3,
+              dots:true,
+              arrow:false
+            },
+            1000:{
+              items:4,
+              arrow:false,
+              dots:false
+            }
+          }
+        });
+      });
+ 
+</script>
+
+

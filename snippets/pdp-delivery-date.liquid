@@ -1,0 +1,38 @@
+<!-- Add a placeholder element for the date range -->
+<div class="estimate-delivery-date">
+  {% if section.settings.estimate-date-label !=blank %}
+  {{ section.settings.estimate-date-label }}{% endif %}
+  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/van.svg?v=1726732009" loading="lazy" alt="shipping" width="25px" height="25px" style="height:25px;float:left;margin-right:10px;padding-bottom: 4px;">
+<strong><span id="delivery-date-range"></span></strong></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function formatDate(date) {
+        const options = { weekday: 'short', month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    function addDays(date, days) {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
+    // Get today's date
+    const today = new Date();
+
+    // Calculate the delivery dates
+    const deliveryDate1 = addDays(today, 2); // Adding 3 days
+    const deliveryDate2 = addDays(today, 5); // Adding 6 days
+
+    // Format the dates
+    const formattedDate1 = formatDate(deliveryDate1);
+    const formattedDate2 = formatDate(deliveryDate2);
+
+    // Create the output string
+    const output = `${formattedDate1} - ${formattedDate2}`;
+
+    // Set the output to the placeholder element
+    document.getElementById('delivery-date-range').textContent = output;
+});
+
+</script>

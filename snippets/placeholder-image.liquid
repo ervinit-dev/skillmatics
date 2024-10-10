@@ -1,0 +1,13 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(function(img) {
+        var dataSrc = img.getAttribute('data-src');
+        if (dataSrc) {
+            img.setAttribute('src', dataSrc);
+        } else {
+            img.setAttribute('src', img.getAttribute('src'));
+        }
+    });
+});
+</script>

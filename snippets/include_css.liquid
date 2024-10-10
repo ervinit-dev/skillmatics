@@ -1,8 +1,8 @@
-<link rel="prefetch" href="{{ 'custom-font.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+{% comment %}<link rel="preload" href="{{ 'custom-font.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'custom-font.css' | asset_url }}"></noscript>
-<link rel="prefetch" href="{{ 'theme.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'theme.css' | asset_url }}"></noscript>
-{% comment %}
+{% endcomment %}
 {{ 'custom-font.css' | asset_url | stylesheet_tag }}
 {{ 'theme.css' | asset_url | stylesheet_tag }}{% endcomment %}
 {{ 'custom.css' | asset_url | stylesheet_tag }}

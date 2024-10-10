@@ -1,10 +1,10 @@
-{% comment %}<link rel="preload" href="{{ 'custom-font.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="dns-prefetch" href="{{ 'custom-font.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'custom-font.css' | asset_url }}"></noscript>
-<link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="dns-prefetch" href="{{ 'theme.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'theme.css' | asset_url }}"></noscript>
-{% endcomment %}
+{% comment %}
 {{ 'custom-font.css' | asset_url | stylesheet_tag }}
-{{ 'theme.css' | asset_url | stylesheet_tag }}
+{{ 'theme.css' | asset_url | stylesheet_tag }}{% endcomment %}
 {{ 'custom.css' | asset_url | stylesheet_tag }}
 {{ 'custom-cart.css' | asset_url | stylesheet_tag }}
 {% if settings.use_rtl %}{{ 'style-rtl.css' | asset_url | stylesheet_tag }}{% endif %}

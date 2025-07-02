@@ -306,7 +306,7 @@ $(document).ready(function(){
       lazyLoad: 'progressive',
       dots: d,
       arrows: true,
-      infinite: false,
+      infinite: true,
       speed: 300,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -1620,7 +1620,7 @@ var elevateZoomWidget = {
       window.dispatchEvent(event);
     });
     _parent.slick({
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       infinite: false,
       dots: false,
       arrows: true,
@@ -1649,7 +1649,7 @@ var elevateZoomWidget = {
       window.dispatchEvent(event);
     });
     _parent.slick({
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       vertical: true,
       infinite: false,
       slidesToShow: 5,
@@ -1662,7 +1662,7 @@ var elevateZoomWidget = {
       responsive: [{
         breakpoint: 1200,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 6,
           slidesToScroll: 1
         }
       },
@@ -4798,7 +4798,7 @@ $('body').on('click', '.qtybox .btnqty', function(){
           
          
           
-            cart_list.push('<div class="tt-item"> <div class="tt-item-img"> <img src="'+item.image+'"> </div> <div class="tt-item-descriptions"> <h2 class="tt-title">'+item.title+'</h2> <div class="tt-quantity"><span class="qty">'+item.quantity+'</span> X</div> <div class="tt-price">Rs. '+item.price / 100+'.00</div> <div class="quantityareaindrawer"> <div class="qtydiv"> <div class="qtybox"> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyminus icon icon-minus">-</span> <input type="text" id="quantity" name="properties[quantity]" value="'+item.quantity+'" min="1" class="quantity-selector quantity-input" readonly=""> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyplus icon icon-plus">+</span> </div> </div> </div> </div> <div class="tt-item-close"> <a href="/cart/change?id='+item.id+'&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve"> <g> <path d="M3.6,21.1c-0.1-0.1-0.2-0.3-0.2-0.4v-15H2.2C2,5.7,1.9,5.6,1.7,5.5C1.6,5.4,1.6,5.2,1.6,5.1c0-0.2,0.1-0.3,0.2-0.4 C1.9,4.5,2,4.4,2.2,4.4h5V1.9c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2h6.3c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4 v2.5h5c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2h-1.3v15 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2H4.1C3.9,21.3,3.7,21.2,3.6,21.1z M17.2,5.7H4.7v14.4h12.5V5.7z M8.3,9 c0.1,0.1,0.2,0.3,0.2,0.4v6.9c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4 c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2S8.1,8.9,8.3,9z M8.4,4.4h5V2.6h-5V4.4z M11.4,9c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4c0-0.2,0.1-0.3,0.2-0.4 c0.1-0.1,0.3-0.2,0.4-0.2S11.3,8.9,11.4,9z M13.6,9c0.1-0.1,0.3-0.2,0.4-0.2s0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4C13.4,9.3,13.5,9.1,13.6,9z"></path> </g> </svg> </a> </div> </div>');
+            cart_list.push('<div class="tt-item"> <div class="tt-item-img"> <img src="'+item.image+'"> </div> <div class="tt-item-descriptions"> <h3 class="tt-title">'+item.title+'</h3> <div class="tt-quantity"><span class="qty">'+item.quantity+'</span> X</div> <div class="tt-price">Rs. '+item.price / 100+'.00</div> <div class="quantityareaindrawer"> <div class="qtydiv"> <div class="qtybox"> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyminus icon icon-minus">-</span> <input type="text" id="quantity" name="properties[quantity]" value="'+item.quantity+'" min="1" class="quantity-selector quantity-input" readonly=""> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyplus icon icon-plus">+</span> </div> </div> </div> </div> <div class="tt-item-close"> <a href="/cart/change?id='+item.id+'&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve"> <g> <path d="M3.6,21.1c-0.1-0.1-0.2-0.3-0.2-0.4v-15H2.2C2,5.7,1.9,5.6,1.7,5.5C1.6,5.4,1.6,5.2,1.6,5.1c0-0.2,0.1-0.3,0.2-0.4 C1.9,4.5,2,4.4,2.2,4.4h5V1.9c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2h6.3c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4 v2.5h5c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2h-1.3v15 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2H4.1C3.9,21.3,3.7,21.2,3.6,21.1z M17.2,5.7H4.7v14.4h12.5V5.7z M8.3,9 c0.1,0.1,0.2,0.3,0.2,0.4v6.9c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4 c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2S8.1,8.9,8.3,9z M8.4,4.4h5V2.6h-5V4.4z M11.4,9c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4c0-0.2,0.1-0.3,0.2-0.4 c0.1-0.1,0.3-0.2,0.4-0.2S11.3,8.9,11.4,9z M13.6,9c0.1-0.1,0.3-0.2,0.4-0.2s0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4C13.4,9.3,13.5,9.1,13.6,9z"></path> </g> </svg> </a> </div> </div>');
          
            
           
@@ -4867,7 +4867,7 @@ $('body').on('click', '.tt-item-close>a', function(){
            var index0 = i + 0;
            var index1 = i + 1;
           $('body .tt-cart-list').empty();
-          cart_list.push('<div class="tt-item"> <div class="tt-item-img"> <img src="'+item.image+'"> </div> <div class="tt-item-descriptions"> <h2 class="tt-title">'+item.title+'</h2> <div class="tt-quantity"><span class="qty">'+item.quantity+'</span> X</div> <div class="tt-price">Rs. '+item.price / 100+'.00</div> <div class="quantityareaindrawer"> <div class="qtydiv"> <div class="qtybox"> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyminus icon icon-minus">-</span> <input type="text" id="quantity" name="properties[quantity]" value="'+item.quantity+'" min="1" class="quantity-selector quantity-input" readonly=""> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyplus icon icon-plus">+</span> </div> </div> </div> </div> <div class="tt-item-close"> <a href="/cart/change?id='+item.id+'&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve"> <g> <path d="M3.6,21.1c-0.1-0.1-0.2-0.3-0.2-0.4v-15H2.2C2,5.7,1.9,5.6,1.7,5.5C1.6,5.4,1.6,5.2,1.6,5.1c0-0.2,0.1-0.3,0.2-0.4 C1.9,4.5,2,4.4,2.2,4.4h5V1.9c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2h6.3c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4 v2.5h5c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2h-1.3v15 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2H4.1C3.9,21.3,3.7,21.2,3.6,21.1z M17.2,5.7H4.7v14.4h12.5V5.7z M8.3,9 c0.1,0.1,0.2,0.3,0.2,0.4v6.9c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4 c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2S8.1,8.9,8.3,9z M8.4,4.4h5V2.6h-5V4.4z M11.4,9c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4c0-0.2,0.1-0.3,0.2-0.4 c0.1-0.1,0.3-0.2,0.4-0.2S11.3,8.9,11.4,9z M13.6,9c0.1-0.1,0.3-0.2,0.4-0.2s0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4C13.4,9.3,13.5,9.1,13.6,9z"></path> </g> </svg> </a> </div> </div>');
+          cart_list.push('<div class="tt-item"> <div class="tt-item-img "> <img src="'+item.image+'"> </div> <div class="tt-item-descriptions"> <h3 class="tt-title">'+item.title+'</h3> <div class="tt-quantity"><span class="qty">'+item.quantity+'</span> X</div> <div class="tt-price">Rs. '+item.price / 100+'.00</div> <div class="quantityareaindrawer"> <div class="qtydiv"> <div class="qtybox"> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyminus icon icon-minus">-</span> <input type="text" id="quantity" name="properties[quantity]" value="'+item.quantity+'" min="1" class="quantity-selector quantity-input" readonly=""> <span data-line="'+index1+'" data-index="'+index0+'" class="btnqty qtyplus icon icon-plus">+</span> </div> </div> </div> </div> <div class="tt-item-close"> <a href="/cart/change?id='+item.id+'&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve"> <g> <path d="M3.6,21.1c-0.1-0.1-0.2-0.3-0.2-0.4v-15H2.2C2,5.7,1.9,5.6,1.7,5.5C1.6,5.4,1.6,5.2,1.6,5.1c0-0.2,0.1-0.3,0.2-0.4 C1.9,4.5,2,4.4,2.2,4.4h5V1.9c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2h6.3c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4 v2.5h5c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2h-1.3v15 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2H4.1C3.9,21.3,3.7,21.2,3.6,21.1z M17.2,5.7H4.7v14.4h12.5V5.7z M8.3,9 c0.1,0.1,0.2,0.3,0.2,0.4v6.9c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4 c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2S8.1,8.9,8.3,9z M8.4,4.4h5V2.6h-5V4.4z M11.4,9c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4c0-0.2,0.1-0.3,0.2-0.4 c0.1-0.1,0.3-0.2,0.4-0.2S11.3,8.9,11.4,9z M13.6,9c0.1-0.1,0.3-0.2,0.4-0.2s0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4v6.9 c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4C13.4,9.3,13.5,9.1,13.6,9z"></path> </g> </svg> </a> </div> </div>');
          } 
         
         $('body .tt-cart-list').append(cart_list);                  

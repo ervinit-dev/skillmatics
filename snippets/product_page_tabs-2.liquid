@@ -21,18 +21,93 @@
     {% if b_i.offer4 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
       {% if b_i.offer5 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
        {% if b_i.offer6 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
-      
-         {% if settings.show-callout %}
-          {% if product.tags contains 'single product' and product.tags contains 'GETMORE' %}   
-            <div class="custom-avaible-offer">
-             {% assign per-amt = settings.per-amt | strip | plus: 0 %}
-                    <div class="salestags pdp-callout">
-                    <span class="textsaletag">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp | &nbsp{{ settings.usecode }} </span> 
-                   </div>
-                   </div>
-         {% endif %}   
-       {% endif %}
-     
+
+ {% if product.tags contains 'single product'%}  
+ 
+ {% if product.collections contains collections[settings.col-handle1] and settings.show-callout  %}  
+            {% unless product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
+                          or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
+                          or product.title contains 'Free Gift'
+                or product.collections contains collections[settings.col-handle2] or product.collections contains collections[settings.col-handle3] or product.collections contains collections[settings.col-handle4]
+                        %}                           
+                      <div id="callout1" class="custom-avaible-offer  price">
+                       {% assign per-amt = settings.per-amt | strip | plus: 0 %}
+                          
+                            <div class="salestags pdp-callout">
+                                <span class="textsaletag">
+                                    {{ settings.get-it-at }} 
+                                   <b> {{ pr_variant.price | times: per-amt | money }}</b>
+                                 
+                                    <span class="spc-coll">|</span> 
+                                    {{ settings.usecode }}
+                                </span> 
+                            </div>
+                      </div> 
+                        
+                {% endunless %}        
+  {% endif %}{% comment %}first generic based callout end   {% endcomment %}
+   
+{% if product.collections contains collections[settings.col-handle2] and settings.show-callout2  %}          
+          <div id="callout2" class="custom-avaible-offer">
+         {% assign per-amt2 = settings.per-amt2 | strip | plus: 0 %}
+                <div id="callout1" class="salestags pdp-callout">                
+                <span class="textsaletag ">{{ settings.get-it-at2 }} <b>  {{ pr_variant.price | times: per-amt2 | money }}</b> <span class="spc-coll">|</span> {{ settings.usecode2 }} </span> 
+               </div>
+          </div>     
+        {% endif %}{% comment %}2nd collection based callout end   {% endcomment %}
+
+
+{% if product.collections contains collections[settings.col-handle3] and settings.show-callout3 %}      
+    
+          <div id="callout3" class="custom-avaible-offer">
+         {% assign per-amt3 = settings.per-amt3 | strip | plus: 0 %}
+                <div id="callout1" class="salestags pdp-callout">                
+                <span class="textsaletag ">{{ settings.get-it-at3 }}<b>  {{ pr_variant.price | times: per-amt3 | money }}</b> <span class="spc-coll">|</span> {{ settings.usecode3 }} </span> 
+               </div>
+          </div>
+    
+ {% endif %}{% comment %}3rd collection based callout end   {% endcomment %}
+{% if product.collections contains collections[settings.col-handle4] and settings.show-callout4 %}      
+      {% if settings.show-callout4 %}
+    
+          <div id="callout4" class="custom-avaible-offer">
+         {% assign per-amt4 = settings.per-amt4 | strip | plus: 0 %}
+                <div id="callout1" class="salestags pdp-callout">                
+                <span class="textsaletag ">{{ settings.get-it-at4 }}<b> {{ pr_variant.price | times: per-amt4 | money }}</b><span class="spc-coll">|</span> {{ settings.usecode4 }} </span> 
+               </div>
+          </div>
+    
+        {% endif %}
+
+ 
+ {% endif %} {% comment %}4th collection based callout end   {% endcomment %}
+  {% if settings.show-callout5 %}
+  {% if product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
+                or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
+              %}   
+           <div id="callout5" class="5 custom-avaible-offer">
+              
+                  {% assign per-amt5 = settings.per-amt5 | strip | plus: 0 %}
+                  
+                  <div class="salestags pdp-callout">
+                      <span class="textsaletag">
+                          {{ settings.get-it-at5 }} 
+                        <b> {{ pr_variant.price | times: per-amt5 | money }}</b>
+                       
+                          <span class="spc-coll">|</span> 
+                          {{ settings.usecode5 }}
+                      </span> 
+                  </div>
+              
+              </div>
+         
+          {% endif %}
+  {% endif %}{% comment %}5th product based callout end   {% endcomment %}
+
+ 
+ {% endif %}
+
+
       {%- when 'tab_unique' -%}
         {%- if product_meta[b_i.key] != blank -%}
         <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
@@ -52,8 +127,7 @@
     {%- endcase -%}
     {%- endfor -%}
     {%- endcapture -%}
-    
-    
-    {%- if html_tabs != '' -%}
-    <div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
-    {%- endif -%}
+
+{%- if html_tabs != '' -%}
+  <div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
+{%- endif -%}

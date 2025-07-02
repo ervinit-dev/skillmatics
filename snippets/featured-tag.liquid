@@ -3,39 +3,73 @@
 {% for FeaturedTag in FeaturedTags %}
   {% if FeaturedTag contains 'Parents Choice' %}
     <img class="Parent_Choice" width="130px" height="28px"
-      alt="Parent's Choice"
-      src="{{ settings.parent_choice | img_url:'medium' }}"
+      alt="Parent's Choice"      
+      src="{{ settings.parent_choice | img_url:'130x28' }}" srcset="{{ settings.parent_choice | img_url:'130x28' }}"
     >  
   {% endif %}
 
   {% if FeaturedTag contains 'BestSeller' %}
     <img class="BestSeller" width="130px" height="28px"
-      alt="BestSeller"
-     src="{{ settings.bestseller | img_url:'medium' }}"
+      alt="BestSeller"     
+     src="{{ settings.bestseller | img_url:'130x28' }}"  srcset="{{ settings.bestseller | img_url:'130x28' }}"
     >  
   {% endif %}
 
   {% if FeaturedTag contains 'Recommended' %}
    <img class="Recommended" width="130px" height="28px"
-      alt="Recommended"
-      src="{{ settings.recommended | img_url:'medium' }}"
+      alt="Recommended"     
+      src="{{ settings.recommended | img_url:'130x28' }}"  srcset="{{ settings.recommended | img_url:'130x28' }}"
     >   
   {% endif %}
 
   {% if FeaturedTag contains 'New Launch' %}
     <img class="New_launch" width="130px" height="28px"
-      alt="New Launch"
-       src="{{ settings.new_launch | img_url:'medium' }}"
+      alt="New Launch"    
+       src="{{ settings.new_launch | img_url:'130x28' }}"  srcset="{{ settings.new_launch | img_url:'130x28' }}"
     >
     
   {% endif %}
 
   {% if FeaturedTag contains 'Selling Fast' %}
     <img class="selling_fast" width="130px" height="28px"
-      alt="Selling Fast"
-       src="{{ settings.selling_fast | img_url:'medium' }}"
+      alt="Selling Fast"      
+       src="{{ settings.selling_fast | img_url:'130x28' }}" srcset="{{ settings.selling_fast | img_url:'130x28' }}"
     >
-   
+  {% endif %}
+
+  {% if FeaturedTag contains 'Best Selling Combo' %}
+    <img class="best_selling_combo" width="130px" height="28px"
+      alt="Best Selling Combos"     
+       src="{{ settings.bs_combo | img_url:'130x28' }}"  srcset="{{ settings.bs_combo | img_url:'130x28' }}"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'Perfect Gift' %}
+    <img class="perfect_gift" width="130px" height="28px"
+      alt="Perfect Gifts"      
+       src="{{ settings.perfect_gift | img_url:'130x28' }}"  srcset="{{ settings.perfect_gift | img_url:'130x28' }}"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'Mess Free Play' %}
+    <img class="mess_free_play" width="130px" height="28px"
+      alt="Mess Free Play"      
+       src="{{ settings.mess_free_play | img_url:'130x28' }}"  srcset="{{ settings.mess_free_play | img_url:'130x28' }}"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'Rakhi Special' %}
+    <img class="rakhi_special" width="130px" height="28px"
+      alt="Rakhi Special"      
+       src="{{ settings.rakhi_special | img_url:'130x28' }}"  srcset="{{ settings.rakhi_special | img_url:'130x28' }}"
+    >
+  {% endif %}
+
+  {% if FeaturedTag contains 'LE' %}
+    <img class="limited_edition" width="130px" height="28px"
+      alt="Limited Edition"      
+       src="{{ settings.limited_edition | img_url:'130x28' }}"  srcset="{{ settings.limited_edition | img_url:'130x28' }}"
+    >
   {% endif %}
 {% endfor %}
 

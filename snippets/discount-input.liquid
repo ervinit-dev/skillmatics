@@ -10,14 +10,19 @@
     </span>
   </span>
   <small id="discount-code-error"></small>
-  <div class="dis-inputs-fields">
+  <div id="skill_cart_discount_type" class="dis-inputs-fields">
   <input type="text" id="discount-code-input" autocomplete="on" value="" placeholder="Enter Discount Code">
   <button id="apply-discount-btn">APPLY</button>
   </div>
+   {% if settings.discount-note!= blank %}<span class="coupon-container-heading">{{ settings.discount-note }}</span>{% endif %}
 </div>
 
 
 <script>
+   var shopcurrency = '{{ shop.currency }}';
+  if (shopcurrency === 'INR') {
+      shopcurrency = '₹';
+  }
 document.addEventListener("DOMContentLoaded", function(event) { 
   let clearBtn = document.querySelector("#clear-discount-btn");
   let applyBtn = document.querySelector("#apply-discount-btn");
@@ -25,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   let discountCodeWrapper = document.querySelector("#applied-discount-code .applied-discount-code-wrapper");
   let discountCodeValue = document.querySelector("#applied-discount-code .applied-discount-code-value");
   let discountCodeInput = document.querySelector("#discount-code-input");
-  let totalCartSelector = document.querySelector(".cartpageSubtotal"); // Total Cart Selector to update the total amount. 
+  let totalCartSelector = document.querySelector(".tt-cart-total-price"); // Total Cart Selector to update the total amount. 
   let authorization_token;
   
   let checkoutContainer = document.createElement('div');
@@ -97,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             'totalCart': data.checkout.total_line_items_price
           };
           localStorage.setItem("discountCode", JSON.stringify(localStorageValue));
-          if(totalCartSelector) totalCartSelector.innerHTML = "<s>" + data.checkout.total_line_items_price + "</s>" + data.checkout.total_price;
+          if(totalCartSelector) totalCartSelector.innerHTML = "<s>" +shopcurrency  + data.checkout.total_line_items_price + "</s>" +shopcurrency  + data.checkout.total_price;
         }else{
           if(discountCodeValue) discountCodeValue.innerHTML = "";
           clearLocalStorage();

@@ -1,4 +1,11 @@
 @media (max-width: 789px) {
+  .tt-breadcrumb li {
+    display: list-item;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
   .customslider-grid{  padding-bottom: 30px;}
 .customslider-grid .tt-blog-thumb {padding: 0 10px;}
 }

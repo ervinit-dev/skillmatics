@@ -17,46 +17,68 @@
                       </ul>
                        {%- endif -%}
 <!--footertext content -->
-{% if template.name contains "collection" and collection.metafields.collection.footer_text.value !=blank %}  
+{% if template.name contains "collection" and collection.metafields.pdp.footer_text_content.value !=blank %}  
      
             <div class="tt-collapse-block footer-btn-tab"> 
-            <div class="accordion"> {{collection.title  }}
-              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+            <div class="footer-btn-ques"> 
+              <p class="tt-collapse-title">{{collection.title }}</p>
+              <span>
+                <img  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555"  class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555">
+              </span>
              </div>
-            <div class="panel">{{ collection.metafields.collection.footer_text.value }}
+            <div class="footer-btn-ans">
+              {{ collection.metafields.pdp.footer_text_content | metafield_tag }}
              </div>              
             </div>
+  
          
-{% elsif template.name contains "product" and  product.metafields.pdp.footer_text2.value !=blank %}
-
-            <div class="tt-collapse-block footer-btn-tab"> 
-             <div class="accordion">{{product.title  }}          
-              <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy">
-             </div>
-            <div class="panel">            
-            {% assign footer_text = product.metafields.pdp.footer_text2.value | parse_json %}
-            {% for child in footer_text.children %}
-              {% if child.type == "heading" %}
-                <h2>{{ child.children | map: 'value' | join: '' }}</h2>  <!-- Print heading -->
-              {% elsif child.type == "paragraph" %}
-                <p>{{ child.children | map: 'value' | join: '' }}</p>  <!-- Print paragraph -->
-              {% endif %}
-            {% endfor %}
-            
-            </div>              
-            </div>
-
+{% elsif template.name contains "product" %}
+    {% if product.metafields.pdp.footer_text2.value != blank %}
+            <div class="tt-collapse-block footer-btn-tab">
+              <div class="footer-btn-ques">
+      <p class="tt-collapse-title">{{product.title}}</p>
+                
+                <span>
+                  <img  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp" class="accordian-icon" alt="chevron-up" width="30px" height="30px" loading="lazy" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp">
+                </span>
+              </div>
+              
+              <div class="footer-btn-ans">
+                {{ product.metafields.pdp.footer_text2 | metafield_tag }}
+              </div>
+</div>
+{% endif %}
 {% elsif template.name contains 'index'%}
 
        
          {% if item.bottom-title != blank %} 
         <div class="tt-collapse-block footer-btn-tab">
-         <div class="accordion">  
-           {{ item.bottom-title }}   
-           <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+         <div class="footer-btn-ques"> 
+           <p class="tt-collapse-title">{{ item.bottom-title }}</p>
+           <span>
+             <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555" >
+           </span>
          </div>
-        <div class="panel">
+        <div class="footer-btn-ans">
            {% if item.bottom-content != blank %}{{ item.bottom-content }}{% endif %}
+        </div>  
+          
+        </div>
+       {%- endif -%}
+       
+    {% elsif template.name contains 'page'%}
+
+       
+         {% if page.metafields.custom.footer_content != blank %} 
+        <div class="tt-collapse-block footer-btn-tab">
+         <div class="footer-btn-ques">  
+           {{ page.metafields.custom.footer_title }}   
+           <span>
+             <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555">
+           </span>
+         </div>
+        <div class="footer-btn-ans">
+           {% if page.metafields.custom.footer_content != blank %}{{ page.metafields.custom.footer_content | metafield_tag }}{% endif %}
         </div>  
           
         </div>
@@ -67,3 +89,14 @@
 </div>
 </div>
 
+
+<script>
+const footerBtnQues = document.querySelectorAll('.footer-btn-tab');
+
+footerBtnQues.forEach(function(button) {
+  button.addEventListener('click', function() {
+    button.classList.toggle('active');
+  });
+});
+
+</script>

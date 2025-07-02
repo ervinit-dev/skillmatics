@@ -4,7 +4,7 @@
       
       {% if item.footer_col %}
 
-      <div class="col-sm-6 copygrid6">
+      <div class="col-sm-4 copygrid6">
           {%- if item.show_logoblock -%}
           <div class="tt-col-item tt-logo-col">
             <a href="{{ routes.root_url }}" class="tt-logo tt-logo-alignment">
@@ -20,13 +20,15 @@
           </div>
           {%- endif -%}
       </div>
-      <div class="col-sm-6 paymetsicon">
+      <div class="col-sm-4 paymetsicon">
         {%- include "footer_paymant_list" -%}
       </div>
         
       {% else %}
-
-      <div class="tt-col-left">
+ <div class="tt-col-item nintara-text mobile-hide">
+          <a class="tt-box-copyright" href="https://nintarababy.in/">Baby Care Essentials</a>
+          </div> 
+      <div class="tt-col-left"> 
         {%- if item.show_logoblock -%}
         <div class="tt-col-item tt-logo-col">
           <a href="{{ routes.root_url }}" class="tt-logo tt-logo-alignment">

@@ -1,10 +1,56 @@
+<style> 
+  .tt-dropdown-menu.custom-cart-layout {    display: none !important;}
+    .cart-dr-qty{ display: none!important;}
+  .cart-dr-qty label {
+    visibility: hidden;
+    font-size: 0;
+}
+  @media (max-width: 1024px) {
+    header .tt-cart .tt-dropdown-menu {  width: 98%;   max-width: 400px;}
+  }
+.tt-cart-list { display: flex; flex-flow: column-reverse;}
+  header .tt-cart .tt-cart-layout .tt-cart-content .tt-cart-list .tt-item .tt-item-img img { max-width: 50px; max-height: 50px;}
+  header .tt-cart .tt-cart-layout .tt-cart-content .tt-cart-list .tt-item:not(.hide){  display: flex!important;}
+@media (min-width: 1025px) { 
+  header .tt-cart .tt-dropdown-menu { display:block!important;}
+}
+    header .tt-cart.tt-dropdown-obj:not(.tt-search) .tt-dropdown-menu {     
+        height: 100%;
+        top: 0;
+        left: auto;        
+       -webkit-transform: translate(100%, 0);
+        -ms-transform: translate(100%, 0);
+        transform: translate(100%, 0);
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+        -webkit-transition: -webkit-transform .3s ease;
+        transition: -webkit-transform .3s ease;
+        transition: transform .3s ease;
+        transition: transform .3s ease, -webkit-transform .3s ease;
+        position: fixed;
+    }
+      header .tt-cart.tt-dropdown-obj:not(.tt-search).active .tt-dropdown-menu{         
+         left: auto;
+        right:0px;
+        top: 0;
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        transform: translate(0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+</style>
 {%- unless settings.catalogue_mode -%}
 {%- if template != "cart" -%}
 
 <!-- tt-cart -->
-<div class="tt-desctop-parent-cart   tt-parent-box">
+<a class="whatsapp-icon-head" href="https://wa.me/+918422822545" data-tooltip="WhatsApp Us"
+            data-tposition="bottom" style="height: 45px" >
+  <img  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_28x28.png?v=1742463939" alt="whatsapp" width="26px" height="26px" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_28x28.png?v=1742463939">
+</a>
+<div class="tt-desctop-parent-cart tt-desk-cart  tt-parent-box">
   <div class="tt-cart tt-dropdown-obj">
-    <button class="tt-dropdown-toggle{% if settings.use_svg_cart_header %} header-icon-with-text{% endif %}"
+    <button  id="skill_cart" class="tt-dropdown-toggle{% if settings.use_svg_cart_header %} header-icon-with-text{% endif %}"
             data-tooltip="{{ 'general.tooltip_texts.header_cart' | t }}"
             data-tposition="bottom"
             >
@@ -16,8 +62,8 @@
           {{ settings.svg_cart_header }}
         </span>
         {% else %}
-        <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cart.webp?v=1726899279" alt="cart" width="30px" height="30px">
-      {% comment %}  <i class="icon-f-39"></i>{% endcomment %}
+        <img  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cart.webp?v=1726899279" width="25px" height="25px" alt="cart">
+     
         {% endif %}
         <span class="tt-badge-cart{% if cart.item_count == 0 %} hide{% endif %}">{{ cart.item_count }}</span>
       </div>
@@ -32,8 +78,11 @@
         {{ settings.svg_cart_header }}
       </span>
       {% else %}
-      <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cart.webp?v=1726899279" alt="cart">
-      {% comment %}  <i class="icon-f-39"></i>{% endcomment %}
+      
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 2.5H3.74086C3.97457 2.5 4.09143 2.5 4.18547 2.54298C4.26835 2.58085 4.33858 2.64176 4.38779 2.71845C4.44364 2.80547 4.46017 2.92115 4.49322 3.15252L4.94286 6.3M4.94286 6.3L5.94215 13.6448C6.06897 14.5769 6.13237 15.0429 6.35519 15.3937C6.55154 15.7028 6.83303 15.9486 7.16579 16.1015C7.54342 16.275 8.01375 16.275 8.9544 16.275H17.0844C17.9798 16.275 18.4275 16.275 18.7934 16.1139C19.116 15.9718 19.3928 15.7428 19.5927 15.4525C19.8194 15.1232 19.9032 14.6834 20.0707 13.8038L21.3282 7.20221C21.3871 6.89262 21.4166 6.73782 21.3739 6.61682C21.3364 6.51068 21.2624 6.4213 21.1652 6.36462C21.0543 6.3 20.8967 6.3 20.5816 6.3H4.94286ZM10.1 20.55C10.1 21.0747 9.67467 21.5 9.15 21.5C8.62533 21.5 8.2 21.0747 8.2 20.55C8.2 20.0253 8.62533 19.6 9.15 19.6C9.67467 19.6 10.1 20.0253 10.1 20.55ZM17.7 20.55C17.7 21.0747 17.2747 21.5 16.75 21.5C16.2253 21.5 15.8 21.0747 15.8 20.55C15.8 20.0253 16.2253 19.6 16.75 19.6C17.2747 19.6 17.7 20.0253 17.7 20.55Z" stroke="#06374F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+   
       {% endif %}
       {% if item.ca_text != '' %}<span class="tt-text">
       {{ item.ca_text }}
@@ -45,7 +94,7 @@
 
     <div class="tt-dropdown-menu custom-cart-layout">
       <div class="tt-mobile-add">
-        <p class="tt-title">{{ 'cart.header.title' | t }}</p>
+        <h6 class="tt-title">{{ 'cart.header.title' | t }}</h6>
         <button class="tt-close">{{ 'cart.header.close' | t }}</button>
       </div>
       <div class="tt-dropdown-inner">
@@ -58,15 +107,20 @@
             </a>
            
             <div class="tt-cart-box{% if cart.item_count == 0 %} hide{% endif %}">
-               <div class="cart-announcement">
+              <div class="tt-cart-box-inner">
+              <div class="cart-announcement">
                 {{ settings.cart-announcement }}
-              </div>
-              
-           
-              <div class="tt-cart-list">
-                {%- for item in cart.items -%}{%- include "menu-cart-item" length: forloop.index -%}{%- endfor -%}
               </div>             
-         
+           <div>
+            {% comment %}  {% include 'cart-progress-bar' %}
+             <div class="hs-rewards-content"></div>  {% endcomment %}            
+           </div>
+              <div class="tt-cart-list"> 
+               {%- for item in cart.items -%}{%- include "menu-cart-item" length: forloop.index -%}{%- endfor -%}   
+               </div>             
+          {% comment %}    {% include 'drawer-discount-input2' %}
+            {% include 'people-also-bought' %} {% endcomment %}  
+              </div>
               <div class="flex-align-center header-cart-more-message-js"{% if cart.items.size <= 3 %} style="display: none;"{% endif %}>
                 <a href="{{ routes.cart_url }}" class="btn-link-02" title="{{ 'cart.header.view_cart' | t | capitalize }}">{{ 'cart.header.view_cart_all' | t }}</a>
               </div>
@@ -88,7 +142,27 @@
               {% endif %}
               <div class="tt-cart-btn">
                 <div class="tt-item">
+                  {% if settings.goEnable %}
+                   {% comment %}  <div class=" ch gokwik-checkout"{% if settings.hideFlow %} style="display:none !important;" {% endif %}>
+                    <button type='button' class="btn disabled" disabled onclick="onCheckoutClick(this)">
+                                <span class="btn-text" >
+                                    <span>{{ settings.main-titile }}</span>
+                                    <span>{{ settings.sub-titile }}</span>
+                                </span>
+                              <span class="pay-opt-icon">
+                                 <!-- <img src="https://cdn.gokwik.co/v4/images/upi-icons.svg">
+                                 <img src="https://cdn.gokwik.co/v4/images/right-arrow.svg"> -->
+                             
+                     </span>
+                        <div style="display:none" class="addloadr" id="btn-loader"><div class="cir-loader">Loading..</div></div>
+                      </button>
+                    </div>
+                    {% endcomment %}
+                      <a href="/checkout" class="checkoutbtn btn{% if settings.terms_cond_checkbox_show %} disabled{% endif %}">{{ 'cart.header.checkout' | t }}</a>
+                    
+                    {% else %}
                   <a href="/checkout" class="btn{% if settings.terms_cond_checkbox_show %} disabled{% endif %}">{{ 'cart.header.checkout' | t }}</a>
+                    {% endif %}
                 </div>
                 <div class="tt-item">
                   <a href="{{ routes.cart_url }}" class="btn-link-02">{{ 'cart.header.view_cart' | t }}</a>
@@ -108,3 +182,5 @@
 
 {%- endif -%}
 {%- endunless -%}
+
+

@@ -2,14 +2,14 @@
 
 <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent tpisection{{ section.id }}">
   {% if item.usebgcolor %}<div class="layout-box01-wrapper"{% if item.showbgimage_bg %} style="background-image: url({{ item.image_bg | img_url: '2048x' }});"{% endif %}>{% endif %}
-    <div class="container{% if item.fullwidth %}-fluid{% endif %}">
+    <div class="temp-{{  template.name }} container{% if item.fullwidth %}-fluid{% endif %}">
       <!-- obj -->
       <div class="row tt-layout-box01{% if item.reverse %} flex-row-reverse{% endif %} {{ item.contentalign }}">
         <div class="col-img col-md-{{ item.grid | split: '.' | first }}{% unless item.showimage %} d-sm-none-custom{% endunless %} respimgsize">
           {% if item.showimage %}
           {%- if item.image != blank -%}
-          <img class="lazyload" id="{{ section.settings.tracking-id}}"
-               data-mainimage="{{ item.image | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+          <img class="lazyload" id="{{ section.settings.tracking-id}}" width="500px" height="500px"
+               data-mainimage="{{ item.image | img_url: '500x500' | replace: '100x100', 'respimgsize' }}"
                alt="{{ item.image.alt }}">
           {%- endif -%}
           {% endif %}

@@ -1,0 +1,257 @@
+<style>
+  span.coupon-container-heading p {    margin-top: 2px;}
+.hs--content--success {   display: flex !important; align-items: center;}
+     .coupontext span img {    margin-bottom: 1px;}
+     .coupon p { margin: 0;font-size: 13px;}
+    @media only screen and (max-width: 360px) {
+     .coupon p { margin: 0;font-size: 12px;} 
+    }
+    .hs-content-discount-add {visibility: hidden; height: 0;}
+    .hs-content-discount-add.active {visibility: visible;height: auto;}
+    .hs-add-discount{border-top:0!important;}
+    .hs-add-discount:after{display:none;}
+    .coupon-container-heading{    
+    font-size: 14px;margin-bottom-10px;
+    font-family: AvenirRegular;
+    }
+    .coupon.activecodestrip button { 
+    border: 1px solid #62bd81;
+    color: #62bd81; 
+}
+    button.applycode-trigger {  font-weight: 800;  min-width: 50px;}
+    .coupontext {    display: flex;font-family:'AvenirRegular'!important;align-items: center;}
+   .dropdown-header-heading img,.coupontext span {margin:1px;margin-right:4px;}
+    .coupon-container {margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    padding: 0 0px;     
+    }
+    .customer-info {margin-bottom: 20px;}
+    .customer-info p {margin: 5px 0;font-size: 14px;}
+   .coupon.warningcodestrip  .offer-added,.coupon:not(.activecodestrip) .offer-added{display:none;}
+  .coupon.warningcodestrip .offer-code,.coupon:not(.warningcodestrip) .offer-error,.coupon:not(.warningcodestrip).activecodestrip .offer-code{display:none;}
+    .coupon {     
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }    
+    .coupon button {font-family:'AvenirRegular'!important;
+      border-radius:4px;
+       background-color: #ffffff; 
+      border:1px solid #FF805A;      
+      color:#FF805A;font-size:10px;     
+      padding: 5px 5px;
+      cursor: pointer;
+    }
+    .dropdown-header {
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;    
+      margin-bottom: 10px;
+    }
+    span.dropdown-header-heading {font-family:'AvenirRegular'!important; display: flex;align-items: center;}
+    .dropdown-header-heading img{object-fit:contain;max-width: 18px;max-height: 18px;}
+    .dropdown-header .dropdown-arrow { transform:rotate(0deg); transition: transform 0.3s ease;}
+    .dropdown-header.active .dropdown-arrow {transform: rotate(180deg);}
+    .dropdown-content {display: none;flex-direction: column;}
+    .dropdown-content.active { display: flex;}
+    .coupon-input {margin-top: 20px;}
+    .hidden {display: none;}
+    .visible { display: inline-block;}
+
+</style>
+<div id="discount-grid-drawer" class="coupon-container"> 
+{% if settings.discount-title!= blank %}<span class="coupon-container-heading">{{ settings.discount-title }}</span>{% endif %}
+
+<div class="cart-sidebar-discount">
+  <span id="applied-discount-code">
+  
+  
+    <span class="applied-discount-code-wrapper">
+      {% render 'discount-tag-icon' %}
+      <span class="applied-discount-code-value"></span>
+      <button id="clear-discount-btn">X</button>
+    </span>
+  </span>
+  <small id="discount-code-error"></small>
+  <div class="dis-inputs-fields">
+  <input type="text" id="discount-code-input" autocomplete="on" value="" placeholder="Enter Discount Code">
+  <button id="apply-discount-btn">Apply</button>
+  </div>
+  {% if settings.discount-note!= blank %}<span class="coupon-container-heading">{{ settings.discount-note }}</span>{% endif %}
+</div>
+   
+  </div>
+ 
+
+<script>
+  //
+ var shopcurrency = '{{ shop.currency }}';
+  if (shopcurrency === 'INR') {
+      shopcurrency = '₹';
+  }
+
+  //
+document.addEventListener("DOMContentLoaded", function(event) { 
+  let clearBtn = document.querySelector("#clear-discount-btn");
+  let applyBtn = document.querySelector("#apply-discount-btn");
+  let discountCodeError = document.querySelector("#discount-code-error");
+  let discountCodeWrapper = document.querySelector("#applied-discount-code .applied-discount-code-wrapper");
+  let discountCodeValue = document.querySelector("#applied-discount-code .applied-discount-code-value");
+  let discountCodeInput = document.querySelector("#discount-code-input");
+  let totalCartSelector = document.querySelector(".tt-cart-total-price"); // Total Cart Selector to update the total amount. 
+  let authorization_token;
+  
+  let checkoutContainer = document.createElement('div');
+  document.body.appendChild(checkoutContainer);
+
+  if (localStorage.discountCode) applyDiscount( JSON.parse(localStorage.discountCode).code);
+  if(applyBtn)
+  applyBtn.addEventListener("click", function(e){
+    e.preventDefault()
+    applyDiscount(discountCodeInput.value.trim());    
+  });
+
+  if(clearBtn)
+  clearBtn.addEventListener("click", function(e){
+    e.preventDefault()
+    clearDiscount();   
+  });
+
+  function clearDiscount() {
+    discountCodeValue.innerHTML = "";
+    discountCodeError.innerHTML = "";
+    clearLocalStorage();
+    fetch("/discount/CLEAR");
+  }
+
+  function clearLocalStorage() {
+    if(discountCodeWrapper) discountCodeWrapper.style.display = "none";
+    if(totalCartSelector) totalCartSelector.innerHTML = JSON.parse(localStorage.discountCode).totalCart;
+    localStorage.removeItem("discountCode");
+  }
+//
+  //
+  function applyDiscount(code) {
+     //
+    if(applyBtn) {
+      applyBtn.innerHTML = "APPLYING <div class='loader'></div>";
+      applyBtn.style.pointerEvents = "none";
+    }
+    fetch("/payments/config", {"method": "GET"})
+    .then(function(response) { return response.json() })
+    .then(function(data) {
+        const checkout_json_url = '/wallets/checkouts/';
+        authorization_token = btoa(data.paymentInstruments.accessToken)
+        fetch('/cart.js', {}).then(function(res){return res.json();})
+        .then(function(data){
+
+        let body = {"checkout": { "country": Shopify.country,"discount_code": code,"line_items": data.items, 'presentment_currency': Shopify.currency.active } }
+        fetch(checkout_json_url, {
+          "headers": {
+            "accept": "*/*", "cache-control": "no-cache",
+            "authorization": "Basic " + authorization_token,
+            "content-type": "application/json, text/javascript",
+            "pragma": "no-cache", "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors", "sec-fetch-site": "same-origin"
+          },
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          "method": "POST", "mode": "cors", "credentials": "include",
+          "body": JSON.stringify(body)
+      })
+      .then(function(response) { return response.json() })
+      .then(function(data) {
+        console.log(data.checkout);
+        if(data.checkout && data.checkout.applied_discounts.length > 0){
+          let discountApplyUrl = "/discount/"+code+"?v="+Date.now()+"&redirect=/checkout/";
+          fetch(discountApplyUrl, {}).then(function(response) { return response.text(); })
+          if(discountCodeWrapper) discountCodeWrapper.style.display = "flex";
+          if(discountCodeError) discountCodeError.innerHTML = "";
+          if(discountCodeValue) discountCodeValue.innerHTML = data.checkout.applied_discounts[0].title + " (" + data.checkout.applied_discounts[0].amount + ' ' + Shopify.currency.active + ")";
+          let localStorageValue = {
+            'code': code.trim(),
+            'totalCart': data.checkout.total_line_items_price
+          };
+          localStorage.setItem("discountCode", JSON.stringify(localStorageValue));
+          if(totalCartSelector) totalCartSelector.innerHTML = "<s>" +shopcurrency + data.checkout.total_line_items_price + "</s>" +shopcurrency + data.checkout.total_price;
+           //
+           let appliedCodeTitle = data.checkout.applied_discounts[0].title.trim(); // Get the trimmed discount title
+           let inputCode =code.trim(); // input trimmed values
+           // successDiscount(inputCode, appliedCodeTitle);
+          //
+           displayAppliedDiscount(code, appliedDiscount.amount, appliedDiscount.title);
+        }else{
+          //
+          let inputCode = code.trim(); // input trimmed values
+          // warningDiscount(inputCode);
+          //
+          if(discountCodeValue) discountCodeValue.innerHTML = "";
+          clearLocalStorage();
+          if(discountCodeError) discountCodeError.innerHTML = "Please Enter Valid Coupon Code."
+        }
+      }).finally(function(params) {
+        if(applyBtn){
+          applyBtn.innerHTML = "APPLY";
+          applyBtn.style.pointerEvents = "all";
+        }
+    });
+    });
+  });
+} 
+
+  //onloade
+
+  
+});
+
+//
+  function checkDiscountCode() {
+      let discountCodeError = document.querySelector("#discount-code-error");
+  let discountCodeWrapper = document.querySelector("#applied-discount-code .applied-discount-code-wrapper");
+  let discountCodeValue = document.querySelector("#applied-discount-code .applied-discount-code-value");
+  let discountCodeInput = document.querySelector("#discount-code-input");
+  let totalCartSelector = document.querySelector(".tt-cart-total-price");
+  // Fetch the checkout data to check applied discounts
+  fetch('/cart.js', {})
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(data) {
+      // Check if there are items and if they have discount allocations
+      if (data && data.items && data.items.length > 0) {
+        data.items.forEach(function(item) {
+          // Check if line_level_discount_allocations exists
+          if (item.line_level_discount_allocations && item.line_level_discount_allocations.length > 0) {
+            // Loop through each discount allocation for the item
+            item.line_level_discount_allocations.forEach(function(discountAllocation) {
+              if (discountAllocation.discount_application) {
+                // Extract and log the discount title and value
+                  //
+                   let appliedCodeTitle =discountAllocation.discount_application.title.trim(); // Get the trimmed discount title                   
+                   // successDiscount(appliedCodeTitle);
+                  //              
+                console.log("Discount Title: " + discountAllocation.discount_application.title);
+               console.log("Discount Value: " + discountAllocation.discount_application.value + '%');
+                 if(discountCodeValue) discountCodeValue.innerHTML =appliedCodeTitle;// Assuming it's percentage-based
+              }
+            });
+          }else{          
+              if(discountCodeWrapper) discountCodeWrapper.style.display = "none";
+          } 
+        });
+      } else {
+        console.log("No items found in the cart.");
+      }
+    })
+    .catch(function(error) {
+      console.error("Error checking applied discount:", error);
+    });
+  }
+checkDiscountCode();
+
+
+</script>

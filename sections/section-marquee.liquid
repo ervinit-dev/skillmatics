@@ -1,23 +1,17 @@
-{{ 'section-marquee.css' | asset_url | stylesheet_tag }}
+{{ 'section-marquee.css' | asset_url | stylesheet_tag: preload: true}}
 <style>
     #shopify-section-{{section.id}} .marquee-scroll{
     background-color: {{section.settings.sectionbg}};
   }
 </style>
-
-
-      <div class="marquee-scroll aano_bar  gradient" role="region" aria-label="maruee tab"  style=" margin-bottom: {{ section.settings.margin_bottom_anb }}px; margin-top: {{ section.settings.margin_top_anb }}px; background-color: {{ section.settings.anno_color }};">
-      
-       
-              <div class="page-width marquee enable-animation marquee--hover-pause">
-
+ <div class="marquee-scroll aano_bar  gradient" role="region" aria-label="maruee tab"  style=" margin-bottom: {{ section.settings.margin_bottom_anb }}px; margin-top: {{ section.settings.margin_top_anb }}px; background-color: {{ section.settings.anno_color }};">
+<div class="page-width marquee enable-animation marquee--hover-pause">
   <ul style="list-style: none" class="custommarque marquee__content hura-message">         
       {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}{%- assign item = block.settings -%}   
          {% if block.settings.text1 != blank %}  <li><span>{% render 'marqueeStar' %}{{ block.settings.text1 }}</span></li> {% endif %}   
        {%- endfor -%}
         {%- endif -%}
-
   </ul>    
    <ul style="list-style: none" class="custommarque marquee__content hura-message">
       {%- if section.blocks.size > 0 -%}
@@ -25,14 +19,9 @@
          {% if block.settings.text1 != blank %}  <li><span>{% render 'marqueeStar' %}{{ block.settings.text1 }}</span></li> {% endif %}   
        {%- endfor -%}
         {%- endif -%}   
-   
-
   </ul> 
-
-              </div>
-
- 
-      </div>
+</div> 
+</div>
 
 {% schema %}
   {

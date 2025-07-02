@@ -15,14 +15,29 @@
           <h4 class="faq-tittle tt-tittle">{{ item.title}} </h4>
           <div class="section-faq">     
           
-         <div class="accordion faq_question que-tab">{{ item.que}}           
+         <div class="faq_question que-tab">{{ item.que}}           
          <span class="acc-plus">+</span> <span class="acc-minus">-</span>
          </div>
-          <div class="panel faq_answer">{{ item.ans }}</div>  
+          <div class="faq_answers">{{ item.ans }}</div>  
           
         </div>
           {%- endfor -%}{%- endif -%}
       </div></div></div></div>
+
+
+<script>
+    // Select all elements with the class 'section-faq'
+const faqSections = document.querySelectorAll('.section-faq');
+
+// Loop through each element and add an event listener
+faqSections.forEach(function(faqSection) {
+  faqSection.addEventListener('click', function() {
+    // Toggle the 'active' class on the clicked element
+    faqSection.classList.toggle('active');
+  });
+});
+
+</script>
 
 {% schema %}
   {

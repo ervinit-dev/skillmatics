@@ -1,49 +1,57 @@
-@font-face {
+
+<!-- Font Face Declarations -->
+/*@font-face {
   font-family: “Mikado Regular”;
   src: url(‘{{ “Mikado Regular.woff” | asset_url }}’) format(“woff”);
+  font-display: swap;
 }
 @font-face {
 
   font-family: “Mikado Medium”;
   src: url(‘{{ “Mikado Medium.woff” | asset_url }}’) format(“woff”);
+  font-display: swap;
 }
 @font-face {
 
   font-family: “Mikado Bold”;
   src: url(‘{{ “Mikado Bold.woff” | asset_url }}’) format(“woff”);
-}
+  font-display: swap;
+}*/
 @font-face {
   font-family: 'MikadoRegular';
   src: url('https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Mikado_Regular_1659192319726.woff2') format('woff2');  
   font-style: normal;
+  font-display: swap;
   }
 
 @font-face {
   font-family: 'MikadoMedium';
   src: url('https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Mikado_Medium_1659192335331.woff2') format('woff2');  
   font-style: normal;
+  font-display: swap;
   }
-
 @font-face {
   font-family: 'MikadoBold';
   src: url('https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Mikado_Bold_1659192356095.woff2') format('woff2');  
   font-style: normal;
+  font-display: swap;
   }
 
 @font-face {
   font-family: 'AvenirRegular';
   src: url('https://cdn.shopify.com/s/files/1/0586/8149/1647/files/AvenirLTStd-Book.woff') format('woff');  
   font-style: normal;
+  font-display: swap;
   }
-
 @font-face {
   font-family: 'AvenirMedium';
   src: url('https://cdn.shopify.com/s/files/1/0586/8149/1647/files/AvenirLTStd-Medium.woff') format('woff');  
   font-style: normal;
+  font-display: swap;
   }
-
 @font-face {
   font-family: 'AvenirBold';
   src: url('https://cdn.shopify.com/s/files/1/0586/8149/1647/files/AvenirLTStd-Heavy.woff') format('woff');  
   font-style: normal;
+  font-display: swap;
   }

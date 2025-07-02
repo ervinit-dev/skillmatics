@@ -20,7 +20,7 @@
 {% elsif request.page_type == 'article' %}
   {%- assign og_title = article.title | strip_html -%}
   {%- assign og_type = 'article' -%}
-  {%- assign og_description = article.excerpt_or_content | strip_html -%}
+  {%- assign og_description = page_description | strip_html |   -%}
   {% if article.image %}
     {%- capture og_image_tags -%}<meta property="og:image" content="http:{{ article.image | img_url: '1200x1200' }}">{%- endcapture -%}
     {%- capture og_image_secure_url_tags -%}<meta property="og:image:secure_url" content="https:{{ article.image | img_url: '1200x1200' }}">{%- endcapture -%}
@@ -42,7 +42,7 @@
 
 <meta property="og:site_name" content="{{ shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
-<meta property="og:title" content="{{ og_title }}">
+<meta property="og:title" content="{{ page_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description }}">
 {% if request.page_type == 'product' %}
@@ -56,5 +56,5 @@
   <meta name="twitter:site" content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
 {% endunless %}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:title" content="{{ page_title | escape }}">
 <meta name="twitter:description" content="{{ og_description }}">

@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="sitemap">
+    <div class="flex-container">
+      <!-- Pages -->
+      <h2>Pages</h2>
+      <ul>
+        {% for page in pages %}
+          <li>
+            <a href="{{ page.url }}">{{ page.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="flex-container">
+      <!-- Products -->
+      <h2>Products</h2>
+      <ul>
+        {% paginate collections.all.products by 500 %}
+          {% for product in collections.all.products %}
+            <li>
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </li>
+          {% endfor %}
+        {% endpaginate %}
+      </ul>
+    </div>
+
+    <div class="flex-container">
+      <!-- Collections -->
+      <h2>Collections</h2>
+      <ul>
+        {% for collection in collections %}
+          <li>
+            <a href="{{ collection.url }}">{{ collection.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    max-width: 100%;
+    padding: 0 4rem;
+  }
+  .sitemap {
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width: 890px) {
+    .container {
+      padding: 0 1rem;
+    }
+    .sitemap {
+          flex-direction: column;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Sitemap",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "fullwidth",
+      "label": "Fullwidth Container",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Sitemap",
+      "category": "Simple Section",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

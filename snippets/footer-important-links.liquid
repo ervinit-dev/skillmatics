@@ -1,0 +1,268 @@
+<style>
+          /*start styles*/
+          .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+          }
+.accordion__item .footer-btn-tab {
+    padding: 0 !important;
+}
+          .accordion__item {
+            border-radius: 10px;
+            overflow: hidden;
+          }
+
+          .accordion__header p {
+            font-weight: 700 !important;
+            cursor: pointer;
+            position: relative;
+            margin: 0 !important;
+            font-size: 16px !important;
+            padding: 10px 0 !important
+          }
+
+          .accordion__header.active {
+            background: #e5f3fa;
+          }
+
+          .accordion__header.active::after {
+            transform: rotateX(180deg);
+          }
+
+          .accordion__item .accordion__content {
+            max-height: 0;
+            transition: .5s;
+            overflow: hidden;
+          }
+          h4 {
+            padding-bottom: 0px !important;
+            padding-top: 20px !important;
+
+          }
+          .imp-links {
+            padding-bottom: 0 !important;
+          }
+          .imp-links .accordion {
+            border-bottom: 1px solid #06374f;
+          }
+          .imp-links .tt-collapse-block.footer-btn-tab {
+            border: none;
+        }
+        .imp-links p {
+          margin-top: 0;
+          font-size: 15px;
+          margin-bottom: 20px;
+          color: #06374f;
+          font-weight: 500;
+      }
+      .accordion__header.active img {
+        transform: rotate(180deg);
+    }
+    .imp-links p a {
+      text-decoration: underline;
+  }
+  .tt-collapse-block.footer-btn-tab {
+    font-family: "AvenirRegular" !important;
+  }
+        @media (max-width: 650px) {
+          .imp-links p {
+            font-size: 15px;
+          }
+        }
+  .accordion__header .tt-collapse-title:before {
+    display:none !important;
+  }
+  {% if template.name contains 'index' or template.name contains 'collection' or template.name contains 'page' %}
+    .imp-links .accordion {
+    border-top: none;
+    }
+  {% else %}
+   .imp-links .accordion {
+    border-top: 1px solid #06374f;
+    }
+  {% endif %}
+</style>
+<div class="{% if count == 1 %}tt-footer-center{% else %}tt-footer-col{% endif %} tt-color-scheme-03 imp-links">
+  <div class="{{ template.name  }} container{% if item.fullwidth %}-fluid-custom-mobile-padding container-fluid-custom{% endif %}">
+    <div class="accordion">
+      <div class="accordion__item">
+        <div class="tt-collapse-block footer-btn-tab">
+          <div class="accordion__header" data-toggle="#faq1">
+            <p class="tt-collapse-title">Important links
+            <img
+              src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555"
+              class="accordian-icon"
+              alt="chevron-up"
+              width="30px"
+              height="30px"
+              loading="lazy"
+            ></p>
+          </div>
+          <div class="accordion__content" id="faq1">
+            <h4><b>Kids Gifts</b></h4>
+            <p>
+              <a href="https://www.skillmatics.in/collections/gifts-for-infants" target="_blank">Gift For Infants</a> |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-kids" target="_blank"
+                >Gifts For Kids</a
+              >
+              |
+              <a href="https://www.skillmatics.in/pages/return-gifts-for-kids" target="_blank"
+                >Kids Party Return Gifts</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/rakhi-gifts-for-kids" target="_blank"
+                >Rakhi Gifts For Kids</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/unicorn-themed-gifts-for-kids" target="_blank"
+                >Unicorn Gifts </a
+              >|
+              <a href="https://www.skillmatics.in/collections/gifts-for-students" target="_blank">Gift For Students</a>
+              |
+              <a href="https://www.skillmatics.in/collections/christmas-gifts-for-kids" target="_blank"
+                >Christmas Gifts For Kids</a
+              >
+            </p>
+            <h4><strong>Age Appropriate Gifts For Kids</strong></h4>
+            <p>
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-1-year-old-girl" target="_blank"
+                >Gift For 1 Year Baby Girl</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-1-year-old-boy" target="_blank"
+                >Gifts For 1 Year Old Boy</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-2-year-old-girl" target="_blank"
+                >Gift For 2 Year Girl</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-2-year-old-boy" target="_blank"
+                >Gift For 2 Years Boy</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-3-year-old-girl" target="_blank"
+                >Gift For 3 Year Girl</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-3-year-old-boy" target="_blank"
+                >Gifts For 3 Year Old Boy</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-4-year-old-girl" target="_blank"
+                >Gifts For 4 Year Girl</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gift-for-4-year-old-boy" target="_blank"
+                >Gifts For 4 Year Old Boy</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-5-year-old-girl" target="_blank"
+                >Gift For 5 Year Girl</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-5-year-old-boy" target="_blank"
+                >Gifts For 5 Year Old Boys</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-6-year-old-girl" target="_blank"
+                >Gift For 6 Year Girl</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-6-year-old-boys" target="_blank"
+                >Gifts For 6 Year Old Boy</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-7-year-old-girl" target="_blank"
+                >Gifts For 7 Year Old Girls</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/birthday-gifts-for-7-year-old-boys" target="_blank"
+                >Gifts For 7 Year Old Boys</a
+              >
+            </p>
+            <h4><strong>Age-Appropriate Educational Toys</strong><br></h4>
+            <p>
+              <a href="https://www.skillmatics.in/collections/our-products-for-ages-0-3" target="_blank"
+                >Educational Toys For 0-3 Year Olds</a
+              >
+              |
+              <a href="https://www.skillmatics.in/collections/3-6-years" target="_blank"
+                >Learning Toys for 3-6 Year Olds</a
+              >|
+              <a href="https://www.skillmatics.in/collections/6-9-years" target="_blank"
+                >Educational Toys For 6-9 Year Kids</a
+              >|
+              <a href="https://www.skillmatics.in/collections/8-13-years" target="_blank"
+                >Learning Games for 8-13 Year Olds</a
+              >
+            </p>
+            <h4><strong>Shop By Category:</strong></h4>
+            <p>
+              <a href="https://www.skillmatics.in/collections/foil-fun" target="_blank">Foil Art Kit For Kids</a> |
+              <a href="https://www.skillmatics.in/collections/arts-crafts" target="_blank">Arts And Crafts Kits</a> |
+              <a href="https://www.skillmatics.in/collections/stem-toys" target="_blank">STEM Learning Toys</a> |
+              <a href="https://www.skillmatics.in/collections/board-games" target="_blank">Learning Board Games</a> |
+              <a href="https://www.skillmatics.in/collections/card-board-games" target="_blank">Card Games For Kids</a>|
+              <a href="ttps://www.skillmatics.in/collections/piece-and-play " target="_blank">Floor Puzzles for Kids</a> |
+              <a href="https://www.skillmatics.in/collections/infant-cloth-books " target="_blank">Infant Cloth Books</a>
+              
+            </p>
+            <h4><strong>Popular Products</strong></h4>
+            <p>
+              <a
+                href="https://www.skillmatics.in/products/peek-a-boo-jungle-theme-interactive-soft-cloth-book-ages-6-months"
+                target="_blank"
+                >Jungle Animal Cloth Book</a
+              >
+              |
+              <a href="https://www.skillmatics.in/products/flash-cards-high-contrast" target="_blank"
+                >Infant Flashcards</a
+              >
+              |
+              <a href="https://www.skillmatics.in/products/foil-fun-unicorns-princesses-no-mess-art-kit" target="_blank"
+                >Unicorn Foil Art Kit</a
+              >
+              |
+              <a
+                href="https://www.skillmatics.in/products/piece-play-amazing-animals-floor-puzzle-game-ages-3-7"
+                target="_blank"
+                >Animal Puzzle For Kids</a
+              >
+              |
+              <a href="https://www.skillmatics.in/products/quiet-book-sensory-activity-book-ages-1" target="_blank"
+                >Infant Sensory Books</a
+              >
+              |
+              <a
+                href="https://www.skillmatics.in/products/foil-fun-solar-system-no-mess-art-kit-ages-4-12"
+                target="_blank"
+                >Solar System Art Project</a
+              >
+              |
+              <a href="https://www.skillmatics.in/products/snip-snip-art-craft-activity-kit-ages-3-7" target="_blank"
+                >Scissor Activity Book</a
+              >
+              |
+              <a
+                href="https://www.skillmatics.in/products/marbling-magic-paint-kit-water-marbling-kit-ages-6-12"
+                target="_blank"
+                >Marbling Magic Paint Kit</a
+              >
+              |
+              <a
+                href="https://www.skillmatics.in/products/tangram-twist-amazing-animals-no-mess-sticker-art-ages-4-7"
+                target="_blank"
+                >Amazing Animal Tangram Puzzles</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ "footer-imp-accordion.js" | asset_url }}" defer></script>

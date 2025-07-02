@@ -1,104 +1,206 @@
 <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
 <style>
-  p.tab-des-title { font-size: 24px;}
-.read-more {
-  color: #007bff; /* Adjust the color as needed */
-  cursor: pointer;
-}
-.read-more:hover {
-  text-decoration: underline;
-}
- .hidden {
-  display: none;
-} 
-  #shopify-section-{{section.id}}.index-section{
-    background-color: {{section.settings.bgcolor}};
-    background-repeat: no-repeat;
-background-size: cover;background-position: center;
+    p.tab-des-title { font-size: 20px;}
+  .read-more {
+    color: #3980c3; /* Adjust the color as needed */
+    cursor: pointer;
   }
-  {% if section.settings.bg-desktop %}
-      @media (min-width: 768px) {
-     #shopify-section-{{section.id}}.index-section{
-    background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+  .read-more:hover {
+    text-decoration: underline;
   }
+   .hidden {
+    display: none;
+  }
+    .tab-desc-hide {
+    display: none;
+  }
+  #short-description, .pdp-tab-content li{
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .pdp-tab-content ul li span {
+    color: #06374f !important;
+  }
+    #shopify-section-{{section.id}}.index-section{
+      background-color: {{section.settings.bgcolor}};
+      background-repeat: no-repeat;
+  background-size: cover;background-position: center;
     }
-    {% endif %}
-    {% if section.settings.bg-mobile %}
-      @media (max-width: 767px) {
-     #shopify-section-{{section.id}}.index-section{
-     background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
-  }
-         p.tab-des-title {  font-size: 18px;}
+    {% if section.settings.bg-desktop %}
+        @media (min-width: 768px) {
+       #shopify-section-{{section.id}}.index-section{
+      background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
     }
-    {% endif %}
-    
+      }
+      {% endif %}
+      {% if section.settings.bg-mobile %}
+        @media (max-width: 767px) {
+       #shopify-section-{{section.id}}.index-section{
+       background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+    }
+           p.tab-des-title {  font-size: 18px;}
+      }
+      {% endif %}
+  .read-less-dessc,.read-more-dessc {
+    display: none;
+  }
+  #shopify-section-{{section.id}} {
+    padding: 30px 0 !important;
+  }
 </style>
 {%- assign item = section.settings -%}
-  {%- if product.metafields.pdp.description.value != blank -%}
-<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent" data-sectionname="index_horizontaltabs" data-respjs="index_sectiontabs">
- 
-  <div class="container{% if item.fullwidth %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding">
-    <div class="row">
-      <div class="desktop-only col-img col-md-6 respimgsize">
-        {%- if item.image != blank -%}
-          <img class="lazyload"
-               data-mainimage="{{ item.image | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
-               alt="{{ item.image.alt }}">
+{%- if product.metafields.custom.single_sku_pdp_description.value != blank -%}
+  <div
+    class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent"
+    data-sectionname="index_horizontaltabs"
+    data-respjs="index_sectiontabs"
+  >
+    <div class="container{% if item.fullwidth %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding">
+      <div class="row">
+        <div class="desktop-only col-img col-md-6 respimgsize 1">
+          {%- if item.image != blank -%}
+            <img id="skill_pdp_pd2_img_01"
+              class="tab-img"
+              data-mainimage="{{ item.image | img_url: '100x100' | replace: '100x100', 'respimgsize' }}" loading="lazy"
+              alt="{{ item.image.alt }}"
+            
+            >
           {%- endif -%}
-      </div>
-      <div class="col-description col-md-6 text-left">
-   
-
-      <ul class="pdp-nav-tabs nav nav-tabs tt-tabs-default" role="tablist">
-        {%- for block in section.blocks -%}
-        <li class="pdp-nav-item nav-item" aria-label="tablist-div" role="tab" >
-          <a href="#{{ section.id }}{{ forloop.index }}"  aria-controls="{{ section.id }}{{ forloop.index }}" class="pdp-nav-link nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" >{{ block.settings.tab_name }}</a>
-        </li>
-        {%- endfor -%}
-      </ul>
-
-      <div class="tab-content">
-        {%- for block in section.blocks -%}
-        {%- assign name_collection = block.settings.collection -%}
-        {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
-        {%- assign collection = collections[name_collection] -%}
-        <div id="{{ section.id }}{{ forloop.index }}"  aria-labelledby="tab-{{ section.id }}{{ forloop.index }}"  class="tab-pane{% if forloop.first %} active{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
-          {%- if block.type == 'item2' -%}
-        <div class="pdp-tab-content">{{  block.settings.tab_content }}
-            {%- if product.metafields.pdp.product_size.value != blank -%}
-          <p class="tab-des-title tt-title">Product details</p>
-         {{ product.metafields.pdp.product_size.value }}{% endif %}
         </div>
-          
-          {%- else -%}
-           {%- if product.metafields.pdp.description.value != blank  or product.metafields.pdp.whats_included.value != blank -%}
-          <div class="pdp-tab-content">       
-           <div id="custom-product-description" class="pdp-description">
-             <p class="tab-des-title tt-title"> Description</p>
-              <div id="short-description"> {{ product.metafields.pdp.description.value | truncate: 400}}</div>
-              <div id="full-description" class="hidden">{{product.metafields.pdp.description.value }}</div>
-              <a href="#" id="toggle-description" class="read-more">Read more</a>
-            </div>
-            {%- if product.metafields.pdp.whats_included.value != blank -%}  <p class="tab-des-title tt-title"> What’s Inside</p>{%- endif -%}
-            {{ product.metafields.pdp.whats_included.value }}
+        <div class="col-description col-md-6 text-left">
+          <ul class="pdp-nav-tabs nav nav-tabs tt-tabs-default" role="tablist">
+            {%- for block in section.blocks -%}
+              <li class="pdp-nav-item nav-item tab-desc-{% if block.settings.tab_name contains 'FAQ' and product.metafields.custom.faq_questions.value == blank %}hide{% endif %} " id="skill_pdp_pd2_tab_0{{ forloop.index }}" aria-label="tablist-div" role="tab">
+                <a
+                  href="#{{ section.id }}{{ forloop.index }}"
+                  aria-controls="{{ section.id }}{{ forloop.index }}"
+                  class="pdp-nav-link nav-link{% if forloop.first %} active{% endif %}"
+                  data-toggle="tab"
+                >
+                  {{- block.settings.tab_name -}}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+          <div class="tab-content">
+            {%- for block in section.blocks -%}
+              {%- assign name_collection = block.settings.collection -%}
+              {%- if name_collection == blank -%}{%- assign name_collection = 'all' -%}{%- endif -%}
+              {%- assign collection = collections[name_collection] -%}
+              <div
+                id="{{ section.id }}{{ forloop.index }}"
+                aria-labelledby="tab-{{ section.id }}{{ forloop.index }}"
+                class="tab-pane{% if forloop.first %} active{% endif %}"
+                role="tabpanel"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.type == 'item2' -%}
+                  <div class="pdp-tab-content">
+                    {{ block.settings.tab_content }}
+                  </div>
+                {% elsif block.type == 'item3' %}
+                  <div class="faq-wrapper tab-desc-{% if block.settings.tab_name contains 'FAQ' and product.metafields.custom.faq_questions.value == blank %}hide {% endif %}">
+                    {% assign questions = product.metafields.custom.faq_questions.value %}
+                    {% assign answers = product.metafields.custom.faq_answers.value %}
+                    
+                    {% for i in (0..questions.size) %}
+                      {% if i == 0 %}
+                        <div class="faq-item-1 faq-div Active">
+                          <h4>
+                            {{ questions[i] }}
+                            <span class="plus-sign"><i class="fa-solid fa-plus"></i></span>
+                            <span class="minus-sign"><i class="fa-solid fa-minus"></i></span>
+                          </h4>
+                          <p>{{ answers[i] }}</p>
+                        </div>
+                      {% elsif i == 1 %}
+                        <div class="faq-item-2 faq-div">
+                          <h4>
+                            {{ questions[i] }}
+                            <span class="plus-sign"><i class="fa-solid fa-plus"></i></span>
+                            <span class="minus-sign"><i class="fa-solid fa-minus"></i></span>
+                          </h4>
+                          <p>{{ answers[i] }}</p>
+                        </div>
+                      {% elsif i == 2 %}
+                        <div class="faq-item-3 faq-div">
+                          <h4>
+                            {{ questions[i] }}
+                            <span class="plus-sign"><i class="fa-solid fa-plus"></i></span>
+                            <span class="minus-sign"><i class="fa-solid fa-minus"></i></span>
+                          </h4>
+                          <p>{{ answers[i] }}</p>
+                        </div>
+                      {% elsif i == 3 %}
+                        <div class="faq-item-4 faq-div">
+                          <h4>
+                            {{ questions[i] }}
+                            <span class="plus-sign"><i class="fa-solid fa-plus"></i></span>
+                            <span class="minus-sign"><i class="fa-solid fa-minus"></i></span>
+                          </h4>
+                          <p>{{ answers[i] }}</p>
+                        </div>
+                      {% elsif i == 4 %}
+                        <div class="faq-item-5 faq-div">
+                          <h4>
+                            {{ questions[i] }}
+                            <span class="plus-sign"><i class="fa-solid fa-plus"></i></span>
+                            <span class="minus-sign"><i class="fa-solid fa-minus"></i></span>
+                          </h4>
+                          <p>{{ answers[i] }}</p>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {%- else -%}
+                  {%- if product.metafields.custom.single_sku_pdp_description.value != blank
+                    or product.metafields.pdp.whats_included.value != blank
+                  -%}
+                    <div class="pdp-tab-content">
+                      <div id="custom-product-description" class="pdp-description">
+                        <p class="tab-des-title tt-title">Description</p>
+                     {%- if product.metafields.custom.single_sku_pdp_description.value.size > 400 -%}
+                        <div id="short-description">{{ product.metafields.custom.single_sku_pdp_description.value | truncate: 250 }}</div>
+                        <div id="full-description" class="hidden">{{ product.metafields.custom.single_sku_pdp_description.value }}</div>
+                        <a href="#" id="toggle-description" class="read-more">Read more</a>
+                        {% else %} 
+                        <div id="full-description" class="wholedesc">{{ product.metafields.custom.single_sku_pdp_description.value }}</div>
+                       {%- endif -%}
+                      </div>
+                      {%- if product.metafields.pdp.whats_included.value != blank -%}
+                        <p class="tab-des-title tt-title">What’s Inside</p>
+                      {%- endif -%}
+                      {{ product.metafields.pdp.whats_included.value }}
+                      {%- if product.metafields.pdp.product_size.value != blank -%}
+                        <p class="tab-des-title tt-title">Product details</p>
+                        {{- product.metafields.pdp.product_size.value -}}
+                      {%- endif %}
+                    </div>
+                  {% endif %}
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
           </div>
-          {% endif %}
-          {%- endif -%}
         </div>
-        {%- endfor -%}
-      </div>
       </div>
     </div>
-  
   </div>
-</div>
- {%- endif -%}
+{%- endif -%}
+<script>
+  $('.faq-div').map(function(){
+    $(this).click(function(){
+      $(this).toggleClass('Active');
+    })
+  })
+</script>
+
 {% schema %}
 {
   "name": "Image with Text Tabs",
   "class": "index-section",
-  "max_blocks":2,
+  "max_blocks":4,
   "settings": [
       {
         "type": "select",
@@ -155,7 +257,7 @@ background-size: cover;background-position: center;
           "id": "image",
           "label": "Image "
         }
-     
+
   ],
   "blocks": [
     {
@@ -168,8 +270,8 @@ background-size: cover;background-position: center;
           "id": "tab_name",
           "label": "Tab Name",
           "default": "Tab"
-        }  
-         
+        }
+
       ]
     },
     {
@@ -188,8 +290,31 @@ background-size: cover;background-position: center;
           "id": "tab_content",
           "label": "Tab Content",
           "default": "<p>Tab Content</p>"
-        } 
-     
+        }
+
+      ]
+    },
+    {
+      "type": "item3",
+      "name": "FAQ",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "default": "Tab"
+        },
+        {
+          "type": "text",
+          "id": "head",
+          "label": "Enter Question"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Enter Answer"
+        }
       ]
     }
   ],
@@ -198,12 +323,6 @@ background-size: cover;background-position: center;
       "name": "Image with Text Tabs",
       "category": "Products",
       "blocks": [
-        {
-          "type": "item"
-        },
-        {
-          "type": "item"
-        },
         {
           "type": "item"
         }

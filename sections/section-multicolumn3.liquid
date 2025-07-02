@@ -15,7 +15,7 @@
   <div class="container ">
     <div class="tt-categories-listing">     
       <div class="tt-block-title">
-      <h1 class="tt-title">{{ item.text1 }}</h1>
+      <h2 class="tt-title">{{ item.text1 }}</h2>
       {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
     </div>
       <div class="row">
@@ -26,8 +26,8 @@
              
               {%- if item.image != blank -%}
               <img class="lazyload"
-                  src="{{ block.settings.image | img_url:'master'}}"                                  
-                   alt="{{ item.image.alt }}" width="100%" height="auto">
+                  src="{{ block.settings.image | img_url:'400x400'}}"                                  
+                   alt="{{ item.image.alt }}" width="100%" height="auto" srcset="{{ block.settings.image | img_url:'400x400'}}"  >
             
               {%- endif -%}
                {% if item.custom_name != ''%} <h2 class="Heading2 tt-title">{{ item.custom_name }}</h2>{% endif %}             

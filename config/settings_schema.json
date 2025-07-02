@@ -7242,6 +7242,16 @@
         "label": "Minimum Amount 2nd Coupon"
       },
       {
+        "type": "number",
+        "id": "minQunat3",
+        "label": "Minimum Qunatity 3rd Coupon"
+      },
+      {
+        "type": "number",
+        "id": "minAmount3",
+        "label": "Minimum Amount 3rd Coupon"
+      },
+      {
         "type": "collection_list",
         "id": "applicable_colls",
         "label": "Applicable Collections"
@@ -7250,38 +7260,57 @@
         "type": "checkbox",
         "id": "show_discount",
         "label": "Show Discount 1st on cart",
+        "info": "Settings to display the details below in the drawer cart.",
         "default": false
       },
       {
         "type": "text",
         "id": "coupon_name",
-        "label": "Coupon Code 1st "
+        "label": "Coupon Code 1st ",
+         "info": "Settings to display details in Promoribben by default( in the drawer cart when enabled.)"
       },
       {
         "type": "text",
         "id": "coupon_discount_sticky",
-        "label": "Coupon Discount 1st"
+        "label": "Coupon Discount 1st",
+        "info": "Settings to display details in Promoribben by default( in the drawer cart when enabled.)"
+      },
+      {
+        "type": "richtext",
+        "id": "coupon_detail1",
+          "info": "Settings to display details in the drawer cart when enabled.",
+        "label": "1st Coupon Detail"
       },
       {
         "type": "checkbox",
         "id": "show_discount2",
         "label": "Show Discount 2 on cart",
+         "info": "Settings to display the details below in the drawer cart.",
         "default": false
       },
       {
         "type": "text",
         "id": "coupon_name2",
-        "label": "2nd Coupon Code"
-      },
+        "label": "2nd Coupon Code",
+        "info": "Settings to display details in Promoribben by default( in the drawer cart when enabled.)"
+      },     
       {
         "type": "text",
         "id": "coupon_discount_sticky2",
-        "label": "2nd Coupon Discount"
+        "label": "2nd Coupon Discount",
+        "info": "Settings to display details in Promoribben by default( in the drawer cart when enabled.)"
+      },
+       {
+        "type": "richtext",
+        "id": "coupon_detail2",
+        "info": "Settings to display details in the drawer cart when enabled.",
+        "label": "2nd Coupon Detail"
       },
       {
         "type": "checkbox",
         "id": "show_discount3",
         "label": "Show Discount 3 on cart",
+         "info": "Settings to display the details below in the drawer cart.",
         "default": false
       },
       {
@@ -7290,8 +7319,15 @@
         "label": "3nd Coupon Code"
       },
       {
+        "type": "text",
+        "id": "coupon_discount_sticky3",
+        "label": "3rd Coupon Discount",
+        "info": "Settings to display details in Promoribben by default( in the drawer cart when enabled.)"
+      },
+      {
         "type": "richtext",
         "id": "coupon_detail3",
+         "info": "Settings to display details in the drawer cart when enabled.",
         "label": "3nd Coupon Detail"
       },
       {
@@ -7333,26 +7369,19 @@
         "info": "For Example :1499"
       },
       {
-        "type": "paragraph",
+        "type": "header",
         "content": "Callout 1st "
-      },
-      {
-        "type": "select",
-        "id": "callouts-show-on",
-        "label": "Show Callouts on",
-        "default": "default",
-        "info": "show call out on all collection OR specific collections only (where callout metafields are true )",
-        "options": [
-          {
-            "value": "default",
-            "label": "All Single Products"
-          },
-          {
-            "value": "specific-callouts",
-            "label": "Specific Product "
-          }
-        ]
-      },
+      }, 
+       {
+        "type": "paragraph",
+        "content": "If you're not showing a specific collection, add the single product collection handle (e.g., single-product)"
+      }, 
+         {
+        "type": "text",
+        "id": "col-handle1",
+        "label": "collection Handle 1",
+        "info": "(Add the collection handle to display the callout for a specific product within that collection.)without space -collection Handle "
+      }, 
       {
         "type": "checkbox",
         "id": "show-callout",
@@ -7361,10 +7390,10 @@
         "default": false
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "get-it-at",
         "label": "Callout start label 1st",
-        "info": "Get it at"
+        "info": "for example:Get it at"
       },
       {
         "type": "text",
@@ -7376,11 +7405,17 @@
         "type": "richtext",
         "id": "usecode",
         "label": "Callout end  label 1st",
-        "info": "Use code:"
+        "info": "for example- Use code:"
       },
       {
-        "type": "paragraph",
+        "type": "header",
         "content": "callout 2nd "
+      },
+         {
+        "type": "text",
+        "id": "col-handle2",
+        "label": "collection Handle 2",
+        "info": "(Add the collection handle to display the callout for a specific product within that collection.)without space -collection Handle "
       },
       {
         "type": "checkbox",
@@ -7390,10 +7425,10 @@
         "default": false
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "get-it-at2",
         "label": "Callout start label 2",
-        "info": "Get it at"
+        "info": "for example:Get it at"
       },
       {
         "type": "text",
@@ -7405,8 +7440,108 @@
         "type": "richtext",
         "id": "usecode2",
         "label": "Callout end  label2",
-        "info": "Use code:"
-      }
+        "info": "for example:-Use code:"
+      },
+       {
+        "type": "header",
+        "content": "callout 3rd "
+      },
+          {
+        "type": "text",
+        "id": "col-handle3",
+        "label": "collection Handle 3",
+        "info": "(Add the collection handle to display the callout for a specific product within that collection.)without space -collection Handle "
+      },
+      {
+        "type": "checkbox",
+        "id": "show-callout3",
+        "label": "Show Callouts 3",
+        "info": "Show callouts on collection and PDP page",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "get-it-at3",
+        "label": "Callout start label 3",
+        "info": "for example:Get it at"
+      },
+      {
+        "type": "text",
+        "id": "per-amt3",
+        "label": "Percentage value 3",
+        "info": "for example: 0.97(if discount id 3 % from sale price )"
+      },
+      {
+        "type": "richtext",
+        "id": "usecode3",
+        "label": "Callout end  label3",
+        "info": "for example:-Use code:"
+      },
+       {
+        "type": "header",
+        "content": "callout 4th "
+      },
+          {
+        "type": "text",
+        "id": "col-handle4",
+        "label": "collection Handle 4",
+        "info": "(Add the collection handle to display the callout for a specific product within that collection.) without space -collection Handle "
+      },
+      {
+        "type": "checkbox",
+        "id": "show-callout4",
+        "label": "Show Callouts 4",
+        "info": "Show callouts on collection and PDP page",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "get-it-at4",
+        "label": "Callout start label 4",
+        "info": "for example:Get it at"
+      },
+      {
+        "type": "text",
+        "id": "per-amt4",
+        "label": "Percentage value4",
+        "info": "for example: 0.97(if discount id 3 % from sale price )"
+      },
+      {
+        "type": "richtext",
+        "id": "usecode4",
+        "label": "Callout end  label4",
+        "info": "for example:-Use code:"
+      },
+      {
+        "type": "header",
+        "content": "callout 5th ",     
+        "info": "The callout will only be shown for a specific product. Add the conditions in the Liquid file (product-grid-item-design-1, product-grid-item-design-1-rp, product_page_tabs-2) for that product "
+      },
+      {
+        "type": "checkbox",
+        "id": "show-callout5",
+        "label": "Show Callouts 5",
+        "info": "Show callouts on collection and PDP page",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "get-it-at5",
+        "label": "Callout start label 5",
+        "info": "for example:Get it at"
+      },
+      {
+        "type": "text",
+        "id": "per-amt5",
+        "label": "Percentage value5",
+        "info": "for example: 0.97(if discount id 3 % from sale price )"
+      },
+      {
+        "type": "richtext",
+        "id": "usecode5",
+        "label": "Callout end  label5",
+        "info": "for example:-Use code:"
+      },
     ]
   },
   {
@@ -7417,21 +7552,53 @@
         "id": "cart-announcement",
         "label": "Free Gift Amount",
         "info": "For Example :1499"
+      },
+       {
+        "type": "image_picker",
+        "id": "freegifticon",
+        "label": "Progress bar Image",
+        "info": "Progress bar Image in cart ", 
+      },
+      {
+        "type": "text",
+        "id": "discount-title",
+        "label": "Discount title",
+        "default": "*Discounts are applicable on the MRP only",
+        "info": "Discount title"
+      },
+      {
+        "type": "richtext",
+        "id": "discount-note",
+        "label": "Discount Note",
+        "default": "<p>*Note: Discounts are applicable on the MRP only. Coupon codes are not valid on combos, and cannot be clubbed with other offers.<\/p>",
+        "info": "Text Below input box"
+      },
+      {
+        "type": "text",
+        "id": "recom-title",
+        "label": "Recommended title",
+        "default": "People Also bought",
+        "info": "People Also bought title"
+      },
+       {
+        "type": "collection",
+        "id": "pplrecomm",
+        "label": "Recommended product",        
+        "info": "People Also bought defult product"
       }
     ]
   },
-    {
+  {
     "name": "Additional Settings",
-    "settings": [           
-       {
+    "settings": [
+      {
         "type": "image_picker",
         "id": "pl-image",
         "label": "Placeholder Image",
-        "info": "placeholder image for product card ", 
-      }     
-     
+        "info": "placeholder image for product card "
+      }
     ]
-   },
+  },
   {
     "name": "Productcard Badge",
     "settings": [
@@ -7459,6 +7626,21 @@
         "type": "image_picker",
         "id": "selling_fast",
         "label": "Selling Fast"
+      },
+      {
+        "type": "image_picker",
+        "id": "bs_combo",
+        "label": "Best Selling Combo"
+      },
+      {
+        "type": "image_picker",
+        "id": "mess_free_play",
+        "label": "Mess Free Play"
+      },
+      {
+        "type": "image_picker",
+        "id": "perfect_gift",
+        "label": "Perfect Gift"
       }
     ]
   },

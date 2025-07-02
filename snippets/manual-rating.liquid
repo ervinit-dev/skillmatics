@@ -1,0 +1,300 @@
+<!-- if custom rating metafield is not empty -->
+{% if product.metafields.pdp.product_rating != blank %}
+  {% assign rating = product.metafields.pdp.product_rating | times: 1 %}
+  {% assign fullStars = rating | floor %}
+  {% assign decimalPart = rating | modulo: 1 %}
+  {% assign nextStar = fullStars | plus: 1 %}
+
+  <div class="custom-rating custom-card-rating">
+    <!-- rating count -->
+    {% if template == 'product' %}
+      <span class="pdp-rating-value">{{ rating }}</span>
+      <style>
+        .custom-card-rating {
+          justify-content:left;
+        }
+        .reputon-single-review:nth-child(9) {
+            display: none;
+        }
+        .cnERMY.reputon-single-review:nth-child(14) {
+            display: none;
+        }
+        .cnERMY.reputon-single-review:nth-child(18) {
+            display: none;
+        }
+        .sc-1jjedb1-0.cnERMY.reputon-single-review.reputon-card:nth-child(11) {
+            display: none;
+        }
+        .reputon-single-review:nth-child(6) {
+            display: none;
+        }
+        .reputon-single-review:nth-child(11) {
+            display: none;
+        }
+        .reputon-no-review {
+          display: none;
+      }
+        @media (max-width: 940px) {
+        .custom-rating {
+          flex-direction: row !important;
+        }
+          .custom-stars {
+            gap: 2px !important;
+          }
+          .pdp-rating-value {
+            margin-top: 1px;
+            margin-right: 2px;
+          }
+          .reviews-count {
+            margin-top: 1px;
+          }
+          }
+        
+      </style>
+    {% else %}
+      <span class="cp-rating-value"></span>
+      <style>
+        .custom-card-rating {
+          justify-content:center;
+          }
+      </style>
+    {% endif %}
+
+    <!-- rating stars -->
+    <div class="custom-stars custom-cart-rating">
+      {% if product.metafields.pdp.product_rating != blank %}
+        {% assign rating = product.metafields.pdp.product_rating | times: 1 %}
+        {% assign fullStars = rating | floor %}
+        {% assign decimalPart = rating | modulo: 1 %}
+        {% assign nextStar = fullStars | plus: 1 %}
+
+        <div class="custom-rating custom-card-rating">
+          <div class="custom-stars custom-cart-rating">
+            {% for i in (1..5) %}
+              {% assign isFullStar = false %}
+              {% assign isHalfStar = false %}
+
+              {% if i <= fullStars %}
+                {% assign isFullStar = true %}
+              {% elsif i == nextStar and decimalPart >= 0.8 %}
+                {% assign isFullStar = true %}
+              {% elsif i == nextStar and decimalPart >= 0.3 and decimalPart <= 0.7 %}
+                {% assign isHalfStar = true %}
+              {% endif %}
+
+              <svg viewBox="0 0 1792 1792" width="17" height="17" class="reputon-icon-star">
+                <!-- Star Outline -->
+                <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                  stroke="#FFCB33" stroke-width="100" fill="none"/>
+
+                {% if isFullStar %}
+                  <!-- Full Star Fill -->
+                  <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                    fill="#FFCB33"/>
+
+                {% elsif isHalfStar %}
+                  <!-- Half Star Fill -->
+                  <clipPath id="half-star-{{ i }}">
+                    <rect x="0" y="0" width="50%" height="100%" />
+                  </clipPath>
+                  <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                    fill="#FFCB33" clip-path="url(#half-star-{{ i }})"/>
+                {% endif %}
+              </svg>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if template == 'product' %}
+        <a href="#amazon-reviews">
+          <span class="reviews-count">
+            <!-- json review counts -->
+              {% assign productId = product.id | append: '' %}
+              {% assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] %}
+              
+              {% if productReviews != blank and productReviews[productId].value %}
+                {% assign jsonValue = productReviews[productId].value %}
+                {% if jsonValue.reviewsNumber > 0 %}
+                  <a href="#amazon-reviews">
+                    <span class="reviews-count">
+                      {{ jsonValue.reviewsNumber }}
+                      <u>reviews</u>
+                    </span>
+                  </a>
+                {% endif %}
+              {% endif %}
+          </span>
+        </a>
+      {% else %}
+        <span class="cp-rating-value"
+          >{% assign productId = product.id | append: '' -%}
+          {%- assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] -%}
+          {%- if productReviews != blank and productReviews[productId].value -%}
+            {%- assign jsonValue = productReviews[productId].value -%}
+            {% if jsonValue.reviewsNumber > 0 %}
+              ( {{- jsonValue.reviewsNumber -}}
+              &nbsp;reviews)
+            {% endif %}
+          {%- endif -%}
+          </span
+        >
+      {% endif %}
+    </div>
+  </div>
+
+{% else %}
+  <!-- if custom rating metafield is empty then > amazon app rating for product pages -->
+  {% if template == 'product' %}
+    <script
+      type="text/javascript"
+      src="https://cdn.amzrw.reputon.com/assets/widget.js?shop=skillmaticsindia.myshopify.com"
+      defer
+    ></script>
+    <a href="#amazon-reviews">
+      <div
+        class="reputon-amazon-reviews-widget"
+        data-theme="light"
+        data-type="stars_widget"
+        data-product-reviews="true"
+        data-alignment="center"
+      >
+        {% assign productId = product.id | append: '' -%}
+        {%- assign productReviewsMetaField = product.metafields['ReputonAmazonReviews::ProductReviews'] -%}
+        {%- if productId != '' and productReviewsMetaField != blank and productReviewsMetaField[productId] %}
+          <script>
+            window.reputonAmazonProductReviewsData = {{ productReviewsMetaField[productId] }};
+          </script>
+        {% endif %}
+      </div>
+    </a>
+    <style>
+      .reputon-reviews-count {
+        }
+    </style>
+  {% else %}
+    <!-- amazon app rating for collection pages -->
+    {% assign productId = product.id | append: '' %}
+    {% if productId != '' %}
+      {% assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] %}
+      {% if productReviews != blank and productReviews[productId].value %}
+        {% assign jsonValue = productReviews[productId].value %}
+        {% assign rating = jsonValue.rating | times: 1 %}
+        {% assign fullStars = rating | floor %}
+        {% assign decimalPart = rating | modulo: 1 %}
+        {% assign nextStar = fullStars | plus: 1 %}
+
+        <div class="custom-rating custom-card-rating {% if jsonValue.reviewsNumber == 0 %}no-review{% endif %}">
+          <div class="custom-stars">
+            {% for i in (1..5) %}
+              {% assign previous_star = i | minus: 1 %}
+
+              <svg viewBox="0 0 1792 1792" width="17" height="17" class="reputon-icon-star">
+                <!-- Outline for all stars -->
+                <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                  stroke="#FFCB33" stroke-width="100" fill="none"/>
+
+                {% if i <= fullStars %}
+                  <!-- Full Star Fill -->
+                  <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                    fill="#FFCB33"/>
+
+                {% elsif decimalPart > 0 and i == nextStar %}
+                  <!-- Half Star Fill -->
+                  <clipPath id="half-star-{{ i }}">
+                    <rect x="0" y="0" width="50%" height="100%" />
+                  </clipPath>
+                  <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                    fill="#FFCB33" clip-path="url(#half-star-{{ i }})"/>
+                {% endif %}
+              </svg>
+            {% endfor %}
+          </div>
+          <span class="pdp-review-value">({{ jsonValue.reviewsNumber }}&nbsp;reviews)</span>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {% endif %}
+{% endif %}
+
+<style>
+    .pdp-rating-value {
+    font-size: 18px;
+    font-weight: 600 !important;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1;
+    align-self: center;
+    color: #FFCB33 !important;
+}
+
+    .custom-rating {
+      display: flex;
+      gap: 6px;
+    }
+.custom-rating.custom-card-rating.no-review {
+    display: none;
+}
+    .custom-stars {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    @media (max-width: 980px) {
+      .custom-stars {
+      justify-content: center;
+      flex-wrap: wrap;
+        gap: 2px;
+        }
+      .custom-rating {
+        flex-direction: row !important;
+      gap: 3px;
+  }
+      }
+    }
+    .custom-stars > svg {
+      width: 15.7px;
+      height: 15.7px;
+    }
+
+    .reviews-count {
+      font-size: 14px;
+      color: rgb(103, 102, 103);
+      font-family: 'AvenirRegular';
+      margin-left: -4px;
+    }
+
+  @media (max-width: 940px) {
+    .reviews-count {
+      margin-left: 0px;
+    }
+  }
+  @media (max-width: 650px) {
+    .custom-stars svg {
+    width: 12px;
+    }
+    .pdp-review-value,.cp-rating-value {
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 380px) {
+    .custom-rating {
+        flex-direction: row !important;
+      gap: 3px;
+    }
+  }
+  @media (max-width: 340px) {
+    .custom-stars svg {
+      width: 10px;
+    }
+  }
+  html { scroll-behavior: smooth; }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let element = document.querySelector(".reputon-reviews-count");
+      if (element) {
+          element.innerHTML = element.innerHTML.replace(/reviews/, '<span style="text-decoration: underline;">reviews</span>');
+      }
+  });
+</script>

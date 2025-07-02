@@ -1,0 +1,42 @@
+
+{%- assign item = section.settings -%}
+<style>
+    #shopify-section-{{section.id}}.index-section{  background-color: {{section.settings.sectionbg}};} 
+  .s992232429 .cs-form-wrap label.required {text-align: left;}
+   .cs-form-parent-warp {    padding: 20px 20px 0;} 
+  @media (max-width: 767.98px) {
+  .cs-form-parent-warp {    padding: 20px 15px 0;}   
+}
+</style>
+
+<div id="section-{{ section-id }}" class="return-gift-form temp-{{ template.suffix }} ">
+  <div class="container">  
+     <div class="section-returngift-container center text-center"> 
+      <div class="cs-form-heading"><h1>Return Gifts <span>for Kids</span></h1></div>
+      <div class="cs-form-parent-warp" data-key="bbeb2287-d0de-4e07-a28f-ce43d0f0185f"></div>
+      <p class="text-center">Please note - this page is for providing personalised support for bulk orders above 5 units. If you would like to buy our products for your tiny tot please check this -<br> <a class="link" href="/collections/all-ages">Shop All</a>
+      </p><br>     
+     </div>       
+  </div>
+</div>
+ <script src="https://ecf.cirkleinc.com/public/frontend/js/form-builder-helper-v2.js" defer></script>
+{% schema %}
+{
+  "name": "Section Return gift form",
+  "class": "index-section",
+  "settings": [      
+        {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color"         
+        } 
+     
+  ],
+  "presets": [
+    {
+      "name": "Section Return gift form",
+      "category": "Simple Section"
+    }
+  ]
+}
+{% endschema %}

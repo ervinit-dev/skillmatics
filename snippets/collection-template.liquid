@@ -1,9 +1,16 @@
+<style>
+  @media (max-width: 639px) {
+    .hs-spinner { display: inline-block!important;}
+    .tt-title h1 {text-align: center;padding-bottom: 0 !important}
+    .tt-title {padding-bottom: 10px;}
+}
+</style>
 {%- assign item = settings -%}
 {%- assign item_sidebar = item.sidebar -%}
 {%- capture flip_sidebar -%}{% if item_sidebar contains "rightColumn" %} flex-sm-row-reverse{% endif %}{%- endcapture -%}
 {%- assign pagination_limit_const = settings.pagination_limit | times: 1 -%}
 
-<div class="container-indent collection-page-bg">
+<div class="container-indent collection-page-bg coll-name-{{ collection.handle }}">
   <div class="container{% if item_sidebar contains "_wide" %}-fluid-custom container-fluid-custom-mobile-padding{% endif %}">
     <div class="row{{ flip_sidebar }}">
 
@@ -21,6 +28,14 @@
 
           {%- paginate collection.products by current_pagination_limit -%}
 
+            {% if item.show_collection_title %}
+            <div class="tt-title{% if settings.toolbarsettings == 'hidetoolbaroptionslogoincenter' %} text-center{% endif %}">
+             <h1>{{ collection.title }}</h1>
+              {% if collection.metafields.custom.collection_subheading !=blank %}<p class="coll-subhead" style="font-size:14px;color: #06374F;text-align: center;font-family: 'AvenirRegular';font-size: 20px;font-style: normal;font-weight: 350;line-height: normal; padding-bottom: 20px ">{{ collection.metafields.custom.collection_subheading }}</p> 
+             {% endif %}   {% if item.show_collection_products_count %} <span class="tt-title-total listing-total-js">({{ paginate.items }})</span>{% endif %}
+            </div>
+            {% endif %}
+
           <div class="tt-filters-options{% if item_sidebar contains "hidden_closed" %} desctop-no-sidebar{% endif %}">
 
             {%- include "collection-page-toolbar" -%}
@@ -31,16 +46,24 @@
             {%- if collection.products.size > 0 -%}
                {%- assign product_counter = 0 -%}   
             {%- for product in collection.products -%}
-               {%- assign product_counter = product_counter | plus: 1 -%}
-            <div class="col-6 col-md-{% if item.products_in_column == '5' %}4{% else %}{{ item.products_in_column }}{% endif %}{% if item.products_in_column == '5' %} col-5-inrow-lg{% endif %} tt-col-item">
-              {%- include "product-grid-item" -%}
-            </div>
-                {% comment %}{% if forloop.index == 8 and collection.metafields.custom.banner_image.value !=blank %}
+               {% if product.available %}
+                 {%- assign product_counter = product_counter | plus: 1 -%}
+                  <div class="col-6 col-md-{% if item.products_in_column == '5' %}4{% else %}{{ item.products_in_column }}{% endif %}{% if item.products_in_column == '5' %} col-5-inrow-lg{% endif %} tt-col-item  coll-free-{% if product.title contains 'Free Gift' %}hidden-product{% endif %}">
+                    {%- include "product-grid-item" -%}
+                  </div>
+                  {% comment %}
+                    {% if forloop.index == 8 and collection.metafields.custom.banner_image.value !=blank %}
                       <div class="col-12">
-                   <img src="{{collection.metafields.custom.banner_image.value | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
-                  <img src="{{collection.metafields.custom.banner_image.value | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+                       <img src="{{collection.metafields.custom.banner_image.value | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+                       <img src="{{collection.metafields.custom.banner_image.value | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
                       </div>
-                  {% endif %}{% endcomment %}
+                    {% endif %}
+                  {% endcomment %}
+               {% else %}
+                 <div class=" last-item-coll col-6 col-md-{% if item.products_in_column == '5' %}4{% else %}{{ item.products_in_column }}{% endif %}{% if item.products_in_column == '5' %} col-5-inrow-lg{% endif %} tt-col-item  coll-free-{% if product.title contains 'Free Gift' %}hidden-product{% endif %}">
+                    {%- include "product-grid-item" -%}
+                  </div>
+               {% endif %}
             {%- endfor -%}
             {%- else -%}
             <div class="tt-empty-search">

@@ -1,9 +1,11 @@
-{{ 'view-similer-product.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" media="print"
+  onload="this.onload=null;this.media='all';"/>
 <link
   rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
->
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" media="print"
+  onload="this.onload=null;this.media='all';"
+/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
 <style>
   span.custom--share {
@@ -190,7 +192,17 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       });
- 
+  //slider peoplealso bought
+      $(document).ready(function(){
+        $(".people-also-bought-slider").owlCarousel({
+          items:2,
+          loop:false,
+          center:false,
+          nav:false,
+          dots:true,
+          margin: 10     
+        });
+      });
 </script>
 
 

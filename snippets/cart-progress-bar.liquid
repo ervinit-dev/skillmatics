@@ -1,11 +1,24 @@
 
-<!-- HTML -->
 <div id="cart-progress-container" data-free-amt="{{ settings.free-gift-amt }}">
-    <h3 id="cart-progress-text"></h3>
+    <span id="cart-progress-text"></span>
     <div id="progress-bar-background">
-        <div id="progress-bar-fill"></div>
+        <div id="progress-bar-fill">
+           {% if settings.freegifticon !=blank %} 
+             <img src="{{ settings.freegifticon | img_url: '32x32' }}" alt="Your Image" id="progress-bar-image"  width="30px" height="30px"/>
+             {% endif %}
+        </div>
     </div>
 </div>
 
-
-
+<style>
+  #progress-bar-background { position: relative;}
+#progress-bar-fill {position: relative;}
+#progress-bar-image {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+       width: 20px;
+    height: 20px;
+}
+</style>

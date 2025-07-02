@@ -11,6 +11,10 @@
     line-height: normal !important;
     color: #06374F;
 }
+.whatsapp_container .winner-text{
+  max-width: 680px;
+  margin: 0 auto;
+}
 .whatsapp_container {
     display: flex;
     flex-direction: row;
@@ -26,7 +30,7 @@
     .whatsapp_container {padding: 0px 0;}
     a.btn.btn-whatapp {font-size: 18px;}
     .whatsapp_container p { font-size: 14px; text-align: center; }
-    .whatsapp_container p b{font-size:16px;}
+    .whatsapp_container p b{font-size:14px;}
 }
   .whatstext{ padding: 10px;}
   </style>
@@ -34,12 +38,12 @@
   <div class="container">
 <div class="whatsapp_container">
   {% if  section.settings.img != blank %}
-  <div class="desktop-only" ><img src="{{ section.settings.img |img_url:''}}" loading="lazy" alt="WhatsApp" width="64px" height="64px">
+  <div class="desktop-only" ><img  src="{{ section.settings.img |img_url:'64x64'}}" loading="lazy" alt="WhatsApp" width="64px" height="64px" srcset="{{ section.settings.img |img_url:'64x64'}}">
   </div>{% endif %}
-  <div class="whatstext">
+  <div  id="skill_pdp_joinWA_text" class="whatstext">
   {% if section.settings.text1  != blank %}  <span class="desktop-only">{{ section.settings.text1 }}</span>  {% endif %}
   {% if section.settings.text2  != blank %}   <span class="mobile-only">{{ section.settings.text2 }}</span>{% endif %}
-   {% if section.settings.btn-link!= blank %}  <a href="{{section.settings.btn-link }}" target="_self"  class="btn  btn-whatapp">{{ section.settings.btn-text }}</a>{% endif %}
+   {% if section.settings.btn-link!= blank %}  <a href="{{section.settings.btn-link }}" target="_blank" id="skill_pdp_joinWA_cta" class="btn  btn-whatapp">{{ section.settings.btn-text }}</a>{% endif %}
   </div>
 </div>
    

@@ -1,9 +1,8 @@
-{% if item.show_collection_title %}
-<h1 class="tt-title{% if settings.toolbarsettings == 'hidetoolbaroptionslogoincenter' %} text-center{% endif %}">
-  {{ collection.title }}{% if item.show_collection_products_count %} <span class="tt-title-total listing-total-js">({{ paginate.items }})</span>{% endif %}
-</h1>
-{% endif %}
-
+{% comment %} {% if item.show_collection_title %}
+<div class="tt-title{% if settings.toolbarsettings == 'hidetoolbaroptionslogoincenter' %} text-center{% endif %}">
+ <h1>{{ collection.title }}</h1><p class="coll-subhead" style="font-size:14px;color: #06374F;text-align: center;font-family: 'AvenirRegular';font-size: 20px;font-style: normal;font-weight: 350;line-height: normal;">{{ collection.metafields.custom.collection_subheading }}</p> {% if item.show_collection_products_count %} <span class="tt-title-total listing-total-js">({{ paginate.items }})</span>{% endif %}
+</div>
+{% endif %} {% endcomment %}
 {%- unless item_sidebar contains "_disable_" -%}
 <div class="tt-btn-toggle">
   <a href="#">{{ 'collections.toolbar.filter' | t }}</a>
@@ -40,17 +39,18 @@
 {% unless settings.toolbarsettings contains 'hidetoolbaroptions' %}
 {% capture qty %}{% if collection.all_products_count > pagination_limit_const and settings.show_perpage %}true{% else %}false{% endif %}{% endcapture %}
 {% if settings.collectionshowsort or qty == "true" %}
-<div class="tt-sort">
+<div class="tt-sort collection-sort-option">
   {% if settings.collectionshowsort %}
-  <select class="sort-position" aria-label="sort filter">
-    <option value="manual"{% if collection.default_sort_by == 'manual' %} selected{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+  <select class="sort-position" aria-label="sort filter">   
+   <option style="font-weight: 900;" >Sort by{% comment %}{{ 'collections.sorting.featured' | t }}{% endcomment %}</option>
+   <option value="manual"> Default {% comment %}{{ 'collections.sorting.featured' | t }}{% endcomment %}</option>
     {% comment %} <option value="title-ascending"{% if collection.default_sort_by == 'title-ascending' %} selected{% endif %}>{{ 'collections.sorting.az' | t }}</option> {% endcomment %}
     {% comment %} <option value="title-descending"{% if collection.default_sort_by == 'title-descending' %} selected{% endif %}>{{ 'collections.sorting.za' | t }}</option> {% endcomment %}
     {% comment %} <option value="created-ascending"{% if collection.default_sort_by == 'created-ascending' %} selected{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option> {% endcomment %}
     {% comment %} <option value="created-descending"{% if collection.default_sort_by == 'created-descending' %} selected{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option> {% endcomment %}
     <option value="price-ascending"{% if collection.default_sort_by == 'price-ascending' %} selected{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
     <option value="price-descending"{% if collection.default_sort_by == 'price-descending' %} selected{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
-    <option value="best-selling"{% if collection.default_sort_by == 'best-selling' %} selected{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+   {% comment %}   <option value="best-selling"{% if collection.default_sort_by == 'best-selling' %} selected{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>{% endcomment %}
   </select>
   {% endif %}
 

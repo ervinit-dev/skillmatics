@@ -1,0 +1,144 @@
+{% comment %}{{ 'section-faq.min.css' | asset_url | stylesheet_tag }}{% endcomment %}
+<link rel="stylesheet" href="{{ 'section-faq.min.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
+<style>
+  @media (max-width: 650px) {
+    h4.faq-tittle.tt-tittle {
+    margin-top: 6px;
+  }
+  }
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div class="container--indent">
+  <div class="container section-faq-foilfun ">
+    <div class="index-faqs">     
+      <div class="tt-block-title">
+      <h1 class="tt-title">{{ item.text1 }}</h1>
+      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    </div>
+      <div class="row faq-container">
+        {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}   
+          <h4 class="faq-tittle tt-tittle">{{ item.title}} </h4>
+          <div class="section-faq">     
+          
+         <div class="faq_question que-tab">{{ item.que}}           
+         <span class="acc-plus">+</span> <span class="acc-minus">-</span>
+         </div>
+          <div class="faq_answers">{{ item.ans }}</div>  
+          
+        </div>
+          {%- endfor -%}{%- endif -%}
+      </div></div></div></div>
+<style>
+  .acc-minus, .acc-plus {
+    float: right;
+    color: #06374F;
+    text-align: right;
+   font-family: 'MikadoMedium',sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} 
+  .section-faq-foilfun .faq_question.que-tab {
+      color: #06374F!important;   
+      font-size: 16px!important;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+  }
+    .section-faq-foilfun  .faq_answers p {
+        font-size: 16px !important;
+        line-height: 20px;
+        color: #06374F;  
+        font-style: normal;
+        font-weight: 350;       
+    }
+  .section-faq-foilfun .section-faq {    padding-bottom: 8px!important;}
+   @media (min-width: 768px) {
+    .section-faq-foilfun .faq_question.que-tab,.section-faq-foilfun .faq_answers p {  font-size: 18px !important;}
+    .section-faq-foilfun .faq-tittle {   margin-top: 0px;}
+  }
+    .section-faq-foilfun   .faq_question.que-tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>
+
+<script>
+    // Select all elements with the class 'section-faq'
+const faqSections = document.querySelectorAll('.section-faq');
+
+// Loop through each element and add an event listener
+faqSections.forEach(function(faqSection) {
+  faqSection.addEventListener('click', function() {
+    // Toggle the 'active' class on the clicked element
+    faqSection.classList.toggle('active');
+  });
+});
+
+</script>
+
+{% schema %}
+  {
+    "name": "FAQ's",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "WELCOME!"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#ffffff"
+        }
+  
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [        
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"         
+        },
+        {
+          "type": "text",
+          "id": "que",
+          "label": "Question"         
+        },
+        {
+          "type": "richtext",
+          "id": "ans",
+          "label": "Answer"         
+        }
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ's",
+      "category": "column",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

@@ -5,13 +5,13 @@
 {% assign product3 = all_products[article.metafields.blog.bestseller_product_3] %}
 {% assign product4 = all_products[article.metafields.blog.bestseller_product_4] %}
 
-  <div class="blog-bestseller-section">
+  <div class="blog-bestseller-section 1">
   {%- if section.settings.product-title!= blank -%}  <h2 class="tt-title">{{ section.settings.product-title }}</h2>{% endif %}
     <div class="blog-bestseller-carousel ">
       {%- if article.metafields.blog.bestseller_product_1 != blank -%}
       <div class="bestsellercard tt-product">
          <a class="tt-image-box product_title" href="{{ product1.url }}" target="_self">
-        <img src="{{ product1.featured_image | img_url: 'medium' }}" alt="{{ product1.title }}">         
+        <img src="{{ product1.featured_image | img_url: 'medium' }}" alt="{{ product1.title }}" loading="lazy">         
        <div class="tt-description"> 
          <h2 class="tt-title prod-thumb-title-color">  {{ product1.title }}</h2>
          <div
@@ -39,9 +39,9 @@
       {%- if article.metafields.blog.bestseller_product_2 != blank -%}
       <div class="bestsellercard tt-product">
          <a class="tt-image-box product_title" href="{{ product2.url }}" target="_self">
-        <img src="{{ product2.featured_image | img_url: 'medium' }}" alt="{{ product2.title }}">
+        <img src="{{ product2.featured_image | img_url: 'medium' }}" alt="{{ product2.title }}" loading="lazy">
             <div class="tt-description"> 
-         <h2 class="tt-title prod-thumb-title-color">  {{ product2.title }}</h2>
+         <h3 class="tt-title prod-thumb-title-color">  {{ product2.title }}</h3>
         <div
           product-id="{{ product2.id }}"
           product-handle="{{ product2.handle }}"
@@ -66,9 +66,9 @@
       {%- if article.metafields.blog.bestseller_product_3 != blank -%}
       <div class="bestsellercard tt-product">
          <a class="tt-image-box product_title" href="{{ product3.url }}" target="_self">
-        <img src="{{ product3.featured_image | img_url: 'medium' }}" alt="{{ product3.title }}">
+        <img src="{{ product3.featured_image | img_url: 'medium' }}" alt="{{ product3.title }}" loading="lazy">
             <div class="tt-description"> 
-         <h2 class="tt-title prod-thumb-title-color">  {{ product3.title }}</h2>
+         <h3 class="tt-title prod-thumb-title-color">  {{ product3.title }}</h3>
         <div
           product-id="{{ product3.id }}"
           product-handle="{{ product3.handle }}"
@@ -93,9 +93,9 @@
       {%- if article.metafields.blog.bestseller_product_4 != blank -%}
      <div class="bestsellercard tt-product">
          <a class="tt-image-box product_title" href="{{ product4.url }}" target="_self">
-        <img src="{{ product4.featured_image | img_url: 'medium' }}" alt="{{ product4.title }}">
+        <img src="{{ product4.featured_image | img_url: 'medium' }}" alt="{{ product4.title }}" loading="lazy">
             <div class="tt-description"> 
-         <h2 class="tt-title prod-thumb-title-color">  {{ product4.title }}</h2>
+         <h3 class="tt-title prod-thumb-title-color">  {{ product4.title }}</h3>
         <div
           product-id="{{ product4.id }}"
           product-handle="{{ product4.handle }}"

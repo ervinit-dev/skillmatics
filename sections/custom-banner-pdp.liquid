@@ -1,0 +1,78 @@
+<style>
+  .custom-pdp--banner-gd img {    object-fit: contain;
+    min-width: 100%; max-width: 100%;
+}
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div id="section-{{ section.id }}" class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %} custom-banner-row">
+   <div class=" full-width-container">
+  <div class="custom-banner">
+    {%- for block in section.blocks -%}
+          {%- assign item = block.settings -%} 
+      <div class="slider-itemslider"><a href="{{item.collection }}" aria-label="bannerlinks" rel="link">      
+        <div class="grid-column-itemslider">    
+          <div class="custom-pdp--banner-gd custom-banner-gd">
+              {%- unless item.image == blank -%}
+              <img class="slidebanner    mobile-{%- unless  item.image == blank -%}hide{%- endunless -%} "                  
+                 src="{{ item.image | img_url: 'master'}}" id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+                  loading="lazy" alt="banner image" width="100%" height="auto"  srcset="{{ item.image | img_url: 'master'}}">
+              {%- endunless -%} 
+              {%- unless item.image == blank -%}
+              <img class="slidebanner   desktop-{%- unless  item.image == blank -%}hide {%- endunless -%}  "               
+                src="{{ item.mob-image | img_url: '450x100'}}" id="{{ section.settings.tracking-id}}{{ forloop.index }}" 
+                 loading="lazy"   alt="banner image" width="450px" height="100px" srcset="{{ item.mob-image | img_url: '450x100'}}"  >
+              {%- endunless -%}
+          </div>  
+        </div></a></div>
+        {%- endfor -%}  
+    </div></div>
+</div>
+{% schema %}
+  {
+    "name": "Custom Banner pdp",
+    "class": "index-section",
+    "settings": [
+       {
+          "label": "Tracking id",
+          "info": "Do Not Delete",
+          "id": "tracking-id",
+          "type": "text"
+        }
+                
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Slider",
+      "settings": [
+        {
+          "label": "Link",
+          "id": "collection",
+          "type": "url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mob-image",
+          "label": "Custom Mpbile Image"
+        }     
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner pdp",
+      "category": "Slider",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

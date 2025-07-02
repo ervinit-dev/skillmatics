@@ -1,5 +1,5 @@
 {% comment %} styling css for age btns {% endcomment %}
-{{ 'collection-page-age-btns-styles.css' | asset_url | stylesheet_tag }}
+{{ 'collection-page-age-btns-styles.css' | asset_url |  stylesheet_tag: preload: true }}
   
 {% if collection.handle == 'our-products-for-ages-0-3'
   or collection.handle == '3-6-years'
@@ -17,7 +17,7 @@
   {% assign show_0_3_button = false %}
   {% assign show_3_6_button = false %}
   {% assign show_6_9_button = false %}
-  {% assign show_8_13_button = false %}
+ {% assign show_8_13_button = false %}
 
   {% for product in collection.products %}
     {% if product.tags contains '0-3 Years' %}
@@ -33,7 +33,7 @@
       {% assign show_8_13_button = true %}
     {% endif %}
   {% endfor %}
-   {% if show_0_3_button or show_3_6_button or show_6_9_button  or show_8_13_button%}
+   {% if show_0_3_button or show_3_6_button or show_6_9_button  or show_8_13_button %}
   <div class="collection-age-btns buttons filtres-js">
     {% if show_0_3_button %}
       <a class="filter-button" data-name="0-3-years" href="/collections/0-3-years">0-3</a>

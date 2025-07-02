@@ -1,0 +1,90 @@
+{{ 'section-marquee.css' | asset_url | stylesheet_tag: preload: true}}
+<style>
+    #shopify-section-{{section.id}} .marquee-scroll{
+    background-color: {{section.settings.sectionbg}};
+  }
+  .marquee-scroll {
+    border: none !important
+  }
+  .custommarque span {
+    align-items: center;
+    color: #004E86;
+    font-family: 'AvenirRegular';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+  }
+  .custommarque span span {
+    color: #D41F3B;
+    font-weight: 700;
+  }
+  .marquee__content {
+    gap: 12px !important;
+  }
+</style>
+ <div class="marquee-scroll aano_bar  gradient" role="region" aria-label="maruee tab"  style=" margin-bottom: {{ section.settings.margin_bottom_anb }}px; margin-top: {{ section.settings.margin_top_anb }}px; background-color: {{ section.settings.anno_color }};">
+<div class="page-width marquee enable-animation marquee--hover-pause">
+  <ul style="list-style: none" class="custommarque marquee__content hura-message">         
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}   
+         {% if block.settings.text1 != blank %}  <li><span>{% render 'marqueeStar-rakhi' %}{{ block.settings.text1 }}</span></li> {% endif %}   
+       {%- endfor -%}
+        {%- endif -%}
+  </ul>    
+   <ul style="list-style: none" class="custommarque marquee__content hura-message">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}   
+         {% if block.settings.text1 != blank %}  <li><span>{% render 'marqueeStar-rakhi' %}{{ block.settings.text1 }}</span></li> {% endif %}   
+       {%- endfor -%}
+        {%- endif -%}   
+  </ul> 
+</div> 
+</div>
+
+{% schema %}
+  {
+    "name": "Section Marquee Rakhi",
+    "class": "index-section",
+    "settings": [
+         {
+      "type": "number",
+      "id": "margin_top_anb",
+      "label": "Margin top"
+    },
+     {
+      "type": "number",
+      "id": "margin_bottom_anb",
+      "label": "Margin Bottom"
+    },
+           {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#ffffff"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [       
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text"         
+        }  
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Marquee Rakhi",
+      "category": "Multicolumn",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

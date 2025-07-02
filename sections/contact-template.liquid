@@ -1,3 +1,12 @@
+<style>
+  #textareaMessage { resize: none }
+  .contacfrm_post_success p {
+    font-size: 17px;
+    text-align: center;
+    font-weight: 600;
+    color: #62bd81;
+}
+</style>
 {%- for block in section.blocks -%}{%- assign b_i = block.settings -%}{%- case block.type -%}
 
 {%- when 'image' -%}
@@ -92,38 +101,59 @@
 {%- when 'contactform' -%}
 <div class="container-indent">
   <div class="container container-fluid-custom-mobile-padding">
-    <div class="contact-form form-default">
-      {%- form 'contact' -%}
+ <div class="contact-form form-default">
+  {%- form 'contact' -%}
 
-      {%- if form.posted_successfully? -%}
-      <p>{{ 'contact.form.post_success' | t }}</p>
-      {%- endif -%}
 
-      {{ form.errors | default_errors }}
+  {{ form.errors | default_errors }}
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <input type="text" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" class="form-control" id="inputName" placeholder="{{ 'contact.form.name' | t }}">
-          </div>
-          <div class="form-group">
-            <input type="email" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="form-control" id="inputEmail" placeholder="{{ 'contact.form.email' | t }}">
-          </div>
-          <div class="form-group">
-            <input type="tel" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" class="form-control" id="inputSubject" placeholder="{{ 'contact.form.phone' | t }}">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <textarea name="contact[body]" class="form-control" rows="8" placeholder="{{ 'contact.form.message' | t }}" id="textareaMessage">{%- if form.body -%}{{ form.body }}{%- endif -%}</textarea>
-          </div>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <input type="text" name="contact[name]" 
+               value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" 
+               class="form-control" id="inputName"  pattern="[A-Za-z\s]+"
+               placeholder="{{ 'contact.form.name' | t }} *" 
+               required>
       </div>
-      <div class="text-center">
-        <button type="submit" class="btn ttbtnmainstyle">{{ 'contact.form.send' | t }}</button>
+      <div class="form-group">
+        <input type="email" name="contact[email]" 
+               autocorrect="off" autocapitalize="off" 
+               value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" 
+               class="form-control" id="inputEmail" 
+               placeholder="{{ 'contact.form.email' | t }} *" 
+               required>
       </div>
-      {%- endform -%}
-    </div>  
+      <div class="form-group">
+        <input type="tel" name="contact[phone]" 
+               pattern="[0-9\-]*" 
+               value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" 
+               class="form-control" id="inputSubject" 
+               placeholder="{{ 'contact.form.phone' | t }} *" 
+               required>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <textarea name="contact[body]" 
+                  class="form-control" rows="8" 
+                  placeholder="{{ 'contact.form.message' | t }} *" 
+                  id="textareaMessage" 
+                  required>{%- if form.body -%}{{ form.body }}{%- endif -%}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn ttbtnmainstyle">{{ 'contact.form.send' | t }}</button>
+  </div>
+    
+  {%- if form.posted_successfully? -%}
+   <div class="contacfrm_post_success"> <p>{{ 'contact.form.post_success' | t }}</p></div>
+  {%- endif -%}
+
+  {%- endform -%}
+</div>
+  
   </div>
 </div>
 
@@ -202,6 +232,11 @@ https://developers.google.com/maps/documentation/javascript/get-api-key
 {%- endif -%}
 
 {%- endcase -%}{%- endfor -%}
+<script>
+  document.getElementById('inputName').addEventListener('input', function() {   
+    this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+  });
+</script>
 
 {% schema %}
   {

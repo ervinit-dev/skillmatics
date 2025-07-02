@@ -1,4 +1,5 @@
 <!-- modal (ModalSubsribeGood) -->
+{% unless template.suffix =='contact' %}
 <div class="modal  fade"  id="ModalSubsribeGood" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xs">
     <div class="modal-content ">
@@ -31,3 +32,4 @@
     checkSended();
   });
 </script>
+{% endunless %}

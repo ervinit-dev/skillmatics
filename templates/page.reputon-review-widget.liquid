@@ -1,0 +1,30 @@
+{% assign handle = request.query_string | split: 'handle=' | last %}
+{% assign product = all_products[handle] %}
+
+{% if product %}
+  {% assign reviews = product.metafields['ReputonAmazonReviews::ProductReviews'] %}
+
+  <script
+    type="text/javascript"
+    src="https://cdn.amzrw.reputon.com/assets/widget.js?shop=skillmaticsindia.myshopify.com"
+    defer
+  ></script>
+
+  {% if reviews != blank and reviews[product.id] %}
+    <script>
+      window.reputonAmazonProductReviewsData = {{ reviews[product.id] }};
+    </script>
+  {% endif %}
+
+  <div
+    class="reputon-amazon-reviews-widget"
+    data-type="grid"
+    data-product-reviews="true"
+    data-theme="light"
+    data-show-product-picture="true"
+    data-show-date="true"
+    data-fixed-reviews-height="true"
+  ></div>
+{% else %}
+  <p>No product found.</p>
+{% endif %}

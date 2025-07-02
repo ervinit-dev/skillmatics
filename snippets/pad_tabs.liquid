@@ -1,0 +1,46 @@
+<div id="pad_tab{{ section.id }}">
+  <div class="pdp_tab_wrapper">
+    <div class="container">
+      <div class="pdp_inner_wrapper">
+        <div class="pdp_left_img">
+          {%- if product.metafields.pdp.about_image != blank -%}
+          {%- endif -%}
+          <img
+            class="lazyload"
+             srcset="{{ product.metafields.pdp.about_image.value | img_url: '100x100' | replace: '100x100' }}"
+            src="{{ product.metafields.pdp.about_image.value | img_url: '100x100' | replace: '100x100' }}"
+          >
+        </div>
+        <div class="pdp_right_text">
+          <div class="pdp_tab_tit">
+            <h3>About</h3>
+            <h3>Delivery & Returns</h3>
+          </div>
+          <div class="pdp_tab_content">
+            <div class="pdp_content_1">
+              <h4>Description</h4>
+              {% if product.metafields.pdp.description.value != blank %}
+                <p>{{ product.metafields.pdp.description.value }}</p>
+              {% endif %}
+              <div class="tab_whats_inside">
+                {%- if product.metafields.pdp.whats_included.value != blank -%}
+                  <h5 class="tab_whats_inside_text">What’s Inside</h5>
+                {%- endif -%}
+                {{ product.metafields.pdp.whats_included.value }}
+              </div>
+              {%- if product.metafields.pdp.product_size.value != blank -%}
+                <p class="tab-des-title tt-title">Product details</p>
+                {{ product.metafields.pdp.product_size.value -}}
+              {%- endif %}
+            </div>
+            <div class="pdp_content_2">
+              {% if product.metafields.custom.delivery_text != blank %}
+                {{ product.metafields.custom.delivery_text | metafield_tag }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

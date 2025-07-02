@@ -15,7 +15,7 @@
   <div class="container ">
     <div class="tt-categories-listing">     
       <div class="tt-block-title">
-      <h1 class="tt-title">{{ item.text1 }}</h1>
+      <h2 class="tt-title">{{ item.text1 }}</h2>
       {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
     </div>
       <div class="row">
@@ -25,9 +25,9 @@
              <a class="tt-title-block" href="{{ item.collection}}" aria-label="Imagelinks">            
              
               {%- if item.image != blank -%}
-              <img class="lazyload" id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+              <img class="shop-age-img" id="{{ section.settings.tracking-id}}{{ forloop.index }}"
                   src="{{ block.settings.image | img_url:'master'}}"                                  
-                   alt="{{ item.image.alt }}" width="100%" height="auto" srcset>
+                   alt="{{ item.image.alt }}" width="100%" height="auto" fetch-priority="highest">
             
               {%- endif -%}
                <h2 class="tt-title">{% if item.custom_name != ''%}{{ item.custom_name }}{% endif %}</h2>

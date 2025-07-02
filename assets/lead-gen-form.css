@@ -8,6 +8,7 @@
     padding: 10px;
     border: 1px solid;
     border-radius: 11px;
+  box-shadow: 0 2px 15px #0000001a;
 }
 @media (min-width: 750px) {
  .cs-form-parent-warp .cs-custom-form.s992232429 {
@@ -38,12 +39,12 @@
     margin-top: 2px;
 }
 .cs-form-parent-warp input[type="radio"], input[type="checkbox"] {
-    width: 25px!important;
+    width: 13px!important;
     height: 25px!important;
     color: #3880c1!important;   
 }
 .form-submit-btn-wrap button {
-    background: #ff805a !important;
+    background: rgb(238, 115, 65)!important;
     color: #ffffff !important;
        font-size: 20px;
     border-radius: 4px;   

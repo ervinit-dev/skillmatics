@@ -5,11 +5,11 @@
   <div class="tt-search-opened-headtype1 headerformplaceholderstyles">
     <form action="{{ routes.search_url }}" method="get" role="search">
       <button type="submit" class="tt-btn-search"  aria-label="search">
-        <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/search.webp?v=1726898063" alt="" srcset="" width="30px" height="30px" >
+        <img  id="skill_search"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/search_30x30.webp?v=1726898063" alt="" srcset="" width="30px" height="30px" >
       </button>
       <input class="tt-search-input"
              type="search"
-             name="q"
+             name="q" id="skill_search_type"
              placeholder="{{ 'general.search.place_holder' | t }}">
       <input type="hidden" name="type" value="product" />
     </form>
@@ -44,3 +44,26 @@
 </div>
 <!-- /tt-langue and tt-currency -->
 {%- endif -%}
+
+
+
+<script>
+  function filterSearch() {
+    var searchQuery = document.getElementById("search-input").value.toLowerCase();
+    
+    // If search query contains "gift", prevent form submission or modify query
+    if (searchQuery.includes("gift")) {
+      // Optionally, you could replace the query with something else
+      document.getElementById("search-input").value = searchQuery.replace("gift", "");
+      
+      // You can also show a message to users saying that products with the word "gift" are excluded.
+      alert("Products with the word 'gift' are excluded from the search results.");
+      
+      // You can prevent form submission by returning false
+      return false;
+    }
+    
+    // If the query does not contain "gift", allow form submission
+    return true;
+  }
+</script>

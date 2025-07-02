@@ -6,47 +6,117 @@
   @media (min-width: 1025px) {
 #section-{{ section.id }} .custom-collection-gd {    padding: {{item.imgpadding}}px;}
 }
-   @media (min-width: 750px) and (max-width:1024px) {
+   /* @media (min-width: 750px) and (max-width:1024px) {
 #section-{{ section.id }} .custom-collection-gd {    padding:10px;}
- }
+ } */
 
  
 .respimgsize.custom-collection-gd.tt-items-categories {    margin-top: 10px;} 
-.custom-collection-gd {
+/* .custom-collection-gd {
    margin: 10px 0; 
-}
- .custom-collection-row {  padding-bottom: 30px;}
+} */
+ #section-{{ section.id }} {
+    padding: 0 !important;
+  }
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.collection-product-bg-desktop %}
+      @media (min-width: 768px) {
+     /* #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.collection-product-bg-desktop | img_url:'2560x'}}");
+  } */
+    }
+    {% endif %}
+    {% if section.settings.collection-product-bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.collection-product-bg-mobile | img_url:'450x478'}}");
+       background-size: cover;
+        background-repeat: no-repeat;
+       background-position: initial;
+  }
+    }
+    {% endif %}
+  picture.custom-bg img {
+    width: 100%;
+  }
+    .gpb {
+    position: relative;
+  }
+  .bgp-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .custom-collection-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 24px;
+  }
+
+  @media (max-width: 650px) {
+    .custom-collection-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .bgp-wrapper .tt-block-title {
+    margin: 0;
+  }
+    
+  .bgp-wrapper {
+      position: relative;
+      top:0%;
+      left:0%;
+      transform: translate(0%,0%);
+      }
+    #shopify-section-{{section.id}} { padding: 30px 0 30px; background-size: contain !important; }
+  }
+  @media (min-width: 1000px) {
+    .bgp-wrapper .tt-block-title { margin: 0; }
+  }
 {% endstyle %}
 
-<div id="section-{{ section.id }}" class=" {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
+<div id="section-{{ section.id }}" class="gpb {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
 {% comment %}<div class="section--hide">
 <img class="desktop-hidden img-vecmob-right" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/mob-rightibg-img.png?v=1721190151"  width="100%" height="auto" alt="vector">
 </div>{% endcomment %}
-  <div class="container section-space custom-collection-container container-fluid-custom-mobile-padding">
+{% if section.settings.collection-product-bg-desktop != blank %}
+  <picture class="custom-bg desktop-only">
+  <source media="(min-width:768px)" srcset="{{section.settings.collection-product-bg-desktop | img_url:'2560x'}}">
+  <img src="{{section.settings.collection-product-bg-desktop | img_url:'2560x'}}" loading="lazy" alt="{{ image.alt }}" decoding="async">
+</picture>
+{% endif %}
+  <div class="container section-space custom-collection-container container-fluid-custom-mobile-padding bgp-wrapper">
     <div class="tt-categories-listing">
-     <div class="tt-block-title">
-       {%- if item.title != blank -%} <h1 class="tt-title">{{item.title}}</h1> {%- endif -%}
+     <div class="tt-block-title"> 
+       {%- if item.title != blank -%} <h2 class="tt-title">{{item.title}}</h2> {%- endif -%}
       {% unless item.subtitle == '' %}<div class="tt-description">{{item.subtitle}}</div> {% endunless %}
     </div>
-      <div class="row custom-collection-row">      
+      <div class="custom-collection-row">      
         {%- for block in section.blocks -%}{%- assign item = block.settings -%}
         {%- assign collection = ricollections[item.collection] -%}     
-        <div class="multicolumn col-{{ mobgrid }} col-md-{{ grid }} col-{{ mobgrid }}-440width"">
+        <div class="grid-column-item grid-column-item-{{ forloop.index }}">
             <a aria-label="collection link" class="tt-title-block"   {%- if item.collection.url != blank -%} href="{{item.collection.url }}" {%- else -%} href="{{item.link }}"{%- endif -%}>  
           <div class="custom-collection-gd">                      
                {%- if collection.image == blank -%}
               {%- unless item.imaged == blank -%}
-              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}" loading="lazy"
+              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}"  loading="on-demand" fetchpriority="medium" decoding="async"
                   src="{{ item.imaged | img_url: 'large'}}"
-                   alt="{{ item.image.alt }}" width="100%" height="auto">
+                   alt="{{ item.image.alt }}" width="100%" height="auto"  srcset="{{ item.imaged | img_url: 'large'}}">
               {%- endunless -%} 
               {%- unless item.image == blank -%}
               <img class="lazyload desktop-{%- unless  item.imaged == blank -%}hidden {%- endunless -%}"
                src="{{ item.image | img_url: 'large'}}"
-                    alt="{{ item.image.alt }}" width="100%" height="auto">
+                    alt="{{ item.image.alt }}" width="100%" height="auto" loading="on-demand" fetchpriority="medium" decoding="async">
               {%- endunless -%}
               {%- else -%}            
-              <img class="lazyload" loading="lazy"
+              <img class="lazyload"  loading="on-demand" fetchpriority="medium" decoding="async"
                src="{{ collection.image | img_url: 'large'}}"
                    alt="{{ item.image.alt }}" width="100%" height="auto">           
               {%- endif -%} 
@@ -163,7 +233,17 @@
       "type": "inline_richtext",
       "id": "subtitle",     
       "label": "Sub Heading"
-    }
+    },
+    {
+          "type": "image_picker",
+          "id": "collection-product-bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "collection-product-bg-mobile",
+          "label": "mobile background Image "
+        }
   ],
   "blocks": [
     {

@@ -1,0 +1,110 @@
+
+<style>
+  .recom-description h2 {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-height: 50px;
+}
+ .people-also-bought-slider{  
+    padding: 10px;
+}
+  .recom-description {  padding: 0 10px;width:100%;}
+  .people-also-bought .tt-title{text-align:center;font-size:18px;}
+ .people-also-bought {background: #e9f4f9; padding: 0;padding-top: 10px;}
+ a.recom-img img {
+    width: 115px !important;
+    height: 115px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+  h2.recom-_title {font-size: 14px !important; margin: 0;padding-bottom: 5px!important; line-height: 25px !important;}
+  span.recom-_compare_price { text-decoration: line-through; font-size: 14px;}
+  .recom { display: flex; justify-content: space-between;flex-direction: column;}
+button.btn.recomm-btn{max-height: 30px; width: 100%;}
+.bough-vertical {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background-color: white;
+}
+  .rec-center { text-align: center; margin-bottom: 20px;}
+</style>
+
+{% if cart.items.size > 0 %}
+ {% assign last_index = cart.items.size | minus: 1 %}
+  {% assign last_item = cart.items[last_index] %}
+            {% if last_item.product.metafields.pdp.recommended_products.value != blank %}
+            <ul class="people-also-bought 1 {{ template }}">
+             {% if settings.recom-title != blank %} <div class="rec-center"><span class="tt-title">{{ settings.recom-title }}</span></div>{% endif %}
+            <div class="row noarrow  owl-carousel  owl-theme  people-also-bought-slider">
+              {%- for recom in last_item.product.metafields.pdp.recommended_products.value limit:4 -%}
+               {% if recom.variants.first.available %}
+                                <div class="bough-vertical">
+                              <a class="recom-img" href="{{ recom.url }}" target="_self" aria-label=" recom url">    
+                                      <img class="lazyload" loading="lazy" width="100px" height="100px" src="{{ recom.featured_image | img_url: 'medium' }}" alt="{{ bundle1.featured_image.alt}}">
+                              </a>
+                              <div class="recom-description">
+                              <a class="container-url" href="{{ recom.url }}" target="_self" aria-label=" recom url">
+                              <h2 class=" recom-_title"> {{ recom.title }} </h2>  </a>
+                                 <div class="recom">
+                                <div class="tt-price recom-price_atc">
+                                  <div class="recom-e_prices">
+                                    {{ recom.price | money }}
+                                    {% if recom.compare_at_price > recom.price %}
+                                    <span class="recom-_compare_price">{{ recom.compare_at_price | money }}</span>
+                                    {% endif %}                         
+                                  </div>
+                                
+                                </div>
+                              
+                                  
+ <button 
+  class="btn add-to-cart-btn" 
+  data-variant-id="{{ recom.variants.first.id }}">
+  ADD
+</button>
+
+
+                                    </div>
+                                  </div>
+                      </div> 
+                  {% endif %}
+              {%- endfor -%}</div>
+            </ul>
+           
+          
+           {% endif %}
+
+{% endif %}
+
+<script>
+  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const variantId = this.getAttribute('data-variant-id');
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: variantId, quantity: 1 })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Added to cart:', data);
+        // Optional: update cart UI or reload
+        location.reload(); // or update mini cart
+      })
+      .catch(err => console.error('Error adding to cart:', err));
+    });
+  });
+</script>
+
+

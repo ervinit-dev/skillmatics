@@ -20,7 +20,7 @@
 
   #section-{{ section.id }} .custom-collection-row2 {   display:grid;grid-template-columns: repeat({{item.items}}, 1fr);gap:10px; }
       @media (min-width: 1025px) {
-#section-{{ section.id }} .custom-collection-row2 {  grid-template-columns: repeat({{item.items-desk}}, 1fr);gap:20px; }
+#section-{{ section.id }} .custom-collection-row2 {  grid-template-columns: repeat({{item.items-desk}}, 1fr);gap:32px; }
 #section-{{ section.id }} .custom-collection-gd {    padding: {{item.imgpadding}}px;}
 }
   @media (max-width:1024px) {
@@ -28,14 +28,78 @@
 
    }  
 .respimgsize.custom-collection-gd.tt-items-categories {    margin-top: 10px;} 
-.custom-collection-gd {  margin: 10px;}
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  /* {% if section.settings.custom-coll-listt-bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.custom-coll-listt-bg-desktop | img_url:'2560x'}}");
+  }
+    }
+    {% endif %} */
+    {% if section.settings.custom-coll-listt-bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.custom-coll-listt-bg-mobile | img_url:'450x478'}}");
+       background-size: contain;
+        background-repeat: no-repeat;
+       background-position: initial;
+  }
+    }
+    {% endif %}
+
+  picture.custom-bg img {
+    width: 100%;
+  }
+  .gbp {
+    position: relative;
+  }
+  .bgp-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .bgp-wrap {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    transform: translate( 0%, 0%);
+  }
+  @media (min-width: 800px) and (max-width: 1050px) {
+    #section-{{ section.id }} .custom-collection-row2 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 650px) {
+    picture.custom-bg.mobile-only { margin-bottom: 0; }
+    #section-{{ section.id }} { padding: 30px 0 50px; }
+    .bgp-wrapper { position: relative; top:0%; left:0%; transform: translate(0%,0%); }
+        .bgp-wrapper .tt-block-title {
+      margin: 0;
+  }
+  }
 {% endstyle %}
 
-<div id="section-{{ section.id }}" class=" {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
+<div id="section-{{ section.id }}" class="gbp {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
 {% comment %}<div class="section--hide">
 <img class="desktop-hidden img-vecmob-right" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/mob-rightibg-img.png?v=1721190151"  width="100%" height="auto" alt="vector">
 </div>{% endcomment %}
-  <div class="container section-space custom-collection-container container-fluid-custom-mobile-padding">
+    {% if section.settings.custom-coll-listt-bg-desktop != blank %}
+      <picture class="custom-bg desktop-only">
+      <source media="(min-width:768px)" srcset="{{section.settings.custom-coll-listt-bg-desktop | img_url:'2560x'}}">
+      <img src="{{section.settings.custom-coll-listt-bg-desktop | img_url:'2560x'}}" loading="lazy" alt="{{ image.alt }}" decoding="async">
+    </picture>
+    {% endif %}
+    <!-- <picture class="custom-bg mobile-only">
+      <source media="(max-width:768px)" srcset="{{section.settings.custom-coll-listt-bg-mobile | img_url:'450x478'}}">
+      <img src="{{section.settings.custom-coll-listt-bg-mobile | img_url:'450x478'}}" loading="lazy" alt="{{ image.alt }}" decoding="async">
+    </picture> -->
+  <div class="container section-space custom-collection-container container-fluid-custom-mobile-padding bgp-wrapper {% if section.settings.custom-coll-listt-bg-desktop == blank %} bgp-wrap {% endif %}">
     <div class="tt-categories-listing">
      <div class="tt-block-title">
        {%- if item.title != blank -%} <h1 class="tt-title">{{item.title}}</h1> {%- endif -%}
@@ -49,19 +113,19 @@
           <div class="custom-collection-gd">                      
                {%- if collection.image == blank -%}
               {%- unless item.imaged == blank -%}
-              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}" loading="lazy"
-                  src="{{ item.imaged | img_url: 'large'}}"
-                   alt="{{ item.image.alt }}" width="100%" height="auto">
+              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}" loading="on-demand"
+                  src="{{ item.imaged | img_url: 'medium'}}"
+                   alt="{{ item.image.alt }}" width="100%" height="auto" fetchpriority="medium" decoding="async">
               {%- endunless -%} 
               {%- unless item.image == blank -%}
               <img class="lazyload desktop-{%- unless  item.imaged == blank -%}hidden {%- endunless -%}"
-               src="{{ item.image | img_url: 'large'}}"
-                    alt="{{ item.image.alt }}" width="100%" height="auto">
+               src="{{ item.image | img_url: 'medium'}}"
+                    alt="{{ item.image.alt }}" width="100%" height="auto" fetchpriority="medium" decoding="async">
               {%- endunless -%}
               {%- else -%}            
-              <img class="lazyload" loading="lazy"
-               src="{{ collection.image | img_url: 'large'}}"
-                   alt="{{ item.image.alt }}" width="100%" height="auto">           
+              <img class="lazyload" loading="on-demand"
+               src="{{ collection.image | img_url: 'medium'}}"
+                   alt="{{ item.image.alt }}" width="100%" height="auto" fetchpriority="medium" decoding="async">           
               {%- endif -%} 
           </div>
          <div class="customtitle "> {% if item.custom_name != ''%}{{ item.custom_name }}{% endif %}</div>
@@ -99,6 +163,16 @@
           }
         ]
       },
+     {
+          "type": "image_picker",
+          "id": "custom-coll-listt-bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "custom-coll-listt-bg-mobile",
+          "label": "mobile background Image "
+        },
        {
       "type": "range",
       "id": "items-desk",

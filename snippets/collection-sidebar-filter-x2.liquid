@@ -7,7 +7,7 @@
   {%- if title_new_name contains fl -%}{%- assign fl = title_new_name | split: fl | last | split: ',' | first | strip -%}
   {%- else -%}{%- assign fl = filter.label -%}
   {%- endif -%}
-  <h3 class="tt-collapse-title{% if titlestouppercase %} text-uppercase{% endif %}">{{ fl }}</h3>
+  <p class="tt-collapse-title{% if titlestouppercase %} text-uppercase{% endif %}">{{ fl }}</p>
   <div class="tt-collapse-content">
     {%- assign min_value = filter.min_value.value | money_without_currency -%}
     {%- assign max_value = filter.max_value.value | money_without_currency -%}
@@ -30,30 +30,45 @@
     {%-else-%}
     {%-assign maxrange = range_max | split:'.' | first | replace:',',''-%}
     {%-endif-%}
+     {% comment %}addedexternal {% endcomment %}
+     {%-assign filter-maxrange =filter.range_max |divided_by:'100' -%}
+      {% assign sorted_products = collection.products | sort: 'price' %}
+    {% assign lowest_price = sorted_products.first.price |money_without_currency %}
     
+     {% comment %}addedexternal {% endcomment %}
     {%- assign filter_value_url = filter_value.url_to_add | replace: '&view=ajax', '' -%}
-    <div class="scrollwidget ttpricefilter-js" data-min="0" data-max="{{ maxrange }}" style="display: none;">
+     {% comment %} <div class="scrollwidget ttpricefilter-js" data-min="0" data-max="{{ maxrange }}" style="display: none;">{% endcomment %}
+    <div class="scrollwidget ttpricefilter-js" data-min="{{ lowest_price }}" data-max="{{ filter-maxrange }}" style="display: none;">
       <span class="currentmaxpriceinwidget hide">{{filter.range_max | money}}</span>
       <div class="scrollwidget_inputs">
         <input type="number"
                name="{{ filter.min_value.param_name }}"
-               {%- if filter.min_value.value -%}
+              value="{{lowest_price}}"
+               data-value="{{lowest_price}}"
+            {% comment %}   {%- if filter.min_value.value -%}
                value="{{minprice}}"
                data-value="{{minprice}}"
                {%- else -%}
                data-value="0"
-               {%- endif -%}
+               {%- endif -%}{% endcomment %}
                placeholder="0">
     	<span class="scrollwidget_text"> — </span>
     	<input type="number"
                name="{{ filter.max_value.param_name }}"
-               {%- if filter.max_value.value -%}
+           {%- if filter.max_value.value -%}
+               value="{{filter-maxrange}}"
+               data-value="{{filter-maxrange}}"
+               {%- else -%}
+               value="{{filter-maxrange}}"
+               data-value="{{filter-maxrange}}"
+               {%- endif -%}
+            {% comment %}   {%- if filter.max_value.value -%}
                value="{{maxprice}}"
                data-value="{{maxprice}}"
                {%- else -%}
                value="{{maxrange}}"
                data-value="{{maxrange}}"
-               {%- endif -%}
+               {%- endif -%}{% endcomment %}
                placeholder="0">
       </div>
       {% if settings.prrange_showbuttons %}
@@ -137,7 +152,7 @@
   {%- if title_new_name contains fl -%}{%- assign fl = title_new_name | split: fl | last | split: ',' | first | strip -%}
   {%- else -%}{%- assign fl = filter.label -%}
   {%- endif -%}
-  <h3 class="tt-collapse-title{% if titlestouppercase %} text-uppercase{% endif %}">{{ fl }}</h3>
+  <p class="tt-collapse-title{% if titlestouppercase %} text-uppercase{% endif %} filter-heading">{{ fl }}</p>
   <div class="tt-collapse-content">
     <ul class="{{ design | strip }} shopifyfiltres-js">{{ data }}</ul>
   </div>

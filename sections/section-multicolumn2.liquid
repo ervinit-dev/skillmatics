@@ -13,7 +13,7 @@
   <div class="container ">
     <div class="tt-categories-listing">     
       <div class="tt-block-title">
-      <h1 class="tt-title">{{ item.text1 }}</h1>
+     {% unless item.text1  == '' %}  <h1 class="tt-title">{{ item.text1 }}</h1>{% endunless %}
       {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
     </div>
       <div class="row noarrow  more-abt-multicolumn2">
@@ -28,7 +28,7 @@
                    alt="{{ item.image.alt }}" width="100%" height="auto">
             
               {%- endif -%}
-               <h2 class="tt-title">{% if item.custom_name != ''%}{{ item.custom_name }}{% endif %}</h2>
+              {% if item.custom_name != ''%} <h2 class="tt-title">{{ item.custom_name }}</h2>{% endif %}
             </a>
         </div> {%- endfor -%}{%- endif -%}
       </div></div></div></div>

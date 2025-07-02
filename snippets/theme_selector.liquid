@@ -1,0 +1,160 @@
+<!-- Slick Styles -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+>
+
+{%- assign RecommendedProducts = product.metafields.pdp.theme_selector_products.value -%}
+
+{% if product.metafields.pdp.theme_selector_products.value != blank %}
+  <!-- Section Heading -->
+  <p class="tt-tab-title">Theme Selector:</p>
+
+  <div class="theme_selector">
+    {% for RecommendedProduct in RecommendedProducts %}
+      <div>
+        <div class="theme_selector_product">
+          <a href="{{ RecommendedProduct.url }}">
+            {% if RecommendedProduct.metafields.pdp.theme_selector_featured_image.value != blank %}
+              <img
+                class="theme_selector_img" width="90px" height="90px"               
+                src="{{ RecommendedProduct.metafields.pdp.theme_selector_featured_image | img_url: '90x90' }}"
+                loading="lazy"
+                alt=""
+                 srcset="{{ RecommendedProduct.metafields.pdp.theme_selector_featured_image | img_url: '90x90' }}"
+              >
+            {% else %}
+              <img
+                class="theme_selector_img" width="90px" height="90px"              
+                src="{{ RecommendedProduct.featured_image | img_url: '90x90' }}"
+                 loading="lazy"
+                alt="{{ RecommendedProduct.featured_image.alt }}"
+                 srcset="{{ RecommendedProduct.featured_image | img_url: '90x90' }}"
+              >
+            {% endif %}
+            <div class="theme-name">
+              <p>{{ RecommendedProduct.metafields.pdp.theme_selector_name }}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+    .tt-tab-title {
+      font-family: AvenirBold;
+      font-size: 18px;
+      text-align: left;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    .theme_selector {
+      width: 458px;
+    }
+
+    .theme_selector_product {
+      background: #E9F4F9;
+      border: 2px solid #3980C329;
+      overflow: hidden;
+      padding: 0;
+      margin: 0 0.2rem;
+      min-height: 145px;
+      border-radius: 6px;
+    }
+
+    .theme_selector_img {
+      mix-blend-mode: multiply;
+    }
+
+    .slick-dots li button:before {
+      display: none;
+    }
+
+    .slick-slider .slick-dots li button {
+      width: 10px;
+      height: 10px;
+    }
+    .theme-name {
+      font-size: 12px;
+      text-align: center;
+      line-height: 14px;
+    }
+    @media (max-width: 898px) {
+      .theme_selector {
+        width: 100%;
+      }
+      .theme_selector_img {
+        width: 82px !important;
+        height: auto !important;
+      }
+    }
+
+  .theme_selector {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
+  }
+
+  .theme_selector.slick-initialized {
+    visibility: visible;
+    opacity: 1;
+  }
+  .theme-name {
+    text-align: center;
+  }
+
+  .slick-track{ margin-left: 0; }
+</style>
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Slick -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<script>
+  $('.theme_selector').slick({
+    dots: true,
+    infinite: false,
+    autoplay: false,
+    arrows: true,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          arrows: true,
+
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          arrows: true,
+        }
+      }
+    ]
+  });
+</script>

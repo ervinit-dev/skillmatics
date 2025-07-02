@@ -1,378 +1,546 @@
+<style>
+    #blog-listing-container {
+      height: auto !important;    justify-content: center;
+      display: flex; max-width: 100%;width:100%;
+      flex-wrap: wrap;
+      gap:20px;
+  }
+    @media (min-width: 801px) {
+     .list-item-blog {
+      max-width: 30%;width:30%;
+  }
+  }
+  @media (max-width: 800px) {
+    #blog-listing-container {
+    flex-direction: column;
+  }
+     .list-item-blog {
+      max-width: 100%;width:100%;
+  }
+  }
+
+    .tt-blog-masonry .element-item {
+      position: relative !important;
+  }
+    #pagination-container{text-align:center;font-size:20px;}
+</style>
+
 {{ 'section-blog.css' | asset_url | stylesheet_tag }}
 {%- assign item = section.settings -%}
 {%- paginate blog.articles by item.blog_list -%}
-<div class="container-indent">
-  <div class="container container-fluid-custom-mobile-padding">
-    <h1 class="tt-title-subpages noborder">{%- unless current_tags -%}{{ blog.title }}{%- else -%}{{ blog.title }}&nbsp;{{ 'blogs.article.title_result' | t }}&nbsp;{{ current_tags.first | replace: '-', ' ' }}{%- endunless -%}</h1>
-      
-    {%- case item.layout -%}
-    {%- when 'left_column' -%}
-    <div class="row flex-sm-row-reverse">
-      <div class="col-sm-12 col-md-8 col-lg-9">
-        {%- include 'blog-listing' -%}
-      </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 leftColumn">
-        {%- include 'blog-sidebar' -%}
-      </div>
-    </div>
 
-    {%- when 'right_column' -%}
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-9">
-        {%- include 'blog-listing' -%}
-      </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 rightColumn">
-        {%- include 'blog-sidebar' -%}
-      </div>
-    </div>
-    
-    {%- when 'masonry_grid_2' -%}
-    <div class="tt-blog-masonry">
-      <div class="tt-blog-init tt-grid-col-2 tt-layout-01-post tt-add-item">
-        {%- for article in blog.articles -%}
-        {%- include 'blog-masonry-item' -%}
-        {%- endfor -%}
-      </div>
-    </div>    
-    {%- if paginate.pages > 1 -%}
-    {%- include 'pagination' -%}
-    {%- endif -%}
-    
-    {%- when 'masonry_grid_3' -%}
-    <div class="tt-blog-masonry">
-      <div class="tt-blog-init tt-grid-col-3 tt-layout-01-post tt-add-item">
-        {%- for article in blog.articles -%}
-        {%- include 'blog-masonry-item' -%}
-        {%- endfor -%}
-      </div>
-    </div>
-    {%- if paginate.pages > 1 -%}
-    {%- include 'pagination' -%}
-    {%- endif -%}
+{% comment %}
+      <a href="https://www.skillmatics.in/collections/bestsellers?utm_source=bloglist_banner&utm_medium=bloglist_banner_bestseller_collection&utm_campaign=bloglistbestsellerbau&utm_id=bloglistbanner">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_18_a74b8eb5-78c3-429c-bacd-8bd8f9570e79.webp?v=1746704729"
+      class="mobile-hidden blog-b-desk"
+    >
+  </a>
+  <a href="https://www.skillmatics.in/collections/bestsellers?utm_source=bloglist_banner&utm_medium=bloglist_banner_bestseller_collection&utm_campaign=bloglistbestsellerbau&utm_id=bloglistbanner">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_14_bb1465a9-8b99-4241-8236-86f3be1005e7.webp?v=1746704729"
+      class="desktop-hidden blog-b-mbl"
+    >
+    </a>
+{% endcomment %}
 
-    {%- else -%}
-    <div class="row">
-      <div class="col-12">
-        {%- include 'blog-listing' half: ' tt-half'%}
-      </div>
+  <div class="container-indent {% if blog.articles.size == forloop.index %}last-blog{% endif %}">
+    <div class="container container-fluid-custom-mobile-padding">
+      <h1 class="tt-title-subpages noborder">
+        {%- unless current_tags -%}
+          {{ blog.title }}
+        {%- else -%}
+          {{ blog.title }}&nbsp;{{ 'blogs.article.title_result' | t }}&nbsp;{{ current_tags.first | replace: '-', ' ' }}
+        {%- endunless -%}
+      </h1>
+
+      {%- case item.layout -%}
+        {%- when 'masonry_grid_3' -%}
+          <div class="tt-blog-masonry">
+            <div class="tt-blog-init tt-grid-col-3 tt-layout-01-post tt-add-item" id="blog-listing-container">
+              {%- for article in blog.articles -%}
+                <div class="list-item-blog {% if loop.last %}last-child{% endif %}">
+                  {%- include 'custom-blog-masonry-item' -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+      {%- endcase -%}
     </div>
-    
-    {%- endcase -%}
-      
   </div>
-</div>
-{%- endpaginate -%}
 
+  <!-- Loading Text Container -->
+  <div id="loading-text" style="display: none; text-align: center; padding: 20px; font-size: 18px; color: #999;">
+    <img
+      width="32"
+      height="32"
+      alt="Page Loader"
+      class="lazyload"
+      data-src="{{ 'ajax-loader.gif' |asset_url }}"
+      src="{{ 'ajax-loader.gif' |asset_url }}"
+      fetchpriorty="high"
+      decoding="async"
+    >
+  </div>
+
+  <!-- Hidden element to store the next page URL for infinite scroll -->
+  <div id="pagination-container" style="display: none;">
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}" class="next-page-link" id="load-more" data-next="{{ paginate.next.url }}"
+        >Load More</a
+      >
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+<!-- Infinite Scroll Script -->
+<script>
+let currentPage = 1;
+const container = document.getElementById('blog-listing-container');
+const loadingText = document.getElementById('loading-text');
+let blogHandle = "{{ blog.handle }}";
+const itemsPerPage = {{ item.blog_list }};
+let isLoading = false;
+let allArticlesLoaded = false;
+
+window.addEventListener('scroll', function () {  
+    if (!isLoading && !allArticlesLoaded && window.innerHeight + window.scrollY >= document.body.offsetHeight - 400) {
+        currentPage++;
+        loadMoreArticles(currentPage); 
+       console.log("window.innerHeight + window.scrollY .",window.innerHeight + window.scrollY );
+       console.log("window.innerHeight + window.scrollY .",document.body.offsetHeight );
+      console.log("document.body.offsetHeight - 400",document.body.offsetHeight - 400);
+    }
+});
+
+function loadMoreArticles(page) {    
+    isLoading = true;
+    loadingText.style.display = 'block';
+    fetch(`/blogs/${blogHandle}?page=${page}&limit=${itemsPerPage}`)
+        .then(response => response.text())
+        .then(data => {
+            const newArticles = new DOMParser().parseFromString(data, 'text/html');
+            const newArticlesContainer = newArticles.querySelector('#blog-listing-container');
+
+            if (newArticlesContainer) {
+                const newArticlesHTML = newArticlesContainer.innerHTML;
+
+                if (newArticlesHTML.trim()) {    
+                   // console.log("newArticlesHTML",newArticlesHTML);               
+                    container.insertAdjacentHTML('beforeend', newArticlesHTML);                  
+                } else {                                  
+                    allArticlesLoaded = true;
+                    //console.log("No more articles to load.");
+                }
+            } else {
+               console.error("Error: Blog container not found in fetched data.");
+            }
+        })
+        .catch(error => console.error('Error loading more articles:', error))
+        .finally(() => {           
+            loadingText.style.display = 'none';            
+            isLoading = false;
+        });
+}
+</script>
+{% comment %}
+  {%- paginate blog.articles by item.blog_list -%}
+
+  <div class="container-indent">
+    <div class="container container-fluid-custom-mobile-padding">
+      <h1 class="tt-title-subpages noborder">
+        {%- unless current_tags -%}
+          {{ blog.title }}
+        {%- else -%}
+          {{ blog.title }}&nbsp;{{ 'blogs.article.title_result' | t }}&nbsp;{{ current_tags.first | replace: '-', ' ' }}
+        {%- endunless -%}
+      </h1>
+
+      {%- case item.layout -%}
+        {%- when 'left_column' -%}
+          <div class="row flex-sm-row-reverse">
+            <div class="col-sm-12 col-md-8 col-lg-9" id="blog-listing-container">
+              {%- include 'blog-listing' -%}
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 leftColumn">
+              {%- include 'blog-sidebar' -%}
+            </div>
+          </div>
+
+        {%- when 'right_column' -%}
+          <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-9" id="blog-listing-container">
+              {%- include 'blog-listing' -%}
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 rightColumn">
+              {%- include 'blog-sidebar' -%}
+            </div>
+          </div>
+
+        {%- when 'masonry_grid_2' -%}
+          <div class="tt-blog-masonry">
+            <div class="tt-blog-init tt-grid-col-2 tt-layout-01-post tt-add-item" id="blog-listing-container">
+              {%- for article in blog.articles -%}
+                {%- include 'blog-masonry-item' -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+        {%- when 'masonry_grid_3' -%}
+          <div class="tt-blog-masonry">
+            <div class="tt-blog-init tt-grid-col-3 tt-layout-01-post tt-add-item" id="blog-listing-container">
+              {%- for article in blog.articles -%}
+                {%- include 'blog-masonry-item' -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+        {%- else -%}
+          <div class="row">
+            <div class="col-12">
+              {%- include 'blog-listing' half: ' tt-half'%}
+            </div>
+          </div>
+      {%- endcase -%}
+    </div>
+  </div>
+
+  <div id="pagination-container">
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}" class="next-page-link">Load More</a>
+    {%- endif -%}
+  </div>
+
+  {%- endpaginate -%}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajaxinate/2.0.2/ajaxinate.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+      var infiniteScroll = new Ajaxinate({
+          container: '#blog-listing-container',  // Where new articles will be loaded
+          pagination: '#pagination-container',  // The pagination link container
+          method: 'scroll'  // Can be 'click' or 'scroll'
+      });
+
+      // Fix overlapping layout if using Masonry
+      document.addEventListener('ajaxinated', function () {
+          setTimeout(function () {
+              if (typeof masonryLayout === 'function') {
+                  masonryLayout();
+              }
+          }, 500);
+      });
+  });
+  </script>
+{% endcomment %}
 
 {% schema %}
-  {
-    "name": "Blog pages",
-    "settings": [
-      {
-        "type": "select",
-        "id": "layout",
-        "label": "Design",
-        "default": "left_column",
-        "options": [
-          {
-            "value": "left_column",
-            "label": "with Left Column"
-          },
-          {
-            "value": "right_column",
-            "label": "with Right Column"
-          },
-          {
-            "value": "no_column",
-            "label": "No Column"
-          },
-          {
-            "value": "masonry_grid_2",
-            "label": "Masonry Grid 2"
-          },
-          {
-            "value": "masonry_grid_3",
-            "label": "Masonry Grid 3"
-          }
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Thumbnails Settings"
-      },
-      {
-        "type": "text",
-        "id": "blog_list",
-        "label": "Show items",
-        "default": "6",
-      	"info": "Integer"
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_tags",
-        "label": "Show tags",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_tags_uppercase",
-        "label": "Tags uppercase",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_author",
-        "label": "Show author",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_date",
-        "label": "Show date",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_comments",
-        "label": "Show comments",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_button",
-        "label": "Show button",
-        "default": true
-      },
-      {
-        "type": "paragraph",
-        "content": "Works only for the \"Content\" field.  \"Excerpt\" field will be shown full."
-      },
-      {
-        "type": "checkbox",
-        "id": "truncate_excerpt",
-        "label": "Truncate Excerpt",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "truncate",
-        "label": "Show Words",
-        "default": "15",
-        "info": "Integer"
-      },
-      {
-        "type": "text",
-        "id": "truncate_last_symbols",
-        "label": "Last Symbols",
-        "default": "..."
-      }
-    ],
-    "blocks": [
-      {
-        "type": "categories",
-        "name": "Blogs",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "BLOGS"
-          },
-          {
-            "type": "textarea",
-            "id": "content",
-            "label": "Blogs",
-            "info": "Separate blog names with a comma"
-          }
-        ]
-      },
-      {
-        "type": "about",
-        "name": "About",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "ABOUT"
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image",
-            "info": "240x240px"
-          },
-          {
-            "type": "textarea",
-            "id": "content",
-            "label": "HTML",
-            "default": "Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
-          },
-          {
-            "type": "url",
-            "id": "banner_link",
-            "label": "Link",
-            "info": "Optional"
-          },
-          {
-            "type": "checkbox",
-            "id": "show_button",
-            "label": "Show button",
-            "default": true
-          },
-          {
-            "type": "text",
-            "id": "button",
-            "label": "Button Name",
-            "default": "READ MORE"
-          }
-        ]
-      },
-      {
-        "type": "tags",
-        "name": "Tags",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "TAGS"
-          },
-          {
-            "type": "checkbox",
-            "id": "blog_tags_uppercase",
-            "label": "Tags uppercase",
-            "default": true
-          }
-        ]
-      },
-      {
-        "type": "recent_post",
-        "name": "Recent Post",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "RECENT POST"
-          },
-          {
-            "type": "blog",
-            "id": "sidebar_recent_blog_name",
-            "label": "Blog Name"
-          },
-          {
-            "type": "text",
-            "id": "sidebar_recent_blog_count",
-            "label": "Post Count",
-            "info": "Integer",
-            "default": "3"
-          },
-          {
-            "type": "checkbox",
-            "id": "blog_show_tags",
-            "label": "Show tags",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "blog_tags_uppercase",
-            "label": "Tags uppercase",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "blog_show_author",
-            "label": "Show author",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "blog_show_date",
-            "label": "Show date",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_comments",
-            "label": "Show comments",
-            "default": true
-          },
-          {
-            "type": "paragraph",
-            "content": "Works only for the \"Content\" field.  \"Excerpt\" field will be shown full."
-          },
-          {
-            "type": "checkbox",
-            "id": "truncate_excerpt",
-            "label": "Truncate Excerpt",
-            "default": false
-          },
-          {
-            "type": "text",
-            "id": "truncate",
-            "label": "Show Words",
-            "default": "15",
-            "info": "Integer"
-          },
-          {
-            "type": "text",
-            "id": "truncate_last_symbols",
-            "label": "Last Symbols",
-            "default": "..."
-          }
-        ]
-      },
-      {
-        "type": "custom_html",
-        "name": "Custom Html",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "TITLE"
-          },
-          {
-            "type": "textarea",
-            "id": "content",
-            "label": "HTML"
-          }
-        ]
-      },
-      {
-        "type": "newsletter",
-		"limit": 1,
-        "name": "Newsletter",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "NEWSLETTER SIGNUP"
-          },
-          {
-            "type": "textarea",
-            "id": "content",
-            "label": "Text",
-			"default": "Subscribe to our email and be the first to know about our special offers! In addition, we will give you a 15% discount on the next order after registration."
-          },
-          {
-            "type": "textarea",
-            "id": "form_text",
-            "label": "Form text",
-			"default": "Enter your e-mail"
-          },
-          {
-            "type": "textarea",
-            "id": "button",
-            "label": "Button text",
-			"default": "GET!"
-          }
-        ]
-      }
-	]
-  }
+ {
+   "name": "Blog pages",
+   "settings": [
+     {
+       "type": "select",
+       "id": "layout",
+       "label": "Design",
+       "default": "left_column",
+       "options": [
+         {
+           "value": "left_column",
+           "label": "with Left Column"
+         },
+         {
+           "value": "right_column",
+           "label": "with Right Column"
+         },
+         {
+           "value": "no_column",
+           "label": "No Column"
+         },
+         {
+           "value": "masonry_grid_2",
+           "label": "Masonry Grid 2"
+         },
+         {
+           "value": "masonry_grid_3",
+           "label": "Masonry Grid 3"
+         }
+       ]
+     },
+     {
+       "type": "header",
+       "content": "Thumbnails Settings"
+     },
+     {
+       "type": "text",
+       "id": "blog_list",
+       "label": "Show items",
+       "default": "6",
+     	"info": "Integer"
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_show_tags",
+       "label": "Show tags",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_tags_uppercase",
+       "label": "Tags uppercase",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_show_author",
+       "label": "Show author",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_show_date",
+       "label": "Show A",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "show_comments",
+       "label": "Show comments",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_show_button",
+       "label": "Show button",
+       "default": true
+     },
+     {
+       "type": "paragraph",
+       "content": "Works only for the \"Content\" field.  \"Excerpt\" field will be shown full."
+     },
+     {
+       "type": "checkbox",
+       "id": "truncate_excerpt",
+       "label": "Truncate Excerpt",
+       "default": false
+     },
+     {
+       "type": "text",
+       "id": "truncate",
+       "label": "Show Words",
+       "default": "15",
+       "info": "Integer"
+     },
+     {
+       "type": "text",
+       "id": "truncate_last_symbols",
+       "label": "Last Symbols",
+       "default": "..."
+     }
+   ],
+   "blocks": [
+     {
+       "type": "categories",
+       "name": "Blogs",
+       "limit": 1,
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+           "default": "BLOGS"
+         },
+         {
+           "type": "textarea",
+           "id": "content",
+           "label": "Blogs",
+           "info": "Separate blog names with a comma"
+         }
+       ]
+     },
+     {
+       "type": "about",
+       "name": "About",
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+           "default": "ABOUT"
+         },
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image",
+           "info": "240x240px"
+         },
+         {
+           "type": "textarea",
+           "id": "content",
+           "label": "HTML",
+           "default": "Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."
+         },
+         {
+           "type": "url",
+           "id": "banner_link",
+           "label": "Link",
+           "info": "Optional"
+         },
+         {
+           "type": "checkbox",
+           "id": "show_button",
+           "label": "Show button",
+           "default": true
+         },
+         {
+           "type": "text",
+           "id": "button",
+           "label": "Button Name",
+           "default": "READ MORE"
+         }
+       ]
+     },
+     {
+       "type": "tags",
+       "name": "Tags",
+       "limit": 1,
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+           "default": "TAGS"
+         },
+         {
+           "type": "checkbox",
+           "id": "blog_tags_uppercase",
+           "label": "Tags uppercase",
+           "default": true
+         }
+       ]
+     },
+     {
+       "type": "recent_post",
+       "name": "Recent Post",
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+           "default": "RECENT POST"
+         },
+         {
+           "type": "blog",
+           "id": "sidebar_recent_blog_name",
+           "label": "Blog Name"
+         },
+         {
+           "type": "text",
+           "id": "sidebar_recent_blog_count",
+           "label": "Post Count",
+           "info": "Integer",
+           "default": "3"
+         },
+         {
+           "type": "checkbox",
+           "id": "blog_show_tags",
+           "label": "Show tags",
+           "default": true
+         },
+         {
+           "type": "checkbox",
+           "id": "blog_tags_uppercase",
+           "label": "Tags uppercase",
+           "default": true
+         },
+         {
+           "type": "checkbox",
+           "id": "blog_show_author",
+           "label": "Show author",
+           "default": true
+         },
+         {
+           "type": "checkbox",
+           "id": "blog_show_date",
+           "label": "Show date",
+           "default": true
+         },
+         {
+           "type": "checkbox",
+           "id": "show_comments",
+           "label": "Show comments",
+           "default": true
+         },
+         {
+           "type": "paragraph",
+           "content": "Works only for the \"Content\" field.  \"Excerpt\" field will be shown full."
+         },
+         {
+           "type": "checkbox",
+           "id": "truncate_excerpt",
+           "label": "Truncate Excerpt",
+           "default": false
+         },
+         {
+           "type": "text",
+           "id": "truncate",
+           "label": "Show Words",
+           "default": "15",
+           "info": "Integer"
+         },
+         {
+           "type": "text",
+           "id": "truncate_last_symbols",
+           "label": "Last Symbols",
+           "default": "..."
+         }
+       ]
+     },
+     {
+       "type": "custom_html",
+       "name": "Custom Html",
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+           "default": "TITLE"
+         },
+         {
+           "type": "textarea",
+           "id": "content",
+           "label": "HTML"
+         }
+       ]
+     },
+     {
+       "type": "newsletter",
+	"limit": 1,
+       "name": "Newsletter",
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+           "default": "NEWSLETTER SIGNUP"
+         },
+         {
+           "type": "textarea",
+           "id": "content",
+           "label": "Text",
+		"default": "Subscribe to our email and be the first to know about our special offers! In addition, we will give you a 15% discount on the next order after registration."
+         },
+         {
+           "type": "textarea",
+           "id": "form_text",
+           "label": "Form text",
+		"default": "Enter your e-mail"
+         },
+         {
+           "type": "textarea",
+           "id": "button",
+           "label": "Button text",
+		"default": "GET!"
+         }
+       ]
+     }
+]
+ }
 {% endschema %}

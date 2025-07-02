@@ -4,7 +4,7 @@
 {%- endif -%}
     {%- for link in linklists[mm].links -%}
     <li{% if settings.use_header_inline %} class="item-categories{% if forloop.last %} last-child{% endif %}"{% endif %}>
-      <a href="{{ link.url }}" aria-label="{{ link.title }}">
+      <a href="{{ link.url }}" aria-label="{{ link.title }}" >
         {%- assign svg = 'svg_item_' | append: forloop.index -%}
         {%- assign svg = item[svg] -%}
         {% if svg != '' %}{{ svg }}{% endif %}<span>{{ link.title }}</span></a>
@@ -21,7 +21,7 @@
       <ul>
         {%- for child_level_2 in level_2.links -%}
         <li>
-          <a href="{{ child_level_2.url }}">{{ child_level_2.title }}</a>
+          <a href="{{ child_level_2.url }}" >{{ child_level_2.title }}</a>
           
           {%- capture return -%}{%- include "get_linklist_dropdown", link: child_level_2 -%}{%- endcapture -%}{%- assign return = return | split: "%%" -%}{%- assign has_drop_down = return | first | strip -%}{%- assign child_list_handle = return | last | strip -%}
 

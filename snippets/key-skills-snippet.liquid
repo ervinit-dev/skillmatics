@@ -7,71 +7,75 @@
       
               {% assign skills = BundleProduct.metafields.pdp.key_skills | split: ',' %}
               
-      <div class="KeySkills-Skills">
+      <div id="skill_pdp_keyskills"  class="KeySkills-Skills bundlepd-metafield">
               {% for skill in skills %}
 
                   <div class="ProductInfo-Skill">
                   {% if skill contains 'Language Skills' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon.png">
+                      <a href="#">   <img  loading="lazy" width="48px" height="48px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon_48x48.png"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Sensory Capabilities' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon.png">
+                       <a href="#">  <img  loading="lazy" width="48px" height="48px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon_48x48.png" > <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Cognitive Abilities' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon.png">
+                       <a href="#">  <img loading="lazy" width="48px" height="48px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon_48x48.png"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Concentration' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon.png">
+                       <a href="#">  <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon_48x48.png"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Hand-eye Coordination' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon.png">
+                     <a href="#">    <img loading="lazy" width="48px" height="48px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon_48x48.png" > <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Observation' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation.webp">
+                       <a href="https://www.skillmatics.in/collections/observation">  
+                         <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Vocabulary' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon.png">
+                      <a href="#">   <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon_48x48.png" > <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Focus & Attention' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention.webp">
+                  <a href="https://www.skillmatics.in/collections/focus-and-attention">  <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention_48x48.webp" width="48px" height="48px"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Spatial Reasoning' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning.webp">
+                   <a href="https://www.skillmatics.in/collections/spatial-reasoning">  <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Social & Communication' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication.webp">
+                   <a href="https://www.skillmatics.in/collections/social-and-communication">  <img  loading="lazy"width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                    {% if skill contains 'Fine Motor' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor.webp">
+                    <a href="https://www.skillmatics.in/collections/fine-motor"> <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Process Planning' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning.webp">
+                    <a href="https://www.skillmatics.in/collections/smart-planning-through-play"> <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Problem Solving' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving.webp">
+                   <a href="https://www.skillmatics.in/collections/problem-solving">  <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving_48x48.webp" > <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Reflective Thinking' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking.webp">
+                    <a href="https://www.skillmatics.in/collections/play-that-sparks-thought">  <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking_48x48.webp" > <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Mental Processing' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing.webp">
+                   <a href="https://www.skillmatics.in/collections/mental-processing">  <img  loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Decision Making' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making.webp">
+                   <a href="https://www.skillmatics.in/collections/decision-making">  <img loading="lazy" width="48px" height="48px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making_48x48.webp"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Writing' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing.webp">
+                    <a href="https://www.skillmatics.in/collections/exciting-stories-start-here"> <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
+                     {% if skill contains 'Critical Thinking' %}
+    <a href="https://www.skillmatics.in/collections/critical-thinking"><img loading="lazy" width="48px" height="48px"  alt="Critical Thinking"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Critical_Thinking_48x48.webp"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Critical_Thinking_48x48.webp"> <span>{{ skill | strip }}</span></a>
+      {% endif %}
                   {% if skill contains 'Creative Thinking' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking.webp">
+                     <a href="https://www.skillmatics.in/collections/explore-your-creativity-1"> <img  loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Reading & Comprehension' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension.png">
+                  <a href="https://www.skillmatics.in/collections/engage-with-fun-reading-games">   <img loading="lazy"  width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension_48x48.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension_48x48.png"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
                   {% if skill contains 'Logical Reasoning' %}
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning.webp">
+                  <a href="https://www.skillmatics.in/collections/logical-reasoning"> <img loading="lazy" width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning_48x48.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning_48x48.webp"> <span>{{ skill | strip }}</span></a>
                   {% endif %}
-                    <span>{{ skill | strip }}</span>{% unless forloop.last %} {% endunless %}
+                  
                   </div>
                
               {% endfor %}
@@ -85,6 +89,11 @@
     flex-direction: column;
     gap: 1rem;
   }
+  .ProductInfo-KeySkills-Container   .ProductInfo-Skill a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
   .KeySkills-Heading P {
     font-family: MikadoMedium;
     font-size: 20px;

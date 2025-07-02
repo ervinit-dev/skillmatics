@@ -71,7 +71,7 @@
             </div>
             {% else %}
             <div class="tt-collapse-content">
-            <h3 class="tt-collapse-title newsletter-title">{{ footer_links.settings.text2 }}</h3>
+            <p class="tt-collapse-title newsletter-title">{{ footer_links.settings.text2 }}</p>
               
               {%- if settings.use_mailchimp_form -%}
               {%- if settings.mailchimp_form_action != "" -%}
@@ -129,13 +129,17 @@
         {%- assign soc_links = soc_links | strip -%}
         {%- if soc_links != '' -%}<ul class="tt-social-icon">{{ soc_links }}</ul>{%- endif -%}
         {%- endif -%}
-      	{%- endunless -%}      
-       <div class="mobile-only mob-footerbtn-1">
+      	{%- endunless -%} 
+          <a class="whatsapp-icon-foot" href="https://wa.me/+918422822545" target="_blank">
+         <p>WhatsApp Us:</p> 
+         <img  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_28x28.png?v=1742463939" alt="whatsapp" width="26px" height="26px" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_28x28.png?v=1742463939">
+        </a>
+     {% comment %}  <div class="mobile-only mob-footerbtn-1">
    {%- include "footer_bottom_links" -%}
-       </div>
+       </div>{% endcomment %}
         {%- else -%}
         <div class="{% if section.settings.show_collapsible %}tt-mobile-collapse{%- endif -%}">
-          {% if footer_links.settings[_title] != '' %}<h3 class="tt-collapse-title">{{ footer_links.settings[_title] }}<img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy"></h3>{% endif %}
+          {% if footer_links.settings[_title] != '' %}<p class="tt-collapse-title">{{ footer_links.settings[_title] }}<img  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555" class="accordian-icon" alt="chevron-up"  width="30px" height="30px" loading="lazy" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Dropdown_Arrow_30x30.webp?v=1726906555"></p>{% endif %}
           {% if footer_links.settings[_title] != '' %}<div class="tt-collapse-content">{% endif %}
             {%- if _linklist != blank -%}
             <ul class="tt-list">
@@ -149,7 +153,7 @@
             {% endif %}
           {% if footer_links.settings[_title] != '' %}</div>{% endif %}
         </div>
-        {%- endif -%}       
+        {%- endif -%}    
         
       {% unless count == 1 %}</div>{% endunless %}
 

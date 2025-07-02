@@ -9,6 +9,18 @@
   .scroll-griditem {  max-width: 104px;} 
 }
     .scroll-griditem {  text-align: center;}
+  @media (min-width: 749px){
+    #section-{{ section.id }} {
+     background-image: url("{{section.settings.background_image_desktop | img_url:'2560x'}}");
+      background-size: cover;
+      background-repeat: no-repeat
+    }
+  }
+  @media (min-width: 1000px) and (max-width: 1450px) {
+    #section-{{ section.id }} {
+       background-size: contain;
+    }
+  }
 </style>
 
 {%- assign item = section.settings -%}
@@ -21,6 +33,7 @@
 {%- endcase -%}
 {%- endcapture -%}
 {%- assign img_size = info_image_size | split: 'x' | first | append: 'x' -%}
+
 
 <div id="section-{{ section.id }}" class=" {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent">
   <div class="container section-space custom-scroll-container container-fluid-custom-mobile-padding">
@@ -37,18 +50,18 @@
           <div class="custom-collection-gd">                      
               {%- if collection.image == blank -%}
               {%- unless item.imaged == blank -%}
-              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}" loading="lazy"
-                  src="{{ item.imaged | img_url: 'large'}}"
+              <img class="lazyload  mobile-{%- unless  item.image == blank -%}hidden {%- endunless -%}"  loading="on-demand" fetchpriority="medium" decoding="async"
+                  src="{{ item.imaged | img_url: 'medium'}}"
                    alt="{{ item.custom_name }} page link" width="400px" height="auto">
               {%- endunless -%} 
               {%- unless item.image == blank -%}
               <img class="lazyload desktop-{%- unless  item.imaged == blank -%}hidden {%- endunless -%}"
-                src="{{ item.image | img_url: 'large'}}"
-                   alt="{{item.custom_name }} page link" width="200px" height="auto">
+                src="{{ item.image | img_url: 'medium'}}"
+                   alt="{{item.custom_name }} page link" width="200px" height="auto" loading="on-demand" fetchpriority="medium" decoding="async">
               {%- endunless -%}
               {%- else -%}            
-              <img class="lazyload" loading="lazy"
-                src="{{ collection.image | img_url: 'large'}}"
+              <img class="lazyload"  loading="on-demand" fetchpriority="medium" decoding="async"
+                src="{{ collection.image | img_url: 'medium'}}"
                    alt="{{ item.custom_name }} page link" width="400px" height="200px">           
               {%- endif -%} 
           </div>
@@ -76,6 +89,11 @@
       "step": 50,      
       "label": "Section width",
       "default": 1000
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image_desktop",
+        "label": "Desktop background image"
       },
       {
         "type": "select",

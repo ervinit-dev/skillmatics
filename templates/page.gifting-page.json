@@ -1,1 +1,407 @@
-{"sections":{"main":{"type":"page","disabled":true,"settings":{}},"custom_banner_gLPBLD":{"type":"custom-banner","blocks":{"item_fGKWcW":{"type":"item","settings":{"collection":"shopify:\/\/pages\/lead-gen-form","image":"shopify:\/\/shop_images\/Desktop_Banner_1_5a4db70c-cf74-4072-89a9-18c49c8050f1.webp","mob-image":"shopify:\/\/shop_images\/Mobile_Banner_487e9ce8-3a75-484d-ba20-052be405ab9c.webp"}}},"block_order":["item_fGKWcW"],"settings":{"tracking-id":""}},"index_section_tabs_mCqdJz":{"type":"index-section-tabs","blocks":{"item2_dTMa8b":{"type":"item2","settings":{"tab_name":"All Ages","collection":"gifting-all-ages","limit":"16","toshow":"3","showbtn":true,"btnname":"SEE ALL"}},"item2_9ykXpR":{"type":"item2","settings":{"tab_name":"0-3 years","collection":"gifting-0-3","limit":"12","toshow":"3","showbtn":true,"btnname":"View All"}},"item2_9FGFrc":{"type":"item2","settings":{"tab_name":"3-6 years","collection":"gifting-3-6","limit":"12","toshow":"3","showbtn":true,"btnname":"View All"}},"item2_36MN6Q":{"type":"item2","settings":{"tab_name":"6+ years","collection":"gifting-6","limit":"12","toshow":"3","showbtn":true,"btnname":"View All"}},"item2_pfR6Vq":{"type":"item2","settings":{"tab_name":"8+ years","collection":"gifting-8","limit":"12","toshow":"3","showbtn":true,"btnname":"View All"}}},"block_order":["item2_dTMa8b","item2_9ykXpR","item2_9FGFrc","item2_36MN6Q","item2_pfR6Vq"],"custom_css":["@media (max-width: 1024px) {.tt-tabs-default {justify-content: flex-start; overflow-x: scroll; overflow: hidden; flex-flow: nowrap; overflow-x: auto; } li.nav-item {min-width: max-content; }}"],"settings":{"top_offset":"normal","fullwidth":false,"show_title":false,"text1":"Gifts for every age","text2":"Find gifts kids will love and you will feel great about giving!","bgcolor":"#fdf7f4"}},"custom_collection_list_EXPCX9":{"type":"custom-collection-list","blocks":{"item_8wciMy":{"type":"item","settings":{"collection":"toys-under-500","link":"","imaged":"shopify:\/\/shop_images\/under499.jpg","image":"shopify:\/\/shop_images\/under499.jpg","custom_name":""}},"item_ygiwdT":{"type":"item","settings":{"collection":"toys-under-1000","link":"","imaged":"shopify:\/\/shop_images\/under999.jpg","image":"shopify:\/\/shop_images\/under999.jpg","custom_name":""}},"item_RMHqMH":{"type":"item","settings":{"collection":"toys-under-1500","link":"","imaged":"shopify:\/\/shop_images\/under1499.jpg","image":"shopify:\/\/shop_images\/under1499.jpg","custom_name":""}},"item_EDweQw":{"type":"item","settings":{"collection":"toys-under-2000","link":"","imaged":"shopify:\/\/shop_images\/under1999.jpg","image":"shopify:\/\/shop_images\/under1999.jpg","custom_name":""}}},"block_order":["item_8wciMy","item_ygiwdT","item_RMHqMH","item_EDweQw"],"custom_css":["@media (max-width: 749px) {.customsection-title h2 {font-size: 20px; }}","@media (min-width: 750px) {.customsection-title h2 {font-size: 32px; }}",".section-space {padding-bottom: 20px;}"],"settings":{"top_offset":"normal","items-desk":"3","items":"6","imgpadding":10,"showtitle":true,"title":"Gifts Under","subtitle":""}},"custom_collection_list_e8jPnk":{"type":"custom-collection-list","blocks":{"item_DNQKdb":{"type":"item","settings":{"collection":"arts-crafts","link":"","imaged":"shopify:\/\/shop_images\/Art_craft.webp","image":"shopify:\/\/shop_images\/Art_craft.webp","custom_name":"Arts &\u2028Crafts"}},"item_Xy9afL":{"type":"item","settings":{"collection":"puzzles-pretend-play","link":"","imaged":"shopify:\/\/shop_images\/Puzzles_pretend_play_322a3b46-12ef-48e1-bd7d-8bb012cfcadd.webp","image":"shopify:\/\/shop_images\/Puzzles_pretend_play_322a3b46-12ef-48e1-bd7d-8bb012cfcadd.webp","custom_name":"Puzzles &\u2028Pretend Play"}},"item_Yx9UtX":{"type":"item","settings":{"collection":"toddler-infants","link":"","imaged":"shopify:\/\/shop_images\/Infants_Toddlers_336ce917-b6c6-4db5-a5df-0291bde43ea9.webp","image":"shopify:\/\/shop_images\/Infants_Toddlers_336ce917-b6c6-4db5-a5df-0291bde43ea9.webp","custom_name":"Toddlers &\u2028Infants"}},"item_XbFhKK":{"type":"item","settings":{"collection":"learning-resources","link":"","imaged":"shopify:\/\/shop_images\/Learning_Resources_1.webp","image":"shopify:\/\/shop_images\/Learning_Resources_1.webp","custom_name":"Learning Resources"}},"item_dfhJiE":{"type":"item","settings":{"collection":"board-games","link":"","imaged":"shopify:\/\/shop_images\/Card_Board_Games_1.webp","image":"shopify:\/\/shop_images\/Card_Board_Games_1.webp","custom_name":"Card & Board Games"}},"item_jwJfR3":{"type":"item","settings":{"collection":"stem-toys","link":"","imaged":"shopify:\/\/shop_images\/STEM_Toys_1.webp","image":"shopify:\/\/shop_images\/STEM_Toys_1.webp","custom_name":"STEM Toys"}}},"block_order":["item_DNQKdb","item_Xy9afL","item_Yx9UtX","item_XbFhKK","item_dfhJiE","item_jwJfR3"],"custom_css":["@media (min-width: 1025px) {h2 {margin-bottom: 10px; } .customtitle {font-size: 24px; } .grid-column-item-1 .customtitle, .grid-column-item-6 .customtitle {padding: 0px 32px !important; }}","@media (min-width: 750px) and (max-width: 1024px) {.customtitle {font-size: 18px; } .custom-collection-gd img {max-width: 120px; max-height: 120px; margin: 0 auto; }}",".grid-column-item-1 .customtitle,.grid-column-item-6 .customtitle {padding: 0px 20px;}",".custom-collection-gd img {aspect-ratio: 1 \/ 1;}"],"settings":{"top_offset":"normal","items-desk":"2","items":"4","imgpadding":20,"showtitle":true,"title":"Gift by Category","subtitle":""}},"section_testimonials2_gQhC6B":{"type":"section-testimonials2","blocks":{"column_BFpbYq":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Testimonial_1.webp","custom_text":"<p>“I gifted it to my nephew for his birthday and he loved it. The quality is good and it's super<br\/>engaging. Good buy!”<\/p>","custom_name":"Suchali Patel"}},"column_HxWjjh":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Testimonial_2.webp","custom_text":"<p>“Enjoyable with the family and educational for the kids. It's a great gifting option for any<br\/>occasion and was the perfect birthday gift for my friend's son.”<\/p>","custom_name":"Anushka Kapadia"}},"column_Bt96JV":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Testimonial_3_1.webp","custom_text":"<p> “Product: Infant Essentials Combo, High Contrast Flashcards:<br\/>Text: The quality is superb. Great for babies to learn. I even gifted my sister's 3-month-old- she<br\/>loves this and it's perfect for tummy time.<br\/>”<\/p>","custom_name":"Kareena Desai"}}},"block_order":["column_BFpbYq","column_HxWjjh","column_Bt96JV"],"settings":{"text1":"Unwrapping joy with <u>1 crore+<\/u> Happy families","text2":"","sectionbg":"#ffffff","bg-desktop":"shopify:\/\/shop_images\/Happy_Customers.svg","bg-mobile":"shopify:\/\/shop_images\/Frame_375351.svg","enable_video_looping":true}},"index_section_tabs_eexPE8":{"type":"index-section-tabs","blocks":{"item_gpBjAy":{"type":"item","settings":{"tab_name":"Bestsellers","collection":"bestsellers","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"7000"}},"item_GkUCyR":{"type":"item","settings":{"tab_name":"New Launches","collection":"new-launches","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"7000"}},"item_gfcJQR":{"type":"item","settings":{"tab_name":"Bundles","collection":"bundle-of-3-and-more","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"7000"}}},"block_order":["item_gpBjAy","item_GkUCyR","item_gfcJQR"],"settings":{"top_offset":"normal","fullwidth":false,"show_title":false,"text1":"Top picks for you","text2":"","bgcolor":"#e9f4f9"}},"section_gift_APf3zH":{"type":"section-gift","custom_css":["@media (min-width: 750px) {.gifting-container {max-width: 470px; } .section-giftheading {font-size: 32px; line-height: 34px; } .section-gifting-subtitle {font-size: 24px; font-family: MikadoRegular !important; } a.mailbtn span {font-size: 20px; }}"],"settings":{"text1":"Have a birthday party or \u2028an event coming up?","text2":"<p>Contact us for product recommendations and special discounts!<\/p>","sectionbg":"","bg-desktop":"shopify:\/\/shop_images\/Desktop_bg.webp","bg-mobile":"shopify:\/\/shop_images\/Mobile_bg.webp","show-btn":true,"emailid":"help@skillmatics.in","phoneno":"+91 9152331018"}}},"order":["main","custom_banner_gLPBLD","index_section_tabs_mCqdJz","custom_collection_list_EXPCX9","custom_collection_list_e8jPnk","section_testimonials2_gQhC6B","index_section_tabs_eexPE8","section_gift_APf3zH"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_banner_EkQWH4": {
+      "type": "custom-banner",
+      "blocks": {
+        "item_QzC7wn": {
+          "type": "item",
+          "settings": {
+            "collection": "https://www.skillmatics.in/pages/return-gifts-for-kids",
+            "image": "shopify://shop_images/Desktop_14_31f9413b-7592-4b84-bc98-a289c6755e69.webp",
+            "mob-image": "shopify://shop_images/Mobile_14_f6e79d8c-44e6-4426-9184-5e6c30a0ac76.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_QzC7wn"
+      ],
+      "settings": {
+        "tracking-id": ""
+      }
+    },
+    "index_section_tabs_gifting_2_Ny3jC6": {
+      "type": "index-section-tabs-gifting-2",
+      "blocks": {
+        "item_rYzkzr": {
+          "type": "item",
+          "settings": {
+            "tab_name": "All Ages",
+            "collection": "gifting-all-ages",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_8rYq7x": {
+          "type": "item",
+          "settings": {
+            "tab_name": "0-3 years",
+            "collection": "our-products-for-ages-0-3",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_xHRKCb": {
+          "type": "item",
+          "settings": {
+            "tab_name": "3+ years",
+            "collection": "3-6-years",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_Jhz7LK": {
+          "type": "item",
+          "settings": {
+            "tab_name": "6+ years",
+            "collection": "6-9-years",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_V9MA6m": {
+          "type": "item",
+          "settings": {
+            "tab_name": "8+ years",
+            "collection": "8-13-years",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        }
+      },
+      "block_order": [
+        "item_rYzkzr",
+        "item_8rYq7x",
+        "item_xHRKCb",
+        "item_Jhz7LK",
+        "item_V9MA6m"
+      ],
+      "name": "Tabs Horizontal Gifting 2",
+      "settings": {
+        "top_offset": "normal",
+        "fullwidth": false,
+        "show_title": true,
+        "text1": "Gifts for Every Age",
+        "text2": "Find gifts kids will love and you will feel great about giving!",
+        "bgcolor": "#fdf7f4",
+        "tracking-id": ""
+      }
+    },
+    "custom_collection_list_EXPCX9": {
+      "type": "custom-collection-list",
+      "blocks": {
+        "item_8wciMy": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-499",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._499.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._499.webp",
+            "custom_name": ""
+          }
+        },
+        "item_ygiwdT": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-1000",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._999.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._999.webp",
+            "custom_name": ""
+          }
+        },
+        "item_RMHqMH": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-1500",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._1499.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._1499.webp",
+            "custom_name": ""
+          }
+        },
+        "item_EDweQw": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-2000",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._1699.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._1699_b4ec01b2-a36c-4f98-bdd2-7384502962ff.webp",
+            "custom_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_8wciMy",
+        "item_ygiwdT",
+        "item_RMHqMH",
+        "item_EDweQw"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.customsection-title h2 {font-size: 20px; }}",
+        "@media (min-width: 750px) {.customsection-title h2 {font-size: 32px; }}",
+        ".section-space {padding-bottom: 0px;}"
+      ],
+      "settings": {
+        "top_offset": "normal",
+        "items-desk": "3",
+        "items": "6",
+        "imgpadding": 1,
+        "showtitle": true,
+        "title": "Gift by Price",
+        "subtitle": "",
+        "collection-product-bg-desktop": "shopify://shop_images/Gift_by_Price_-_Desktop.webp",
+        "collection-product-bg-mobile": "shopify://shop_images/Gift_by_Price_-_Mobile.webp"
+      }
+    },
+    "custom_collection_list_e8jPnk": {
+      "type": "custom-collection-list-cat",
+      "blocks": {
+        "item_DNQKdb": {
+          "type": "item",
+          "settings": {
+            "collection": "arts-crafts",
+            "link": "",
+            "imaged": "shopify://shop_images/Arts_Crafts_a295a8cc-68c4-4281-8d43-d82c4ad092fc.webp",
+            "image": "shopify://shop_images/Arts_Crafts_a295a8cc-68c4-4281-8d43-d82c4ad092fc.webp",
+            "custom_name": "Arts & Crafts"
+          }
+        },
+        "item_Xy9afL": {
+          "type": "item",
+          "settings": {
+            "collection": "pretend-play",
+            "link": "",
+            "imaged": "shopify://shop_images/Puzzles_Pretend_Play_2f321d2b-65f0-428b-8391-7b2cdd8276a8.webp",
+            "image": "shopify://shop_images/Puzzles_Pretend_Play_2f321d2b-65f0-428b-8391-7b2cdd8276a8.webp",
+            "custom_name": "Puzzles & Pretend Play"
+          }
+        },
+        "item_Yx9UtX": {
+          "type": "item",
+          "settings": {
+            "collection": "toddler-infants",
+            "link": "",
+            "imaged": "shopify://shop_images/Toddlers_Infants_9832f236-4c56-46f4-91c9-c828560cd3dc.webp",
+            "image": "shopify://shop_images/Toddlers_Infants_9832f236-4c56-46f4-91c9-c828560cd3dc.webp",
+            "custom_name": "Toddlers & Infants"
+          }
+        },
+        "item_XbFhKK": {
+          "type": "item",
+          "settings": {
+            "collection": "learning-resources",
+            "link": "",
+            "imaged": "shopify://shop_images/Learning_Resources_ceaf1b64-6216-4f7d-84e6-fb7258c64c2f.webp",
+            "image": "shopify://shop_images/Learning_Resources_ceaf1b64-6216-4f7d-84e6-fb7258c64c2f.webp",
+            "custom_name": "Learning Products"
+          }
+        },
+        "item_dfhJiE": {
+          "type": "item",
+          "settings": {
+            "collection": "board-games",
+            "link": "",
+            "imaged": "shopify://shop_images/Card_Board_Games_502c0d1b-96b1-4aa5-a9f9-45662fd98937.webp",
+            "image": "shopify://shop_images/Card_Board_Games_502c0d1b-96b1-4aa5-a9f9-45662fd98937.webp",
+            "custom_name": "Card & Board Games"
+          }
+        },
+        "item_jwJfR3": {
+          "type": "item",
+          "settings": {
+            "collection": "stem-toys",
+            "link": "",
+            "imaged": "shopify://shop_images/STEM_Toys_4b4e8b45-f72b-4060-a79b-dc21ed75213e.webp",
+            "image": "shopify://shop_images/STEM_Toys_4b4e8b45-f72b-4060-a79b-dc21ed75213e.webp",
+            "custom_name": "STEM Toys"
+          }
+        }
+      },
+      "block_order": [
+        "item_DNQKdb",
+        "item_Xy9afL",
+        "item_Yx9UtX",
+        "item_XbFhKK",
+        "item_dfhJiE",
+        "item_jwJfR3"
+      ],
+      "custom_css": [
+        "@media (min-width: 1025px) {h2 {margin-bottom: 10px; } .customtitle {font-size: 24px; } .grid-column-item-1 .customtitle, .grid-column-item-6 .customtitle {padding: 0px 32px !important; }}",
+        "@media (min-width: 750px) and (max-width: 1024px) {.customtitle {font-size: 18px; } .custom-collection-gd img {max-width: 120px; max-height: 120px; margin: 0 auto; }}",
+        ".grid-column-item-1 .customtitle,.grid-column-item-6 .customtitle {padding: 0px 20px;}",
+        ".custom-collection-gd img {aspect-ratio: 1 / 1;}"
+      ],
+      "settings": {
+        "top_offset": "normal",
+        "items-desk": "2",
+        "items": "4",
+        "imgpadding": 20,
+        "showtitle": true,
+        "title": "Gift by Category",
+        "subtitle": ""
+      }
+    },
+    "section_testimonials2_gQhC6B": {
+      "type": "section-testimonials2",
+      "blocks": {
+        "column_BFpbYq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial_1.webp",
+            "custom_text": "<p>“I gifted it to my nephew for his birthday and he loved it. The quality is good and it's super<br/>engaging. Good buy!”</p>",
+            "custom_name": "Suchali Patel"
+          }
+        },
+        "column_HxWjjh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial_2.webp",
+            "custom_text": "<p>“Enjoyable with the family and educational for the kids. It's a great gifting option for any<br/>occasion and was the perfect birthday gift for my friend's son.”</p>",
+            "custom_name": "Anushka Kapadia"
+          }
+        },
+        "column_Bt96JV": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial_3_1.webp",
+            "custom_text": "<p> “Product: Infant Essentials Combo, High Contrast Flashcards:<br/>Text: The quality is superb. Great for babies to learn. I even gifted my sister's 3-month-old- she<br/>loves this and it's perfect for tummy time.<br/>”</p>",
+            "custom_name": "Kareena Desai"
+          }
+        }
+      },
+      "block_order": [
+        "column_BFpbYq",
+        "column_HxWjjh",
+        "column_Bt96JV"
+      ],
+      "disabled": true,
+      "settings": {
+        "text1": "Unwrapping joy with <u>1 crore+</u> Happy families",
+        "text2": "",
+        "sectionbg": "#ffffff",
+        "bg-desktop": "shopify://shop_images/Happy_Customers.svg",
+        "bg-mobile": "shopify://shop_images/Frame_375351.svg",
+        "enable_video_looping": false
+      }
+    },
+    "index_section_tabs_eexPE8": {
+      "type": "index-section-tabs-gifting",
+      "blocks": {
+        "item_gpBjAy": {
+          "type": "item",
+          "settings": {
+            "tab_name": "Bestsellers",
+            "collection": "bestsellers",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_GkUCyR": {
+          "type": "item",
+          "settings": {
+            "tab_name": "New Launches",
+            "collection": "new-launches",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_gfcJQR": {
+          "type": "item",
+          "settings": {
+            "tab_name": "Bundles",
+            "collection": "bundle-save",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        }
+      },
+      "block_order": [
+        "item_gpBjAy",
+        "item_GkUCyR",
+        "item_gfcJQR"
+      ],
+      "settings": {
+        "top_offset": "normal",
+        "fullwidth": false,
+        "show_title": false,
+        "star_img": "shopify://shop_images/combined_stars.gif",
+        "text1": "<span>Rakhi</span> Picks for you",
+        "text2": "",
+        "bgcolor": "#f7f3e8",
+        "tracking-id": ""
+      }
+    },
+    "section_gift_APf3zH": {
+      "type": "section-gift",
+      "custom_css": [
+        "@media (min-width: 750px) {.gifting-container {max-width: 470px; } .section-giftheading {font-size: 32px; line-height: 34px; } .section-gifting-subtitle {font-size: 24px; font-family: MikadoRegular !important; } a.mailbtn span {font-size: 20px; }}"
+      ],
+      "settings": {
+        "text1": "Have a birthday party or  an event coming up?",
+        "text2": "<p>Contact us for product recommendations and special discounts!</p>",
+        "sectionbg": "",
+        "bg-desktop": "shopify://shop_images/Desktop_-_Birthday_Section.webp",
+        "bg-mobile": "shopify://shop_images/Mobile_-_Birthday_Section.webp",
+        "show-btn": true,
+        "emailid": "help@skillmatics.in",
+        "phoneno": "9152331018"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_banner_EkQWH4",
+    "index_section_tabs_gifting_2_Ny3jC6",
+    "custom_collection_list_EXPCX9",
+    "custom_collection_list_e8jPnk",
+    "section_testimonials2_gQhC6B",
+    "index_section_tabs_eexPE8",
+    "section_gift_APf3zH"
+  ]
+}

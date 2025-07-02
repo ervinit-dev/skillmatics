@@ -14,14 +14,14 @@
 <div class="container-indent">
   <div class="container">
     <h1 class="tt-title-subpages noborder">
-      {{ 'general.search.results_title' | t }} "{{ search.terms }}" <span class="tt-title-total">({{ search.results_count }})</span>
+      {{ 'general.search.results_title' | t }} "{{ search.terms }}" <span class="tt-title-total">( {% if product.tags contains 'hide' %} 0 {% else %} {{ search.results_count }} {% endif %} )</span>
     </h1>
     <div class="row">
       <div class="col-md-12">
         {%- paginate search.results by 12 -%}
         <div class="tt-product-listing row">
           {%- for item in search.results -%}{%- assign product = item -%}
-          <div class="col-6 col-md-4 col-lg-3 tt-col-item">{%- include "product-grid-item" -%}</div>
+          <div class="col-6 col-md-4 col-lg-3 tt-col-item coll-free-{% if product.title contains 'Free Gift' or product.tags contains 'hide' %}hidden-product{% endif %}">{%- include "product-grid-item" -%}</div>
           {%- endfor -%}
         </div>
         {%- if paginate.pages > 1 -%}{%- include 'pagination' -%}{%- endif -%}
@@ -32,7 +32,6 @@
 </div>
 
 {%- endif -%}
-
 
 {%- else -%}
 

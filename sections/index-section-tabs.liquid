@@ -22,48 +22,88 @@ background-size: cover;background-position: center;
        .section-tab-horizontal .tt-layout-product-item .col-6{padding-left:2px;padding-right:2px;}
        .section-tab-horizontal .forsliders-margins{margin:0;margin-right: 5px;} 
      } 
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.product-tab-bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.product-tab-bg-desktop | img_url:'2560x'}}");
+  }
+        #tt-pageContent .shopify-section .container-indent:not(.nomargin):not([class^="tt-offset"]) {
+    padding-top: 50px!important;
+    padding-bottom: 50px!important;
+}
+    }
+    {% endif %}
+    {% if section.settings.product-tab-bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.product-tab-bg-mobile | img_url:'450x478'}}");
+       background-size: contain;
+        background-repeat: no-repeat;
+       background-position: initial;
+  }
+    }
+    {% endif %}
+  .section-tab-horizontal .tt-title span {
+    color: #D41F3B;
+  }
+  @media (max-width: 650px) {
+    div#shopify-section-template--18580247707837__index_section_tabs_MnwtbE .nav.nav-tabs {
+        justify-content: flex-start;
+        overflow-x: scroll;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+    }
+  }
 </style>
 {%- assign item = section.settings -%}
 <div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent" data-sectionname="index_horizontaltabs" data-respjs="index_sectiontabs">
  
   <div class="section-tab-horizontal container{% if item.fullwidth %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding">
       <div class="tt-block-title">
-      {% unless item.text1 == '' %} <h1 class="tt-title">{{ item.text1 }}</h1>{% endunless %}
+      {% unless item.text1 == '' %} <h2 class="tt-title">{{ item.text1 }}</h2>{% endunless %}
       {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
     </div>
     {% if item.show_title %}<div class="tt-tab-wrapper">{% endif %}
 
-      <ul class="nav nav-tabs tt-tabs-default" role="tablist">
+      <ul class="nav nav-tabs tt-tabs-default">
         {%- for block in section.blocks -%}
-        <li class="nav-item" aria-label="tablist-div" role="tab">
-          <a href="#{{ section.id }}{{ forloop.index }}"  aria-controls="{{ section.id }}{{ forloop.index }}" class="nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" >{{ block.settings.tab_name }}</a>
+        <li class="nav-item trend-tab" id="trend-tab-{{ forloop.index }}" role="tab">
+          <a href="#{{ section.id }}{{ forloop.index }}" id="{{ section.settings.tracking-id }}tab_0{{ forloop.index }}"  aria-controls="{{ section.id }}{{ forloop.index }}" class="nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" >{{ block.settings.tab_name }}</a>
         </li>
         {%- endfor -%}
       </ul>
 
       <div class="tab-content">
         {%- for block in section.blocks -%}
+          {% assign trackingid = section.settings.tracking-id | append: 'tab_0'|append: forloop.index %}
+          <!-- {{ trackingid }}-->
         {%- assign name_collection = block.settings.collection -%}
         {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
         {%- assign collection = collections[name_collection] -%}
-        <div id="{{ section.id }}{{ forloop.index }}"  aria-labelledby="tab-{{ section.id }}{{ forloop.index }}"  class="tab-pane{% if forloop.first %} active{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
+        <div id="{{ section.id }}{{ forloop.index }}"  data-id="trend-tab-{{ forloop.index }}"  class="tab-pane{% if forloop.first %} active{% endif %} trend-con" role="tabpanel" {{ block.shopify_attributes }}>
           {%- if block.type == 'item2' -%}
           <div class="row tt-layout-product-item">
 
-            <div class="ajaxcontent startajax" data-content="col_{{ collection.handle }}+num_{{ block.settings.limit}}+col-lg-{{ block.settings.toshow }}+template_{{ template }}"></div>
+            <div class="ajaxcontent startajax" data-content="col_{{ collection.handle }}+num_{{ block.settings.limit}}+col-lg-{{ block.settings.toshow }}+template_{{ template }}+trackingid_{{ trackingid }}"></div>
 
           </div>
           {%- if block.settings.showbtn -%}
           <div class="text-center tt_product_showmore">
-            <a href="{{ collection.url }}" class="link btn-border">{{ block.settings.btnname }}</a>
+            <a href="{{ collection.url }}"  id="{{ section.settings.tracking-id }}viewall" class="link btn-border">{{ block.settings.btnname }}</a>
           </div>
           {%- endif -%}
           {%- else -%}
           
-          <div class="ajaxcontent startajax slider" data-content="col_{{ collection.handle }}+num_{{ block.settings.limit }}+col-lg-{{ block.settings.toshow }}+toshow_{{ block.settings.toshow }}+slider_true+step_{{ block.settings.step }}+autoplay_{{ block.settings.module_autoplay }}+speed_{{ block.settings.delay_time }}{% if item.show_title %}+showtitle_{% endif %}+template_{{ template }}"></div>
+          <div class="ajaxcontent startajax slider" data-content="col_{{ collection.handle }}+num_{{ block.settings.limit }}+col-lg-{{ block.settings.toshow }}+toshow_{{ block.settings.toshow }}+slider_true+step_{{ block.settings.step }}+autoplay_{{ block.settings.module_autoplay }}+speed_{{ block.settings.delay_time }}{% if item.show_title %}+showtitle_{% endif %}+template_{{ template }}+trackingid_{{ trackingid }}"></div>
          
           <div class="text-center tt_product_showmore">
-            <a href="{{ collection.url }}" class="link btn-border">View All</a>
+            <a  id="{{ section.settings.tracking-id }}viewall" href="{{ collection.url }}" class="link btn-border">View All</a>
           </div>
           
           {%- endif -%}
@@ -74,6 +114,22 @@ background-size: cover;background-position: center;
     {%- if item.show_title -%}</div>{%- endif -%}
   </div>
 </div>
+
+<script>
+  $('.trend-tab').map(function(){
+  $(this).click(function(){
+    var tabs = $(this).attr('id');
+    $('.trend-con').map(function(){
+      var tabcont = $(this).attr('data-id');
+      if(tabs == tabcont) {
+        $(this).css('display', 'block');  // Show the tab content
+      } else {
+        $(this).css('display', 'none');  // Hide other tab contents
+      }
+    });
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -101,6 +157,16 @@ background-size: cover;background-position: center;
           }
         ]
       },
+    {
+          "type": "image_picker",
+          "id": "product-tab-bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "product-tab-bg-mobile",
+          "label": "mobile background Image "
+        },
       {
         "type": "checkbox",
         "id": "fullwidth",
@@ -140,6 +206,12 @@ background-size: cover;background-position: center;
           "type": "image_picker",
           "id": "bg-mobile",
           "label": "mobile background Image "
+        },
+      {
+          "label": "Tracking id",
+          "info": "Do Not Delete",
+          "id": "tracking-id",
+          "type": "text"
         }
   ],
   "blocks": [

@@ -1,4 +1,7 @@
-{{ 'collection-template.css' | asset_url | stylesheet_tag }}
+{% render 'rapid-search-results-template' %}
+{% render 'rapid-search-results-template-v2' %}
+<link rel="stylesheet" href="{{ 'collection-template.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
+{% comment %}{{ 'collection-template.css' | asset_url | stylesheet_tag }}{% endcomment %}
 {%- comment -%}
   The contents of the collection.liquid template can be found in /snippets/collection-template.liquid
 {%- endcomment -%}
@@ -6,8 +9,8 @@
 <div class="all-collection-{{ collection.handle }}">
 {% if section.settings.link2 != blank %}
     <a href="{{section.settings.link2 }}" aria-label="{{ collection.handle }} link">{% endif %}
-      <img src="{{ section.settings.image2 | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
-      <img src="{{ section.settings.mob-image2 | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img id ="{{ section.settings.tracking-id }}" src="{{ section.settings.image2 | img_url:'1600x' }}" class="desktop-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%"  srcset="{{ section.settings.image2 | img_url:'2000x'}}"  >
+      <img id ="{{ section.settings.tracking-id }}" src="{{ section.settings.mob-image2 | img_url:'700x' }}" class="mobile-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.mob-image2 | img_url:'700x'}}"  >
  {% if section.settings.link2 != blank %}</a>{% endif %}
 
 </div> 
@@ -15,8 +18,8 @@
 <div class="all-collection-{{ collection.handle }}">
 {% if section.settings.link1 != blank %}
     <a href="{{section.settings.link1 }}" aria-label="{{ collection.handle }} link">{% endif %}
-      <img src="{{ section.settings.image1 | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
-      <img src="{{ section.settings.mob-image1 | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img id ="{{ section.settings.tracking-id }}"  src="{{ section.settings.image1 | img_url:'1600x' }}" class="desktop-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.image1 | img_url:'2000x'}}">
+      <img id ="{{ section.settings.tracking-id }}" src="{{ section.settings.mob-image1 | img_url:'700x' }}" class="mobile-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.mob-image1 | img_url:'700x'}}">
  {% if section.settings.link1 != blank %}</a>{% endif %}
 
 </div>
@@ -26,16 +29,16 @@
 <div class="collection-{{ collection.handle }}">
   {% if section.settings.btmlink2 != blank %}
     <a href="{{section.settings.btmlink2 }}" aria-label="{{ collection.handle }} link">{% endif %}
-      <img src="{{ section.settings.imagebtm2 | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
-      <img src="{{ section.settings.mob-imagebtm2 | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img id ="{{ section.settings.tracking-id }}"  src="{{ section.settings.imagebtm2 | img_url:'1600x' }}" class="desktop-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.imagebtm2 | img_url:'2000x'}}">
+      <img id ="{{ section.settings.tracking-id }}" src="{{ section.settings.mob-imagebtm2 | img_url:'700x' }}" class="mobile-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%"  srcset="{{ section.settings.mob-imagebtm2 | img_url:'700x'}}">
  {% if section.settings.btmlink2 != blank %}   </a>{% endif %}
 </div>
   {% endif %}
   {% if section.settings.showimagebtm %}
-<div class="collection-{{ collection.handle }}">
+<div class="collection-{{ collection.handle }} btm-banner">
   {% if section.settings.btmlink != blank %}      <a href="{{section.settings.btmlink }}" aria-label="{{ collection.handle }} link">{% endif %}
-      <img src="{{ section.settings.imagebtm | img_url:'master'}}" class="desktop-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
-      <img src="{{ section.settings.mob-imagebtm | img_url:'master'}}" class="mobile-only" loading="lazy" fetchpriority="low" alt="{{ collection.handle }}" width="100%" height="100%">
+      <img  id ="{{ section.settings.tracking-id }}"  src="{{ section.settings.imagebtm | img_url:'1600x' }}" class="desktop-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.imagebtm | img_url:'1800x'}}">
+      <img id ="{{ section.settings.tracking-id }}"  src="{{ section.settings.mob-imagebtm | img_url:'450x' }}" class="mobile-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.mob-imagebtm | img_url:'450x'}}">
   {% if section.settings.btmlink != blank %}      </a>{% endif %}
 </div>
 {% endif %}
@@ -140,6 +143,12 @@
           "label": "Bottom banner Link",
           "id": "btmlink1",
           "type": "url"
+        },
+        {
+          "label": "Tracking id",
+          "info": "Do Not Delete",
+          "id": "tracking-id",
+          "type": "text"
         }
     ]
      

@@ -1,7 +1,10 @@
 {%- if pay_icons != '' and pay_icons.settings.show_content -%}
 {% unless item.footer_col %}<div class="tt-col-right payment-imgs">{% endunless %}
+  <div class="tt-col-item nintara-text desktop-hide">
+          <a class="tt-box-copyright" href="https://nintarababy.in/">Baby Care Essentials</a>
+          </div>
   <div class="tt-col-item">
-   <h4 class="payheading"> Shop Securely Using</h4>
+   <p class="payheading"> Shop Securely Using</p>
     <ul class="tt-payment-list">
       {%- for i in (1..8) -%}
       {%- assign img = 'pay_icon_' | append: forloop.index -%}

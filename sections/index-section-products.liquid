@@ -5,6 +5,7 @@
 {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
 {%- assign collection = collections[name_collection] -%}
 {%- assign length = item.limit | plus: 0 -%}
+{%- assign length2 = item.limit2 | plus: 0 -%}
 
 {%- assign usebgcolor = false -%}
 {%- for block in section.blocks -%}{%- assign b_i = block.settings -%}
@@ -12,16 +13,21 @@
 {%- assign showbgimage = b_i.showbgimage -%}
 {%- assign useimage = b_i.image -%}
 {%- endfor -%}
-
-<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent sectionproducts{{ section.id }} {{ item.custom_classes }}">
+<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent sectionproducts{{ section.id }} {{ item.custom_classes }} ">
   {% if item.nopaddings %}<div class="nopaddingspr">{% endif %}
   {% if usebgcolor %}<div class="products-section-bg"{% if showbgimage %} style="background-image: url({{ useimage | img_url: '2048x' }});"{% endif %}>{% endif %}
   <div class="container{% if item.fullwidth %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding" data-sectionname="index_sectionproducts">
     {%- if item.show_title -%}<div class="tt-block-title{% if item.title_to_left %} text-left{% endif %}{% if item.boxed_title and item.fullwidth %} container{% endif %}">
       <h2 class="tt-title">
-        {%- if item.use_title_as_link -%}<a href="{{ routes.collections_url }}/{{ collection.handle }}" class="title-hover-underline" title="{{ item.button_text }}">{{ item.text1 }}</a>
-        {%- else -%}{{ item.text1 }}
-        {%- endif -%}
+          <picture class="star-icon-left">
+            <source srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/combined_stars_30x60.gif?v=1750851948">
+            <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/combined_stars_30x60.gif?v=1750851948" width="20" height="40" loading="eager" alt="{{ image.alt }}" decoding="async">
+          </picture>
+          {{ item.text1 }}
+          <picture class="star-icon-right">
+            <source srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/combined_stars_30x60.gif?v=1750851948">
+            <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/combined_stars_30x60.gif?v=1750851948" width="20" height="40" loading="eager" alt="{{ image.alt }}" decoding="async">
+          </picture>
       </h2>
       {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
       {% unless item.default_carousel %}{% unless item.text3 == '' %}<p>{{ item.text3 }}</p>{% endunless %}{% endunless %}
@@ -33,7 +39,7 @@
          data-mobile="{% if item.show_oneproduct_in_mobile %}1{% else %}2{% endif %}" 
          data-adaptive="{% if item.use_adaptive_height %}true{% else %}false{% endif %}">
       {%- for product in collection.products limit: length -%}
-      <div class="forsliders-margins">
+      <div class="forsliders-margins ">
         {%- include "product-grid-item" -%}
       </div>
       {%- endfor -%}
@@ -49,8 +55,8 @@
     {%- endif -%}
     
     {%- if item.show_button -%}
-    <div class="text-center">
-      <a href="{{ routes.collections_url }}/{{ collection.handle }}" class="btn btn-border btn-top">{{ item.button_text }}</a>
+    <div class="text-center va-btn">
+      <a href="{{ routes.collections_url }}/{{ collection.handle }}" class=" btn-top">{{ item.button_text }}</a>
     </div>
     {%- endif -%}
 
@@ -148,6 +154,7 @@
   .sectionproducts{{ section.id }} .tt-product:not(.tt-view) .tt-image-box .wk-app-btn[data-action="wk-remove"] svg path {
     fill: {{ b_i.pr_action_icon_hover }};
   }
+ 
   @media (max-width: 1024px){
     .sectionproducts{{ section.id }} .tt-product .tt-description .tt-btn-quickview{
       color: {{ b_i.pr_action_icon_mobile }};
@@ -203,29 +210,32 @@
 {% endif %}
 {% if b_i.usebgcolor %}
 <style>
-  .sectionproducts{{ section.id }} .tt-product .tt-description,
+  /* .sectionproducts{{ section.id }} .tt-product .tt-description,
   .sectionproducts{{ section.id }} .tt-product .tt-description .tt-product-inside-hover {
     background-color: {{ b_i.bgco }};
-  }
+  } */
   .sectionproducts{{ section.id }} > div{
     background-color: {{ b_i.bgco }};
     background-repeat: no-repeat;
     background-size: {{ b_i.imagesize }};
     background-position: {{ b_i.imagealign }};
   }
-
+  .sectionproducts{{ section.id }} { padding: 0 !important }
+  .products-section-bg .tt-title span {
+    color: #D41F3B;
+  }
   @media (min-width: 1025px){
     .sectionproducts{{ section.id }} > div{
       padding-top: {{ b_i.bgdepad }}px;
       padding-bottom: {{ b_i.bgdepad_2 }}px;
     }
   }
-  @media (max-width: 1024px){
+  /* @media (max-width: 1024px){
     .sectionproducts{{ section.id }} > div{
       padding-top: {{ b_i.bgmopad }}px;
       padding-bottom: {{ b_i.bgmopad_2 }}px;
     }
-  }
+  } */
   {% if item.usemiheight %}
   @media (min-width: 791px){
     .sectionproducts{{ section.id }} > div > div > .row{
@@ -249,6 +259,54 @@
 </style>
 {% endif %}
 {% endfor %}
+<style>
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.featured-product-bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.featured-product-bg-desktop | img_url:'2560x'}}");
+  }
+    /* #tt-pageContent .shopify-section .container-indent:not(.nomargin):not([class^="tt-offset"]) {
+    padding-top: 50px!important;
+    padding-bottom: 50px!important;
+} */
+    
+    {% endif %}
+    {% if section.settings.featured-product-bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.featured-product-bg-mobile | img_url:'450x478'}}");
+       background-size: cover;
+        background-repeat: no-repeat;
+       background-position: center;
+  }
+    }
+    {% endif %}
+       picture.star-icon-left img, picture.star-icon-right img {
+    width: 20px;
+    position: relative;
+    top: -15px;
+    left: 0;
+  }
+  picture.star-icon-left img {
+    transform: rotate(45deg);
+  }
+  picture.star-icon-right img {
+    transform: rotate(315deg);
+  .}
+  .products-section-bg .tt-block-title { margin: 0; }
+  .products-section-bg {
+    padding: 30px 0 !important;
+  }
+  .products-section-bg .forsliders-margins {
+    border-radius: 4px;
+  }  
+</style>
 
 {% schema %}
   {
@@ -280,7 +338,17 @@
         "id": "custom_classes",
         "label": "Custom css classes",
         "info": "For the custom styles. Add your styles in the theme.css.liquid"
-      },
+      },     
+    {
+          "type": "image_picker",
+          "id": "featured-product-bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "featured-product-bg-mobile",
+          "label": "mobile background Image "
+        },
       {
         "type": "checkbox",
         "id": "fullwidth",
@@ -380,6 +448,12 @@
         "id": "limit",
         "label": "Items Length. Integer",
         "default": "8"
+      },
+      {
+        "type": "text",
+        "id": "limit2",
+        "label": "Items Length. Integer Mobile",
+        "default": "2"
       },
       {
         "type": "select",

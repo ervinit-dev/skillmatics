@@ -1,22 +1,35 @@
 /* collection page background */
+.coll-name-return-gifting .tt-filters-options .tt-title {
+  display: none;
+}
 .collection-page-bg {
   background: #fdf7f4;
   margin-top: 0px;
 }
+.tt-product .tt-image-box {
+  aspect-ratio: 1 / 1;
+  align-content: center;
+}
 .container-indent.collection-page-bg {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 select.show-qty {
-    display: none;
+  display: none;
 }
 .tt-description a {
-    cursor: pointer;
+  cursor: pointer;
 }
 /* collection title */
 h1.tt-title {
   font-size: 40px !important;
   font-family: "MikadoMedium" !important;
   line-height: normal !important;
+}
+
+/* filter headings */
+.filter-heading {
+  font-family: "MikadoMedium";
+  font-size: 20px;
 }
 
 /* filter buttons */
@@ -26,7 +39,7 @@ h1.tt-title {
   padding: 8px 4px;
   text-align: center;
   border-radius: 4px;
-  border: 1px solid #3980C3;
+  border: 1px solid #3980c3;
 }
 
 /* filter button label */
@@ -41,7 +54,7 @@ h1.tt-title {
 }
 
 /* filter fixes */
-.tt-list-row.shopifyfiltres-js li:nth-child(n+7) {
+.tt-list-row.shopifyfiltres-js li:nth-child(n + 7) {
   display: none;
 }
 /* fix the alignment of filter buttons */
@@ -60,14 +73,12 @@ h1.tt-title {
 }
 
 .wk-app-btn tt-btn-wishlist wlbutton-js {
-  opacity: 1.0 !important;
+  opacity: 1 !important;
 }
 
 /* product card */
 .tt-product {
 }
-
-
 
 /* product info */
 .tt-description {
@@ -103,11 +114,14 @@ h1.tt-title {
 .tt-label-sale {
   font-family: "AvenirBold";
   font-size: 16px;
-  color: #62BD81;
+  color: #62bd81;
 }
 
-
-
+@media (max-width: 376px) {
+  .star-rating span {
+    font-size: 13px !important;
+  }
+}
 /* --- mobile layout changes --- */
 @media (max-width: 890px) {
   /* collection title */
@@ -119,7 +133,13 @@ h1.tt-title {
   .container {
     padding: 0;
   }
-  
+
+  /* filter headings */
+  .filter-heading {
+    font-family: "MikadoMedium";
+    font-size: 20px;
+  }
+
   /* filter buttons reset */
   .tt-filters-options .tt-sort {
     background: unset;
@@ -133,7 +153,7 @@ h1.tt-title {
   .tt-btn-toggle,
   .tt-filters-options .tt-sort {
     border: 1px solid #3980c329;
-}
+  }
 
   /* filter button labels */
   .tt-filters-options .tt-btn-toggle a,
@@ -155,7 +175,7 @@ h1.tt-title {
 
   /* product grid */
   .tt-product-listing > .tt-col-item {
-    padding: 0.2rem;
+    padding: 0.2rem 0.5rem;
   }
   .container-fluid-custom-mobile-padding-02 {
     padding: 0;
@@ -164,26 +184,37 @@ h1.tt-title {
     padding-right: 4px;
   }
 
-
   /* temporary fix */
-   .tt-title {
+  .tt-title {
     padding: 0px !important;
-     font-size: 16px !important;
-     /* min-height: unset !important; */
+    font-size: 16px !important;
+    /* min-height: unset !important; */
   }
 
-  .product-parent.thumbprod-center .tt-description .tt-price {
-    
+  .tt-price .new-price {
+    font-size: 14px;
   }
- .tt-price .new-price { font-size: 14px;}
-  .tt-price .old-price {font-size: 13px;}
-  .tt-label-sale {  font-size: 14px;}
-
-
+  .tt-price .old-price {
+    font-size: 13px;
+  }
+  .tt-label-sale {
+    font-size: 14px;
+  }
 }
 
 /* for small screen mobiles */
-@media (max-width: 375px) {
+@media (max-width: 650px) {
+  .tt-price .new-price {
+    font-weight: 400 !important;
+  }
+  .tt-title,
+  .tt-price .new-price,
+  .tt-price .old-price {
+    font-family: "AvenirRegular" !important;
+  }
 }
 
 /* --- end mobile layout --- */
+.last-item-coll {
+  order: 1;
+}

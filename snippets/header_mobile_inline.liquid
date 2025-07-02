@@ -4,22 +4,25 @@
     <div class="tt-header-row">
       <div class="tt-mobile-parent-menu">
         <div class="tt-menu-toggle mainmenumob-js">
-          <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hamburger_Menu.webp?v=1726901450" alt="" srcset>
+          <img id="skill_web_ham" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hamburger_Menu_24x24.webp?v=1726901450" loading="lazy" width="25" height="25" alt=""  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hamburger_Menu_24x24.webp?v=1726901450" >
         </div>
       </div>
       
       <div class="tt-logo-container">
-        <a class="tt-logo tt-logo-alignment" href="{{ routes.root_url }}" aria-label="logoskillmatics">
+        <a class="tt-logo tt-logo-alignment mob--menu--logo" href="{{ routes.root_url }}" aria-label="logoskillmatics">
           {%- if headerlogomobile contains "title_" -%}<h2>{{ headerlogomobile | split:"title_" | last }}</h2>
-          {%- else -%}<img src="{{ headerlogomobile }}"
+          {%- else -%}<img id="skill_logo" src="{{ headerlogomobile }}"
                            srcset="{{ headerlogomobile }} 1x, {{ headerlogomobileretina }} 2x"
                            alt="{{ headerlogomobilealt }}"
-                           class="tt-retina" width="101px" height="30px">
+                           class="tt-retina" width="101px" height="30px" loading="lazy" >
           {%- endif -%}
         </a>
       </div>
       
       <div class="tt-mobile-parent-menu-icons">
+        <a class="whatsapp-icon-head  desktop-only" href="https://wa.me/+918422822545">
+          {% render 'whatsapp-icon' %}
+        </a>
         <!-- search -->
         <div class="tt-mobile-parent-search tt-parent-box">
           {%- if settings.header_design != "header_type_1" and settings.header_design != "header_type_5" -%}
@@ -29,14 +32,14 @@
                     data-tooltip="{{ 'general.tooltip_texts.header_search' | t }}"
                     data-tposition="bottom"
                     >
-                    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/search.webp?v=1726898063" alt="" srcset="">
+                    <img id="skill_search" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/search.webp?v=1726898063" alt="" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/search.webp?v=1726898063" >
             </button>
             <div class="tt-dropdown-menu">
               <div class="container">
                 <form action="{{ routes.search_url }}" method="get" role="search">
                   <div class="tt-col">
                     <input type="hidden" name="type" value="product" />
-                    <input class="tt-search-input"
+                    <input id="skill_search_type" class="tt-search-input"
                            type="search"
                            name="q"
                            placeholder="{{ 'general.search.place_holder' | t }}"
@@ -59,7 +62,7 @@
         {%- unless settings.catalogue_mode -%}
         {%- if template != "cart" -%}
         <!-- cart -->
-        <div class="tt-mobile-parent-cart tt-parent-box"></div>
+        <div id="skill_cart" class="tt-mobile-parent-cart tt-parent-box"></div>
         <!-- /cart -->
         {%- endif -%}
         {%- endunless -%}

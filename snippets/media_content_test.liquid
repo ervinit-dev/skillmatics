@@ -1,0 +1,119 @@
+{% case media.media_type %}
+  {% when 'image' %}
+    {% if mobilecontent %}
+      {% if forloop.index == 1 %}
+        {% comment %} <link rel="preload" href="{{media.preview_image | img_url: '600x600' }}" as="image" type="image/jpeg">  {% endcomment %}
+        {% if product.media.size > 1 %}  <button class="tt-btn-zomm tt-top-right tt-btn-zomm-product-page"><i class="icon-f-86"></i></button>{% endif %}
+        <img
+          src="{{ media.preview_image | product_img_url: '500x500' }}"
+          width="500px"
+          height="500px"
+          alt="{{ media.alt | escape }}"
+          loading="eager"
+          fetchpriority="high"
+          srcset="{{ media.preview_image | product_img_url: '500x500' }}"
+        >
+        <span class="pdp-ft" id="featured-tag_test">
+          {% include 'featured-tag' %}
+        </span>
+      {% else %}
+        {% comment %}  <link rel="preload" href="{{media.preview_image | img_url: '600x600' }}" as="image" type="image/jpeg"> {% endcomment %}
+        <img
+          src="{{ media.preview_image | img_url: '400x400'}}"
+          alt="{{ media.alt }}"
+          {% if item.gallery_type == 'four_images' %}
+            data-target="{{ media.id }}"
+          {% endif %}
+          loading="lazy"
+          width="400px"
+          height="400px"
+          fetchpriority="low"
+          srcset="{{ media.preview_image | img_url: '400x400'}}"
+        >
+      {% endif %}
+      {% comment %}
+        <link rel="preload" href="{{ media.preview_image | img_url: '600x' }}" as="image" />
+        <img class="mbimg1" srcset="{{ media.preview_image | img_url: '600x'}}" data-lazy="{{ media.preview_image | img_url: '1024x1024' }}" alt="{{ media.alt }}"{% if item.gallery_type == 'four_images' %} data-target="{{ media.id }}"{% endif %} fetchpriority="high" >
+      {% endcomment %}
+    {% endif %}
+  {% when 'external_video' %}
+    <div
+      class="pt-product-media-external"
+      data-target-id="{{ media.id }}"
+      data-video-id="{{ media.external_id }}"
+      {% unless mobilecontent %}
+        {%- if featured_media_type != 'external_video' %} style="display: none;"{% else %} featuredmedia{% endif -%}
+      {% endunless %}
+    >
+      {{ media | external_video_tag: image_size: '600x' }}
+    </div>
+  {% when 'video' %}
+    <div
+      class="pt-product-media-internal"
+      data-target-id="{{ media.id }}"
+      {% unless mobilecontent %}
+        {%- if featured_media_type != 'video' %} style="display: none;"{% else %} featuredmedia{% endif -%}
+      {% endunless %}
+    >
+      {% capture video %}
+  {{ media | video_tag: class: 'media-video', image_size: '600x' }}  
+  {% endcapture %}
+      {{ video | replace: '<video', '<video controls' }}
+    </div>
+  {% when 'model' %}
+    <div
+      class="pt-product-media-model"
+      data-target-id="{{ media.id }}"
+      {% unless mobilecontent %}
+        {%- if featured_media_type != 'model' %} style="display: none;"{% else %} featuredmedia{% endif -%}
+      {% endunless %}
+    >
+      {{
+        media
+        | model_viewer_tag: image_size: '800x', reveal: 'interaction', toggleable: true, data-model-id: media.id
+      }}
+      <button
+        class="btn product__xr-button"
+        type="button"
+        aria-label="{{ 'products.product.xr_button_label' | t }}"
+        data-shopify-xr
+        data-shopify-model3d-id="{{ media.id }}"
+        data-shopify-title="title"
+        data-shopify-xr-hidden
+      >
+        <span>{{ 'products.product.xr_button' | t }}</span>
+      </button>
+    </div>
+  {% else %}
+    <div
+      class="pt-product-media-item"
+      data-target-id="{{ media.id }}"
+      {% unless mobilecontent %}
+        style="display: none;"
+      {% endunless %}
+    >
+      {{ media | media_tag: class: 'media-item', image_size: '600x' }}
+    </div>
+{% endcase %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const thumbnailLinks = document.querySelectorAll('#smallGallery a');
+    const featuredTag = document.getElementById('featured-tag_test');
+
+    if (featuredTag && thumbnailLinks.length > 0) {
+      thumbnailLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isFirst = this.getAttribute('data-is-first') === 'true';
+          if (isFirst) {
+            featuredTag.style.display = 'block';
+          } else {
+            featuredTag.style.display = 'none';
+          }
+
+        });
+      });
+    }
+  });
+</script>

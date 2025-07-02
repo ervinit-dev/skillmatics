@@ -1,0 +1,284 @@
+{% assign unique_id = 'ba_slider_' | append: section.id %}
+<div class="section-before--after container-indent"><div class="container">
+<main class="ba_main {{ unique_id }}">
+   <div
+    class="be-af-container before_after-content"
+    style="{% unless section.settings.show_content %}display: none;{% endunless %}"
+  >
+   {% if section.settings.ba_heading != blank %}
+     <div class="before_after-heading">
+      <h3>{{ section.settings.ba_heading }}</h3>
+    </div>
+     {% endif %}
+     {% if section.settings.ba_content != blank %}
+    <div class="before_after-paragraph">
+      <p>{{ section.settings.ba_content }}</p>
+    </div>
+    {% endif %}
+  </div>
+  <div class="be-af-container before_after">
+    <div class="image-container">
+      <div class="after_img">
+        <img
+          class="image-after slider-image"
+          src="{{ section.settings.af_image |  img_url:'master' }}"
+          alt="black and white" loading="lazy" width="100%" height="auto" srcset="{{ section.settings.af_image | img_url:'master' }}"
+        >
+        <span class="after_badge ba_badge" style="{% unless section.settings.show_badge %}display: none;{% endunless %}"
+          >After</span
+        >
+      </div>
+      <div class="before_img">
+        <img
+          class="image-before slider-image"
+          src="{{ section.settings.bf_image |  img_url:'master' }}"
+          alt="color photo" loading="lazy" width="100%" height="auto" srcset="{{ section.settings.bf_image |  img_url:'master' }}"
+        >
+        <span
+          class="before_badge ba_badge"
+          style="{% unless section.settings.show_badge %}display: none;{% endunless %}"
+          >Before</span
+        >
+      </div>
+    </div>
+    <!-- step="10" -->
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      aria-label="Percentage of before photo shown"
+      class="ba-slider"
+    >
+    <div class="slider-line" aria-hidden="true"></div>
+    <div class="slider-button" aria-hidden="true">
+        <svg width="44" height="225" viewBox="0 0 44 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1.56863" height="224.314" transform="matrix(-1 0 0 1 22.6348 -0.000244141)" fill="white"/>
+        <circle cx="21.8516" cy="113.725" r="9" fill="white"/>
+        <path d="M34.8516 114.226C34.5754 114.226 34.3516 114.45 34.3516 114.726C34.3516 115.002 34.5754 115.226 34.8516 115.226V114.226ZM43.2051 115.079C43.4004 114.884 43.4004 114.568 43.2051 114.372L40.0231 111.19C39.8279 110.995 39.5113 110.995 39.316 111.19C39.1208 111.386 39.1208 111.702 39.316 111.897L42.1445 114.726L39.316 117.554C39.1208 117.75 39.1208 118.066 39.316 118.261C39.5113 118.457 39.8279 118.457 40.0231 118.261L43.2051 115.079ZM34.8516 115.226H42.8516V114.226H34.8516V115.226Z" fill="white" fill-opacity="0.7"/>
+        <path d="M0.498009 114.372C0.302747 114.567 0.302747 114.884 0.498009 115.079L3.67999 118.261C3.87525 118.456 4.19183 118.456 4.3871 118.261C4.58236 118.066 4.58236 117.749 4.3871 117.554L1.55867 114.726L4.3871 111.897C4.58236 111.702 4.58236 111.385 4.3871 111.19C4.19183 110.995 3.87525 110.995 3.67999 111.19L0.498009 114.372ZM8.85156 115.226C9.1277 115.226 9.35156 115.002 9.35156 114.726C9.35156 114.449 9.1277 114.226 8.85156 114.226V115.226ZM0.851562 115.226H8.85156V114.226H0.851562V115.226Z" fill="white" fill-opacity="0.7"/>
+        </svg>
+    </div>
+  </div>
+ 
+</main>
+</div></div>
+{% schema %}
+{
+  "name": "Before / After Slider",
+  "settings": [
+     {
+          "type": "header",
+          "content": "Subscribe to our [channel](https://www.youtube.com/@websensepro?sub_confirmation=1)"
+        },
+    {
+      "id":"bf_image",
+      "type":"image_picker",
+      "label":"Before Image"
+    },
+    {
+      "id":"af_image",
+      "type":"image_picker",
+      "label":"After Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Badges",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale_before",
+      "label": "Grayscale for Before Image",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show content",
+      "default": false
+    },
+  {
+      "id":"ba_heading",
+      "type":"text",
+      "label":"Heading"
+    },
+    {
+      "id":"ba_content",
+      "type":"richtext",
+      "label":"Content"
+    }
+  ],
+  "presets":[
+    {
+      "name":"Before / After Slider"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+<style>
+  .section-before--after.container-indent {
+    background-color: #F1F9F5;
+}
+      {% if section.settings.show_content == true %}
+         .be-af-container {    width: calc(65% - 20px);text-align: center;}
+        .be-af-container.before_after-content {    width: calc(35% - 20px);}
+       {% else %}
+         .be-af-container{
+          width: 50%;
+           margin: 0 auto;
+        } 
+       {% endif %}
+
+         .ba_main {
+                 display: flex;
+                 place-items: center;
+                 flex-wrap: wrap;
+                 gap: 30px;
+                 padding: 0 5rem;
+                 max-width: 1200px;
+           width: 100%;
+           margin: 0px auto;
+               }
+
+               img {
+                 display: block;
+                 max-width: 100%;
+               }
+
+               .be-af-container {
+                 display: grid;
+                 /* place-content: center; */
+                 position: relative;
+                 overflow: hidden;                
+                 --position: 50%;
+               }
+
+               .image-container {
+                 max-width: 100%;
+               }
+
+  .before_badge {
+    z-index: 99 !important;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #000;
+  }
+
+    .after_badge {
+    z-index: 99 !important;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: #fff;
+    padding: 0 5px;
+    border-radius: 5px;
+    color: #000;
+  }
+
+               .slider-image {
+                 width: 100%;
+                 height: 100%;
+                 object-fit: cover;
+                 object-position: left;
+                 max-height: 500px;
+               }
+
+               .image-before {
+                 position: absolute;
+                 inset: 0;
+                 width: var(--position);
+                 {% if section.settings.grayscale_before %}filter: grayscale(100%);{% endif %}
+               }
+
+               .ba-slider {
+                 position: absolute;
+                 inset: 0;
+                 cursor: pointer;
+                 opacity: 0;
+                 /* for Firefox */
+                 width: 100%;
+                 height: 100%;
+               }
+
+               .ba-slider:focus-visible ~ .slider-button {
+                 outline: 5px solid black;
+                 outline-offset: 3px;
+               }
+                .before_after-heading h3 {
+                  color: #06374F;width: 310px;
+                  text-align: center;
+                  font-family: 'MikadoMedium',sans-serif;
+                  font-size: 24px!important;
+                  font-style: normal;
+                  font-weight: 500!important;
+                  line-height: normal;
+              }
+  
+              .before_after-heading {    justify-items: center;}
+               .slider-line {
+                 position: absolute;
+                 inset: 0;
+                 width: .2rem;
+                 height: 100%;
+                 background-color: #fff;
+                 /* z-index: 10; */
+                 left: var(--position);
+                 transform: translateX(-50%);
+                 pointer-events: none;
+               }
+
+               .slider-button {
+                 position: absolute;
+                 background-color:transparent !important;
+                 color: black;
+                 padding: .5rem;
+                 border-radius: 100vw;
+                 display: grid;
+                 place-items: center;
+                 top: 50%;
+                 left: var(--position);
+                 transform: translate(-50%, -50%);
+                 pointer-events: none;
+                 /* z-index: 100; */               
+               }
+
+       @media only screen and (max-width: 768px)
+         {
+           .be-af-container{width: 100%!important;}
+           .ba_main{ padding: 0 20px;}
+           .before_after-heading h3 {font-size: 24px!important;}
+         }
+   @media only screen and (max-width: 380px) {
+       .before_after-heading h3 {width: 100%!important; padding: 0 !important;}
+     .ba_main { gap: 20px !important }
+   }
+  @media (max-width: 650px) {
+    .ba_main { gap: 15px; }
+    .section-before--after.container-indent { padding-top: 30px !important; }
+  }
+</style>
+
+
+<script>
+function initializeBeforeAfterSlider(uniqueId) {
+  const container = document.querySelector(`.${uniqueId} .before_after`);
+  const slider = document.querySelector(`.${uniqueId} .ba-slider`);
+
+  slider.addEventListener('input', (e) => {
+    container.style.setProperty('--position', `${e.target.value}%`);
+  });
+}
+
+initializeBeforeAfterSlider('{{ unique_id }}');
+</script>

@@ -18,8 +18,8 @@ var cart = {{ cart | json }}
 var templateName = '{{template.name}}'
 </script>
 
-<script src="https://{{ env }}.gokwik.co/merchant-integration/build/merchant.integration.js?v4"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script defer src="https://{{ env }}.gokwik.co/merchant-integration/build/merchant.integration.js?v4"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
  let gkButtonCode = '<div class="gokwik-checkout" {% if settings.hideFlow %} style="display:none !important;" {% endif %}><button type="button" class="btn-theme" onclick="onCheckoutClick(this)"><span class="btn-text"><span>{{ settings.main-titile }}</span><span>{{ settings.sub-titile }}</span></span><span class="pay-opt-icon"><img src="https://cdn.gokwik.co/v4/images/upi-icons.svg" alt="upi-icons" width="66px" height="26px"><img src="https://cdn.gokwik.co/v4/images/right-arrow.svg" alt="right-arrow" width="9px" height="26px"></span><div style="display:none"><div class="cir-loader">Loading..</div></div></button></div>'
 //   let gkButtonCode = '<div class=" chh gokwik-checkout" {% if settings.hideFlow %} style="display:none !important;" {% endif %}><a href="/checkout" class="checkoutbtn btn{% if settings.terms_cond_checkbox_show %} disabled{% endif %}">{{ 'cart.header.checkout' | t }}</a></div>'
@@ -164,9 +164,12 @@ cursor: pointer;
    line-height: 1;
    border: none;
    padding: 15px 10px;
-   font-size: 15px;
+   font-size: 20px;
     margin-bottom: 10px;
    position:relative;
+   height: 49px;
+    border-radius: 4px !important;
+    border: 2px solid #FF805A;
  }
 
   

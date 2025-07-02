@@ -1,0 +1,383 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_banner_pdp_jJqmgK": {
+      "type": "custom-banner-pdp",
+      "blocks": {
+        "item_KVdern": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/summer-sale-2025",
+            "image": "shopify://shop_images/Desktop_41.webp",
+            "mob-image": "shopify://shop_images/Mobile_42.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_KVdern"
+      ],
+      "disabled": true,
+      "settings": {
+        "tracking-id": ""
+      }
+    },
+    "main": {
+      "type": "product-template-test",
+      "blocks": {
+        "1513761237522": {
+          "type": "tab_review",
+          "disabled": true,
+          "settings": {
+            "title": "REVIEWS",
+            "open_tab_by_default": false
+          }
+        },
+        "1513760820453": {
+          "type": "tab_desc",
+          "disabled": true,
+          "settings": {
+            "title": "DESCRIPTION",
+            "open_tab_by_default": true
+          }
+        },
+        "offer_same_html_dAiG6q": {
+          "type": "offer_same_html",
+          "settings": {
+            "title": "More Available Offers",
+            "spantitle": "View more",
+            "offer1": "<p>Buy any <strong>2</strong> and get <strong>FLAT 10% OFF</strong> | Use Code: <strong>BYOB10</strong></p>",
+            "offer1_cc": "BYOB10",
+            "offer2": "<p>Buy any <strong>3</strong> and get <strong>FLAT 15% OFF</strong> | Use Code: <strong>BYOB15</strong></p>",
+            "offer2_cc": "BYOB15",
+            "offer3": "<p>Get<strong> </strong>FLAT <strong>10%</strong> instant discount with OneCard. Max discount <strong>Rs</strong>. <strong>500</strong> on min. order value<strong> Rs. 500</strong></p>",
+            "offer4": "<p>Get <strong>FREE </strong>shipping on all orders above <strong>Rs. 400</strong></p>",
+            "offer5": "",
+            "offer6": "",
+            "offer7": "",
+            "offer8": "<p>Get upto <strong>₹300</strong> cashback on Amazon Pay</p>",
+            "offer9": "<p>Get upto <strong>15% cashback </strong>on Mobikwik Wallet</p>",
+            "offertxt": "<p>*Discounts are applicable on the MRP only</p>",
+            "open_tab_by_default": false
+          }
+        },
+        "1571175093640": {
+          "type": "related_products_type2",
+          "settings": {
+            "fullscreen": false,
+            "titleincenter": true,
+            "title": "You Might Also Like",
+            "product_upsell_collection_count": "4",
+            "slickdesktoptoshow": "4"
+          }
+        },
+        "1580737710022": {
+          "type": "recently_view_products",
+          "settings": {
+            "fullscreen": false,
+            "titleincenter": true,
+            "title": "Recently Viewed Product",
+            "product_upsell_collection_count": "8",
+            "slickdesktoptoshow": "4"
+          }
+        }
+      },
+      "block_order": [
+        "1513761237522",
+        "1513760820453",
+        "offer_same_html_dAiG6q",
+        "1571175093640",
+        "1580737710022"
+      ],
+      "custom_css": [
+        "@media (max-width: 1024px) {.arrow-location-right-top .slick-arrow {top: 50% !important; } .tt-product-single-info .container-indent:first-child {padding-top: 0px !important; }}"
+      ],
+      "settings": {
+        "page_design": "product_page_1_design_test",
+        "full_width_description": "default",
+        "freegift-img": false,
+        "estimate-date": true,
+        "estimate-date-label": "Get it between:",
+        "history": false,
+        "show_badge_new": false,
+        "show_badge_featured": false,
+        "show_review": false,
+        "show_share_buttons": false,
+        "show_tax_text": false,
+        "use_select_button": false,
+        "gallery_no_zoom": false,
+        "gallery_scroll": false,
+        "stickygallery": true,
+        "mobiledots": true,
+        "gallery_type": "vertical",
+        "show_thumbnails": true,
+        "show_thumbnails_arrows": true,
+        "show_thumbnails_zoom": true,
+        "show_product_main_info": false,
+        "show_sku": false,
+        "show_qiantity": false,
+        "show_trust_badge": true,
+        "image_l": "shopify://shop_images/Desktop_17.webp",
+        "image_max_width": "541",
+        "image_lm": "shopify://shop_images/Mobile_17.webp",
+        "image_max_width_m": "541",
+        "show_trust_badge2": true,
+        "image_l2": "shopify://shop_images/Frame_38252.png",
+        "image_lm2": "shopify://shop_images/Frame_38252.webp",
+        "designoption1": "getButtonHtml",
+        "designoption2": "getButtonHtml",
+        "designoption3": "getButtonHtml",
+        "show_product_info": false,
+        "show_product_vendor": false,
+        "show_product_type": false,
+        "show_product_barcode": false,
+        "show_product_tags": false,
+        "product_tab_tags": "Vintage, Awesome, Summer,",
+        "product_item_show_wishlist": true,
+        "product_item_show_compare": true,
+        "show_sizechart": false,
+        "btnname": "<span class=\"icon-f-09\"></span> Size guide",
+        "popupcontent": "<h6 class=\"tt-title\">SIZE GUIDE</h6>\nThis is an approximate conversion table to help you find your size.\n<div class=\"tt-table-responsive-md\">\n\t<table class=\"tt-table-modal-info\">\n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>Italian</th>\n\t\t\t\t<th>Spanish</th>\n\t\t\t\t<th>German</th>\n\t\t\t\t<th>UK</th>\n\t\t\t\t<th>US</th>\n\t\t\t\t<th>Japanese</th>\n\t\t\t\t<th>Chinese</th>\n\t\t\t\t<th>Russian</th>\n\t\t\t\t<th>Korean</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>34</td>\n\t\t\t\t<td>30</td>\n\t\t\t\t<td>28</td>\n\t\t\t\t<td>4</td>\n\t\t\t\t<td>00</td>\n\t\t\t\t<td>3</td>\n\t\t\t\t<td>155/75A</td>\n\t\t\t\t<td>36</td>\n\t\t\t\t<td>44</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>36</td>\n\t\t\t\t<td>32</td>\n\t\t\t\t<td>30</td>\n\t\t\t\t<td>6</td>\n\t\t\t\t<td>0</td>\n\t\t\t\t<td>5</td>\n\t\t\t\t<td>155/80A</td>\n\t\t\t\t<td>38</td>\n\t\t\t\t<td>44</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>38</td>\n\t\t\t\t<td>34</td>\n\t\t\t\t<td>32</td>\n\t\t\t\t<td>8</td>\n\t\t\t\t<td>2</td>\n\t\t\t\t<td>7</td>\n\t\t\t\t<td>160/84A</td>\n\t\t\t\t<td>40</td>\n\t\t\t\t<td>55</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>40</td>\n\t\t\t\t<td>36</td>\n\t\t\t\t<td>34</td>\n\t\t\t\t<td>10</td>\n\t\t\t\t<td>4</td>\n\t\t\t\t<td>9</td>\n\t\t\t\t<td>165/88A</td>\n\t\t\t\t<td>42</td>\n\t\t\t\t<td>55</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>42</td>\n\t\t\t\t<td>38</td>\n\t\t\t\t<td>36</td>\n\t\t\t\t<td>12</td>\n\t\t\t\t<td>6</td>\n\t\t\t\t<td>11</td>\n\t\t\t\t<td>170/92A</td>\n\t\t\t\t<td>44</td>\n\t\t\t\t<td>66</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>44</td>\n\t\t\t\t<td>40</td>\n\t\t\t\t<td>38</td>\n\t\t\t\t<td>14</td>\n\t\t\t\t<td>8</td>\n\t\t\t\t<td>13</td>\n\t\t\t\t<td>175/96A</td>\n\t\t\t\t<td>46</td>\n\t\t\t\t<td>66</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>46</td>\n\t\t\t\t<td>42</td>\n\t\t\t\t<td>40</td>\n\t\t\t\t<td>16</td>\n\t\t\t\t<td>10</td>\n\t\t\t\t<td>15</td>\n\t\t\t\t<td>170/98A</td>\n\t\t\t\t<td>48</td>\n\t\t\t\t<td>77</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>48</td>\n\t\t\t\t<td>44</td>\n\t\t\t\t<td>42</td>\n\t\t\t\t<td>18</td>\n\t\t\t\t<td>12</td>\n\t\t\t\t<td>17</td>\n\t\t\t\t<td>170/100B</td>\n\t\t\t\t<td>50</td>\n\t\t\t\t<td>77</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>50</td>\n\t\t\t\t<td>46</td>\n\t\t\t\t<td>44</td>\n\t\t\t\t<td>20</td>\n\t\t\t\t<td>14</td>\n\t\t\t\t<td>19</td>\n\t\t\t\t<td>175/100B</td>\n\t\t\t\t<td>52</td>\n\t\t\t\t<td>88</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>52</td>\n\t\t\t\t<td>48</td>\n\t\t\t\t<td>46</td>\n\t\t\t\t<td>22</td>\n\t\t\t\t<td>16</td>\n\t\t\t\t<td>21</td>\n\t\t\t\t<td>180/104B</td>\n\t\t\t\t<td>54</td>\n\t\t\t\t<td>88</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>",
+        "show_shipping": false,
+        "btnname2": "<span class=\"icon-f-44\"></span> Shipping",
+        "popupcontentshipping": "<h6 class=\"tt-title\">SHIPPING</h6>\n<ul>\n\t<li>Complimentary ground shipping within 1 to 7 business days</li>\n\t<li>In-store collection available within 1 to 7 business days</li>\n\t<li>Next-day and Express delivery options also available</li>\n\t<li>Purchases are delivered in an orange box tied with a Bolduc ribbon, with the exception of certain items</li>\n\t<li>See the delivery FAQs for details on shipping methods, costs and delivery times</li>\n</ul>\n<h6 class=\"tt-title\">RETURNS AND EXCHANGES</h6>\n<ul>\n\t<li>Easy and complimentary, within 14 days</li>\n\t<li>See conditions and procedure in our return FAQs</li>\n</ul>",
+        "show_message": false,
+        "btnname3": "<span class=\"icon-f-72\"></span> Ask about this product",
+        "prpage_tree_col_html": "<div class=\"tt-services-aside\">\n\t<a href=\"#\" class=\"tt-services-block\">\n\t\t<div class=\"tt-col-icon\">\n\t\t\t<i class=\"icon-f-48\"></i>\n\t\t</div>\n\t\t<div class=\"tt-col-description\">\n\t\t\t<h4 class=\"tt-title\">FREE SHIPPING</h4>\n\t\t\t<p>Free shipping on all US order or order above $99</p>\n\t\t</div>\n\t</a>\n\t<a href=\"#\" class=\"tt-services-block\">\n\t\t<div class=\"tt-col-icon\">\n\t\t\t<i class=\"icon-f-35\"></i>\n\t\t</div>\n\t\t<div class=\"tt-col-description\">\n\t\t\t<h4 class=\"tt-title\">SUPPORT 24/7</h4>\n\t\t\t<p>Contact us 24 hours a day, 7 days a week</p>\n\t\t</div>\n\t</a>\n\t<a href=\"#\" class=\"tt-services-block\">\n\t\t<div class=\"tt-col-icon\">\n\t\t\t<i class=\"icon-e-09\"></i>\n\t\t</div>\n\t\t<div class=\"tt-col-description\">\n\t\t\t<h4 class=\"tt-title\">30 DAYS RETURN</h4>\n\t\t\t<p>Simply return it within 30 days for an exchange.</p>\n\t\t</div>\n\t</a>\n</div>",
+        "show_custom_related": true,
+        "custom_related_fullscreen": false,
+        "custom_related_titleincenter": false,
+        "custom_related_title": "CUSTOM PRODUCTS",
+        "custom_related_length": "8",
+        "custom_related_slickdesktoptoshow": "4"
+      }
+    },
+    "pdp_key_skill_yW7KJy": {
+      "type": "pdp-key-skill",
+      "settings": {
+        "text1": "Develop key skills",
+        "text2": "",
+        "sectionbg": "#e9e7e7",
+        "items": "4",
+        "mob-items": "4"
+      }
+    },
+    "pdp_text_content_aCpa87": {
+      "type": "pdp-text-content",
+      "settings": {
+        "img": "shopify://shop_images/whatsapp_icon_ec473110-4591-495f-be50-7636061aface.png",
+        "text1": "<p><b>Join our WhatsApp Community now and be a part of something extraordinary!</b></p><p>Unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>\n<br>\n<p class=\"winner-text\">Your <b>FREE GIFT</b> awaits! Join now to become <b>one of 5 lucky winners</b> to win a <b>surprise gift this month.</b></p>",
+        "text2": "<p><img src=\"https://cdn.shopify.com/s/files/1/0568/1945/0045/files/wa-icons-re_30x30.webp?v=1738916219\" loading=\"lazy\" alt=\"WhatsApp\" width=\"30px\" height=\"30px\" srcset=\"https://cdn.shopify.com/s/files/1/0568/1945/0045/files/wa-icons-re_30x30.webp?v=1738916219\"><b>Join our WhatsApp Community<b></b></b></p><p>And unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>\n<br>\n\n<p class=\"winner-text\">Your <b>FREE GIFT</b> awaits! Join now to become <b>one of 5 lucky winners</b> to win a <b>surprise gift this month.</b></p>",
+        "btn-text": "Join now",
+        "btn-link": "https://chat.whatsapp.com/Ga2Lz47VEBU1lPcbBveBjQ",
+        "sectionbg": "#f1f9f5"
+      }
+    },
+    "image_with_tab_text_test_rzN96h": {
+      "type": "image-with-tab-text-test",
+      "blocks": {
+        "item_FemnME": {
+          "type": "item",
+          "settings": {
+            "tab_name": "About"
+          }
+        },
+        "item2_kt3TRj": {
+          "type": "item2",
+          "settings": {
+            "tab_name": "Delivery & Returns",
+            "tab_content": "<p><strong>Shipping & Returns</strong></p><ul><li>We offer free shipping on all orders over Rs. 400. Otherwise there is a Rs. 40 flat fee.</li><li>Standard delivery time is 2-5 business days.</li><li>30 day returns as long as the product is in original packaging.<br/><a href=\"https://www.skillmatics.in/pages/returns-and-exchanges\"><strong>See full return policy here</strong></a></li></ul>"
+          }
+        },
+        "item3_77MwGq": {
+          "type": "item3",
+          "settings": {
+            "tab_name": "FAQs",
+            "head": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_FemnME",
+        "item2_kt3TRj",
+        "item3_77MwGq"
+      ],
+      "name": "Image with Text Tabs Text",
+      "settings": {
+        "top_offset": "normal",
+        "fullwidth": false,
+        "show_title": true,
+        "text1": "WOMEN’S",
+        "text2": "ABOUT OUR STORE",
+        "bgcolor": "",
+        "image": "{{ product.metafields.pdp.about_image.value }}"
+      }
+    },
+    "index_section_text_plus_image_NCE7Wn": {
+      "type": "index-section-text_plus_image",
+      "custom_css": [
+        ".container-indent {padding-top: 0 !important;}",
+        ".col-img img {margin-bottom: 40px;}",
+        ".index-section {background-color: #e9f4f9; padding-top: 30px;}"
+      ],
+      "settings": {
+        "top_offset": "normal",
+        "fullwidth": false,
+        "showimage": true,
+        "image": "{{ product.metafields.pdp.product_info_image.value }}",
+        "text1": "",
+        "text2": "<p>{{ product.metafields.pdp.product_info | metafield_tag }}</p>",
+        "showbtn": false,
+        "showbtn_aslink": false,
+        "underlinebydefault": true,
+        "linkbtnsizetext": "18",
+        "linkbtnweighttext": "400",
+        "btntext": "SHOP NOW",
+        "btnurl": "",
+        "bg_color": "#191919",
+        "cbtntext": "#ffffff",
+        "bg_color_a": "#ffffff",
+        "cbtntext_a": "#191919",
+        "btn_custom_styles": "",
+        "btn_custom_styles_hover": "",
+        "reverse": true,
+        "grid": "6.6",
+        "contentalign": "classnoactions",
+        "textalign": "left",
+        "textoffset": "60",
+        "fontsizetext1": 32,
+        "lineheighttext1": 51,
+        "fontweighttext1": 700,
+        "bottompaddingtext1": 25,
+        "fontsizetext2": 22,
+        "lineheighttext2": 35,
+        "fontweighttext2": 400,
+        "buttonpadding": 20,
+        "fontsizetext1_mobile": 20,
+        "lineheighttext1_mobile": 28,
+        "bottompaddingtext1_mobile": 25,
+        "fontsizetext2_mobile": 16,
+        "lineheighttext2_mobile": 24,
+        "buttonpadding_mobile": 20,
+        "colortext1": "#191919",
+        "colortext2": "#777777",
+        "usebgcolor": false,
+        "bgco": "#ffffff",
+        "bgdepad": "80",
+        "bgdepad_2": "80",
+        "bgmopad": "80",
+        "bgmopad_2": "80",
+        "showbgimage_bg": false,
+        "imagealign_bg": "center",
+        "imagesize_bg": "cover",
+        "usemiheight": false,
+        "backgroundminheight3": "450",
+        "backgroundminheight2": "450",
+        "backgroundminheight1": "200",
+        "tracking-id": "skill_pdp_pd2_img_02"
+      }
+    },
+    "section_more_about_prod_EDCxec": {
+      "type": "section-more-about-prod",
+      "settings": {
+        "text1": "More about the product",
+        "text2": "",
+        "sectionbg": "#f1f9f5",
+        "items": "4",
+        "mob-items": "12"
+      }
+    },
+    "alireviews-section-8196b555-9838-4cfc-a0dc-3a5273fb72ed": {
+      "type": "apps",
+      "blocks": {
+        "fcae88b9-6e6b-4de3-9b3c-4e1f89d348db": {
+          "type": "shopify://apps/kudosi-ali-reviews/blocks/widget-box/bf2eea72-0400-4db1-8908-44b7418f9a88",
+          "disabled": true,
+          "settings": {
+            "product": ""
+          }
+        },
+        "amazon_reviews_list_widget_block_product_bkVMNr": {
+          "type": "shopify://apps/amazon-reviews/blocks/list-widget-block.product/88ab28f3-a438-4eb3-a83e-f1a9c62c5069",
+          "disabled": true,
+          "settings": {
+            "themeId": "light",
+            "showProductPicture": true,
+            "showDate": true,
+            "ratingStyle": "left",
+            "infoPosition": "top"
+          }
+        }
+      },
+      "block_order": [
+        "fcae88b9-6e6b-4de3-9b3c-4e1f89d348db",
+        "amazon_reviews_list_widget_block_product_bkVMNr"
+      ],
+      "settings": {}
+    },
+    "custom_liquid_6RTi9y": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_code": "<div class=\"container\" id=\"amazon-reviews\">\n  <div class=\"tt-block-title\" id=\"reviews-title\">\n    <p class=\"tt-title\">Customer Reviews</p>\n  </div>\n\n{% if product.metafields.pdp.product_rating != blank %}\n        {% assign rating = product.metafields.pdp.product_rating | times: 1 %}\n        {% assign fullStars = rating | floor %}\n        {% assign decimalPart = rating | modulo: 1 %}\n        {% assign nextStar = fullStars | plus: 1 %}\n\n<header class=\"custom-reviews-head\">\n    <div>\n        <div class=\"reputon-info\">\n            <div class=\"reputon-content\">\n                <div class=\"reputon-name\"></div>\n                <div class=\"custom-rating-stars\">\n                    <div class=\"custom-count-number\">{{ rating }}</div>\n                    <div class=\"reputon-count-text\">\n                      {% for i in (1..5) %}\n              {% assign isFullStar = false %}\n              {% assign isHalfStar = false %}\n\n              {% if i <= fullStars %}\n                {% assign isFullStar = true %}\n              {% elsif i == nextStar and decimalPart >= 0.8 %}\n                {% assign isFullStar = true %}\n              {% elsif i == nextStar and decimalPart >= 0.3 and decimalPart <= 0.7 %}\n                {% assign isHalfStar = true %}\n              {% endif %}\n\n              <svg viewBox=\"0 0 1792 1792\" width=\"17\" height=\"17\" class=\"reputon-icon-star\">\n                <!-- Star Outline -->\n                <path d=\"M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z\"\n                  stroke=\"#FFCB33\" stroke-width=\"100\" fill=\"none\"/>\n\n                {% if isFullStar %}\n                  <!-- Full Star Fill -->\n                  <path d=\"M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z\"\n                    fill=\"#FFCB33\"/>\n\n                {% elsif isHalfStar %}\n                  <!-- Half Star Fill -->\n                  <clipPath id=\"half-star-{{ i }}\">\n                    <rect x=\"0\" y=\"0\" width=\"50%\" height=\"100%\" />\n                  </clipPath>\n                  <path d=\"M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z\"\n                    fill=\"#FFCB33\" clip-path=\"url(#half-star-{{ i }})\"/>\n                {% endif %}\n              </svg>\n            {% endfor %}\n                    </div>\n                </div>\n                <div class=\"reputon-reviews-count\">{% assign productId = product.id | append: '' %}{% assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] %}{% if productReviews != blank and productReviews[productId].value %}{% assign jsonValue = productReviews[productId].value %}{% if jsonValue.reviewsNumber > 0 %}{{ jsonValue.reviewsNumber }} reviews{% endif %}{% endif %}</div>\n            </div>\n        </div>\n    </div>\n</header>\n\n    <style>\n      .reputon-reviews-head {display:none !important;}\n      .custom-reviews-head {\n            display: flex;\n            align-items: center;\n            width: 100%;\n            gap: 20px;\n            flex-wrap: wrap;\n            justify-content: space-between;\n            padding: 16px 20px;\n            color: #06374f;\n            background: rgb(243, 243, 243) !important;\n  border-radius: 16px;\n            margin-bottom: 20px;\n      }\n      .custom-rating-stars {\n        display: flex;\n        align-items: center;\n      }\n      .custom-count-number {\n            font-size: 42px;\n            font-weight: bold;\n            margin-right: 8px;\n            color: #FFCB33 !important;\n            line-height: normal;\n      }\n\n.reputon-count-text svg {\ncolor: #FFCB33 !important;\n}\n\n.tt-product .tt-description .tt-row {\n        align-content: center !important;\n}\n    </style>\n\n    {% else %}\n\n    <style>\n      .reputon-reviews-head {display:block !important;}\n    </style>\n\n\n    {% endif %}\n\n  <script \n    type=\"text/javascript\" \n    src=\"https://cdn.amzrw.reputon.com/assets/widget.js?shop=skillmaticsindia.myshopify.com\" defer>\n  </script>\n  <div class=\"reputon-amazon-reviews-widget {% if jsonValue.reviewsNumber %}low-rating{% endif %} \"\n    data-type=\"grid\"\n    data-product-reviews=\"true\"\n    data-theme=\"light\"\n    data-show-product-picture=\"true\"\n    data-show-date=\"true\"\n    data-fixed-reviews-height=\"true\">\n    {% assign productId = product.id | append: \"\" %}\n    {% assign productReviewsMetaField = product.metafields['ReputonAmazonReviews::ProductReviews'] %}\n    {% if productId != \"\" and productReviewsMetaField != blank and productReviewsMetaField[productId] %}\n      <script>\n        window.reputonAmazonProductReviewsData = {{ productReviewsMetaField[productId] }};\n      </script>\n    {% endif %}\n  </div>\n</div>\n\n<style>\n  #amazon-reviews { padding: 1rem 0; }\n  @media (max-width: 890px) {\n    #amazon-reviews { padding: 1rem; }\n  }\n</style>"
+      }
+    },
+    "custom_slidershow_qwA4gB": {
+      "type": "custom-banner-pdp",
+      "blocks": {
+        "item_QnM6EA": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/logos_strip_c29f2a2c-10e2-4bef-84b2-24c1b3bcac26.webp",
+            "mob-image": "shopify://shop_images/logos_12350509-cc2d-41a8-a0f9-9a83cff176b2.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_QnM6EA"
+      ],
+      "custom_css": [
+        ".container-indent {padding-top: 0 !important;}"
+      ],
+      "settings": {
+        "tracking-id": ""
+      }
+    },
+    "1629746450643786911": {
+      "type": "areviews-section",
+      "disabled": true,
+      "settings": {
+        "hide_areviews_title_rating": false,
+        "areviews_theme_font": "inherit",
+        "areviews_stars_colors": "#f3c621",
+        "areviews_write_reviews_botton_color": "#373737"
+      }
+    },
+    "opinew-reviews-product-page-code": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "custom_banner_pdp_jJqmgK",
+    "main",
+    "pdp_key_skill_yW7KJy",
+    "pdp_text_content_aCpa87",
+    "image_with_tab_text_test_rzN96h",
+    "index_section_text_plus_image_NCE7Wn",
+    "section_more_about_prod_EDCxec",
+    "alireviews-section-8196b555-9838-4cfc-a0dc-3a5273fb72ed",
+    "custom_liquid_6RTi9y",
+    "custom_slidershow_qwA4gB",
+    "1629746450643786911",
+    "opinew-reviews-product-page-code"
+  ]
+}

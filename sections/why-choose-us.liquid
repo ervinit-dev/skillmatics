@@ -1,0 +1,220 @@
+<div class="container-indent">
+  <div class="why-choose-us-section container">
+  {% if section.settings.title != blank %}
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="comparison-table">
+    <div class="table-header">
+      <div class="blank-cpmaretbl"></div>
+      <div class="comparison-column"> <div><img class="compare-imgs" src="{{ section.settings.column_1_img |img_url:'large'}}" alt="campare image 1" width="100px" height="100px"></div><div>{{ section.settings.column_1_heading }}</div></div>
+      <div class="comparison-column"><div><img class="compare-imgs"  src="{{ section.settings.column_2_img |img_url:'large'}}" alt="campare image 1" width="100px" height="100px"></div><div>{{ section.settings.column_2_heading }}</div></div>
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="comparison-row">
+        <div class="row-title">{{ block.settings.row_title }}</div>
+        <div class="column-1">{{ block.settings.column_1_value }}</div>
+        <div class="column-2">{{ block.settings.column_2_value }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+  </div>
+
+{% schema %}
+{
+  "name": "Why Choose Us Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "column_1_heading",
+      "label": "Column 1 Heading",
+      "default": "Skillmatics"
+    },
+     {
+      "type": "image_picker",
+      "id": "column_1_img",
+      "label": "Column 1 Image"    
+    },
+    {
+      "type": "text",
+      "id": "column_2_heading",
+      "label": "Column 2 Heading",
+      "default": "Regular Foil Art Kits"
+    },
+     {
+      "type": "image_picker",
+      "id": "column_2_img",
+      "label": "Column 2 Image"    
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_point",
+      "name": "Comparison Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "row_title",
+          "label": "Row Title",
+          "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "column_1_value",
+          "label": "Column 1 Value"
+        },
+        {
+          "type": "text",
+          "id": "column_2_value",
+          "label": "Column 2 Value"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us Comparison",
+      "blocks": [
+     
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .comparison-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+  }
+  .why-choose-us-section {
+    padding: 20px;
+    text-align: center;
+  }
+  .compare-imgs{width: 123.913px;height: 150px;flex-shrink: 0;}
+    .section-title {
+      margin-bottom: 20px;
+    }
+  .comparison-row:nth-child(odd) {
+    background-color: #E9F4F9; 
+  }
+  .comparison-table {
+    display: grid;
+    grid-template-columns: 1fr;   
+  }
+  .table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;   
+    padding: 10px;
+    font-weight: bold;
+  }
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;    
+  }
+  .comparison-row:last-child {    border-bottom: none;  }
+  .why-choose-us-section  .row-title {
+    text-align: left;
+    font-weight: bold;
+    color: #06374F;
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;  
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 301.959%;
+}
+  .comparison-column {
+    color: #06374F;
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;  
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 301.959%;
+}
+    @media (min-width: 601px) {
+      .why-choose-us-section .section-title {   
+          color: #06374F;
+          text-align: center;   
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+      }
+      .compare-imgs { width: 158.539px;  height: 191.916px;max-width:100%}
+      .comparison-row .column-1,.comparison-row .column-2 {
+          color: #06374F;
+          text-align: center;
+          leading-trim: both;
+          text-edge: cap;   
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 350;
+          line-height: 141%;
+      }
+    }
+  @media (max-width: 600px) {
+    .comparison-table {
+      display: block;
+      border: none;
+    }
+    .why-choose-us-section  .section-title {
+    color: #06374F;
+    text-align: center!important;    
+    font-size: 24px!important;
+    font-style: normal;
+    font-weight: 500!important;
+    line-height: 32px!important;
+}
+      .comparison-row {  
+    grid-template-columns: 1fr 1fr;  
+      margin-bottom: 10px;
+      padding: 15px;
+    }
+    .comparison-row .row-title {
+    grid-column: 1 / 3;
+    text-align: center;
+    gap: 8px;
+}
+    .blank-cpmaretbl {    display: none;}
+    .table-header {    display: grid;    grid-template-columns: 1fr 1fr;}
+    .why-choose-us-section .row-title {    
+        color: #06374F;
+        text-align: center;
+        leading-trim: both;
+        text-edge: cap;
+        font-family: "AvenirRegular";
+        font-size: 14px!important;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 301.959%;
+    }
+  
+    .column-1, .column-2 {       
+        color: #06374F;
+        text-align: center;
+        leading-trim: both;
+        text-edge: cap;
+        font-family: "AvenirRegular";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 350;
+        line-height: 141%;max-width: 170px;
+    }
+     .comparison-column {    font-size: 16px;}
+  }
+</style>

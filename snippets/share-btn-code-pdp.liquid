@@ -1,0 +1,46 @@
+{% comment %}{% render 'share-btn-style' %} in collection-template common javascript css file {% endcomment %}
+  
+    <div class="template-{{ template.name }} product-card-share menu">
+  <div class="pcard-sharebtn menu__btn" onclick="togglesharebtn(this)"><img src="{{ 'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/share-icon_15x15.png?v=1711919872'}}" id="skill_pdp_pd_share" class="shareimg" alt="share"  width="15px" height="15px" loading="lazy" srcset="{{ 'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/share-icon_15x15.png?v=1711919872'}}"></div>
+   <div class="pcard-sharelinks menu__list" class="shareimg" style="opacity:0; visibility:hidden;">
+
+    <div class=" menu__item">
+      <label class="menu__link" for="share-trigger">
+      <a id="skill_pdp_pd_share_fb" href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url  }}" target="_blank" aria-label="facebook">
+      <img src="{{ 'Facebook svg.svg' |asset_url}}" class="shareimg" alt="facebook"   width="15px" height="15px" loading="lazy" srcset="{{ 'Facebook svg.svg' |asset_url}}">
+      </a>
+      </label>
+    </div>
+
+    <div class="menu__item">
+  <label class="menu__link" for="share-trigger">
+    <a id="skill_pdp_pd_share_instagram"  href="https://www.instagram.com/?url={{ shop.url }}{{ product.url }}" target="_blank" aria-label="Instagram">
+      <img src="{{ 'instagram-icon.svg' | asset_url }}" class="shareimg" alt="Instagram"  width="15px" height="15px" loading="lazy" srcset="{{ 'instagram-icon.svg' | asset_url }}">
+    </a>
+  </label>
+</div>
+
+     
+    <div class="menu__item">
+      <label class="menu__link " for="share-trigger">
+  <a id="skill_pdp_pd_share_twitter" href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url  }}" target="_blank" aria-label="twitter">
+   <img  src="{{ 'twt.svg' |asset_url}}"  class="shareimg" alt="twitter"  width="15px" height="15px" loading="lazy" srcset="{{ 'twt.svg' |asset_url}}" ></a>
+</label>
+    </div>
+
+    <div class="menu__item">
+      <label class="menu__link " for="share-trigger">
+  <a id="skill_pdp_pd_share_wa" href="https://api.whatsapp.com/send?text=Check out this product: {{ product.title | url_encode }} for {{ product.price | money_with_currency }} at {{ shop.url }}{{ product.url }}" target="_blank" aria-label="api.whatsapp">
+  <img  src="{{ 'Whatsapp svg.svg' |asset_url}}" class="shareimg" alt="whatsapp"  width="15px" height="15px" loading="lazy" srcset="{{ 'Whatsapp svg.svg' |asset_url}}"></a></label>
+
+    </div>
+
+<div class="menu__item">
+    <label class="menu__link" for="share-trigger">
+        <a id="skill_pdp_pd_share_copylink" href="#" onclick="copyProductcardUrl('{{ shop.url }}{{ product.url }}'); return false;" target="_blank" aria-label="navigator">
+      <img  src="{{ 'Copy svg.svg' |asset_url}}" class="shareimg" alt="copypaste"  width="15px" height="15px" loading="lazy" srcset="{{ 'Copy svg.svg' |asset_url}}">
+        </a>
+    </label>
+</div>
+  </div>
+</div>

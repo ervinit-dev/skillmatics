@@ -1,153 +1,253 @@
 <style>
-  .section-more-about{ padding-top: 40px;padding-bottom:40px;}
- .section-more-about  h2.tt-title {   margin: 14px auto;}
-   #shopify-section-{{section.id}}.index-section{background-color: {{section.settings.sectionbg}};}
- .section-more-about  .slick-slider .slick-dots{margin-top:0;}
-  .section-more-about h2.tt-title {  font-family: "AvenirRegular" !important;}
-   @media (max-width: 790px) {
-      .section-more-about h2.tt-title {  font-size:20px;font-weight:500;}
+     .section-more-about{ padding-top: 40px;padding-bottom:40px;}
+    .section-more-about  h2.tt-title {   margin: 14px auto;}
+      #shopify-section-{{section.id}}.index-section{background-color: {{section.settings.sectionbg}};}
+    .section-more-about  .slick-slider .slick-dots{margin-top:0;}
+     .section-more-about h2.tt-title {  font-family: "AvenirRegular" !important;}
+     .tt-categories--listing .tt-title{ font-family: "MikadoMedium"; margin-bottom: 5px }
+      @media (max-width: 790px) {
+         .section-more-about h2.tt-title {  font-size:20px;font-weight:500;}
+        .more-abt-multicolumn p {
+    font-size: 20px; text-align: center;
   }
-  @media (min-width: 791px) {
-     .section-more-about  .slick-slider .slick-dots{display:none;}
-  }
+     }
+     @media (min-width: 791px) {
+        .section-more-about  .slick-slider .slick-dots{display:none;}
+     }
 </style>
 {%- assign item = section.settings -%}
 {%- assign grid = section.settings.items -%}
-{%- assign mobgrid = section.settings.mob-items -%}
- {%- if product.metafields.pdp.more_images != blank -%}
-<div class="container-indent section-more-about">
-  <div class="container ">
-    <div class="tt-categories--listing">     
-      <div class="tt-block-title">
-      <p class="tt-title">{{ item.text1 }}</p>
-      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+{%- assign mobgrid = section.settings['mob-items'] -%}
+{%- if product.metafields.pdp.more_images != blank -%}
+  <div class="container-indent section-more-about">
+    <div class="container ">
+      <div class="tt-categories--listing">
+        <div class="tt-block-title">
+          <p class="tt-title">{{ item.text1 }}</p>
+          {% unless item.text2 == '' %}
+            <div class="tt-description">{{ item.text2 }}</div>
+          {% endunless %}
+        </div>
+        <div class="row noarrow  more-abt-multicolumn">
+          {% if product.metafields.pdp.more_images %}
+            {% assign file = product.metafields.pdp.more_images.value %}
+            {% for image in product.metafields.pdp.more_images.value %}
+              <div class="col-{{ mobgrid }} col-md-{{ grid }} col-{{ mobgrid }}-440width">
+                {% comment %}
+                    <span class="more-abt-zoomicon" data-img="{{ image | image_url: width: 1000 }}">
+                    <i class="icon-f-86"></i>
+                  </span>
+                {% endcomment %}
+
+                {% if item.collection != blank %}
+                  <a class="tt-title-block text-center" href="{{ item.collection}}" aria-label="Imagelinks">
+                {%- endif %}
+                {%- if image != blank -%}
+                  <img
+                    id="skill_pdp_map_option_0{{ forloop.index }}"
+                    class="tab-img"                   
+                    src="{{ image | image_url: width: '370x350' }}"
+                    loading="lazy"
+                    alt="more about product"
+                    width="370px"
+                    height="350px"
+                     srcset="{{ image | image_url: width: '370x350' }}"
+                  >
+                {%- endif -%}
+                <p class="tt-title">
+                  {% if image.alt != '' %}{{ image.alt }}{% endif %}
+                </p>
+                {% if item.collection != blank %} </a>{% endif %}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
     </div>
-      <div class="row noarrow  more-abt-multicolumn">
-      
-{% if product.metafields.pdp.more_images %}
-    {% assign file = product.metafields.pdp.more_images.value %}
-  {% for image in product.metafields.pdp.more_images.value %}
-        <div class="col-{{ mobgrid }} col-md-{{ grid }} col-{{ mobgrid }}-440width">
-             <a class="tt-title-block text-center" href="{{ item.collection}}" aria-label="Imagelinks">            
-             
-              {%- if image != blank -%}
-              <img class="lazyload"
-                  src="{{ image | image_url: width: '500x' }}"                                  
-                   alt="more about product" width="400px" height="400px">
-            
-              {%- endif -%}
-               <p class="tt-title">{% if image.alt != ''%}{{  image.alt }}{% endif %}</p>
-            </a>
-        </div> {%- endfor -%}{%- endif -%}
-      </div></div></div></div>
-
+    <div id="zoomModal" class="zoom-modal" style="display:none;">
+      <span class="close-zoom">&times;</span>
+      {% comment %}<img class="zoomed-img" srcset="{{ image | image_url: width: 'master' }}" src="{{ image | image_url: width: 'master' }}" alt="Zoomed Image">{% endcomment %}
+    </div>
+  </div>
 {% endif %}
+<!--
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      const zoomIcons = document.querySelectorAll(".more-abt-zoomicon");
+      const modal = document.getElementById("zoomModal");
+      const modalImg = document.querySelector(".zoomed-img");
+      const closeModal = document.querySelector(".close-zoom");
 
+      zoomIcons.forEach(icon => {
+        icon.addEventListener("click", function () {
+          const imgSrc = this.getAttribute("data-img");
+          modalImg.src = imgSrc;
+          modal.style.display = "flex";
+        });
+      });
+
+      closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+        modalImg.src = "";
+      });
+
+      // Optional: Close when clicking outside the image
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          modalImg.src = "";
+        }
+      });
+    });
+  </script>
+-->
+<style>
+    .section-more-about .zoom-modal {
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .section-more-about .zoomed-img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  span.more-abt-zoomicon {
+      position: absolute;
+      right: 20px;
+      top: 10px;padding: 2px;
+      background-color: #fff;
+      width:30px;
+      height: 30px;
+      text-align: center;
+      border-radius: 50%;
+  }
+  span.more-abt-zoomicon i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+  }
+   .more-abt-zoomicon  .icon-f-86:before {   font-size: 23px;}
+  .section-more-about .close-zoom {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+</style>
 {% schema %}
+{
+  "name": "More About Product",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "text1",
+      "label": "Title",
+      "default": "WELCOME!"
+    },
+    {
+      "type": "textarea",
+      "id": "text2",
+      "label": "Small description",
+      "default": "ABOUT OUR STORE",
+"info": "Empty field = hide field"
+    },
+     {
+        "type": "color",
+        "id": "sectionbg",
+        "label": "Section background color",
+        "default": "#ffffff"
+      },
+     {
+    "type": "select",
+    "id": "items",
+    "label": "Items In Line",
+    "default": "4",
+    "options": [
+      {
+        "value": "12",
+        "label": "1"
+      },
+      {
+        "value": "6",
+        "label": "2"
+      },
+      {
+        "value": "4",
+        "label": "3"
+      },
+      {
+        "value": "3",
+        "label": "4"
+      }
+    ]
+  },
+     {
+    "type": "select",
+    "id": "mob-items",
+    "label": "Mobile Items In Line",
+    "default": "4",
+    "options": [
+      {
+        "value": "12",
+        "label": "1"
+      },
+      {
+        "value": "6",
+        "label": "2"
+      },
+      {
+        "value": "4",
+        "label": "3"
+      },
+      {
+        "value": "3",
+        "label": "4"
+      }
+    ]
+  }
+  ],
+  "blocks": [
   {
-    "name": "More About Product",
-    "class": "index-section",
+    "type": "item",
+    "name": "Item",
     "settings": [
       {
-        "type": "textarea",
-        "id": "text1",
-        "label": "Title",
-        "default": "WELCOME!"
+        "label": "Link",
+        "id": "collection",
+        "type": "url"
       },
       {
-        "type": "textarea",
-        "id": "text2",
-        "label": "Small description",
-        "default": "ABOUT OUR STORE",
-		"info": "Empty field = hide field"
+        "type": "image_picker",
+        "id": "image",
+        "label": "Custom Image"
       },
-       {
-          "type": "color",
-          "id": "sectionbg",
-          "label": "Section background color",
-          "default": "#ffffff"
-        },
-       {
-      "type": "select",
-      "id": "items",
-      "label": "Items In Line",
-      "default": "4",
-      "options": [
-        {
-          "value": "12",
-          "label": "1"
-        },
-        {
-          "value": "6",
-          "label": "2"
-        },
-        {
-          "value": "4",
-          "label": "3"
-        },
-        {
-          "value": "3",
-          "label": "4"
-        }
-      ]
-    },
-       {
-      "type": "select",
-      "id": "mob-items",
-      "label": "Mobile Items In Line",
-      "default": "4",
-      "options": [
-        {
-          "value": "12",
-          "label": "1"
-        },
-        {
-          "value": "6",
-          "label": "2"
-        },
-        {
-          "value": "4",
-          "label": "3"
-        },
-        {
-          "value": "3",
-          "label": "4"
-        }
-      ]
-    }
-    ],
-    "blocks": [
-    {
-      "type": "item",
-      "name": "Item",
-      "settings": [
-        {
-          "label": "Link",
-          "id": "collection",
-          "type": "url"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Custom Image"
-        },
-        {
-          "type": "text",
-          "id": "custom_name",
-          "label": "Custom Name",
-          "info": "If \"Custom Name\" is empty, title = default collection name"
-        }
-       
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "More About Product",
-      "category": "Multicolumn",
-      "blocks": [
-      ]
-    }
-  ]
+      {
+        "type": "text",
+        "id": "custom_name",
+        "label": "Custom Name",
+        "info": "If \"Custom Name\" is empty, title = default collection name"
+      }
+
+    ]
   }
+],
+"presets": [
+  {
+    "name": "More About Product",
+    "category": "Multicolumn",
+    "blocks": [
+    ]
+  }
+]
+}
 {% endschema %}

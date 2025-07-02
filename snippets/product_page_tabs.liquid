@@ -1,3 +1,14 @@
+<style>
+  .offer-callout {
+    display: flex;
+    align-items: center;
+  }
+  .offer-callout img {
+    cursor: pointer;
+
+  }
+</style>
+
 {%- capture html_tabs -%}  
   {%- for block in section.blocks -%}
   {%- assign b_i = block.settings -%}
@@ -9,7 +20,7 @@
       </div>
     {%- when 'tab_same_html' -%}
       <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
-        <div class="tt-collapse-title">{{ b_i.title }}  <img src="{{'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/image_2.png?v=1623303023'}}" class="accordian-img" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+        <div class="tt-collapse-title">{{ b_i.title }}  <img src="{{'https://cdn.shopify.com/s/files/1/0568/1945/0045/files/image_2_20x20.png?v=1623303023'}}" class="accordian-img" alt="chevron-up"  width="30px" height="30px" loading="lazy">
         </div>
         <div class="tt-collapse-content">{{ b_i.html }}</div>
       </div>
@@ -21,23 +32,49 @@
   {% if b_i.offer4 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
     {% if b_i.offer5 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
      {% if b_i.offer6 != blank %}  {% assign offer_count = offer_count | plus: 1 %}{% endif %}
-    <div class="custom-avaible-offer">
+    <div class="custom-avaible-offer">   
       <div class="avaible-offer-content tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
-        <div class="avaible-offer tt-collapse-title"> 
-          <span><img class="offer-code" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/offre-anime.gif?v=1726730096" alt="discounttag" width="18px" height="18px">{{ b_i.title }}              
+        <div id="skill_pdp_pd_offers" class="avaible-offer tt-collapse-title 22"> 
+          <span><img class="offer-code"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/offre-anime_18x18.gif?v=1726730096" alt="discounttag" width="18px" height="18px" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/offre-anime_18x18.gif?v=1726730096">{{ b_i.title }}              
           </span>
           <div class="offers_badge">
-            <span>{% comment %}{{ offer_count }} {% endcomment %}{{ b_i.spantitle }}</span>
-             <img src="{{'ac-arrow-up.svg'|asset_url}}" class="accordian-img" alt="chevron-up"  width="30px" height="30px" loading="lazy">
+            <span class="ob-vm">{% comment %}{{ offer_count }} {% endcomment %}{{ b_i.spantitle }}</span>
+            <span class="ob-vl">View less</span>
+             <img loading="lazy" src="{{'ac-arrow-up.svg'|asset_url}}" class="accordian-img" alt="chevron-up"  width="30px" height="30px" srcset="{{'ac-arrow-up.svg'|asset_url}}">
           </div>
         </div>
-        <div class="tt-collapse-content">
-        {% if b_i.offer1 != blank %} <div class="offer-callout">{{ b_i.offer1 }}</div>{% endif %}
-         {% if b_i.offer2 != blank %} <div class="offer-callout">{{ b_i.offer2 }}</div>{% endif %}
-         {% if b_i.offer3 != blank %} <div class="offer-callout">{{ b_i.offer3 }}</div>{% endif %}
-         {% if b_i.offer4 != blank %} <div class="offer-callout">{{ b_i.offer4 }}</div>{% endif %} 
-          {% if b_i.offer5 != blank %} <div class="offer-callout">{{ b_i.offer5 }}</div>{% endif %} 
-          {% if b_i.offer6 != blank %} <div class="offer-callout">{{ b_i.offer6 }}</div>{% endif %} 
+        <div class="tt-collapse-content tab-con">
+         {% comment %}   {% if product.collections contains collections[settings.col-handle1] and settings.show-callout  %}  
+           {% assign per-amt = settings.per-amt | strip | plus: 0 %} 
+            <div class="offer-callout av-pdp-clout">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp|&nbsp  {{ settings.usecode }}    
+           </div>
+         {% endif %}  {% endcomment %}
+        {% unless product.handle == 'lets-make-pasta-play-food-for-realistic-pretend-play-ages-3-7'
+            or product.title == 'Foil Fun Incredible India | No Mess Art Kit (Ages 4-12)'
+            or product.title == 'Disc-O Art | No Mess Art & Craft Activity (ages 4-12)' %}
+            {% if b_i.offer1 != blank %} 
+              <div class="offer-callout 1">
+                {{ b_i.offer1 }}
+                <p id="text-to-copy" style="display:none">{{ b_i.offer1_cc }}</p>
+                <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" >
+              </div>
+            {% endif %} 
+        {% endunless %}
+                                                                               
+        {% if b_i.offer2 != blank %} 
+          <div class="offer-callout 2">
+            {{ b_i.offer2 }}
+            <p id="text-to-copy1" style="display:none">{{ b_i.offer2_cc }}</p>
+            <img loading="lazy"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button1"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739">
+          </div>
+        {% endif %} 
+          {% if b_i.offer3 != blank %} <div class="offer-callout 3">{{ b_i.offer3 }}</div>{% endif %}
+          {% if b_i.offer4 != blank %} <div class="offer-callout 4">{{ b_i.offer4 }}</div>{% endif %}
+         {% if b_i.offer5 != blank %} <div class="offer-callout 5">{{ b_i.offer5 }}</div>{% endif %}
+          {% if b_i.offer6 != blank %} <div class="offer-callout 6">{{ b_i.offer6 }}</div>{% endif %}
+          {% if b_i.offer7 != blank %} <div class="offer-callout 7">{{ b_i.offer7 }}</div>{% endif %}
+          {% if b_i.offer8 != blank %} <div class="offer-callout 8">{{ b_i.offer8 }}</div>{% endif %}
+          {% if b_i.offer9 != blank %} <div class="offer-callout 9">{{ b_i.offer9 }}</div>{% endif %}
           {% if b_i.offertxt != blank %}{{ b_i.offertxt }}{% endif %} 
         </div>
       </div>
@@ -61,8 +98,60 @@
   {%- endcase -%}
   {%- endfor -%}
   {%- endcapture -%}
-  
-  
-  {%- if html_tabs != '' -%}
+
+{%- if html_tabs != '' -%}
   <div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
-  {%- endif -%}
+{%- endif -%}
+
+<script>
+    document.getElementById('copy-button').addEventListener('click', function() {
+    // Get the text to copy
+    const textToCopy = document.getElementById('text-to-copy').innerText;
+
+    // Create a temporary textarea element
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = textToCopy;
+
+    // Add it to the DOM
+    document.body.appendChild(tempTextArea);
+
+    // Select the text
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text
+    document.execCommand('copy');
+
+    // Remove the temporary element
+    document.body.removeChild(tempTextArea);
+
+    // Optional: Provide feedback to the user
+    alert('Copied to clipboard!');
+  });
+
+
+    document.getElementById('copy-button1').addEventListener('click', function() {
+    // Get the text to copy
+    const textToCopy = document.getElementById('text-to-copy1').innerText;
+
+    // Create a temporary textarea element
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = textToCopy;
+
+    // Add it to the DOM
+    document.body.appendChild(tempTextArea);
+
+    // Select the text
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text
+    document.execCommand('copy');
+
+    // Remove the temporary element
+    document.body.removeChild(tempTextArea);
+
+    // Optional: Provide feedback to the user
+    alert('Copied to clipboard!');
+  });
+</script>

@@ -74,12 +74,13 @@
       <div class="row tt-col-list">
         {%- for child_level_2 in level_2.links -%}
         <div class="col-sm-{{ grid }} custom-menu-submenu">
-          <a href="{{ child_level_2.url }}" class="tt-title-submenu">      
+          <a href="{{ child_level_2.url }}" class="1 tt-title-submenu"  id="skill_web__sbc_{{ child_level_2.handle |remove:'-'}}">      
             
             {%- assign image = 'image' | append: forloop.index -%}
             {%- if section_block[image] != blank -%}
-            <img class="lazyload"
-                 data-src="{{ section_block[image] | img_url: img_url }}"
+            <img class="" loading="lazy"
+              src="{{ section_block[image] | img_url: '120x120' }}"
+                 data-src="{{ section_block[image] | img_url: '120x120' }}" width="120px" height="120px"
                  alt="{{ section_block[image].alt }}"/>
             {%- endif -%}
            <div>  {{ child_level_2.title }}</div>
@@ -167,13 +168,13 @@
           <a href="{{ product.url | within: collection }}" class="tt-product">
             <div class="tt-image-box">
               <span class="tt-img">
-                <img class="lazyload"
+                <img class=""
                      data-src="{{ main_url_image | product_img_url: "grande" }}"
                      alt="{{ product.featured_image.alt | escape }}"/>
               </span>
               {%- if hover_url_image != '' -%}
               <span class="tt-img-roll-over">
-              	<img class="lazyload"
+              	<img class=""
                      data-src="{{ hover_url_image | product_img_url: "grande" }}"
                      alt="{{ hover_url_image_alt }}">
               </span>{%- endif -%}
@@ -214,7 +215,7 @@
       <div class="tt-offset-7">
         <a href="{{ widgetbanner_url }}" class="tt-promo-02">
           {%- if widgetbanner_img != blank -%}
-          <img class="lazyload"
+          <img class=""
                data-src="{{ widgetbanner_img | img_url: '410x' }}"
                alt="{{ widgetbanner_imgalt }}"/>
           {%- endif -%}
@@ -246,7 +247,7 @@
         {%- else -%}{%- include "get_svg" type:'image' size:'542x160px' -%}
         {%- endif -%}
         {%- else -%}{% endcomment %}
-        <img class="lazyload"
+        <img class=""
              data-src="{{ banners_img1 }}"
              alt="{{ banners_img1alt }}"/>
         {%- endif -%}
@@ -262,7 +263,7 @@
     <div class="col-sm-{{ banners_grid }}">
       <a href="{{ banner2_url }}" class="tt-promo-02">
         {%- if section_block.bottombanners_img_2 != blank -%}       
-        <img class="lazyload"
+        <img class=""
              data-src="{{ banners_img2 }}"
              alt="{{ banners_img2alt }}"/>
         {%- endif -%}

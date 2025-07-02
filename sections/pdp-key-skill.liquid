@@ -1,5 +1,5 @@
 <style>
-  .pdp-key-skill .container {padding:40px 0;}
+  /* .pdp-key-skill .container {padding:40px 0;} */
   .skill-conatiner {
     display: grid;
     grid-gap: 10px;
@@ -15,10 +15,11 @@
 }
     .skill-conatiner {
         display: grid;
-        grid-gap: 10px;       
+        grid-gap: 25px;       
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: repeat(3, 1fr);
         width: 100%;
+        padding: 0 10px;
     }
 }
 .skill-item {  text-align: center;}
@@ -28,11 +29,18 @@
 }}
   p.key_skills {
     font-family: AvenirMedium;
-    font-size: 16px;
+    font-size: 16px;text-transform: capitalize;
     font-weight: 500;
     color: #06374f;
 }
-
+.skill-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pdp-key-skill {
+  padding: 30px 0;
+}
 </style>
 {%- assign item = section.settings -%}
 {%- assign grid = section.settings.items -%}
@@ -45,75 +53,75 @@
       <p class="tt-title">{{ item.text1 }}</p>
       {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
     </div>
-      <div class="row skill-conatiner">
+      <div id="skill_pdp_keyskills" class="row skill-conatiner">
   {% assign customKeywords = product.metafields.pdp.key_skills | split: ',' %}
 
   {% for keyword in customKeywords %}
-  <div class="skill-item">
+  <div class="skill-item single-pd-metafield">
     {% if keyword contains 'Language Skills' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon.png">
+    <a href="#"> <img loading="lazy" alt="Language Skills" width="100px" height="100px" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon_100x100.png" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/LanuageSkills-icon_100x100.png"> <p class="key_skills">{{ keyword }}</p></a>
     {% endif %}
     {% if keyword contains 'Sensory Capabilities' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon.png">
+    <a href="#"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon_100x100.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Sensory_Capabilities-icon_100x100.png" > <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
     {% if keyword contains 'Cognitive Abilities' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon.png">
+    <a href="#"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon_100x100.png"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Cognitive_Abilities-icon_100x100.png"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
     {% if keyword contains 'Concentration' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon.png">
+    <a href="#"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon_100x100.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Concentration-icon_100x100.png"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
     {% if keyword contains 'Hand-eye Coordination' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon.png">
+    <a href="#"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon_100x100.png"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Hand-eye_Coordination-icon_100x100.png"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
     {% if keyword contains 'Vocabulary' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Vocabulary-icon.png">
+    <a href="#"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Vocabulary-icon_100x100.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Vocabulary-icon_100x100.png"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Observation' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation.webp">
+    <a href="https://www.skillmatics.in/collections/observation"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Observation_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Focus & Attention' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention.webp">
+    <a href="https://www.skillmatics.in/collections/focus-and-attention"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Focus_Attention_100x100.webp" > <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Spatial Reasoning' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning.webp">
+    <a href="https://www.skillmatics.in/collections/spatial-reasoning"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Spatial_Reasoning_100x100.webp" > <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Social & Communication' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication.webp">
+    <a href="https://www.skillmatics.in/collections/social-and-communication"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Social_Communication_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Fine Motor' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor.webp">
+    <a href="https://www.skillmatics.in/collections/fine-motor"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Fine_Motor_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Process Planning' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning.webp">
+    <a href="https://www.skillmatics.in/collections/smart-planning-through-play"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Process_Planning_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Problem Solving' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving.webp">
+    <a href="https://www.skillmatics.in/collections/problem-solving"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Problem_Solving_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Reflective Thinking' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking.webp">
+    <a href="https://www.skillmatics.in/collections/play-that-sparks-thought"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reflective_Thinking_100x100.webp" > <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Mental Processing' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing.webp">
+    <a href="https://www.skillmatics.in/collections/mental-processing"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing_100x100.webp"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mental_Processing_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Decision Making' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making.webp">
+    <a href="https://www.skillmatics.in/collections/decision-making"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Decision_Making_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Writing' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing.webp">
+    <a href="https://www.skillmatics.in/collections/exciting-stories-start-here"><img loading="lazy" alt="Language Skills" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Writing_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Critical Thinking' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Critical_Thinking.webp">
+    <a href="https://www.skillmatics.in/collections/critical-thinking"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Critical_Thinking_100x100.webp"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Critical_Thinking_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
  {% if keyword contains 'Creative Thinking' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking.webp">
+    <a href="https://www.skillmatics.in/collections/explore-your-creativity-1"><img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Creative_Thnking_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
 {% if keyword contains 'Reading & Comprehension' %}
-    <img loading="lazy" alt="Language Skills" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension.png">
+    <a href="https://www.skillmatics.in/collections/engage-with-fun-reading-games"><img loading="lazy" alt="Language Skills" width="100px" height="100px"   src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension_100x100.png" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Reading_Comprehension_100x100.png"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
 {% if keyword contains 'Logical Reasoning' %}
-    <img loading="lazy" alt="Logical Reasoning" width="100px" height="100px" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning.webp">
+    <a href="https://www.skillmatics.in/collections/logical-reasoning"><img loading="lazy" alt="Logical Reasoning" width="100px" height="100px"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning_100x100.webp" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Logical_Reasoning_100x100.webp"> <p class="key_skills">{{ keyword }}</p></a>
       {% endif %}
-    <p class="key_skills">{{ keyword }}</p>
+   
   </div>
   {% endfor %}
     </div></div></div></div>

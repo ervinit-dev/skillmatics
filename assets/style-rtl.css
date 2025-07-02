@@ -1347,7 +1347,11 @@ button.mfp-close {
   left: inherit;
   right: 10px;
 }
-
+@media (min-width: 768px) {
+  .tt-mobile-product-slider  {
+    display: none !important;
+  }
+}
 /*
 shopcart
  */

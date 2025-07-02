@@ -1,0 +1,286 @@
+<style>
+     .cutom-bannercontainer{max-width:100%;width:90%;margin: 0 auto;}
+  .custom-bannerprice {padding-top: 8px;}
+    .custom-bannerprice .pdtt-tittle{
+    color:#06374F;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;}
+    button.ct-btn-chripdp.btn {    width: 100%;}
+  .custompg-desc-content {    width: 100%;}
+    .custompg-desc {
+      display: flex;
+      justify-content: space-between;
+       align-items: start;
+      padding: 10px 0;
+      gap: 10px;
+      flex-direction: column;
+      padding: 10px 0;
+  }
+    .custompg-desc span.textsaletag {
+      font-size: 12px;
+      line-height: 20px;
+  }
+   .custompg-desc  span.sale-price {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 19.2px;
+      text-align: right;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+  }
+  .custompg-desc  span.old-price {color:#889093;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14.4px;
+      text-align: right;
+      text-decoration-line: line-through;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+  }
+  .custompg-desc  span.pdp-tt-label-sale.tt-label-sale {
+      margin-left: 5px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 16.8px;
+      text-align: right;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+  }
+    #shopify-section-{{section.id}} .full-width-container{
+      background-color: {{section.settings.bgcolor}};
+      background-repeat: no-repeat;
+  background-size: cover;background-position: top;
+      padding-top:20px; padding-bottom:20px;
+    }
+    {% if section.settings.bg-desktop %}
+        @media (min-width: 768px) {
+       #shopify-section-{{section.id}} .full-width-container{
+      background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+    }
+      }
+      {% endif %}
+      {% if section.settings.bg-mobile %}
+        @media (max-width: 767px) {
+       #shopify-section-{{section.id}} .full-width-container{
+       background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+    }
+      }
+      {% endif %}
+    #shopify-section-{{section.id}} .tt-title span {color:#D41F3B;}
+  .custombanner2 {margin:13px 0;}
+    @media (max-width: 789px) {
+     .custom-bannerprice .salestags {
+          padding: 3px 5px;
+          font-size: 10px;
+          margin: 0;
+          margin-top: 5px;
+      }
+  }
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings['mob-items'] -%}
+<div
+  id="section-{{ section.id }}"
+  class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %} custom-banner-row"
+>
+  <div class=" full-width-container">
+    <div class="custom-banner cutom-bannercontainer">
+      <div class="tt-block-title">
+        {% unless item.text1 == '' %}
+          <h1 class="tt-title">{{ item.text1 }}</h1>
+        {% endunless %}
+        {% unless item.text2 == '' %}
+          <div class="tt-description">{{ item.text2 }}</div>
+        {% endunless %}
+      </div>
+      {%- for block in section.blocks -%}
+        {%- assign item = block.settings -%}
+        {% assign product = all_products[item.product] %}
+        <div class="custombanner2 itemslider">
+          {% if item.collection != blank %}
+            <a href="{{item.collection }}" aria-label="bannerlinks" rel="link">
+          {% else %}
+            <a href="{{product.url}}" aria-label="bannerlinks" rel="link">
+          {% endif %}
+          <div class="grid-column-itemslider">
+            <div class="custom-banner-gd">
+              {%- unless item.image == blank -%}
+                <img
+                  class="slidebanner lazyload  mobile-{%- unless  item.image == blank -%}hide{%- endunless -%}"
+                  src="{{ item.image | img_url: 'master'}}"
+                  id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+                  alt="banner image"
+                  width="100%"
+                  height="100%"
+                  srcset
+                >
+              {%- endunless -%}
+              {%- unless item.image == blank -%}
+                <img
+                  class="slidebanner lazyload desktop-{%- unless  item.image == blank -%}hide {%- endunless -%}"
+                  src="{{ item.mob-image | img_url: 'master'}}"
+                  id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+                  alt="banner image"
+                  width="100%"
+                  height="100%"
+                  srcset
+                >
+              {%- endunless -%}
+            </div>
+            <div class="mobile-only custom-bannerprice">
+              <div class="pdtt-tittle">{{ product.title }}</div>
+              <div class="custompg-desc">
+                <div class="custompg-desc-content">
+                  <div class="tt-price">
+                    <span class="sale-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+                    <span class="old-price">
+                      {{- product.selected_or_first_available_variant.compare_at_price | money -}}
+                    </span>
+                    {%- assign mc = product.selected_or_first_available_variant.compare_at_price
+                      | money_without_currency
+                      | replace: ',', ''
+                    -%}
+                    {%- assign mo = product.selected_or_first_available_variant.price
+                      | money_without_currency
+                      | replace: ',', ''
+                    -%}
+                    {%- assign percent = mc | minus: mo | times: 100.0 | divided_by: mc | round | append: '%' -%}
+
+                    <span class="pdp-tt-label-sale tt-label-sale">
+                      {{- 'products.general.sale_html' | t }}
+                      <span class="thumb_percent">{{ percent }}</span></span
+                    >
+                    {% if section.settings['coupon-code'] != blank %}
+                      <span class="deal-couponcode">{{ section.settings['coupon-code'] }}</span>
+                    {% endif %}
+                  </div>
+                {% if product.title == 'Peek-A-Boo: Jungle Theme (Ages 6 months+)' or product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)' or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)' or product.title == 'Flash Cards Science Snippets Kit | The Human Body (ages 7+)' or  product.title == 'Flash Cards Science Snippets Kit | All About Animals (ages 7+)' or product.title == 'Flash Cards Science Snippets Kit | All About Space (ages 7+)'  %}
+                   {% if settings['show-callout5'] %} {% assign per-amt5 = settings['per-amt5'] | strip | plus: 0 %}
+                  <div class="salestags colllectionpg rpp ppp">
+                    <span class="textsaletag rr">
+                      <img class="offer-code" src="{{ 'calloutimg.svg' | asset_url }}" alt="discounttag" width="18px" height="18px" > {{- settings['get-it-at5'] }}
+                      <b>{{ product.selected_or_first_available_variant.price | times: per-amt5 | money }}</b> | <br> </span>
+                    <span class="textsaletag">
+                      {{ settings.usecode5 }}
+                    </span>
+                  </div>
+                  {% endif %}
+                  {% else settings['show-callout'] %}
+                    {% if product.tags contains 'single product'
+                      and product.title != 'My Quiet Book | Sensory Activity Book (ages 1+)'
+                      and product.title != 'Peek-A-Boo: Jungle Theme (Ages 6 months+)' and product.title != 'Snip Snip: Holiday Magic | Art & Craft Activity Kit (ages 3-7)' and product.title != 'Foil Fun: Christmas Ornaments | No Mess Art Kit (ages 4+)' and product.title != 'Poke-in Art: DIY Christmas Decor | No Mess Art for Kids (ages 4-9)' and product.title != 'Foil Fun: Holiday Magic | No Mess Art Kit (ages 4-9)'
+                    %}
+                      {% assign per-amt = settings['per-amt'] | strip | plus: 0 %}
+                      <div class="salestags colllectionpg">
+                        <span
+                          ><img
+                            class="offer-code"
+                            src="{{'calloutimg.svg' |asset_url }}"
+                            alt="discounttag"
+                            width="18px"
+                            height="18px"
+                        >
+                        <span class="textsaletag ">
+                          {{- settings['get-it-at'] }}
+                          <b>{{ product.selected_or_first_available_variant.price | times: per-amt | money }}</b> | <br>
+                          {{ settings.usecode }}
+                        </span></span>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                <button class="ct-btn-chripdp btn">Shop now</button>
+              </div>
+            </div>
+          </div>
+          {% if item.collection != blank %} </a>{% else %}/a>{% endif %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Custom Banner 2",
+  "class": "index-section",
+  "settings": [
+     {
+        "label": "Tracking id",
+        "info": "Do Not Delete",
+        "id": "tracking-id",
+        "type": "text"
+      },
+     {
+      "type": "textarea",
+      "id": "text1",
+      "label": "Title",
+      "default": "WOMEN’S"
+    },
+   {
+      "type": "textarea",
+      "id": "text2",
+      "label": "Small description",
+      "default": "ABOUT OUR STORE",
+"info": "Empty field = hide field"
+    },
+    {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color"
+      },
+   {
+        "type": "image_picker",
+        "id": "bg-desktop",
+        "label": "desktop background "
+      },
+   {
+        "type": "image_picker",
+        "id": "bg-mobile",
+        "label": "mobile background Image "
+      }
+
+  ],
+  "blocks": [
+  {
+    "type": "item",
+    "name": "Slider",
+    "settings": [
+      {
+        "label": "Link",
+        "id": "collection",
+        "type": "url"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Custom Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mob-image",
+        "label": "Custom Mpbile Image"
+      },
+       {
+          "type":      "product",
+          "id":        "product",
+          "label":     "Product"
+        }
+
+    ]
+  }
+],
+"presets": [
+  {
+    "name": "Custom Banner 2",
+    "category": "Slider",
+    "blocks": [
+    ]
+  }
+]
+}
+{% endschema %}

@@ -1,0 +1,977 @@
+{{ 'custom-single-product.css' | asset_url | stylesheet_tag: preload: true }}
+{%- assign item = section.settings -%}
+
+{% assign _collection = collections[item.collection] %}
+{% assign _pr = _collection.products.first %}
+{% assign sel_or_first_av_var = _pr.selected_or_first_available_variant %}
+
+{%- assign product_meta = _pr.metafields.description -%}
+{%- assign sale_on = false -%}
+{%- assign shownewicon = false -%}
+{%- if sel_or_first_av_var.compare_at_price > sel_or_first_av_var.price -%}
+  {%- assign sale_on = true -%}
+{%- endif -%}
+<style>
+  @media (min-width: 768px) {
+    #shopify-section-{{section.id}}.index-section{
+      background-image: url('{{section.settings.bg_img | img_url:'2560x'}}')!important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: initial;
+      background: round;
+      padding: 100px 0 !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #shopify-section-{{section.id}}.index-section{
+      background-image: url('{{section.settings.bg_img_mbl | img_url:'2560x'}}')!important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: initial;
+      background: round;
+    }
+  }
+  @media (min-width: 1600px) and (max-width: 1800px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 80px 0 !important; 
+    }
+  }
+  @media (min-width: 1600px) and (max-width: 1720px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 50px 0 !important; 
+    }
+  }
+  @media (min-width: 1400px) and (max-width: 1599px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 55px 0 !important; 
+    }
+    .sp-img-wrapper {
+      width: 400px
+    }
+  }
+  @media (min-width: 1300px) and (max-width: 1500px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 40px 0 !important; 
+    }
+  }
+  @media (min-width: 1250px) and (max-width: 1399px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 50px 0 !important; 
+    }
+    .sp-img-wrapper {
+      width: 350px
+    }
+  }
+  @media (min-width: 1300px) and (max-width: 1350px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 40px 0 !important; 
+    }
+  }
+  @media (min-width: 1100px) and (max-width: 1299px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 30px 0 !important; 
+    }
+    .sp-img-wrapper {
+      width: 350px
+    }
+    .tt-pr-small-desc p {
+      font-size: 14px !important
+    }
+  }
+ @media (min-width: 1200px) and (max-width: 1250px) {
+   #shopify-section-{{section.id}}.index-section {
+      padding: 30px 0 !important; 
+    }
+   .singleproductinfo .tt-price {
+    padding: 10px 0 10px !important;
+  }
+ }
+  @media (min-width: 1100px) and (max-width: 1200px) {
+    #shopify-section-{{section.id}}.index-section {
+      padding: 40px 0 !important; 
+      background-image: url('https://cdn.shopify.com/s/files/1/0568/1945/0045/files/1350_x_600_Rakhi_Special_Launch_desktop.webp?v=1751006234') !important;
+      background-size: contain !important;
+    }
+    .singleproductinfo .tt-price { padding: 10px 0 !important; }
+  }
+  @media (max-width: 650px) {
+     #shopify-section-{{section.id}}.index-section {
+       padding: 30px 0 !important;
+       background-size: contain !important;
+     }
+    .singleproductinfo .tt-title { text-align: center }
+  }
+  @media (max-width: 650px) {
+    .sp-img-wrapper {
+      width: 300px !important; 
+    }
+  }
+</style>
+{% capture imageitem %}
+<div class="sp-img-wrapper">
+  <a href="{{ _pr.url }}">
+    <div class="custom-loader" style="display: none;">
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+    <div class="productandvideoimg">
+      
+      <picture>
+  <source media="(min-width:768px)" srcset="{{ _pr.featured_image.src | product_img_url: '300x300' }}">
+  <img class="lazyload"
+         data-src="{{ _pr.featured_image.src | product_img_url: '300x300' }}"
+         width="365px"
+         data-srcset="{% include 'lazyload_string' value: _pr.featured_image %}"
+         alt="{{ _pr.featured_image.alt | escape }}"/>
+</picture>
+      <span class="tt-label-location product-featured-tag">
+            {% render 'featured-tag', product: _pr %}
+          </span>
+    </div>
+  </a>
+</div>
+{% endcapture %}
+{% capture productitem %}
+<div class="sp-detail-wrapper">
+  <div class="singleproductinfo">
+    {% if item.show_custom_text_1 %}<div class="custom-text-1">{{ item.custom_text_1 }}</div>{% endif %}
+    {% if item.show_custom_text_2 %}<div class="custom-text-2">{{ item.custom_text_2 }}</div>{% endif %}
+    
+    {%- unless product_meta.countdown == blank -%}
+    {%- if item.showcountdown -%}
+    <div class="tt-countdown_box_02 tt-type-02">
+      <div class="tt-countdown_inner">
+        <div class="tt-countdown" data-date="{{ product_meta.countdown }}">
+        </div>
+      </div>
+    </div>
+    {%- endif -%}
+    {%- endunless -%}
+    
+    {% if item.show_product_availability %}
+    <div class="availability">
+      <span>{{ 'products.product.availability' | t }}</span>
+      {% if _pr.available %}
+      <span class="stock_quantity hide"></span> <span class="in_stock hide">{{ 'products.product.in_stock' | t }}</span> <span class="many_in_stock hide">{{ 'products.product.many_in_stock' | t }}</span> <span class="sold_out hide">{{ "products.product.sold_out" | t }}</span> <span class="continue_out hide">{{ "products.product.purchase_when_out_of_stock" | t }}</span>
+      {% else %}
+      <span class="sold_out">{{ "products.product.sold_out" | t }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <h2 class="tt-title"><a href="{{ _pr.url }}">{{ _pr.title }}</a></h2>
+    
+    {%- if item.product_item_show_price -%}
+    {%- if sale_on -%}
+      {% assign price = sel_or_first_av_var.price %}
+      {% assign compare_price = sel_or_first_av_var.compare_at_price %}
+      {% assign save_amount = compare_price | minus: price %}
+      {% assign save_percent_float = save_amount | times: 100.0 | divided_by: compare_price %}
+      {% assign save_percent = save_percent_float | ceil %}
+      
+      <div class="tt-price">
+        <span class="new-price">{{ price | money }}</span>
+        <span class="old-price">{{ compare_price | money }}</span>
+        <span class="save-percent">Save {{ save_percent }}%</span>
+      </div>
+    {%- else -%}
+    <div class="tt-price"><span>{{ sel_or_first_av_var.price | money }}</span><span class="old-price hide"></span></div>
+    {%- endif -%}
+    {%- endif -%}
+    
+    <div class="tt-pr-small-desc desktop-only">
+      {{ _pr.description }}
+    </div>
+    
+    {% if item.btn_text %}
+      <a class="tt-pr-btn desktop-only" href="{{ _pr.url }}">{{ item.btn_text }}</a>
+    {% endif %}
+    
+  </div>
+</div>
+{% endcapture %}
+
+<div
+  class="prvidsec{{ section.id }} sectionsingleproduct {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent {{ item.custom_classes }}"
+  data-sectionname="index_sectionsingleproduct"
+  data-quantity="{% for variant in _pr.variants %}{% if variant.inventory_policy == "continue" %}{{ variant.id }}-continue{{ variant.inventory_quantity }};{% else %}{{ variant.id }}-{{ variant.inventory_quantity }};{% endif %}{% endfor %}"
+  data-prurl="{{ _pr.handle }}"
+>
+    
+    <div class="sp-bg-img"
+    >
+      <!-- <link rel="preload" href="{{ item.bg_img | img_url: '500x' }}"> -->
+      <!-- <img class="bg_img_desk desktop-only" src="{{ item.bg_img | img_url: '1600x' }}" loading="lazy" decoding="async" fetchpriority="low" srcset="{{ item.bg_img | img_url: '1600x' }}" />
+      <img class="bg_img_mbl mobile-only" src="{{ item.bg_img_mbl | img_url: '750x' }}" loading="lazy" decoding="async" fetchpriority="low" srcset="{{ item.bg_img | img_url: '750x' }}" /> -->
+  <div class="container container-fluid-custom-mobile-padding">
+    {%- if item.show_title -%}
+      <div class="tt-block-title sp-heading">
+        <h2 class="tt-title">
+          <img src="{{ item.head_img | img_url: '40x' }}" loading="lazy" decoding="async" fetchpriority="high" srcset="{{ item.head_img | img_url: '40x' }}" />
+          {{ item.titletext1 }}
+        </h2>
+        {%- unless item.titletext2 == '' -%}
+          <div class="tt-description">{{ item.titletext2 }}</div>
+        {%- endunless -%}
+      </div>
+    {%- endif -%}
+    <div class="sp-wrapper {% if item.reverse %} productandvideosection-reverse{% endif %}">
+      {% if item.reverse %}
+        {{ productitem }}
+        {{ imageitem }}
+      {% else %}
+        {{ imageitem }}
+        {{ productitem }}
+      {% endif %}
+    </div>
+  </div>
+  {% if item.usebgcolor %}</div>{% endif %}
+</div>
+
+{% schema %}
+ {
+   "name": "Single Product",
+"class": "index-section",
+   "settings": [
+     {
+       "type": "select",
+       "id": "top_offset",
+       "label": "Top Offset",
+       "default": "normal",
+       "options": [
+         {
+           "value": "none",
+           "label": "None"
+         },
+         {
+           "value": "small",
+           "label": "Small"
+         },
+         {
+           "value": "normal",
+           "label": "Normal"
+         }
+       ]
+     },
+     {
+       "type": "checkbox",
+       "id": "reverse",
+       "label": "Reverse content",
+       "default": false
+     },
+     {
+       "type": "header",
+       "content": "Title"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_title",
+       "label": "Show title",
+       "default": false
+     },
+     {
+       "type": "checkbox",
+       "id": "title_to_left",
+       "label": "Title to left",
+       "default": false
+     },
+     {
+       "type": "textarea",
+       "id": "titletext1",
+       "label": "Title",
+       "default": "Title"
+     },
+     {
+       "type": "image_picker",
+       "id": "head_img",
+       "label": "Heading Image",
+     },
+     {
+       "type": "textarea",
+       "id": "titletext2",
+       "label": "Description",
+       "default": "Description"
+     },
+     {
+       "type": "header",
+       "content": "Product settings"
+     },
+     {
+       "type":      "collection",
+       "id":        "collection",
+       "label":     "collection"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_custom_text_1",
+       "label": "Show custom text 1",
+       "default": true
+     },
+     {
+       "type": "textarea",
+       "id": "custom_text_1",
+       "label": "Custom text 1",
+       "default": "Special Offer"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_custom_text_2",
+       "label": "Show custom text 2",
+       "default": true
+     },
+     {
+       "type": "textarea",
+       "id": "custom_text_2",
+       "label": "Custom text 2",
+       "default": "Save 50% Off"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_product_availability",
+       "label": "Show product availability",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "product_item_show_price",
+       "label": "Show price",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "product_item_show_small_description",
+       "label": "Show small description",
+       "default": true
+     },
+     {
+       "type": "textarea",
+       "id": "product_item_small_description",
+       "label": "Small description",
+       "default": "This is multi-purpose software that can be used for any type of the store."
+     },
+     {
+       "type": "text",
+       "id": "btn_text",
+       "label": "Button text",
+     },
+     {
+       "type": "checkbox",
+       "id": "show_input",
+       "label": "Show counter input",
+       "default": true,
+	"info": "Work with button add to cart"
+     },
+     {
+       "type": "header",
+       "content": "Colors"
+     },
+     {
+       "type": "color",
+       "id": "loadercolor",
+       "label": "Loader color",
+       "default": "#e5e5e5"
+     },
+     
+     {
+       "type": "header",
+       "content": "Mobile"
+     },
+     {
+       "type": "checkbox",
+       "id": "center_mobile",
+       "label": "Center content on mobile",
+       "default": false,
+	"info": "Will work from screen size lower than 789px"
+     },
+     {
+       "type": "paragraph",
+       "content": "Custom text 1 settings"
+     },
+     {
+       "type":      "range",
+       "id":        "customtext1indet_mob",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Custom text 1 top padding",
+       "default":   0
+     },
+     {
+       "type":      "range",
+       "id":        "customtext1fontsize_mob",
+       "min":       12,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Custom text 1 font size",
+       "default":   24
+     },
+     {
+       "type":      "range",
+       "id":        "customtext1lineheight_mob",
+       "min":       12,
+       "max":       101,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Custom text 1 line height",
+       "default":   32
+     },
+     {
+       "type": "paragraph",
+       "content": "Custom text 2 settings"
+     },
+     {
+       "type":      "range",
+       "id":        "customtext2indet_mob",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Custom text 2 top padding",
+       "default":   0
+     },
+     {
+       "type":      "range",
+       "id":        "customtext2fontsize_mob",
+       "min":       12,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Custom text 2 font size",
+       "default":   36
+     },
+     {
+       "type":      "range",
+       "id":        "customtext2lineheight_mob",
+       "min":       12,
+       "max":       101,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Custom text 2 line height",
+       "default":   50
+     },
+     {
+       "type": "paragraph",
+       "content": "Product name settings"
+     },
+     {
+       "type":      "range",
+       "id":        "prnameindent_mob",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Product name top padding",
+       "default":   4
+     },
+     {
+       "type":      "range",
+       "id":        "fontsize_mob",
+       "min":       14,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Product name font size",
+       "default":   30
+     },
+     {
+       "type":      "range",
+       "id":        "lineheight_mob",
+       "min":       14,
+       "max":       101,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Product name line height",
+       "default":   40
+     },
+     {
+       "type": "paragraph",
+       "content": "Price settings"
+     },
+     {
+       "type":      "range",
+       "id":        "pricetextindet_mob",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Price top padding",
+       "default":   0
+     },
+     {
+       "type":      "range",
+       "id":        "pricefontsize_mob",
+       "min":       14,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Price name font size",
+       "default":   36
+     },
+     {
+       "type":      "range",
+       "id":        "pricelineheight_mob",
+       "min":       14,
+       "max":       101,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Price line height",
+       "default":   50
+     },
+     {
+       "type":      "range",
+       "id":        "oldpricefontsize_mob",
+       "min":       10,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Old Price name font size",
+       "default":   24
+     },
+     {
+       "type":      "range",
+       "id":        "oldpricelineheight_mob",
+       "min":       14,
+       "max":       101,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Old Price line height",
+       "default":   38
+     },
+     {
+       "type": "header",
+       "content": "Roundness"
+     },
+     {
+       "type": "range",
+       "id": "product_roundness",
+       "min": 0,
+       "max": 50,
+       "step": 1,
+       "unit": "px",
+       "label": "Product image roundness",
+       "default": 0
+     },
+     {
+       "type": "header",
+       "content": "Colors"
+     },
+     {
+       "type": "color",
+       "id": "customtext1co",
+       "label": "Custom text 1 color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "customtext2co",
+       "label": "Custom text 2 color",
+       "default": "#F8353E"
+     },
+     {
+       "type": "color",
+       "id": "avacot",
+       "label": "Availability title color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "avaco",
+       "label": "Availability color",
+       "default": "#777777"
+     },
+     {
+       "type": "color",
+       "id": "prco",
+       "label": "Product name color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "prcoa",
+       "label": "Product name hover color",
+       "default": "#2879fe"
+     },
+     {
+       "type": "color",
+       "id": "priceco",
+       "label": "Bace price color",
+       "default": "#2879FE"
+     },
+     {
+       "type": "color",
+       "id": "pricecon",
+       "label": "New price color",
+       "default": "#F8353E"
+     },
+     {
+       "type": "color",
+       "id": "pricecoold",
+       "label": "Old price color",
+       "default": "#2879FE"
+     },
+     {
+       "type": "color",
+       "id": "textco",
+       "label": "Text color",
+       "default": "#777777"
+     },
+     {
+       "type": "color",
+       "id": "vartitleco",
+       "label": "Variants title color",
+       "default": "#191919"
+     },
+     {
+       "type": "header",
+       "content": "Form colors"
+     },
+     {
+       "type": "color",
+       "id": "bg_form",
+       "label": "Input background color",
+       "default": "#FFFFFF"
+     },
+     {
+       "type": "color",
+       "id": "bg_form_bo",
+       "label": "Input border color",
+       "default": "#E9E7E7"
+     },
+     {
+       "type": "range",
+       "id": "bg_form_bo_s",
+       "min": 0,
+       "max": 10,
+       "step": 1,
+       "unit": "px",
+       "label": "Border width",
+       "default": 1
+     },
+     {
+       "type": "color",
+       "id": "bg_form_text",
+       "label": "Input text color",
+       "default": "#777777"
+     },
+     {
+       "type": "color",
+       "id": "bg_forma",
+       "label": "ACTIVE. Input background color",
+       "default": "#ffffff"
+     },
+     {
+       "type": "color",
+       "id": "bg_form_boa",
+       "label": "ACTIVE. Input border color",
+       "default": "#2879fe"
+     },
+     {
+       "type": "range",
+       "id": "bg_form_bo_sa",
+       "min": 0,
+       "max": 10,
+       "step": 1,
+       "unit": "px",
+       "label": "ACTIVE. Border width",
+       "default": 1
+     },
+     {
+       "type": "color",
+       "id": "bg_form_texta",
+       "label": "ACTIVE. Input text color",
+       "default": "#777777"
+     },
+     {
+       "type": "color",
+       "id": "bg_form_text_counter",
+       "label": "Counter input text color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "bg_form_text_counter_sign",
+       "label": "Counter input +/- color",
+       "default": "#777777"
+     },
+     {
+       "type": "color",
+       "id": "bg_form_text_counter_signa",
+       "label": "Counter input +/- hover color",
+       "default": "#d8d8d8"
+     },
+     {
+       "type": "color",
+       "id": "bg_color",
+       "label": "Button background color",
+       "default": "#2879fe"
+     },
+     {
+       "type": "color",
+       "id": "cbtntext",
+       "label": "Button text color",
+       "default": "#ffffff"
+     },
+     {
+       "type": "color",
+       "id": "bg_color_a",
+       "label": "Button background active color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "cbtntext_a",
+       "label": "Button text active color",
+       "default": "#ffffff"
+     },
+     {
+       "type": "textarea",
+       "id": "btn_custom_styles",
+       "label": "Button custom styles"
+     },
+     {
+       "type": "textarea",
+       "id": "btn_custom_styles_hover",
+       "label": "HOVER. Button custom styles"
+     },
+     {
+       "type": "header",
+       "content": "Countdown"
+     },
+     {
+       "type": "paragraph",
+       "content": "To enable countdown you need to use metafield editor with theme documentation"
+     },
+     {
+       "type": "checkbox",
+       "id": "showcountdown",
+       "label": "Show countdown",
+       "default": true
+     },
+     {
+       "type":      "range",
+       "id":        "cowndownindet",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Countdown top padding",
+       "default":   5
+     },
+     {
+       "type":      "range",
+       "id":        "countdowndaysfontsize",
+       "min":       12,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Counting number font size",
+       "default":   24
+     },
+     {
+       "type":      "range",
+       "id":        "countdowndayswordfontsize",
+       "min":       12,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Counting word font size",
+       "default":   16
+     },
+     {
+       "type":      "range",
+       "id":        "countdowndaysfontweight",
+       "min":       300,
+       "max":       900,
+       "step":      100,
+       "label":     "Counting number font weight",
+       "default":   600
+     },
+     {
+       "type":      "range",
+       "id":        "countdowndayswordfontweight",
+       "min":       300,
+       "max":       900,
+       "step":      100,
+       "label":     "Counting word font weight",
+       "default":   400
+     },
+     {
+       "type":      "range",
+       "id":        "counterpaddingtop",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Counter internal top padding",
+       "default":   12
+     },
+     {
+       "type":      "range",
+       "id":        "counterpaddingbottom",
+       "min":       0,
+       "max":       100,
+       "step":      1,
+       "unit":      "px",
+       "label":     "Counter internal bottom padding",
+       "default":   11
+     },
+     {
+       "type": "color",
+       "id": "countdowndays",
+       "label": "Counting number color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "countdowndaysword",
+       "label": "Counting word color",
+       "default": "#191919"
+     },
+     {
+       "type": "color",
+       "id": "countbgcolor",
+       "label": "Counting background color",
+       "default": "#f7f8fa"
+     },
+     {
+       "type": "textarea",
+       "id": "countcustomstyles",
+       "label": "Custom styles for background"
+     },
+     {
+       "type": "header",
+       "content": "Background Settings"
+     },
+     {
+       "type": "checkbox",
+       "id": "usebgcolor",
+       "label": "Use background color or padding",
+       "default": false
+     },
+     {
+       "type": "color",
+       "id": "bgco",
+       "label": "Background color",
+       "default": "#ffffff"
+     },
+     {
+       "type": "text",
+       "id": "bgdepad",
+       "label": "Vertical top padding desktop",
+	"default": "80",
+	"info": "integer, in px"
+     },
+     {
+       "type": "text",
+       "id": "bgdepad_2",
+       "label": "Vertical bottom padding desktop",
+	"default": "80",
+	"info": "integer, in px"
+     },
+     {
+       "type": "text",
+       "id": "bgmopad",
+       "label": "Vertical top padding mobile",
+	"default": "80",
+	"info": "integer, in px"
+     },
+     {
+       "type": "text",
+       "id": "bgmopad_2",
+       "label": "Vertical bottom padding mobile",
+	"default": "80",
+	"info": "integer, in px"
+     },
+     {
+       "type": "paragraph",
+       "content": "Background image"
+     },
+     {
+       "type": "checkbox",
+       "id": "showbgimage",
+       "label": "Show background image",
+       "default": false
+     },
+     {
+       "type": "image_picker",
+       "id": "bg_img",
+       "label": "Desktop Image"
+     },
+     {
+       "type": "image_picker",
+       "id": "bg_img_mbl",
+       "label": "Mobile Image"
+     },
+  {
+	"type": "select",
+	"id": "imagealign",
+	"label": "Image postion",
+	"default": "center",
+	"options": [
+	  {
+		"value": "top",
+		"label": "Top"
+	  },
+	  {
+		"value": "center",
+		"label": "Center"
+	  },
+	  {
+		"value": "bottom",
+		"label": "Bottom"
+	  }
+	]
+  },
+  {
+	"type": "select",
+	"id": "imagesize",
+	"label": "Image size",
+	"default": "cover",
+	"options": [
+	  {
+		"value": "cover",
+		"label": "Full background size"
+	  },
+	  {
+		"value": "contain",
+		"label": "Contain"
+	  }
+	]
+  },
+     {
+       "type": "checkbox",
+       "id": "usemiheight",
+       "label": "Use minimal height",
+       "default": false
+     },
+     {
+       "type": "text",
+       "id": "backgroundminheight3",
+       "label": "Min height for big screen size",
+	"default": "450",
+	"info": "integer, in px"
+     },
+     {
+       "type": "text",
+       "id": "backgroundminheight2",
+       "label": "Min height for medium screen size",
+	"default": "450",
+	"info": "integer, in px"
+     },
+     {
+       "type": "text",
+       "id": "backgroundminheight1",
+       "label": "Min height for mobile screen size",
+	"default": "200",
+	"info": "integer, in px"
+     }
+   ],
+   "presets": [
+     {
+       "name": "Single Product",
+       "category": "Products"
+     }
+   ]
+ }
+{% endschema %}

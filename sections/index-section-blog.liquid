@@ -1,11 +1,53 @@
-{{ 'section-blog.css' | asset_url | stylesheet_tag }}
+{% comment %}{{ 'section-blog.css' | asset_url | stylesheet_tag }}{% endcomment %}
+<link rel="stylesheet" href="{{ 'section-blog.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
 {%- assign item = section.settings -%}
 {%- assign blog = blogs[item.blog] -%}
 {%- assign grid = item.items | plus: 0 -%}
 
 {%- capture image_size -%}600x{%- endcapture -%}
+<style>
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  /* .blog_bg.container-indent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  #shopify-section-{{section.id}} {
+    position: relative;
+  } */
+  {% if section.settings.blog-bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url('{{section.settings.blog-bg-desktop | img_url:'2560x'}}')!important;
+       background-size: contain !important;
+       background-repeat: no-repeat !important;
+       background-position: initial;
+       background: round;
+  }
+    }
+    {% endif %}
+    {% if section.settings.blog-bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+       background-image:url('{{section.settings.blog-bg-mobile | img_url:'450x478'}}')!important;
+       background-size: contain;
+        background-repeat: no-repeat;
+       background-position: initial;
+  }
+    }
+    {% endif %}
+    .blog_bg h2 span {
+    color: #D41F3B;
+}
+</style>
 
-<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent {{ item.custom_classes }}">
+<div class="blog_bg {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent {{ item.custom_classes }}">
   <div class="container{% if item.fullwidth %}-fluid{% endif %}">
     {%- if item.show_title -%}
     <div class="tt-block-title{% if item.title_to_left %} text-left{% endif %}{% if item.boxed_title and item.fullwidth %} container{% endif %}">
@@ -26,8 +68,8 @@
           <div class="tt-blog-thumb respimgsize">
             {%- if article.image != blank -%}
             <div class="tt-img">
-              <a href="{{ article.url }}" target="_blank" aria-label="{{ article.title }}">
-                <img class="lazyload"
+              <a href="{{ article.url }}" aria-label="{{ article.title }}">
+                <img  id="{{ section.settings.tracking-id}}{{ forloop.index }}" class="lazyload"
                      data-mainimage="{{ article.image | product_img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
                      alt="{{ article.image.alt | escape }}" width="400px" height="400px"/>
               </a>
@@ -50,9 +92,9 @@
                 {%- endif -%}
                </div>
               <div class="article-title tt-title{% if settings.block_titles_uppercase %} text-uppercase{% endif %}">
-                <a href="{{ article.url }}" aria-label="{{ article.title }}">{{ article.title }}</a>
+                <a  id="{{ section.settings.tracking-id}}{{ forloop.index }}"  href="{{ article.url }}" aria-label="{{ article.title }}">{{ article.title }}</a>
               </div>
-              {%- if item.show_description -%}
+              {%- if item.show_description -%} 
               <p>{% if article.excerpt.size > 0 %}
                 {%- if section.settings.truncate_excerpt -%}{{ article.excerpt | strip_html | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols }}
                 {%- else -%}{{ article.excerpt }}
@@ -60,7 +102,7 @@
                 {%- else -%}{{ article.content | strip_html | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols }}{%- endif -%}
               </p>
                  <div class="readlink">                 
-                 <a href="{{ article.url }}" aria-label="{{ article.title }}" class="readmore-link link"> {{ "blogs.article.read_more" | t}} </a>
+                 <a  id="{{ section.settings.tracking-id}}{{ forloop.index }}"  href="{{ article.url }}" aria-label="{{ article.title }}" class="readmore-link link"> {{ "blogs.article.read_more" | t}} </a>
                 </div>
               {%- endif -%}
               <div class="tt-meta">
@@ -89,10 +131,10 @@
     </div>
   </div>
 </div>
-
 {% schema %}
   {
     "name": "Blog Posts",
+    "class": "index-section",
     "settings": [
       {
         "type": "select",
@@ -120,6 +162,16 @@
         "label": "Custom css classes",
         "info": "For the custom styles. Add your styles in the theme.css.liquid"
       },
+      {
+          "type": "image_picker",
+          "id": "blog-bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "blog-bg-mobile",
+          "label": "mobile background Image "
+        },
       {
         "type": "checkbox",
         "id": "fullwidth",
@@ -262,7 +314,13 @@
         "id": "truncate_last_symbols",
         "label": "Last Symbols",
         "default": "..."
-      }
+      },
+       {
+          "label": "Tracking id",
+          "info": "Do Not Delete",
+          "id": "tracking-id",
+          "type": "text"
+        }
 	],
     "presets": [
       {

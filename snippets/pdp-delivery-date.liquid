@@ -1,9 +1,54 @@
+<style>
+  .product-note {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-size: 18px;
+  }
+  .product-note p {
+    font-size: 16px;
+    line-height: 15px;
+    padding-left: 5px;
+  }
+</style>
 <!-- Add a placeholder element for the date range -->
 <div class="estimate-delivery-date">
-  {% if section.settings.estimate-date-label !=blank %}
-  {{ section.settings.estimate-date-label }}{% endif %}
-  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/van.svg?v=1726732009" loading="lazy" alt="shipping" width="25px" height="25px" style="height:25px;float:left;margin-right:10px;padding-bottom: 4px;">
-<strong><span id="delivery-date-range"></span></strong></div>
+  {% if product.metafields.custom.preorder_delivery_text == blank %}
+    {% if section.settings['estimate-date-label'] != blank %}
+      {{ section.settings['estimate-date-label'] }}
+    {% endif %}
+    <img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/van.svg?v=1726732009"
+      loading="lazy"
+      alt="shipping"
+      width="25px"
+      height="25px"
+      style="height:25px;float:left;margin-right:10px;padding-bottom: 4px;"
+    >
+    <strong><span id="delivery-date-range"></span></strong>
+  {% else %}
+    {% if section.settings['estimate-date-label'] != blank %}
+      {{ section.settings['estimate-date-label'] }}
+    {% endif %}
+    <img
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/van.svg?v=1726732009"
+      loading="lazy"
+      alt="shipping"
+      width="25px"
+      height="25px"
+      style="height:25px;float:left;margin-right:10px;padding-bottom: 4px;"
+    >
+    <strong>
+      {{- product.metafields.custom.preorder_delivery_text }}
+    </strong>
+  {% endif %}
+</div>
+{% if product.metafields.custom.product_note != blank %}
+  <div class="product-note">Note: {{ product.metafields.custom.product_note | metafield_tag }}</div>
+{% endif %}
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     function formatDate(date) {
@@ -34,5 +79,4 @@
     // Set the output to the placeholder element
     document.getElementById('delivery-date-range').textContent = output;
 });
-
 </script>

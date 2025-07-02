@@ -23,7 +23,8 @@
 
 {%- if forloop.first -%}
 {%- assign fav = ',' | append: filter_value.label | append: ',' -%}
-<li{% if titlestouppercase %} class="text-uppercase"{% endif %}>{{ ftitles | split: fav | first | split: '%%%' | last | split: ',' | first }}:</li>
+  {% assign extracted_text = ftitles | split: 'fav' | first | split: '%%%' | last | split: ',' | first %}
+<li{% if titlestouppercase %} class="text-uppercase {{ extracted_text }}"{% endif %}>{{ ftitles | split: fav | first | split: '%%%' | last | split: ',' | first }}:</li>
 {%- endif -%}
 
 <li class="padding-left-10">
@@ -108,7 +109,7 @@
 {%- for t in current_tags -%}
 {%- assign _t = 'data-tag="' | append: t | append: '"' -%}
 {%- unless data contains _t -%}
-{%- if title_html -%}<li>{{ 'collections.sidebar.empty_search_parameter_html' | t }}</li>{%- assign title_html = false -%}{%- endif -%}
+{%- if title_html -%}<li class="srch-para Age-filter">Age {% comment %}{{ 'collections.sidebar.empty_search_parameter_html' | t }}{% endcomment %}</li>{%- assign title_html = false -%}{%- endif -%}
 {%- assign tooltip_remove_str = 'general.tooltip_texts.filter_remove' | t: filter_name: t -%}
 
 {% assign ts = '<span>' | append: t | append: '</span>' %}
@@ -126,7 +127,7 @@
 {%- assign data = _data | append: data -%}
 
 <div class="tt-collapse open{% if data == '' %} hide{% endif %}">
-  <h3 class="tt-collapse-title{% if titlestouppercase %} text-uppercase{% endif %}">{{ 'collections.sidebar.filtres_title' | t }}</h3>
+  <p class="tt-collapse-title{% if titlestouppercase %} text-uppercase{% endif %}">{{ 'collections.sidebar.filtres_title' | t }}</p>
   <div class="tt-collapse-content filtres-remove-js">
     <ul class="tt-filter-list filtres-js clear-filters">{{ data }}</ul>
     <a href="{{ routes.collections_url }}/{{ collection.handle }}" class="btn-link-02 filtres-remove-js clear_all">{{ 'collections.sidebar.clear_all' | t }}</a>

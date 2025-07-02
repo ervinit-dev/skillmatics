@@ -1,4 +1,7 @@
-<div class="container-indent">
+{% if template.suffix  == 'lg-thankyou-page'%}
+<meta name="robots" content="noindex, nofollow">
+{% endif %}
+<div class="container-indent temp-{{ template.suffix }}">
   <div class="container">
     {{ page.content }}
   </div>

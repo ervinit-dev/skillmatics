@@ -1,0 +1,126 @@
+
+<div class="foil-kit-comparison">
+  <div class="comparison-container">
+    <div class="comparison-column skillmatics">
+     {% if section.settings.skillmatics_img != blank %} 
+       <h3 class="comp-skil-logo"> 
+          <img src="{{ section.settings.skillmatics_img | img_url: '170x' }}" loading="lazy" alt="{{ section.settings.skillmatics_img.alt }}" srcset="{{ section.settings.skillmatics_img | img_url: 'large' }}">
+       </h3>
+       {% endif %}
+      <div class="product-image">
+        {% if section.settings.skillmatics_image != blank %}
+          <img src="{{ section.settings.skillmatics_image | img_url: '300x' }}" loading="lazy" alt="{{ section.settings.skillmatics_image.alt }}" srcset="{{ section.settings.skillmatics_image | img_url: 'master' }}">
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      <div class="features"> {{ section.settings.skillmatics_feature }}</div>
+    </div>
+
+    <div class="comparison-column other">
+       {% if section.settings.othertitle != blank %} 
+      <h3>{{section.settings.othertitle}}</h3> {% endif %}
+      <div class="product-image">
+        {% if section.settings.other_image != blank %}
+          <img src="{{ section.settings.other_image | img_url: '300x' }}" loading="lazy" alt="{{ section.settings.other_image.alt }}" srcset="{{ section.settings.other_image | img_url: 'master' }}">
+        {% else %}
+          {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      <div class="features"> {{ section.settings.other_feature }}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Foil Kit Comparison",
+  "settings": [
+      {
+      "type": "image_picker",
+      "id": "skillmatics_img",
+      "label": "Skillmatics logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "skillmatics_image",
+      "label": "Skillmatics Product Image"
+    },
+    {
+      "type": "richtext",
+      "id": "skillmatics_feature",
+      "label": "Skillmatics Feature",     
+    },  
+      {
+      "type": "text",
+      "id": "othertitle",
+      "label": "Other Product title",     
+    }, 
+    {
+      "type": "image_picker",
+      "id": "other_image",
+      "label": "Other Product Image"
+    },
+    {
+      "type": "richtext",
+      "id": "other_feature",
+      "label": "Other Feature"
+     
+    }
+   
+  ],
+  "presets": [
+    {
+      "name": "Foil Kit Comparison",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .foil-kit-comparison {   width:100%;max-width:100%;    text-align: center;  }
+.comparison-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+  .comparison-column {     text-align: left;justify-items: center;    padding: 50px 0;  }
+.comparison-column.skillmatics {    background: #E9F4F8;}
+  .comparison-column.other {    background: #F7EEE5;}
+  .comparison-column h3 {    text-align: center;    margin-bottom: 20px;  }
+  .product-image {    text-align: center;    margin-bottom: 20px; width: 100%; display: flex; justify-content: center  }
+  .product-image img {    max-width: 100%;    height: auto;  }
+  .features {
+    list-style-type: disc;
+    padding-left: 0px;
+    color: #06374F;
+    leading-trim: both;
+    text-edge: cap;
+    font-size: 19.999px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 141%;
+  }
+  h3.comp-skil-logo img {    width: 165.285px;    height: 54.036px;}
+    .product-image img {width: 158.989px;height: 202.747px;}
+@media (max-width: 575px) {
+    h3.comp-skil-logo img {   width: 97.882px;height: 32px;}
+.comparison-column { padding: 30px 0;  }
+    .features {    font-size: 12px;  }
+  .product-image img {    width: 123px;    height: 139px;}
+  .before_after-heading h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .product-image {    text-align: center;    margin-bottom: 20px; width: 100%; display: flex; justify-content: center  }
+    .comparison-column h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+</style>

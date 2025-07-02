@@ -1,1 +1,488 @@
-{"sections":{"main":{"type":"page","disabled":true,"settings":{}},"custom_banner_frpxUf":{"type":"custom-banner","blocks":{"item_CgyqG3":{"type":"item","settings":{"collection":"shopify:\/\/pages\/gifting","image":"shopify:\/\/shop_images\/Desktop_1eb33e52-813b-4f53-b6e2-d572b2824b1b.webp","mob-image":"shopify:\/\/shop_images\/Mobile_1a8b90c0-dc1f-4800-9cd8-a33927b6fc77.webp"}}},"block_order":["item_CgyqG3"],"settings":{}},"custom_collection_list_GPmGPV":{"type":"custom-collection-list","blocks":{"item_8wciMy":{"type":"item","settings":{"collection":"our-products-for-ages-0-3","link":"","imaged":"shopify:\/\/shop_images\/0-3_years.webp","image":"shopify:\/\/shop_images\/0-3_years_9cea36c4-192f-4cab-b506-0b8ba24daf03.webp","custom_name":"0-3 years"}},"item_ygiwdT":{"type":"item","settings":{"collection":"3-6-years","link":"","imaged":"shopify:\/\/shop_images\/3_years_1.webp","image":"shopify:\/\/shop_images\/3_years.webp","custom_name":"3+ Years"}},"item_RMHqMH":{"type":"item","settings":{"collection":"6-9-years","link":"","imaged":"shopify:\/\/shop_images\/6_years_1.webp","image":"shopify:\/\/shop_images\/6_years.webp","custom_name":"6+ Years"}},"item_EDweQw":{"type":"item","settings":{"collection":"8-13-years","link":"","imaged":"shopify:\/\/shop_images\/8_YEARS_1.webp","image":"shopify:\/\/shop_images\/8_years.webp","custom_name":"8+ Years "}}},"block_order":["item_8wciMy","item_ygiwdT","item_RMHqMH","item_EDweQw"],"custom_css":["@media (min-width: 750px) {.customtitle {display: none; }}","@media (min-width: 1025px) {.custom-collection-gd img {max-width: 256px; max-height: 156px; margin: 0 auto; }}"],"settings":{"top_offset":"small","items-desk":"3","items":"3","imgpadding":10,"showtitle":true,"title":"Shop by Age","subtitle":""}},"custom_collection_list_VwFrzM":{"type":"custom-collection-list","blocks":{"item_DNQKdb":{"type":"item","settings":{"collection":"arts-crafts","link":"","imaged":"shopify:\/\/shop_images\/Art_craft.webp","image":"shopify:\/\/shop_images\/Art_craft.webp","custom_name":"Arts &\u2028Crafts"}},"item_Xy9afL":{"type":"item","settings":{"collection":"puzzles-pretend-play","link":"","imaged":"shopify:\/\/shop_images\/Puzzles_pretend_play_322a3b46-12ef-48e1-bd7d-8bb012cfcadd.webp","image":"shopify:\/\/shop_images\/Puzzles_pretend_play_322a3b46-12ef-48e1-bd7d-8bb012cfcadd.webp","custom_name":"Puzzles &\u2028Pretend Play"}},"item_Yx9UtX":{"type":"item","settings":{"collection":"toddler-infants","link":"","imaged":"shopify:\/\/shop_images\/Infants_Toddlers_336ce917-b6c6-4db5-a5df-0291bde43ea9.webp","image":"shopify:\/\/shop_images\/Infants_Toddlers_336ce917-b6c6-4db5-a5df-0291bde43ea9.webp","custom_name":"Toddlers &\u2028Infants"}},"item_XbFhKK":{"type":"item","settings":{"collection":"learning-resources","link":"","imaged":"shopify:\/\/shop_images\/Learning_Resources_1.webp","image":"shopify:\/\/shop_images\/Learning_Resources_1.webp","custom_name":"Learning Resources"}},"item_dfhJiE":{"type":"item","settings":{"collection":"board-games","link":"","imaged":"shopify:\/\/shop_images\/Card_Board_Games_1.webp","image":"shopify:\/\/shop_images\/Card_Board_Games_1.webp","custom_name":"Card & Board Games"}},"item_jwJfR3":{"type":"item","settings":{"collection":"stem-toys","link":"","imaged":"shopify:\/\/shop_images\/STEM_Toys_1.webp","image":"shopify:\/\/shop_images\/STEM_Toys_1.webp","custom_name":"STEM Toys"}}},"block_order":["item_DNQKdb","item_Xy9afL","item_Yx9UtX","item_XbFhKK","item_dfhJiE","item_jwJfR3"],"custom_css":["@media (min-width: 1025px) {h2 {margin-bottom: 10px; } .customtitle {font-size: 24px; } .grid-column-item-1 .customtitle, .grid-column-item-6 .customtitle {padding: 0px 32px !important; }}","@media (min-width: 750px) and (max-width: 1024px) {.customtitle {font-size: 18px; } .custom-collection-gd img {max-width: 120px; max-height: 120px; margin: 0 auto; }}",".grid-column-item-1 .customtitle,.grid-column-item-6 .customtitle {padding: 0px 20px;}",".custom-collection-gd img {aspect-ratio: 1 \/ 1;}"],"settings":{"top_offset":"normal","items-desk":"2","items":"4","imgpadding":20,"showtitle":true,"title":"Shop by Category","subtitle":""}},"custom_scroll_collection_list_rn6iVj":{"type":"custom-scroll-collection-list","blocks":{"item_BLFcaa":{"type":"item","settings":{"collection":"return-gifting","link":"","imaged":"shopify:\/\/shop_images\/Gift_Bundles_62fb3e1d-db43-40ca-98a8-86ce2634a8ac.webp","image":"shopify:\/\/shop_images\/Gift_Bundles_62fb3e1d-db43-40ca-98a8-86ce2634a8ac.webp","custom_name":"Gift \u2028Bundles"}},"item_KgTHJE":{"type":"item","settings":{"collection":"bestsellers","link":"","imaged":"shopify:\/\/shop_images\/Bestsellers_5a85b82e-a6c0-44db-8504-1e4a64aa2217.webp","image":"shopify:\/\/shop_images\/Bestsellers_5a85b82e-a6c0-44db-8504-1e4a64aa2217.webp","custom_name":"Bestsellers"}},"item_c8ULqY":{"type":"item","settings":{"collection":"new-launches","link":"","imaged":"shopify:\/\/shop_images\/New_launches_0a218c89-0ddc-4fe2-b544-9c99fa3469f2.webp","image":"shopify:\/\/shop_images\/New_launches_0a218c89-0ddc-4fe2-b544-9c99fa3469f2.webp","custom_name":"New \u2028Launches"}},"item_frPJyJ":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/pages\/lead-gen-form","imaged":"shopify:\/\/shop_images\/Return_Gifting.webp","image":"shopify:\/\/shop_images\/Return_Gifting.webp","custom_name":"Bulk Gifting"}}},"block_order":["item_BLFcaa","item_KgTHJE","item_c8ULqY","item_frPJyJ"],"custom_css":["@media (min-width: 1025px) {.customtitle {font-size: 27px; }}","@media (min-width: 750px) {.custom-collection-gd img {max-width: 154px; max-height: 154px; margin: 0 auto; } h2 {margin-bottom: 0px; }}",".custom-collection-gd img {aspect-ratio: 1 \/ 1;}"],"settings":{"sec-width":1000,"top_offset":"normal","items":"4","imgpadding":25,"showtitle":true,"title":"Other Categories","subtitle":""}},"custom_collection_list_yyE8NQ":{"type":"custom-collection-list2","blocks":{"item_NTeyK6":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/products\/foil-fun-unicorns-princesses-no-mess-art-kit","imaged":"shopify:\/\/shop_images\/foilfun.jpg","image":"shopify:\/\/shop_images\/foilfun.jpg","custom_name":"Foil Fun"}},"item_eagzxY":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/piece-play-underwater-animals?_pos=4&_sid=691ae6054&_ss=r","imaged":"shopify:\/\/shop_images\/Piece_Play.webp","image":"shopify:\/\/shop_images\/Piece_Play.webp","custom_name":"Piece \u2028& Play"}},"item_qtyYUy":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/guess-in-10-animal-kingdom-card-game-of-smart-questions-skill118gak?_pos=3&_sid=1d3f2d88a&_ss=r","imaged":"shopify:\/\/shop_images\/Guess_in_10.webp","image":"shopify:\/\/shop_images\/Guess_in_10.webp","custom_name":"Guess in 10"}},"item_nkJ97g":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/rapid-rumble-skill201rr?_pos=1&_sid=525df1405&_ss=r","imaged":"shopify:\/\/shop_images\/Rapid_Rumble_1.webp","image":"shopify:\/\/shop_images\/Rapid_Rumble_1.webp","custom_name":"Rapid Rumble"}},"item_arETLj":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/products\/magnetopia-design-your-city-interactive-pretend-play-set-ages-3-7","imaged":"shopify:\/\/shop_images\/Magnetopia.webp","image":"shopify:\/\/shop_images\/Magnetopia.webp","custom_name":"Magnetopia"}},"item_yTQ8n3":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/fun-with-foam-amazing-animals-no-mess-sticker-art?_pos=2&_sid=d6cbf5e89&_ss=r","imaged":"shopify:\/\/shop_images\/Fun_with_Foam.webp","image":"shopify:\/\/shop_images\/Fun_with_Foam.webp","custom_name":"Fun With Foam"}},"item_kPzpd9":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/magical-scratch-art-book-amazing-animals-ages-3-8?_pos=1&_sid=040917741&_ss=r","imaged":"shopify:\/\/shop_images\/Magical_Scratch_Art.webp","image":"shopify:\/\/shop_images\/Magical_Scratch_Art.webp","custom_name":"Magical Scratch Art"}},"item_rFAwW4":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/products\/letters-numbers-animals-magnetic-matching-activity-ages-3-6-copy","imaged":"shopify:\/\/shop_images\/Magnetic_Match.webp","image":"shopify:\/\/shop_images\/Magnetic_Match.webp","custom_name":"Magnetic Match"}},"item_k6tJ4f":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/products\/lets-play-restaurant-magnetic-pretend-play-set-ages-3-8","imaged":"shopify:\/\/shop_images\/Lets_play_restaurant.webp","image":"shopify:\/\/shop_images\/Lets_play_restaurant.webp","custom_name":"Let's Play Restaurant"}},"item_LETr3j":{"type":"item","settings":{"collection":"","link":"shopify:\/\/products\/animals-on-wheels-wooden-animal-toys-on-wheels-9-months-3-years","imaged":"shopify:\/\/shop_images\/Wood_on_Wheels.webp","image":"shopify:\/\/shop_images\/Wood_on_Wheels.webp","custom_name":"Animals On Wheels"}},"item_HBtiNL":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/upsell-products\/products\/letters-numbers-shapes-and-colors-skill256fcln?_pos=3&_sid=f2e9b9dbb&_ss=r","imaged":"shopify:\/\/shop_images\/Flash_Cards.webp","image":"shopify:\/\/shop_images\/Flash_Cards.webp","custom_name":"Flash Cards"}},"item_gUzfzX":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/write-wipe-activity-mats\/products\/i-can-write-write-wipe-activity-mats-skill120cwb?_pos=1&_sid=e8cc10a99&_ss=r","imaged":"shopify:\/\/shop_images\/Write_Wipe.webp","image":"shopify:\/\/shop_images\/Write_Wipe.webp","custom_name":"Activity Mats"}},"item_zEhVMQ":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/dot-it-no-mess-sticker-art-underwater-animals-skill296diaw?_pos=3&_sid=3f447d887&_ss=r","imaged":"shopify:\/\/shop_images\/Dot_it_10e6cd75-a720-4864-a2ac-cc0346dc8b4c.webp","image":"shopify:\/\/shop_images\/Dot_it_10e6cd75-a720-4864-a2ac-cc0346dc8b4c.webp","custom_name":"Dot It!"}},"item_LkyDXd":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/products\/foil-fun-card-making-set-no-mess-art-kit-ages-4-9","imaged":"shopify:\/\/shop_images\/Storybook_Art_Kit.webp","image":"shopify:\/\/shop_images\/Storybook_Art_Kit.webp","custom_name":"Storybook Art Kit"}},"item_zgkMyc":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/write-and-learn-flash-cards-for-toddlers-ages-3-7?_pos=2&_sid=b27de27e3&_ss=r","imaged":"shopify:\/\/shop_images\/And_Learn.webp","image":"shopify:\/\/shop_images\/And_Learn.webp","custom_name":"Write And Learn"}},"item_QrDKTm":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/science-snippets-kit-the-human-body-stem-learning-resource-ages-7?_pos=1&_sid=58ced9049&_ss=r","imaged":"shopify:\/\/shop_images\/Science_Snippets.webp","image":"shopify:\/\/shop_images\/Science_Snippets.webp","custom_name":"Science Snippets"}},"item_gwnU7x":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/snip-snip-art-craft-activity-kit-ages-3-7?_pos=1&_sid=43dcab263&_ss=r","imaged":"shopify:\/\/shop_images\/Snip_Snip_1_64c82a6d-921c-4add-b2a6-f4076f70a54c.webp","image":"shopify:\/\/shop_images\/Snip_Snip_1_64c82a6d-921c-4add-b2a6-f4076f70a54c.webp","custom_name":"Snip Snip!"}},"item_E7hXJF":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/my-first-puzzle-set-wild-animals-ages-3-6?_pos=2&_sid=3fad2bc98&_ss=r","imaged":"shopify:\/\/shop_images\/My_First_Puzzle.webp","image":"shopify:\/\/shop_images\/My_First_Puzzle.webp","custom_name":"My First Puzzle"}},"item_9PtA4r":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/collections\/under-999\/products\/copy-of-step-by-step-puzzle-wild-animals?_pos=2&_sid=388e813cb&_ss=r","imaged":"shopify:\/\/shop_images\/Step_By_Step_Puzzle_1.webp","image":"shopify:\/\/shop_images\/Step_By_Step_Puzzle_1.webp","custom_name":"Step By Step Puzzle"}},"item_XKG8Mc":{"type":"item","settings":{"collection":"","link":"https:\/\/www.skillmatics.in\/products\/poke-in-art-magical-princesses-mess-free-art-for-kids-ages-4-9","imaged":"shopify:\/\/shop_images\/Poke_in_art.webp","image":"shopify:\/\/shop_images\/Poke_in_art.webp","custom_name":"Poke In Art Princess"}}},"block_order":["item_NTeyK6","item_eagzxY","item_qtyYUy","item_nkJ97g","item_arETLj","item_yTQ8n3","item_kPzpd9","item_rFAwW4","item_k6tJ4f","item_LETr3j","item_HBtiNL","item_gUzfzX","item_zEhVMQ","item_LkyDXd","item_zgkMyc","item_QrDKTm","item_gwnU7x","item_E7hXJF","item_9PtA4r","item_XKG8Mc"],"custom_css":["@media (max-width: 749px) {.section-space {padding-bottom: 20px; }}","@media (min-width: 750px) {.section-space {padding-bottom: 40px; }}"],"settings":{"top_offset":"normal","items-desk":5,"items":4,"imgpadding":10,"showtitle":true,"title":"Shop by Product","subtitle":""}}},"order":["main","custom_banner_frpxUf","custom_collection_list_GPmGPV","custom_collection_list_VwFrzM","custom_scroll_collection_list_rn6iVj","custom_collection_list_yyE8NQ"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_banner_frpxUf": {
+      "type": "custom-banner",
+      "blocks": {
+        "item_xqaeRz": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://pages/return-gifts-for-kids",
+            "image": "shopify://shop_images/Desktop_14_31f9413b-7592-4b84-bc98-a289c6755e69.webp",
+            "mob-image": "shopify://shop_images/Mobile_14_f6e79d8c-44e6-4426-9184-5e6c30a0ac76.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_xqaeRz"
+      ],
+      "settings": {
+        "tracking-id": ""
+      }
+    },
+    "section_multicolumn_index_eDF3bf": {
+      "type": "section-multicolumn-index",
+      "blocks": {
+        "item_gJ9VaL": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/our-products-for-ages-0-3",
+            "image": "shopify://shop_images/0-3_years_013a99c3-7800-4231-bab4-a17142ad95bf.webp",
+            "custom_name": ""
+          }
+        },
+        "item_BthM4k": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/3-6-years",
+            "image": "shopify://shop_images/3_years_6d83ec94-8258-44ce-9a9b-0f8ebeecfa49.webp",
+            "custom_name": ""
+          }
+        },
+        "item_wEHmLQ": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/6-9-years",
+            "image": "shopify://shop_images/8_years_b772d6b7-9931-49a0-a75b-d3ebb25776ef.webp",
+            "custom_name": ""
+          }
+        },
+        "item_FqAWFm": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/8-13-years",
+            "image": "shopify://shop_images/6_years_da4ff9ba-f761-42a7-8c09-a4f14eae13aa.webp",
+            "custom_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_gJ9VaL",
+        "item_BthM4k",
+        "item_wEHmLQ",
+        "item_FqAWFm"
+      ],
+      "name": "Multicolumn",
+      "settings": {
+        "text1": "Shop By Age",
+        "text2": "",
+        "multifetures-bg-desktop": "shopify://shop_images/395_height.webp",
+        "multifetures-bg-mobile": "shopify://shop_images/Shop_by_age_-_Mobile_0c301d04-3eb7-45ec-b59a-3fef2bb57716.webp",
+        "sectionbg": "",
+        "items": "3",
+        "mob-items": "6",
+        "tracking-id": ""
+      }
+    },
+    "custom_collection_list_cat_y6ndAx": {
+      "type": "custom-collection-list-cat",
+      "blocks": {
+        "item_TqfLa4": {
+          "type": "item",
+          "settings": {
+            "collection": "arts-crafts",
+            "link": "",
+            "imaged": "shopify://shop_images/Arts_Crafts_a295a8cc-68c4-4281-8d43-d82c4ad092fc.webp",
+            "image": "shopify://shop_images/Arts_Crafts_a295a8cc-68c4-4281-8d43-d82c4ad092fc.webp",
+            "custom_name": "Arts & Crafts"
+          }
+        },
+        "item_DeWpwq": {
+          "type": "item",
+          "settings": {
+            "collection": "pretend-play",
+            "link": "",
+            "imaged": "shopify://shop_images/Puzzles_Pretend_Play_2f321d2b-65f0-428b-8391-7b2cdd8276a8.webp",
+            "image": "shopify://shop_images/Puzzles_Pretend_Play_2f321d2b-65f0-428b-8391-7b2cdd8276a8.webp",
+            "custom_name": "Puzzles & Pretend Play"
+          }
+        },
+        "item_BWQqmp": {
+          "type": "item",
+          "settings": {
+            "collection": "toddler-infants",
+            "link": "",
+            "imaged": "shopify://shop_images/Toddlers_Infants_9832f236-4c56-46f4-91c9-c828560cd3dc.webp",
+            "image": "shopify://shop_images/Toddlers_Infants_9832f236-4c56-46f4-91c9-c828560cd3dc.webp",
+            "custom_name": "Toddlers & Infants"
+          }
+        },
+        "item_NB9L3z": {
+          "type": "item",
+          "settings": {
+            "collection": "learning-resources",
+            "link": "",
+            "imaged": "shopify://shop_images/Learning_Resources_ceaf1b64-6216-4f7d-84e6-fb7258c64c2f.webp",
+            "image": "shopify://shop_images/Learning_Resources_ceaf1b64-6216-4f7d-84e6-fb7258c64c2f.webp",
+            "custom_name": "Learning Products"
+          }
+        },
+        "item_6EnFAn": {
+          "type": "item",
+          "settings": {
+            "collection": "board-games",
+            "link": "",
+            "imaged": "shopify://shop_images/Card_Board_Games_502c0d1b-96b1-4aa5-a9f9-45662fd98937.webp",
+            "image": "shopify://shop_images/Card_Board_Games_502c0d1b-96b1-4aa5-a9f9-45662fd98937.webp",
+            "custom_name": "Card & Board Games"
+          }
+        },
+        "item_6PreK4": {
+          "type": "item",
+          "settings": {
+            "collection": "stem-toys",
+            "link": "",
+            "imaged": "shopify://shop_images/STEM_Toys_4b4e8b45-f72b-4060-a79b-dc21ed75213e.webp",
+            "image": "shopify://shop_images/STEM_Toys_4b4e8b45-f72b-4060-a79b-dc21ed75213e.webp",
+            "custom_name": "STEM Toys"
+          }
+        }
+      },
+      "block_order": [
+        "item_TqfLa4",
+        "item_DeWpwq",
+        "item_BWQqmp",
+        "item_NB9L3z",
+        "item_6EnFAn",
+        "item_6PreK4"
+      ],
+      "name": "Custom Collection list",
+      "settings": {
+        "top_offset": "normal",
+        "items-desk": "2",
+        "items": "4",
+        "imgpadding": 20,
+        "showtitle": true,
+        "title": "Shop by Category",
+        "subtitle": ""
+      }
+    },
+    "custom_scroll_collection_list_rn6iVj": {
+      "type": "custom-scroll-collection-list",
+      "blocks": {
+        "item_BLFcaa": {
+          "type": "item",
+          "settings": {
+            "collection": "return-gifting",
+            "link": "",
+            "imaged": "shopify://shop_images/Gift_Bundles_62fb3e1d-db43-40ca-98a8-86ce2634a8ac.webp",
+            "image": "shopify://shop_images/Gift_Bundles_62fb3e1d-db43-40ca-98a8-86ce2634a8ac.webp",
+            "custom_name": "Rakhi  Bundles"
+          }
+        },
+        "item_KgTHJE": {
+          "type": "item",
+          "settings": {
+            "collection": "bestsellers",
+            "link": "",
+            "imaged": "shopify://shop_images/Bestsellers_5a85b82e-a6c0-44db-8504-1e4a64aa2217.webp",
+            "image": "shopify://shop_images/Bestsellers_5a85b82e-a6c0-44db-8504-1e4a64aa2217.webp",
+            "custom_name": "Bestsellers"
+          }
+        },
+        "item_c8ULqY": {
+          "type": "item",
+          "settings": {
+            "collection": "new-launches",
+            "link": "",
+            "imaged": "shopify://shop_images/New_launches_0a218c89-0ddc-4fe2-b544-9c99fa3469f2.webp",
+            "image": "shopify://shop_images/New_launches_0a218c89-0ddc-4fe2-b544-9c99fa3469f2.webp",
+            "custom_name": "New  Launches"
+          }
+        },
+        "item_frPJyJ": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/pages/lead-gen-form",
+            "imaged": "shopify://shop_images/Return_Gifting.webp",
+            "image": "shopify://shop_images/Return_Gifting.webp",
+            "custom_name": "Return Gifting"
+          }
+        }
+      },
+      "block_order": [
+        "item_BLFcaa",
+        "item_KgTHJE",
+        "item_c8ULqY",
+        "item_frPJyJ"
+      ],
+      "custom_css": [
+        "@media (min-width: 1025px) {.customtitle {font-size: 27px; }}",
+        "@media (min-width: 750px) {.custom-collection-gd img {max-width: 154px; max-height: 154px; margin: 0 auto; } h2 {margin-bottom: 0px; }}",
+        ".custom-collection-gd img {aspect-ratio: 1 / 1;}"
+      ],
+      "settings": {
+        "sec-width": 1000,
+        "background_image_desktop": "shopify://shop_images/Desktop_-_Other_Categories.webp",
+        "top_offset": "normal",
+        "items": "4",
+        "imgpadding": 25,
+        "showtitle": true,
+        "title": "Other Categories",
+        "subtitle": ""
+      }
+    },
+    "custom_collection_list_yyE8NQ": {
+      "type": "custom-collection-list2",
+      "blocks": {
+        "item_NTeyK6": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/products/foil-fun-unicorns-princesses-no-mess-art-kit",
+            "imaged": "shopify://shop_images/foilfun.jpg",
+            "image": "shopify://shop_images/foilfun.jpg",
+            "custom_name": "Foil Fun"
+          }
+        },
+        "item_eagzxY": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/piece-play-underwater-animals?_pos=4&_sid=691ae6054&_ss=r",
+            "imaged": "shopify://shop_images/Piece_Play.webp",
+            "image": "shopify://shop_images/Piece_Play.webp",
+            "custom_name": "Piece  & Play"
+          }
+        },
+        "item_qtyYUy": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/guess-in-10-animal-kingdom-card-game-of-smart-questions-skill118gak?_pos=3&_sid=1d3f2d88a&_ss=r",
+            "imaged": "shopify://shop_images/Guess_in_10.webp",
+            "image": "shopify://shop_images/Guess_in_10.webp",
+            "custom_name": "Guess in 10"
+          }
+        },
+        "item_nkJ97g": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/rapid-rumble-skill201rr?_pos=1&_sid=525df1405&_ss=r",
+            "imaged": "shopify://shop_images/Rapid_Rumble_1.webp",
+            "image": "shopify://shop_images/Rapid_Rumble_1.webp",
+            "custom_name": "Rapid Rumble"
+          }
+        },
+        "item_arETLj": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/products/magnetopia-design-your-city-interactive-pretend-play-set-ages-3-7",
+            "imaged": "shopify://shop_images/Magnetopia.webp",
+            "image": "shopify://shop_images/Magnetopia.webp",
+            "custom_name": "Magnetopia"
+          }
+        },
+        "item_yTQ8n3": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/fun-with-foam-amazing-animals-no-mess-sticker-art?_pos=2&_sid=d6cbf5e89&_ss=r",
+            "imaged": "shopify://shop_images/Fun_with_Foam.webp",
+            "image": "shopify://shop_images/Fun_with_Foam.webp",
+            "custom_name": "Fun With Foam"
+          }
+        },
+        "item_kPzpd9": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/magical-scratch-art-book-amazing-animals-ages-3-8?_pos=1&_sid=040917741&_ss=r",
+            "imaged": "shopify://shop_images/Magical_Scratch_Art.webp",
+            "image": "shopify://shop_images/Magical_Scratch_Art.webp",
+            "custom_name": "Magical Scratch Art"
+          }
+        },
+        "item_rFAwW4": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/products/letters-numbers-animals-magnetic-matching-activity-ages-3-6-copy",
+            "imaged": "shopify://shop_images/Magnetic_Match.webp",
+            "image": "shopify://shop_images/Magnetic_Match.webp",
+            "custom_name": "Magnetic Match"
+          }
+        },
+        "item_k6tJ4f": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/products/lets-play-restaurant-magnetic-pretend-play-set-ages-3-8",
+            "imaged": "shopify://shop_images/Lets_play_restaurant.webp",
+            "image": "shopify://shop_images/Lets_play_restaurant.webp",
+            "custom_name": "Let's Play Restaurant"
+          }
+        },
+        "item_LETr3j": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "shopify://products/animals-on-wheels-wooden-animal-toys-on-wheels-9-months-3-years",
+            "imaged": "shopify://shop_images/Wood_on_Wheels.webp",
+            "image": "shopify://shop_images/Wood_on_Wheels.webp",
+            "custom_name": "Animals On Wheels"
+          }
+        },
+        "item_HBtiNL": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/upsell-products/products/letters-numbers-shapes-and-colors-skill256fcln?_pos=3&_sid=f2e9b9dbb&_ss=r",
+            "imaged": "shopify://shop_images/Flash_Cards.webp",
+            "image": "shopify://shop_images/Flash_Cards.webp",
+            "custom_name": "Flash Cards"
+          }
+        },
+        "item_gUzfzX": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/write-wipe-activity-mats/products/i-can-write-write-wipe-activity-mats-skill120cwb?_pos=1&_sid=e8cc10a99&_ss=r",
+            "imaged": "shopify://shop_images/Write_Wipe.webp",
+            "image": "shopify://shop_images/Write_Wipe.webp",
+            "custom_name": "Activity Mats"
+          }
+        },
+        "item_zEhVMQ": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/dot-it-no-mess-sticker-art-underwater-animals-skill296diaw?_pos=3&_sid=3f447d887&_ss=r",
+            "imaged": "shopify://shop_images/Dot_it_10e6cd75-a720-4864-a2ac-cc0346dc8b4c.webp",
+            "image": "shopify://shop_images/Dot_it_10e6cd75-a720-4864-a2ac-cc0346dc8b4c.webp",
+            "custom_name": "Dot It!"
+          }
+        },
+        "item_LkyDXd": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/products/foil-fun-card-making-set-no-mess-art-kit-ages-4-9",
+            "imaged": "shopify://shop_images/Storybook_Art_Kit.webp",
+            "image": "shopify://shop_images/Storybook_Art_Kit.webp",
+            "custom_name": "Storybook Art Kit"
+          }
+        },
+        "item_zgkMyc": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/write-and-learn-flash-cards-for-toddlers-ages-3-7?_pos=2&_sid=b27de27e3&_ss=r",
+            "imaged": "shopify://shop_images/And_Learn.webp",
+            "image": "shopify://shop_images/And_Learn.webp",
+            "custom_name": "Write And Learn"
+          }
+        },
+        "item_QrDKTm": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/science-snippets-kit-the-human-body-stem-learning-resource-ages-7?_pos=1&_sid=58ced9049&_ss=r",
+            "imaged": "shopify://shop_images/Science_Snippets.webp",
+            "image": "shopify://shop_images/Science_Snippets.webp",
+            "custom_name": "Science Snippets"
+          }
+        },
+        "item_gwnU7x": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/snip-snip-art-craft-activity-kit-ages-3-7?_pos=1&_sid=43dcab263&_ss=r",
+            "imaged": "shopify://shop_images/Snip_Snip_1_64c82a6d-921c-4add-b2a6-f4076f70a54c.webp",
+            "image": "shopify://shop_images/Snip_Snip_1_64c82a6d-921c-4add-b2a6-f4076f70a54c.webp",
+            "custom_name": "Snip Snip!"
+          }
+        },
+        "item_E7hXJF": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/my-first-puzzle-set-wild-animals-ages-3-6?_pos=2&_sid=3fad2bc98&_ss=r",
+            "imaged": "shopify://shop_images/My_First_Puzzle.webp",
+            "image": "shopify://shop_images/My_First_Puzzle.webp",
+            "custom_name": "My First Puzzle"
+          }
+        },
+        "item_9PtA4r": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/collections/under-999/products/copy-of-step-by-step-puzzle-wild-animals?_pos=2&_sid=388e813cb&_ss=r",
+            "imaged": "shopify://shop_images/Step_By_Step_Puzzle_1.webp",
+            "image": "shopify://shop_images/Step_By_Step_Puzzle_1.webp",
+            "custom_name": "Step By Step Puzzle"
+          }
+        },
+        "item_XKG8Mc": {
+          "type": "item",
+          "settings": {
+            "collection": "",
+            "link": "https://www.skillmatics.in/products/poke-in-art-magical-princesses-mess-free-art-for-kids-ages-4-9",
+            "imaged": "shopify://shop_images/Poke_in_art.webp",
+            "image": "shopify://shop_images/Poke_in_art.webp",
+            "custom_name": "Poke In Art Princess"
+          }
+        }
+      },
+      "block_order": [
+        "item_NTeyK6",
+        "item_eagzxY",
+        "item_qtyYUy",
+        "item_nkJ97g",
+        "item_arETLj",
+        "item_yTQ8n3",
+        "item_kPzpd9",
+        "item_rFAwW4",
+        "item_k6tJ4f",
+        "item_LETr3j",
+        "item_HBtiNL",
+        "item_gUzfzX",
+        "item_zEhVMQ",
+        "item_LkyDXd",
+        "item_zgkMyc",
+        "item_QrDKTm",
+        "item_gwnU7x",
+        "item_E7hXJF",
+        "item_9PtA4r",
+        "item_XKG8Mc"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.section-space {padding-bottom: 20px; }}",
+        "@media (min-width: 750px) {.section-space {padding-bottom: 40px; }}"
+      ],
+      "settings": {
+        "top_offset": "normal",
+        "items-desk": 5,
+        "items": 4,
+        "imgpadding": 10,
+        "showtitle": true,
+        "title": "Shop by Product",
+        "subtitle": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_banner_frpxUf",
+    "section_multicolumn_index_eDF3bf",
+    "custom_collection_list_cat_y6ndAx",
+    "custom_scroll_collection_list_rn6iVj",
+    "custom_collection_list_yyE8NQ"
+  ]
+}

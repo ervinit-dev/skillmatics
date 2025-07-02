@@ -38,7 +38,7 @@
       {%- endif -%}
     
     <li class="dropdown{% if link.active %} selected{% endif %}{% if submenu_type == 'menu_two_columns' %} tt-megamenu-col-02{% elsif submenu_type == 'megamenu' %} megamenu{% else %} tt-megamenu-col-01{% endif %}{% unless level_2.empty? %}{% if settings.use_submemu_arrows %} submenuarrow{% endif %}{% endunless %}" {{ block.shopify_attributes }}>
-      <a href="{{ link.url }}"><span>{{ link.title }}</span></a>
+      <a href="{{ link.url }}"  id="skill_web_{{ link.handle |remove:'-'}}"><span class="parent-menu">{{ link.title }}</span></a>
 
       {%- unless level_2.empty? -%}
 

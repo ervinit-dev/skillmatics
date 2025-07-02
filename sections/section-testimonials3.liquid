@@ -1,0 +1,229 @@
+{% comment %}{{ 'section-testimonial.min.css' | asset_url | stylesheet_tag }}{% endcomment %}
+<link rel="stylesheet" href="{{ 'section-testimonial.min.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
+<style>
+  #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{    background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");  }        
+    }
+    {% endif %}
+    {% if section.settings.bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+  }
+    }
+    {% endif %}
+.testimonial-content img.lazyload:hover {
+    transform: scale(1.02);
+    transition: 1s ease;
+    z-index: 1;
+    position: relative;
+}
+  .testimonial-content.slick-active:hover {
+    transform: translate(0) rotate(-5deg) skew(0) skewY(0) scaleX(1) scaleY(1);
+    transition: 1s ease-in;
+}
+  .testimonial-content {
+    transform: translate(0) rotate(0deg) skew(0) skewY(0) scaleX(1) scaleY(1);
+    transition: 1s ease-out;
+}
+  #shopify-section-{{section.id}} .tt-block-title span {
+    background-color: transparent;
+    color: #D73D4A;padding: 0 2px;    font-weight: 700;
+}
+   #shopify-section-{{section.id}} .tt-block-title .tt-description span { color: #3980C3; }
+  .arrow-location-tab .slick-dots {
+    position: relative !important;
+    margin-bottom: 10px !important
+  }
+  .section-testimonial3  .slick-slider .slick-dots li button {   border: 1px solid #3980c3;  background: #ffffff;}
+ .section-testimonial3 .slick-slider .slick-dots .slick-active button {
+    background: #3980c3;
+}
+ .section-testimonial3  .tt-block-title .tt-description {
+    font-family: AvenirRegular, sans-serif !important;   
+    color: #06374F;    
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: normal;
+}
+    @media (max-width: 767px) {
+.section-testimonial3  .tt-block-title .tt-description { font-size: 16px;}
+    }
+  @media (max-width: 650px) {
+    #shopify-section-{{section.id}} .tt-block-title {
+      margin-top: 0 !important;
+    }
+    #shopify-section-{{section.id}} .container-indent {
+      padding-top: 20px !important;
+    }
+  }
+   #shopify-section-{{section.id}}.index-section{
+    background-color: {{section.settings.sectionbg}};
+       background-repeat: no-repeat;
+background-size: cover;
+   background-position: center;
+  }
+  {% if section.settings.testimonial-bg-desktop %}
+      @media (min-width: 768px) {
+     #shopify-section-{{section.id}}.index-section{
+    background-image: url("{{section.settings.testimonial-bg-desktop | img_url:'2560x'}}");
+  }
+        #tt-pageContent .shopify-section .container-indent:not(.nomargin):not([class^="tt-offset"]) {
+    padding-top: 50px!important;
+    padding-bottom: 50px!important;
+}
+    }
+    {% endif %}
+    {% if section.settings.testimonial-bg-mobile %}
+      @media (max-width: 767px) {
+     #shopify-section-{{section.id}}.index-section{
+     background-image:url("{{section.settings.testimonial-bg-mobile | img_url:'450x478'}}");
+       background-size: contain;
+        background-repeat: no-repeat;
+       background-position: initial;
+  }
+    }
+    {% endif %}
+</style>
+{%- assign item = section.settings -%}
+{%- assign grid = section.settings.items -%}
+{%- assign mobgrid = section.settings.mob-items -%}
+<div class="container-indent">
+  <div class="container-fullwidth ">
+    <div class="section-testimonial3 container">     
+      <div class="tt-block-title">
+      <h2 class="tt-title">{{ item.text1 }}</h2>
+      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    </div>
+      <div class="row arrow-location-tab  noarrow custom-testimonial3">
+        {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}{%- assign item = block.settings -%}    
+           {%- case block.type -%}
+              {%- when 'column' -%}
+        <div class="custom-test3-container  col-6 col-md-4 col-12-440width">
+             <div class="testimonial-content">    
+              {%- if item.image != blank -%}
+              <img class="testimonial3-img" loading="lazy"
+                  src="{{ block.settings.image | img_url:'400x400'}}"                                  
+                   alt="{{ item.image.alt }}"  srcset="{{ block.settings.image | img_url:'400x400'}}"   width="auto" height="auto">
+            
+              {%- endif -%}
+               <div class="testimonial-item3 testimonial-item">              
+                {% if item.custom_text != ''%} {{ item.custom_text }}{% endif %}
+              {% if item.custom_name != ''%} <p class="tt-authorname">-{{ item.custom_name }}</p>{% endif %}
+               </div>
+             </div>
+        </div> 
+    
+               {%- endcase -%}{%- endfor -%}{%- endif -%}
+      </div></div></div></div>
+
+
+
+{% schema %}
+  {
+    "name": "Section Testimonial 3",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text1",
+        "label": "Title",
+        "default": "1 crore + Happy Families"
+      },
+      {
+        "type": "textarea",
+        "id": "text2",
+        "label": "Small description",
+        "default": "ABOUT OUR STORE",
+		"info": "Empty field = hide field"
+      },
+      {
+          "type": "image_picker",
+          "id": "testimonial-bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "testimonial-bg-mobile",
+          "label": "mobile background Image "
+        },
+       {
+          "type": "color",
+          "id": "sectionbg",
+          "label": "Section background color",
+          "default": "#191919"
+        },      
+     {
+          "type": "image_picker",
+          "id": "bg-desktop",
+          "label": "desktop background "
+        },
+     {
+          "type": "image_picker",
+          "id": "bg-mobile",
+          "label": "mobile background Image "
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_video_looping",
+          "default":true,
+          "label": "Enable Video Looping "
+        }
+    ],
+    "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+         {
+          "type": "richtext",
+          "id": "custom_text",
+          "label": "Custom text"          
+        },
+        {
+          "type": "text",
+          "id": "custom_name",
+          "label": "Author Name",
+          "info": "If \"Custom Name\" is empty, title = default collection name"
+        }
+       
+      ]
+    },
+      {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+         {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          }
+       
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Testimonial 3",
+      "category": "Multicolumn",
+      "blocks": [
+      ]
+    }
+  ]
+  }
+{% endschema %}

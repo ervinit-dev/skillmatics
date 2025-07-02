@@ -1,0 +1,385 @@
+<script>
+var currencySymbol = Shopify.currency.activeCurrencySymbol || '₹'; 
+let previousCart = null;
+
+function fetchCart() {
+  //console.log('fetchcart update');
+     fetch('/cart.js')
+        .then(response => response.json())
+        .then(cart => {
+            if (previousCart && JSON.stringify(previousCart) !== JSON.stringify(cart)) {
+             if (typeof cartDrawerIsUpdate === 'function') {
+                  cartDrawerIsUpdate();
+              }
+              
+              if (typeof HS_SLIDE_CART_checked === 'function') {
+                  HS_SLIDE_CART_checked(cart);
+              }
+              
+              if (typeof updateProgressBar === 'function') {
+                  updateProgressBar(cart);
+              }
+              
+            
+              if (typeof checkQtyBtn === 'function') {
+                  checkQtyBtn(cart);
+}
+                // Call the custom function when the cart is updated
+                if (typeof window.HS_SLIDE_CART_UPDATED === 'function') {
+                   window.HS_SLIDE_CART_UPDATED(cart);              
+                    // console.log('hs cart updated:');
+                }
+            }
+            previousCart = cart;
+          //checkcustomcartstate
+          const customcartDrawer = document.querySelector('.tt-cart tt-dropdown-obj activetoview');
+            if (customcartDrawer && customcartDrawer.classList.contains('active')) {
+                // Call function to handle the cart drawer being open
+                window.HS_SLIDE_CART_OPENED();           
+            }  
+            // Check the cart drawer state
+           /* const cartDrawer = document.querySelector('.hs-popup-cart-sp-load');
+            if (cartDrawer && cartDrawer.classList.contains('hs-active')) {
+                // Call function to handle the cart drawer being open
+                cartDrawerIsOpen();
+            }*/
+          
+        })
+        .catch(error => console.error('Error fetching cart:', error));
+}
+
+
+// Check the cart every second
+setInterval(fetchCart, 1000);
+function cartDrawerIsUpdate(cart) {
+ console.log('Cart drawer has been updated');
+}
+///theme cartdwawer open 
+     document.addEventListener('DOMContentLoaded', function() {
+        const stbutton = document.getElementById('st-add-btn');
+        
+        stbutton.addEventListener('click', function() {
+            const popupCart = document.querySelector('.tt-cart');
+            if (popupCart) {
+                popupCart.classList.add('active');
+                console.log('cart active class added');
+            } else {
+                console.log('.hs-popup-cart-sp-load not found');
+            }
+        });
+    }); 
+
+///
+  function updateProgressBar(cart) {
+    var cartTotal = cart.total_price / 100; // Convert from cents to dollars
+       // Assuming you have a way to get the cart total, e.g., from a global variable or API
+   // var cartTotal = 1099; // Replace with your method to get the cart total
+    var giftThreshold ={{ settings.free-gift-amt }}; // Minimum amount required for the free gift
+//console.log("freegift_amt",giftThreshold);
+ //   console.log("cartTotal",cartTotal);
+    function updateProgressBar(cartTotal, giftThreshold) {
+        var progressBarFill = document.getElementById('progress-bar-fill');
+        var progressText = document.getElementById('cart-progress-text');
+        var percentage = Math.min((cartTotal / giftThreshold) * 100, 100); // Prevent over 100%
+
+        progressBarFill.style.width = percentage + '%';
+        if (cartTotal >= giftThreshold) {      
+            // Call the confetti function
+            progressText.innerHTML = 'Congratulations! You have earned your free gift!';
+           if (percentage === 100) {
+                progressBarFill.style.backgroundColor = "#62BD81"; // Set the fill color to red
+            } 
+        } else {
+            var amountNeeded = giftThreshold - cartTotal;
+            progressText.innerHTML = 'Add <b>'+currencySymbol + amountNeeded.toFixed(2) + '</b> more to get a free gift!';
+         
+                progressBarFill.style.backgroundColor = "#004e80 "; // Set the fill color to transparent if not 100%
+            
+        }
+    }
+
+    updateProgressBar(cartTotal, giftThreshold);
+  }
+       document.addEventListener('DOMContentLoaded', function() {
+         updateProgressBar(cart);
+      });
+//cartupdatefrre gift
+
+function HS_SLIDE_CART_checked(cart) {
+    if (!cart || !Array.isArray(cart.items)) {
+        console.error("Invalid cart data");
+        return;
+    }
+    var freeGiftThreshold = {{ settings.free-gift-amt | plus: 0 }};
+    var cartTotal = cart.total_price / 100; // Assuming this gives the total amount    
+    if (cartTotal > freeGiftThreshold) {
+        //console.log("Free gift enabled");       
+     } else {
+       // console.log("Free gift not enabled");    
+        // Find the .hs-rewards-content element and clear its inner HTML if it exists
+        var rewardsContent = document.querySelector('.free-gift-container');
+        if (rewardsContent) {
+            rewardsContent.innerHTML = ''; // Clear the inner HTML
+        }
+// Check for item titles that include "Free Gift"
+       var customItems = document.querySelectorAll('.tt-cart-layout .tt-item');
+        customItems.forEach(function(item) {
+            var titleElement = item.querySelector('.tt-cart-list .tt-title'); // Adjust selector as needed
+            if (titleElement && titleElement.textContent.includes('Free Gift')) {
+                console.log("Found invalid free gift in cart");    
+               item.classList.add('hide'); // Add the 'hide' class to the item
+            }
+        });
+      //
+    }
+
+}
+/////
+// Select all the minus and plus buttons
+function updateCartinput(cart){
+     const minusButtons = document.querySelectorAll('.cart-qty-btn .icon-minus');
+  const plusButtons = document.querySelectorAll('.cart-qty-btn .icon-plus');
+
+  // Attach event listeners to the minus buttons
+  minusButtons.forEach(button => {
+    button.addEventListener('click', function() {    
+      const input = button.nextElementSibling; // Get the input element
+      let value = parseInt(input.value); // Get the current quantity value
+      
+      // Only decrease the value if it's greater than 1
+      if (value > 1) {
+        input.value = value - 1; // Decrease by 1
+         button.classList.remove('disable'); // Add the disable class to the button
+        button.disabled = false; 
+      }else{
+         button.classList.add('disable'); // Add the disable class to the button
+        button.disabled = true; 
+      }
+       submitCartForm(); 
+    });
+  });
+
+  // Attach event listeners to the plus buttons
+  plusButtons.forEach(button => {
+    button.addEventListener('click', function() {    
+      const input = button.previousElementSibling; // Get the input element
+      let value = parseInt(input.value); // Get the current quantity value
+      input.value = value + 1; // Increase by 1
+       submitCartForm(); 
+    });
+  });
+ }
+///form submit
+    const updateForm = document.getElementById("ajupdateformcart");
+
+    // Function to submit the form via AJAX
+    function submitCartForm() {
+        const formData = new FormData(updateForm);  // Collect form data
+
+        // Make an AJAX request to the cart URL
+        fetch('{{ routes.cart_url }}', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())  // Assuming the response is JSON
+        .then(data => {           
+            // Update the cart UI based on the response
+            if (data) {
+                // Update the cart items
+              if (typeof updateProgressBar === 'function') {
+                    updateProgressBar(cart);
+                }
+                
+                if (typeof updateCartItems === 'function') {
+                    updateCartItems(data);
+                }
+                
+                // Update the cart inputs (if needed)
+                if (typeof updateCartinput === 'function') {
+                    updateCartinput(cart);
+                }
+                
+                // Update the cart UI
+                if (typeof updateCartUI === 'function') {
+                    updateCartUI(data);
+                }
+                
+                // Update the cart total price
+                if (typeof updateCartTotalPrice === 'function') {
+                    updateCartTotalPrice();
+                }
+                
+                // Check discount codes (if applicable)
+               // if (typeof checkDiscountCode === 'function') {
+                 //   checkDiscountCode();
+               // }
+
+            }
+        })
+        .catch(error => {
+            console.error('Error updating cart:', error);
+        });
+    }
+
+  ///
+document.addEventListener("DOMContentLoaded", function() {
+  updateCartinput(cart); 
+ // updateCartItems(cart);
+ });
+
+
+   // Function to update the cart UI (cart count, total price, etc.)
+function updateCartUI(cart) {
+    // Update the cart count
+   // console.log("cart.item_count", cart.item_count);
+    document.querySelector('.tt-cart .tt-badge-cart').innerText = cart.item_count;
+    // Convert cents to dollars (or the appropriate currency unit)
+    let totalPriceInDollars = cart.total_price / 100;
+
+    // Update the cart subtotal with formatted money (total price)
+    document.querySelector('.tt-cart-total-price').innerText = currencySymbol + totalPriceInDollars;
+    //console.log("cart.total_price", totalPriceInDollars);
+}
+
+// Assign the SVG to a variable
+function updateCartItems(cart) {
+  var dltIcon = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 22 22" style="enable-background:new 0 0 22 22;" xml:space="preserve">
+  <g>
+    <path d="M3.6,21.1c-0.1-0.1-0.2-0.3-0.2-0.4v-15H2.2C2,5.7,1.9,5.6,1.7,5.5C1.6,5.4,1.6,5.2,1.6,5.1c0-0.2,0.1-0.3,0.2-0.4
+             C1.9,4.5,2,4.4,2.2,4.4h5V1.9c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2h6.3c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4
+             v2.5h5c0.2,0,0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2h-1.3v15
+             c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2H4.1C3.9,21.3,3.7,21.2,3.6,21.1z M17.2,5.7H4.7v14.4h12.5V5.7z M8.3,9
+             c0.1,0.1,0.2,0.3,0.2,0.4v6.9c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4
+             c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.4-0.2S8.1,8.9,8.3,9z M8.4,4.4h5V2.6h-5V4.4z M11.4,9c0.1,0.1,0.2,0.3,0.2,0.4v6.9
+             c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4c0-0.2,0.1-0.3,0.2-0.4
+             c0.1-0.1,0.3-0.2,0.4-0.2S11.3,8.9,11.4,9z M13.6,9c0.1-0.1,0.3-0.2,0.4-0.2s0.3,0.1,0.4,0.2c0.1,0.1,0.2,0.3,0.2,0.4v6.9
+             c0,0.2-0.1,0.3-0.2,0.4c-0.1,0.1-0.3,0.2-0.4,0.2s-0.3-0.1-0.4-0.2c-0.1-0.1-0.2-0.3-0.2-0.4V9.4C13.4,9.3,13.5,9.1,13.6,9z"/>
+  </g>
+</svg>`;
+  const cartItemsContainer = document.querySelector('.tt-cart-list.customcart-drawer');  // Select the outer container for cart items (where all .tt-item divs are appended)
+   cartItemsContainer.innerHTML = '';
+
+    // Iterate over each item in the cart
+    cart.items.forEach(item => {
+        // Log the item details: title, price, and quantity
+       // console.log(`Title: ${item.title}`);
+       // console.log(`Price: ${currencySymbol}${(item.price / 100).toFixed(2)}`); // Price is typically in cents, so divide by 100
+        //console.log(`Quantity: ${item.quantity}`);
+       const itemPrice = (item.price * item.quantity) / 100;
+      // Clear current items (optional, if you want to completely refresh the cart items)
+       
+         const cartItemHtml = `
+                <div class="tt-item">                 
+                        <div class="tt-item-img">
+                             <a href="${item.url}" title="cart-item title">  <img src="${item.image}"> </a>
+                        </div>
+                        <div class="tt-item-descriptions ">
+                             <h2 class="tt-title"><a href="${item.url}" title="cart-item title">  ${item.title}</a></h2>                           
+                            <div class="tt-quantity">${item.quantity} X</div>
+                            <div class="tt-price">${currencySymbol}${itemPrice.toFixed(2)}</div>
+                           
+                                <div class="cart-dr-qty">
+                                    <label for="updates_${ item.key}" class="visually-hidden">Quantity</label>
+                                    <div class="cart-qty-btn">
+                                       <div class="qty-button icon-minus" >-</div>
+                                      <input id="updates_${item.key}" class="cart-qty-input" type="text" name="updates[]" value="${item.quantity}" min="1" pattern="[0-9]*">
+                                       <div class="qty-button icon-plus" >+</div>
+                                    </div>
+                                  </div>
+
+                        </div>
+                   
+                    <div class="tt-item-close">
+                        <a href="{{ routes.cart_change_url }}?id=${item.id}&quantity=0" class="tt-btn-close svg-icon-delete header_delete_cartitem_js" title="{{ 'cart.header.button_delete' | t }}">
+                          ${dltIcon}
+                        </a>
+                    </div>
+                </div>
+            `;
+             
+             cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHtml); 
+           
+            
+    });
+}
+///
+function updateCartTotalPrice() {
+   var freegift ={{ settings.free-gift-amt }};
+  // Make an AJAX call to the Shopify cart API
+  fetch('/cart.js')
+    .then(response => response.json())
+    .then(cart => {
+      // The total price is in cart.total_price
+      const ctotalPrice = cart.total_price / 100; // Shopify's cart API returns the price in cents, so we divide by 100 to get the price in dollars
+      // Update the HTML element displaying the cart total price
+//console.log("freegifteligibility",ctotalPrice);
+        if (ctotalPrice > freegift) {
+          createConfettiBurst();
+          checkDiscountCode();
+        }    
+     
+    })
+    .catch(error => {
+      console.error('Error fetching cart total:', error);
+    });
+}
+
+
+function createConfettiBurst() {
+  const confettiContainers = document.querySelectorAll('.tt-cart .tt-dropdown-inner');
+  if (!confettiContainers.length) {
+    console.error('Confetti container not found!');
+    return;
+  }
+
+  const confettiColors = ['#3980C3'];
+  
+  // Loop through each container and create a burst of confetti
+  confettiContainers.forEach(confettiContainer => {
+    for (let i = 0; i < 100; i++) { // Increase the number for a denser burst
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.textContent = '★'; // Use a different character or image for different confetti type
+      confetti.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.animationDelay = `${Math.random() * 3}s`; // Adjust the delay for the burst effect
+      confettiContainer.appendChild(confetti);
+    }
+  });
+  
+  // Optionally, remove confetti after 2 seconds
+  setTimeout(() => {
+    const confettiElements = document.querySelectorAll('.confetti');
+    confettiElements.forEach(confetti => {
+      confetti.remove();
+    });
+  }, 3000); // Adjust the duration as needed (2000ms = 2 seconds)
+}
+ 
+</script>
+<style>
+/*confetti css*/
+  .tt-dropdown-inner {
+    position: relative;
+}
+.confetti {
+  position: absolute;
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  color: #e67e22; /* Color for the confetti (can be different from background) */
+  font-size: 16px; /* Adjust size of the character */
+  opacity: 0.9;top:0px;
+  pointer-events: none;
+  animation: fall 3s ease-out infinite;
+}
+ 
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+</style>

@@ -25,8 +25,8 @@
             {%- else -%}
             {%- if b_i.image == blank -%}{%- include "get_svg" type:'image' size:'1170x450px' -%}
             {%- else -%}
-            <img class="lazyload"
-                 data-mainimage="{{ b_i.image | img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+            <img class="tab-img"
+                 data-mainimage="{{ b_i.image | img_url: '100x100' | replace: '100x100', 'respimgsize' }}" loading="eager"
                  alt="{{ b_i.image.alt }}">
             {%- endif -%}
             {%- endcase -%}

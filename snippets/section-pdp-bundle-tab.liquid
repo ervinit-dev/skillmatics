@@ -1,0 +1,259 @@
+<!-- Slick Slider CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/slick/slick-theme.css">
+
+<!-- Slick Slider JS -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+{% if product.metafields.pdp.combo_products.value != blank %}
+  {% assign BundleProducts = product.metafields.pdp.combo_products.value %}
+
+  <div class="container">
+    <h3 class="section-title">What's in the Combo?</h3>
+
+    <div class="product-tabs">
+      <ul class="tab-titles">
+        {% for BundleProduct in BundleProducts %}
+          <li>
+            <a href="#tab-{{ forloop.index }}" data-tab="tab-{{ forloop.index }}"> Game {{ forloop.index }} </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="tab-content">
+      {% for BundleProduct in BundleProducts %}
+        <div id="tab-{{ forloop.index }}" class="tab-pane">
+          <!-- Fetch product information -->
+          {% assign BundleProduct = all_products[BundleProduct.handle] %}
+
+          <!-- Display product details -->
+          <div class="ProductContent">
+            <div class="ProductImage">
+              <a href="{{ BundleProduct.url }}"
+                ><img src="{{ BundleProduct.featured_image | img_url: '350x350' }}" width="310px" height="310px" alt="{{ BundleProduct.title }}" srcset="{{ BundleProduct.featured_image | img_url: '350x350' }}"
+              ></a>
+            </div>
+            <div class="ProductInfo">
+              <a href="{{ BundleProduct.url }}">
+                <p class="ProductInfo-Title">{{ BundleProduct.title }}</p>
+              </a>
+              <div class="ProductInfo-Desc">
+                <p>{{ BundleProduct.metafields.pdp.description.value }}</p>
+              </div>
+              {% include 'key-skills-snippet' %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.tab-titles').slick({
+          infinite: false,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }
+    ]
+  });
+      });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var tabs = document.querySelectorAll('.tab-titles a');
+    var tabContents = document.querySelectorAll('.tab-pane');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Remove active class from all tabs
+        tabs.forEach(function(item) {
+          item.classList.remove('active');
+        });
+
+        // Hide all tab content
+        tabContents.forEach(function(content) {
+          content.style.display = 'none';
+        });
+
+        // Add active class to the clicked tab
+        this.classList.add('active');
+
+        // Show the relevant tab content
+        var target = this.getAttribute('href');
+        document.querySelector(target).style.display = 'block';
+      });
+    });
+
+    // Optionally, show the first tab by default
+    if (tabs.length > 0) {
+      tabs[0].click();
+    }
+  });
+</script>
+
+<style>
+    disable.ul.tab-titles {
+      overflow: scroll;
+      justify-content: left;
+  }
+   ul.tab-titles li {
+      min-width: max-content;
+  }
+    .ProductImage {
+      flex: 0 0 30%;
+      padding: 1rem;
+    }
+    .ProductContent {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 6rem;
+    }
+
+    .ProductContent *{
+      color: #06374F;
+      line-height: normal;
+    }
+
+    .ProductInfo-Title {
+      font-family: MikadoMedium;
+      font-size: 24px;
+      text-align: left;
+    }
+
+    .ProductInfo-Desc > div > p {
+      font-family: AvenirRegular;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .moreless {
+      font-family: AvenirBold;
+      color: #3980c3;
+    }
+</style>
+
+<style>
+    .slick-prev:before, .slick-next:before{
+      color:#3980C3;
+  }
+
+    .slick-prev {
+      left: 0;
+    }
+
+    .slick-next {
+      right: 0;
+    }
+    .tab-titles {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+      justify-content: center;
+  }
+
+  .tab-titles li {
+    padding: 1rem 0;
+    margin-right: 10px;
+  }
+
+  .tab-titles a {
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #FFF;
+      border: 1px solid #3980C3;
+      color: #3980C3;
+      cursor: pointer;
+      font-family: AvenirMedium;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: normal;
+      text-align: left;
+      border-radius: 4px;
+  }
+
+  .tab-titles a.active {
+      background-color: #3980C3;
+      color: #fff;
+      border-bottom: none;
+  }
+
+  .tab-content {
+    padding: 20px;
+    margin-top: -1px;
+  }
+
+  .tab-pane {
+    display: none;
+  }
+
+    .section-title {
+      font-family: MikadoMedium !important;
+  font-size: 40px !important;
+  line-height: normal !important;
+  text-align: center !important;
+    }
+
+   @media (max-width: 890px) {
+     .section-title {
+       font-size: 24px !important;
+     }
+
+     .tab-titles {
+       padding: 0 1rem;
+     }
+
+     .tab-titles a {
+       font-size: 16px;
+     }
+
+     .tab-titles li {
+
+     }
+     .tab-content {
+       padding: 0;
+       margin: 0;
+       padding-bottom:2rem;
+     }
+     .ProductContent {
+       flex-direction: column;
+       gap: 1rem;
+     }
+
+     .ProductInfo-Title {
+       font-size: 16px;
+     }
+
+     .ProductInfo-Desc > div > p {
+       font-size: 14px;
+     }
+   }
+</style>

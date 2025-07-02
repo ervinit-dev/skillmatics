@@ -1,23 +1,40 @@
-{% if menu--name =='Ages 0-3' %}
- <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_1.png" loading="lazy" alt="Age 1" width="64px" height="64px">
-  {% elsif menu--name =='Ages 3+' %}
-  <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_3.png" loading="lazy" alt="Age 3" width="64px" height="64px">
-   {% elsif menu--name =='Ages 6+' %}
- <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_6.png" loading="lazy" alt="Age 6" width="64px" height="64px">
-  {% elsif menu--name =='Ages 8+' %}
- <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_8.png" loading="lazy" alt="Age 8" width="64px" height="64px">
-  {% elsif menu--name =='Arts & Crafts' %}
-<img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Arts_Crafts.png?v=1673342749" loading="lazy" alt="Art and craft" width="64px" height="64px">
- {% elsif menu--name =='Puzzles & Pretend Play' %}
-  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Puzzles_Pretend_Play.webp?v=1687328353" loading="lazy" alt="puzzles &amp; printed play" width="64px" height="64px">
-{% elsif menu--name =='Toddlers & Infants' %}
-  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Toddlers_Infants.webp" loading="lazy" alt="toddlers infants" width="64px" height="64px">
-{% elsif menu--name =='Learning Resources' %}
-  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Learning_Resources.webp" loading="lazy" alt="learning" width="64px" height="64px">
-{% elsif menu--name =='Card & Board Games' %}
-  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Card_Board_Games.webp" loading="lazy" alt="cardboard game" width="64px" height="64px">
-{% elsif menu--name =='STEM Toys'%}
-  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/STEM_Toys.webp" loading="lazy" alt="toys" width="64px" height="64px">
- {% endif %}
-                
-              
+{% for block in section.blocks %}
+  {% if block.type == 'megamenu' and mainlink == block.settings.newnavigation_item %}
+    <div>
+      {% assign menuimg = block.setting.image %}
+      {% assign menuimg = 'image' | append: menuloop %}
+      <img       
+        src="{{ block.settings[menuimg] |img_url:'70x70'  }}"
+        loading="lazy"
+        alt="Age 1"
+        width="64px"
+        height="64px"
+        decoding="async"
+       srcset="{{ block.settings[menuimg] |img_url:'70x70'  }}"
+      >
+    </div>
+  {% endif %}
+{% endfor %}
+{% comment %}
+  {% if menu--name =='Ages 0-3' %}
+   <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_1.png" loading="lazy" alt="Age 1" width="64px" height="64px">
+    {% elsif menu--name =='Ages 3+' %}
+    <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_3.png" loading="lazy" alt="Age 3" width="64px" height="64px">
+     {% elsif menu--name =='Ages 6+' %}
+   <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_6.png" loading="lazy" alt="Age 6" width="64px" height="64px">
+    {% elsif menu--name =='Ages 8+' %}
+   <img src="https://cdn.shopify.com/s/files/1/0586/8149/1647/files/Age_8.png" loading="lazy" alt="Age 8" width="64px" height="64px">
+    {% elsif menu--name =='Arts & Crafts' %}
+  <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Arts_Crafts.png?v=1673342749" loading="lazy" alt="Art and craft" width="64px" height="64px">
+   {% elsif menu--name =='Puzzles & Pretend Play' %}
+    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Puzzles_Pretend_Play.webp?v=1687328353" loading="lazy" alt="puzzles &amp; printed play" width="64px" height="64px">
+  {% elsif menu--name =='Toddlers & Infants' %}
+    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Toddlers_Infants.webp" loading="lazy" alt="toddlers infants" width="64px" height="64px">
+  {% elsif menu--name =='Learning Products' %}
+    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Learning_Resources.webp" loading="lazy" alt="learning" width="64px" height="64px">
+  {% elsif menu--name =='Card & Board Games' %}
+    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Card_Board_Games.webp" loading="lazy" alt="cardboard game" width="64px" height="64px">
+  {% elsif menu--name =='STEM Toys'%}
+    <img src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/STEM_Toys.webp" loading="lazy" alt="toys" width="64px" height="64px">
+   {% endif %}
+{% endcomment %}

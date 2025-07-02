@@ -1,13 +1,9 @@
-<link rel="prefetch" href="{{ 'custom-font.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ 'custom-font.css' | asset_url }}"></noscript>
-<link rel="prefetch" href="{{ 'theme.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ 'theme.css' | asset_url }}"></noscript>
-{% comment %}
-{{ 'custom-font.css' | asset_url | stylesheet_tag }}
-{{ 'theme.css' | asset_url | stylesheet_tag }}{% endcomment %}
-{{ 'custom.css' | asset_url | stylesheet_tag }}
-{{ 'custom-cart.css' | asset_url | stylesheet_tag }}
-{% if settings.use_rtl %}{{ 'style-rtl.css' | asset_url | stylesheet_tag }}{% endif %}
-{%- if template contains 'page' -%}
-{{ 'lead-gen-form.css' | asset_url | stylesheet_tag }}
+{{ 'custom-font.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'custom.css' | asset_url | stylesheet_tag: preload: true}}
+{% comment %}{{ 'custom-cart.css' | asset_url | stylesheet_tag: preload: true }}{% endcomment %}
+<link rel="stylesheet" href="{{ 'custom-cart.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
+{% if settings.use_rtl %}{{ 'style-rtl.css' | asset_url | stylesheet_tag: preload: true}}{% endif %}
+{%- if template.suffix contains 'test-leads' -%}
+{% comment %}{{ 'lead-gen-form.css' | asset_url | stylesheet_tag: preload: true  }}{% endcomment %}
+ <link rel="stylesheet" href="{{ 'lead-gen-form.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
   {% endif %}

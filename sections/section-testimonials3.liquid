@@ -111,9 +111,9 @@ background-size: cover;
         <div class="custom-test3-container  col-6 col-md-4 col-12-440width">
              <div class="testimonial-content">    
               {%- if item.image != blank -%}
-              <img class="testimonial3-img" loading="lazy"
+              <img class="testimonial3-img"
                   src="{{ block.settings.image | img_url:'400x400'}}"                                  
-                   alt="{{ item.image.alt }}"  srcset="{{ block.settings.image | img_url:'400x400'}}"   width="auto" height="auto">
+                   alt="{{ item.image.alt }}"  srcset="{{ block.settings.image | img_url:'400x400'}}" width="auto" height="auto" loading="lazy" fetchpriority="medium" decoding="async">
             
               {%- endif -%}
                <div class="testimonial-item3 testimonial-item">              

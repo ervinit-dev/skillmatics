@@ -1,0 +1,172 @@
+.tt-block-title .tt-title span {
+  color: #D41F3B
+}
+.bs-tabs {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 32px;
+    padding-bottom: 50px;
+    margin: 0;
+  }
+  ul.bs-tabs li{
+    font-family: 'AvenirRegular';
+    font-weight: 500;
+    font-size: 20px;
+    color: #4284c7;
+    background-color: #ffffff;
+    border: 1px solid #3980c3;
+    border-radius: 5px;
+    padding: 5px 9px;
+    cursor: pointer
+  }
+  ul.bs-tabs li:hover,ul.bs-tabs li a {
+    color: #4284c7;
+  }
+  .bs-tabs li.active a {
+    color: #ffffff;
+  }
+  .bs-tabs li.active {
+    color: #ffffff;
+    background-color: #3980c3;
+  }
+  .bs-tab-panel {
+    display: none;
+  }
+  .bs-tab-panel.active {
+    display: block;
+  }
+  .bs-product-card {
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    box-shadow: -1px 2px 8px #bbbbbb3d;
+    background-color: #ffffff;
+  }
+  a.bs-product-title.tt-title {
+    font-family: AvenirRegular !important;
+    font-weight: 400;
+    font-size: 18px;
+    color: #06374f;
+  }
+  .bs-product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .bs-product-price strong {
+    text-align: center;
+    font-family: AvenirRegular;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #06374f;
+  }
+  .bs-product-price .compare-price {
+    color: #889093;
+    text-align: center;
+    font-family: AvenirRegular;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  span.badge.badge-discount, .badge.badge-discount span {
+    font-family: AvenirRegular !important;
+    font-weight: 800;
+    font-size: 20px;
+    color: #62bd81;
+  }
+  .bs-product-details.tt-description {
+    margin-bottom: 20px;
+  }
+  .bs-product-img {
+    position: relative;
+  }
+  span.tt-label-location.product-featured-tag {
+    position: absolute;
+    top: -2px;
+    left: 0;
+  }
+  .bs-product-grid {
+    display: none
+  }
+  @media (min-width: 1101px) {
+    .bs-product-grid.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+    }
+  }
+  .bs-product-img .collection-img {
+    width: 100%;
+  }
+  .bs-atc-btn {
+    margin-top: 12px;
+  }
+  .bs-product-img .product-featured-tag img {
+    width: 100%;
+    max-width: 100%;
+  }
+  a#view-all-link {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .bs-tab-viewall {
+    text-align: center;
+    margin-top: 20px;
+  }
+picture.star-icon-left img, picture.star-icon-right img {
+    width: 20px;
+    position: relative;
+    top: -15px;
+    left: 0;
+  }
+  picture.star-icon-left img {
+    transform: rotate(45deg);
+  }
+  picture.star-icon-right img {
+    transform: rotate(315deg);
+  .}
+  @media screen and (max-width: 767px) {
+    .product-slider .bs-product-card {
+      margin-right: 10px;
+    }
+    .bs-product-grid { grid-template-columns: 1fr !important; }
+  }
+  @media screen and (min-width: 651px) and (max-width: 1100px ) {
+    .product-slider .bs-product-card {
+      margin-right: 10px;
+    }
+    .bs-product-grid { grid-template-columns: 1fr !important; }
+   .bs-product-grid.active {
+     display: flex !important;
+   }
+  }
+  @media (min-width: 651px) and (max-width: 770px)  {
+    .bs-tabs { gap: 15px; padding-left: 0; padding-bottom: 30px; }
+    ul.bs-tabs li { font-size: 18px; }
+  }
+  @media (max-width: 650px) {
+    ul.bs-tabs li { font-size: 14px; }
+    .bs-tabs { gap: 10px; padding-bottom: 20px; padding-left: 0px !important; }
+    .bs-product-details.tt-description { margin-bottom: 10px; }
+    .bs-product-title.tt-title { font-size: 14px !important; }
+    .bs-product-price strong { font-size: 15px; }
+    span.badge.badge-discount, .badge.badge-discount span { font-size: 13px; }
+    .bs-product-price { gap: 7px }
+    .bs-product-grid.active {
+     display: flex !important;
+   }
+  }
+  @media (max-width: 440px) {
+    ul.bs-tabs { overflow-x: scroll; white-space: nowrap; justify-content: left; flex-wrap: nowrap; }
+    ul.bs-tabs::-webkit-scrollbar { display: none; }
+  }
+  @media (max-width: 380px) {
+    .bs-product-price strong { font-size: 12px; }
+    span.badge.badge-discount, .badge.badge-discount span { font-size: 13px; }
+  }

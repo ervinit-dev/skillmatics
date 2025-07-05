@@ -1374,3 +1374,20 @@
     });
   });
 </script>{% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const input = document.querySelector('.pdp-btn-qty input.quant');
+
+    // Block non-digit characters on keypress
+    input.addEventListener('keypress', function (e) {
+      if (!/[0-9]/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+
+    // Remove non-digit characters on input (for safety)
+    input.addEventListener('input', function () {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+  });
+</script>

@@ -731,9 +731,8 @@
             {%- unless product.metafields.custom.show_lightning_deal -%} {% comment %} Add this condition on callout for lighting deal  {% endcomment %} {% endunless %}
               {% if product.tags contains 'single product' %} {% comment %}single product condtion start  {% endcomment %}
                           {% if product.collections contains collections[settings['col-handle1']] and settings['show-callout'] %}
-                            {% unless product.title == 'Peek-A-Boo: Jungle Theme (Ages 6 months+)'
-                              or product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
-                              or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
+                            {% unless product.title == ''
+                              or product.title == ''
                                or product.collections contains collections[settings['col-handle2']] or product.collections contains collections[settings['col-handle3']]  or product.collections contains collections[settings['col-handle4']] 
                             %}                   
                                 {% assign per-amt = settings['per-amt'] | strip | plus: 0 %}
@@ -826,8 +825,8 @@
            
             {% if settings['show-callout5'] %}
               {% comment %}Added condition for specific product only {% endcomment %}
-              {% if product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
-                or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
+              {% if product.title == ''
+                or product.title == ''
               %}
               
                 {% assign per-amt5 = settings['per-amt5'] | strip | plus: 0 %}

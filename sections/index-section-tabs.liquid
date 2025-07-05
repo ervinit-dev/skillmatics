@@ -115,8 +115,8 @@ background-size: cover;
   </div>
 </div>
 
-<script>
-  $('.trend-tab').map(function(){
+<!-- <script>
+$('.trend-tab').map(function(){
   $(this).click(function(){
     var tabs = $(this).attr('id');
     $('.trend-con').map(function(){
@@ -129,7 +129,21 @@ background-size: cover;
     });
   });
 });
+</script> -->
+
+<script>
+ $(document).ready(function(){
+  $('.trend-tab').on('click', function(){
+    var selectedTab = $(this).attr('id');
+
+    $('.trend-con').fadeOut(100); // smoother than .hide()
+
+    $('.trend-con[data-id="' + selectedTab + '"]').fadeIn(100);
+  });
+});
+
 </script>
+
 
 {% schema %}
 {

@@ -57,6 +57,9 @@ h1.tt-title {
 .tt-list-row.shopifyfiltres-js li:nth-child(n + 7) {
   display: none;
 }
+.tt-list-row.shopifyfiltres-js li:nth-child(n + 6) {
+  display: none;
+}
 /* fix the alignment of filter buttons */
 .tt-filters-options .tt-btn-toggle a:before {
   top: 0;
@@ -212,6 +215,11 @@ h1.tt-title {
   .tt-price .old-price {
     font-family: "AvenirRegular" !important;
   }
+}
+
+@media (max-width: 380px) {
+  .tt-product .tt-description .tt-price .new-price { margin: 0 !important }
+  .tt-label-sale { font-size: 12px; }
 }
 
 /* --- end mobile layout --- */

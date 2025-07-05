@@ -460,8 +460,8 @@ if (freeShippingHSElement) {
     }
   }
 }
+  
  function stickyCouponHelper(applicableItemsCount, cart={{cart|json}}){
-    
     const disType='{{ settings.discount_type}}';
     const producttags={{product.tags|json}} || [];
     const product_Id='{{product.id}}';
@@ -470,6 +470,8 @@ if (freeShippingHSElement) {
     }else{
     //  console.log("bundle not in cart")
     }
+
+   // For Quantity Based
     if(disType=='minimum_quantity'){
       const itemstoadforcoupon={{ settings.minQunat }}
       const itemstoadforcoupon2={{ settings.minQunat2 }}
@@ -604,79 +606,80 @@ if (freeShippingHSElement) {
 
         
     }else{
+      // For Amount Based
       const itemstoadforcoupon={{ settings.minAmount }}
-const itemstoadforcoupon2={{ settings.minAmount2 }}
-const itemstoadforcoupon3={{ settings.minAmount3 }}
+      const itemstoadforcoupon2={{ settings.minAmount2 }}
+      const itemstoadforcoupon3={{ settings.minAmount3 }}
 
-if(itemstoadforcoupon > applicableItemsCount/100){
-  // Check if first coupon is not blank before showing
-  if('{{ settings.coupon_discount_sticky }}' && '{{ settings.coupon_discount_sticky }}'.trim() !== ''){
-    document.querySelector('.stickysvg').innerHTML = ' '
-    document.querySelector('.stickyOffers2ndDiv').innerHTML=`<div class='stickyOfferDivInner'>Add <span>${itemstoadforcoupon-applicableItemsCount/100}</span> more product and get <strong>{{ settings.coupon_discount_sticky }}</strong></div>`
-  } else {
-    document.querySelector('.stickyOfferDiv').style.display='none';
-  }
-}
-else if(itemstoadforcoupon <= applicableItemsCount/100 && itemstoadforcoupon2 > applicableItemsCount/100){
-  // Check if both coupons are not blank before showing
-  const coupon1Valid = '{{ settings.coupon_discount_sticky }}' && '{{ settings.coupon_discount_sticky }}'.trim() !== '';
-  const coupon2Valid = '{{ settings.coupon_discount_sticky2 }}' && '{{ settings.coupon_discount_sticky2 }}'.trim() !== '';
-  
-  if(coupon1Valid || coupon2Valid){
-    document.querySelector('.stickysvg').innerHTML=''
-    let innerHTML = '';
-    
-    if(coupon1Valid){
-      innerHTML += `<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name }}</strong> to get <strong>{{settings.coupon_discount_sticky }}</strong></div>`;
-    }
-    
-    if(coupon2Valid){
-      innerHTML += `<div class='stickyOfferDivInner'>Add <span>${itemstoadforcoupon2-applicableItemsCount/100}</span> more product and get <strong>{{ settings.coupon_discount_sticky2 }}</strong></div>`;
-    }
-    
-    document.querySelector('.stickyOffers2ndDiv').innerHTML = innerHTML;
-  } else {
-    document.querySelector('.stickyOfferDiv').style.display='none';
-  }
-}
-else if(itemstoadforcoupon2 <= applicableItemsCount/100 && itemstoadforcoupon3 > applicableItemsCount/100){
-  // Check if coupons are not blank before showing
-  const coupon2Valid = '{{ settings.coupon_discount_sticky2 }}' && '{{ settings.coupon_discount_sticky2 }}'.trim() !== '';
-  const coupon3Valid = '{{ settings.coupon_discount_sticky3 }}' && '{{ settings.coupon_discount_sticky3 }}'.trim() !== '';
-  
-  if(coupon2Valid || coupon3Valid){
-    document.querySelector('.stickysvg').innerHTML=''
-    let innerHTML = '';
-    
-    if(coupon2Valid){
-      innerHTML += `<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name2 }}</strong> to get <strong>{{settings.coupon_discount_sticky2 }}</strong></div>`;
-    }
-    
-    if(coupon3Valid){
-      innerHTML += `<div class='stickyOfferDivInner'>Add <span>${itemstoadforcoupon3-applicableItemsCount/100}</span> more product and get <strong>{{ settings.coupon_discount_sticky3 }}</strong></div>`;
-    }
-    
-    document.querySelector('.stickyOffers2ndDiv').innerHTML = innerHTML;
-  } else {
-    document.querySelector('.stickyOfferDiv').style.display='none';
-  }
-}else{
-  // Final tier - all thresholds met
-  document.querySelector('.stickysvg').innerHTML=''
-  
-  // Check if third tier threshold is 0 or if third tier coupon is blank
-  if(itemstoadforcoupon3 === 0 || !('{{ settings.coupon_discount_sticky3 }}' && '{{ settings.coupon_discount_sticky3 }}'.trim() !== '')){
-    // Show coupon_name2 when third tier is 0 or blank
-    if('{{ settings.coupon_discount_sticky2 }}' && '{{ settings.coupon_discount_sticky2 }}'.trim() !== ''){
-      document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name2 }}</strong> to get <strong>{{settings.coupon_discount_sticky2 }}</strong></div>`
-    } else {
-      document.querySelector('.stickyOfferDiv').style.display='none';
-    }
-  } else {
-    // Show coupon_name3 when third tier is valid and greater than 0
-    document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name3 }}</strong> to get <strong>{{settings.coupon_discount_sticky3 }}</strong></div>`
-  }
-}
+      if(itemstoadforcoupon > applicableItemsCount/100){
+        // Check if first coupon is not blank before showing
+        if('{{ settings.coupon_discount_sticky }}' && '{{ settings.coupon_discount_sticky }}'.trim() !== ''){
+          document.querySelector('.stickysvg').innerHTML = ' '
+          document.querySelector('.stickyOffers2ndDiv').innerHTML=`<div class='stickyOfferDivInner'>Add <span>${itemstoadforcoupon-applicableItemsCount/100}</span> more product and get <strong>{{ settings.coupon_discount_sticky }}</strong></div>`
+        } else {
+          document.querySelector('.stickyOfferDiv').style.display='none';
+        }
+      }
+      else if(itemstoadforcoupon <= applicableItemsCount/100 && itemstoadforcoupon2 > applicableItemsCount/100){
+        // Check if both coupons are not blank before showing
+        const coupon1Valid = '{{ settings.coupon_discount_sticky }}' && '{{ settings.coupon_discount_sticky }}'.trim() !== '';
+        const coupon2Valid = '{{ settings.coupon_discount_sticky2 }}' && '{{ settings.coupon_discount_sticky2 }}'.trim() !== '';
+        
+        if(coupon1Valid || coupon2Valid){
+          document.querySelector('.stickysvg').innerHTML=''
+          let innerHTML = '';
+          
+          if(coupon1Valid){
+            innerHTML += `<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name }}</strong> to get <strong>{{settings.coupon_discount_sticky }}</strong></div>`;
+          }
+          
+          if(coupon2Valid){
+            innerHTML += `<div class='stickyOfferDivInner'>Add <span>${itemstoadforcoupon2-applicableItemsCount/100}</span> more product and get <strong>{{ settings.coupon_discount_sticky2 }}</strong></div>`;
+          }
+          
+          document.querySelector('.stickyOffers2ndDiv').innerHTML = innerHTML;
+        } else {
+          document.querySelector('.stickyOfferDiv').style.display='none';
+        }
+      }
+      else if(itemstoadforcoupon2 <= applicableItemsCount/100 && itemstoadforcoupon3 > applicableItemsCount/100){
+        // Check if coupons are not blank before showing
+        const coupon2Valid = '{{ settings.coupon_discount_sticky2 }}' && '{{ settings.coupon_discount_sticky2 }}'.trim() !== '';
+        const coupon3Valid = '{{ settings.coupon_discount_sticky3 }}' && '{{ settings.coupon_discount_sticky3 }}'.trim() !== '';
+        
+        if(coupon2Valid || coupon3Valid){
+          document.querySelector('.stickysvg').innerHTML=''
+          let innerHTML = '';
+          
+          if(coupon2Valid){
+            innerHTML += `<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name2 }}</strong> to get <strong>{{settings.coupon_discount_sticky2 }}</strong></div>`;
+          }
+          
+          if(coupon3Valid){
+            innerHTML += `<div class='stickyOfferDivInner'>Add <span>${itemstoadforcoupon3-applicableItemsCount/100}</span> more product and get <strong>{{ settings.coupon_discount_sticky3 }}</strong></div>`;
+          }
+          
+          document.querySelector('.stickyOffers2ndDiv').innerHTML = innerHTML;
+        } else {
+          document.querySelector('.stickyOfferDiv').style.display='none';
+        }
+      }else{
+        // Final tier - all thresholds met
+        document.querySelector('.stickysvg').innerHTML=''
+        
+        // Check if third tier threshold is 0 or if third tier coupon is blank
+        if(itemstoadforcoupon3 === 0 || !('{{ settings.coupon_discount_sticky3 }}' && '{{ settings.coupon_discount_sticky3 }}'.trim() !== '')){
+          // Show coupon_name2 when third tier is 0 or blank
+          if('{{ settings.coupon_discount_sticky2 }}' && '{{ settings.coupon_discount_sticky2 }}'.trim() !== ''){
+            document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name2 }}</strong> to get <strong>{{settings.coupon_discount_sticky2 }}</strong></div>`
+          } else {
+            document.querySelector('.stickyOfferDiv').style.display='none';
+          }
+        } else {
+          // Show coupon_name3 when third tier is valid and greater than 0
+          document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner'>Congrats! Apply <strong>{{ settings.coupon_name3 }}</strong> to get <strong>{{settings.coupon_discount_sticky3 }}</strong></div>`
+        }
+      }
     }
   }
  

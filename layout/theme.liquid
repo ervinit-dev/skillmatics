@@ -20,7 +20,7 @@
     <meta name="keywords" content="{{ "general.meta.keywords" | t }}">
     <meta name="author" content="{{ "general.meta.author" | t }}">
     {% if template contains 'collection' %}
-      {% if collection.handle == 'free-gift' %}
+      {% if collection.handle == 'pun-intended' %}
         <meta name="robots" content="noindex, nofollow">
       {%- endif -%}
     {% endif %}
@@ -32,7 +32,7 @@
     {%- endif -%}
     {% if collection.handle == 'return-gifting' %}
       <meta name="robots" content="noindex, nofollow">
-    {%- endif -%}
+    {%- endif -%}      
     <!-- <link rel="preload" href="path/to/customfont.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
     <!-- canonical for collections -->
     {% if template contains 'collection' %}
@@ -76,14 +76,14 @@
     <title>{{ seo_title }}</title>
     {%- if page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
+    {%- endif -%} 
     {%- if settings.use_countdown_timezone -%}
       <meta name="timezone" content="{{ settings.countdown_timezone }}">
     {%- endif -%}
     <!-- Social meta ================================================== -->
     {%- include 'social-meta-tags' -%}
     {%- include 'seo-schema' -%}
-     {% render 'preload-imges' %}
+  
     <!-- Helpers ================================================== -->
     {{ 'custom-font.css' | asset_url | stylesheet_tag }}
     <!-- Preload the CSS file -->
@@ -91,14 +91,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
     <!-- Load the CSS file with an onload event for immediate application -->
-    <link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" media="print" onload="this.media='all'">
     <!-- CSS ================================================== -->
     {%- if settings.font1_is_google_font -%}
       <link
         href="https://fonts.googleapis.com/css?family={{ settings.font_name1 }}:100,200,300,400,500,600,700,800,900"
         rel="stylesheet"
         defer
-      >
+      > 
     {%- endif -%}
     {%- if settings.font_name1 != settings.font_name2
       and settings.font_name2 != ''
@@ -114,6 +114,7 @@
       {{ settings.popup_simple_fonts }}
     {%- endif -%}
     {{ settings.google_font_links }}
+     {% render 'preload-imges' %}
     {%- include 'include_css' -%}
     <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
     <script

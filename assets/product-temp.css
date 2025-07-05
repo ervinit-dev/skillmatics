@@ -393,6 +393,7 @@ ul.pdp-nav-tabs.nav.nav-tabs.tt-tabs-default {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  align-items: center
 }
 .faq-wrapper div h4 .minus-sign {
   display: none;
@@ -414,4 +415,8 @@ ul.pdp-nav-tabs.nav.nav-tabs.tt-tabs-default {
 }
 .faq-div.Active h4 .minus-sign {
   display: block;
+}
+span.plus-sign,.minus-sign {
+  font-size: 26px;
+  line-height: 0;
 }

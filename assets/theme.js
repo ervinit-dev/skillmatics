@@ -379,6 +379,7 @@ if (blocks.ttSliderBlogSingle.length) {
   dots: true,
   infinite: false,
   speed: 300,
+  arrows: false,
    autoplay:true,
   slidesToShow: 1,
   slidesToScroll:1,

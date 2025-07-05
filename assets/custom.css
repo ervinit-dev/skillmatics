@@ -791,6 +791,9 @@ span.tt-badge:before {
   .tt-product .tt-description .tt-price .new-price {
     font-size: 12px;
   }
+  .tt-product.thumbprod-center .tt-description .tt-price {
+    margin-bottom: 5px;
+  }
 }
 
 @media (max-width: 650px) {

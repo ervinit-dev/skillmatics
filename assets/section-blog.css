@@ -21,3 +21,6 @@
 @media (min-width: 790px) {
 .customslider-grid{  padding-bottom: 40px;}
 }
+.tt-blog-thumb-list .customslider-grid {
+  padding-bottom: 0px;
+}

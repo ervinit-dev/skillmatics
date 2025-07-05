@@ -10,46 +10,45 @@
     {% if template == 'product' %}
       <span class="pdp-rating-value">{{ rating }}</span>
       <style>
-        .custom-card-rating {
-          justify-content:left;
-        }
-        .reputon-single-review:nth-child(9) {
-            display: none;
-        }
-        .cnERMY.reputon-single-review:nth-child(14) {
-            display: none;
-        }
-        .cnERMY.reputon-single-review:nth-child(18) {
-            display: none;
-        }
-        .sc-1jjedb1-0.cnERMY.reputon-single-review.reputon-card:nth-child(11) {
-            display: none;
-        }
-        .reputon-single-review:nth-child(6) {
-            display: none;
-        }
-        .reputon-single-review:nth-child(11) {
-            display: none;
-        }
-        .reputon-no-review {
-          display: none;
-      }
-        @media (max-width: 940px) {
-        .custom-rating {
-          flex-direction: row !important;
-        }
-          .custom-stars {
-            gap: 2px !important;
+          .custom-card-rating {
+            justify-content:left;
           }
-          .pdp-rating-value {
-            margin-top: 1px;
-            margin-right: 2px;
+          .reputon-single-review:nth-child(9) {
+              display: none;
           }
-          .reviews-count {
-            margin-top: 1px;
+          .cnERMY.reputon-single-review:nth-child(14) {
+              display: none;
           }
+          .cnERMY.reputon-single-review:nth-child(18) {
+              display: none;
           }
-        
+          .sc-1jjedb1-0.cnERMY.reputon-single-review.reputon-card:nth-child(11) {
+              display: none;
+          }
+          .reputon-single-review:nth-child(6) {
+              display: none;
+          }
+          .reputon-single-review:nth-child(11) {
+              display: none;
+          }
+          .reputon-no-review {
+            display: none;
+        }
+          @media (max-width: 940px) {
+          .custom-rating {
+            flex-direction: row !important;
+          }
+            .custom-stars {
+              gap: 2px !important;
+            }
+            .pdp-rating-value {
+              margin-top: 1px;
+              margin-right: 2px;
+            }
+            .reviews-count {
+              margin-top: 1px;
+            }
+            }
       </style>
     {% else %}
       <span class="cp-rating-value"></span>
@@ -110,35 +109,35 @@
         <a href="#amazon-reviews">
           <span class="reviews-count">
             <!-- json review counts -->
-              {% assign productId = product.id | append: '' %}
-              {% assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] %}
-              
-              {% if productReviews != blank and productReviews[productId].value %}
-                {% assign jsonValue = productReviews[productId].value %}
-                {% if jsonValue.reviewsNumber > 0 %}
-                  <a href="#amazon-reviews">
-                    <span class="reviews-count">
-                      {{ jsonValue.reviewsNumber }}
-                      <u>reviews</u>
-                    </span>
-                  </a>
-                {% endif %}
+            {% assign productId = product.id | append: '' %}
+            {% assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] %}
+
+            {% if productReviews != blank and productReviews[productId].value %}
+              {% assign jsonValue = productReviews[productId].value %}
+              {% if jsonValue.reviewsNumber > 0 %}
+                <a href="#amazon-reviews">
+                  <span class="reviews-count">
+                    {{ jsonValue.reviewsNumber }}
+                    <u>reviews</u>
+                  </span>
+                </a>
               {% endif %}
+            {% endif %}
           </span>
         </a>
       {% else %}
-        <span class="cp-rating-value"
-          >{% assign productId = product.id | append: '' -%}
+        <span class="cp-rating-value">
+          {%- assign productId = product.id | append: '' -%}
           {%- assign productReviews = product.metafields['ReputonAmazonReviews::ProductReviews'] -%}
           {%- if productReviews != blank and productReviews[productId].value -%}
             {%- assign jsonValue = productReviews[productId].value -%}
             {% if jsonValue.reviewsNumber > 0 %}
-              ( {{- jsonValue.reviewsNumber -}}
+              (
+              {{- jsonValue.reviewsNumber -}}
               &nbsp;reviews)
             {% endif %}
           {%- endif -%}
-          </span
-        >
+        </span>
       {% endif %}
     </div>
   </div>
@@ -218,77 +217,80 @@
 {% endif %}
 
 <style>
-    .pdp-rating-value {
-    font-size: 18px;
-    font-weight: 600 !important;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1;
-    align-self: center;
-    color: #FFCB33 !important;
-}
-
-    .custom-rating {
-      display: flex;
-      gap: 6px;
-    }
-.custom-rating.custom-card-rating.no-review {
-    display: none;
-}
-    .custom-stars {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    @media (max-width: 980px) {
-      .custom-stars {
-      justify-content: center;
-      flex-wrap: wrap;
-        gap: 2px;
-        }
-      .custom-rating {
-        flex-direction: row !important;
-      gap: 3px;
+      .pdp-rating-value {
+      font-size: 18px;
+      font-weight: 600 !important;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1;
+      align-self: center;
+      color: #FFCB33 !important;
   }
+
+      .custom-rating {
+        display: flex;
+        gap: 6px;
+      }
+  .custom-rating.custom-card-rating.no-review {
+      display: none;
+  }
+      .custom-stars {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      @media (max-width: 980px) {
+        .custom-stars {
+        justify-content: center;
+        flex-wrap: wrap;
+          gap: 2px;
+          }
+        .custom-rating {
+          flex-direction: row !important;
+        gap: 3px;
+    }
+        }
+      }
+      .custom-stars > svg {
+        width: 15.7px;
+        height: 15.7px;
+      }
+
+      .reviews-count {
+        font-size: 14px;
+        color: rgb(103, 102, 103);
+        font-family: 'AvenirRegular';
+        margin-left: -4px;
+      }
+
+    @media (max-width: 940px) {
+      .reviews-count {
+        margin-left: 0px;
       }
     }
-    .custom-stars > svg {
-      width: 15.7px;
-      height: 15.7px;
+    @media (max-width: 650px) {
+      .custom-stars svg {
+      width: 12px;
+      }
+      .custom-stars svg {
+        width: 10px;
+      }
+      .pdp-review-value,.cp-rating-value {
+        font-size: 12px;
+      }
     }
-
-    .reviews-count {
-      font-size: 14px;
-      color: rgb(103, 102, 103);
-      font-family: 'AvenirRegular';
-      margin-left: -4px;
+    @media (max-width: 380px) {
+      .custom-rating {
+          flex-direction: row !important;
+        gap: 3px;
+      }
     }
-
-  @media (max-width: 940px) {
-    .reviews-count {
-      margin-left: 0px;
+    @media (max-width: 340px) {
+      .custom-stars svg {
+        width: 10px;
+      }
     }
-  }
-  @media (max-width: 650px) {
-    .custom-stars svg {
-    width: 12px;
-    }
-    .pdp-review-value,.cp-rating-value {
-      font-size: 12px;
-    }
-  }
-  @media (max-width: 380px) {
-    .custom-rating {
-        flex-direction: row !important;
-      gap: 3px;
-    }
-  }
-  @media (max-width: 340px) {
-    .custom-stars svg {
-      width: 10px;
-    }
-  }
-  html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 </style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

@@ -97,14 +97,17 @@
   @media (max-width: 650px) {
      #shopify-section-{{section.id}}.index-section {
        padding: 30px 0 !important;
-       background-size: contain !important;
+       background-size: cover !important;
      }
     .singleproductinfo .tt-title { text-align: center }
-  }
-  @media (max-width: 650px) {
     .sp-img-wrapper {
       width: 300px !important; 
     }
+  }
+  @media (max-width: 380px) {
+    #shopify-section-{{section.id}}.index-section {
+       padding: 20px 0 !important;
+     }
   }
 </style>
 {% capture imageitem %}
@@ -166,7 +169,7 @@
       {% assign compare_price = sel_or_first_av_var.compare_at_price %}
       {% assign save_amount = compare_price | minus: price %}
       {% assign save_percent_float = save_amount | times: 100.0 | divided_by: compare_price %}
-      {% assign save_percent = save_percent_float | ceil %}
+      {% assign save_percent = save_percent_float | round %}
       
       <div class="tt-price">
         <span class="new-price">{{ price | money }}</span>
@@ -206,7 +209,7 @@
     {%- if item.show_title -%}
       <div class="tt-block-title sp-heading">
         <h2 class="tt-title">
-          <img src="{{ item.head_img | img_url: '40x' }}" loading="lazy" decoding="async" fetchpriority="high" srcset="{{ item.head_img | img_url: '40x' }}" />
+          <img src="{{ item.head_img | img_url: '40x' }}" loading="on-demand" decoding="async" fetchpriority="high" srcset="{{ item.head_img | img_url: '40x' }}" />
           {{ item.titletext1 }}
         </h2>
         {%- unless item.titletext2 == '' -%}

@@ -1,7 +1,7 @@
 {% if template contains 'index'%}
+  <link rel="preload" href="https://www.skillmatics.in/cdn/shop/files/Mobile_3_1b6819c4-5489-441b-8eab-d9adaf74057d_450x.webp?v=1751298138" as="image" fetchpriority="high">
   <!-- homepage link -->
-  <link rel="preload" href="https://www.skillmatics.in/cdn/shop/files/Mobile_3_1b6819c4-5489-441b-8eab-d9adaf74057d_450x.webp?v=1751298138" as="image" loading="eager" fetchpriority="high" type="image/webp">
- {% endif %}
+  {% endif %}
 {% if template contains 'collection'%}
 <!-- collection link -->
 <link rel="preload" href="{{ 'collection-template.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -10,10 +10,7 @@
         {% if product.images.size > 0 %}
           <link rel="preload" href="{{ product.images.first | img_url: '300x300' }}" loading="eager" decoding="async" as="image" fetchpriority="high" type="image/webp" />
         {% endif %}
-      {% endfor %}
-  
-{% elsif template contains 'product'%}
-  <!-- product link -->  
+      {% endfor %} 
 {% endif %}
 {% if page.handle == 'foil-fun-art-kit-for-kids'%}
 <link rel="preload" href="https://www.skillmatics.in/cdn/shop/files/mobile_21_20dc806c-9324-457d-a52b-b5e88482398f_450x.webp?v=1747135513" loading="eager" decoding="async" as="image" fetchpriority="high">

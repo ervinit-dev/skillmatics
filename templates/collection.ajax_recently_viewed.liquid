@@ -2,7 +2,7 @@
 {%- assign handles = collection.sort_by | split: '||' -%}
 
 <div class="tt-carousel-products row arrow-location-right-top tt-alignment-img tt-layout-product-item tt-recently-products-js">
-  {%- for handle in handles -%}
+  {%- for handle in handles limit:8 -%}
   {%- assign product = all_products[handle] -%}
      {%- assign pprice = product.price | divided_by: 100 -%}   
      {% unless product.title contains 'Free Gift' %}

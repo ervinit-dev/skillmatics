@@ -1,0 +1,467 @@
+{{ 'custom-tab-style.css' | asset_url | stylesheet_tag: preload: true }}
+
+<style>
+  #bs-tab-{{ section.id }} {
+    background-color: {{ section.settings.section_bg }};
+    padding: 30px 0;
+  }
+  picture.star-icon-left img, picture.star-icon-right img {
+    width: 20px;
+    position: relative;
+    top: -15px;
+    left: 0;
+  }
+  picture.star-icon-left img {
+    transform: rotate(45deg);
+  }
+  picture.star-icon-right img {
+    transform: rotate(315deg);
+  .}
+  .bs-tabs.gift {
+    justify-content: center
+  }
+</style>
+
+<section id="bs-tab-{{ section.id }}" class="bs-tabs-section">
+  <div class="bs-tab-wrapper">
+    <div class="section-tab-horizontal container container-fluid-custom-mobile-padding">
+      <div class="bs-tab-title tt-block-title ">
+        <h2 class="tt-title">
+          <picture class="star-icon-left">
+            <source srcset="{{ section.settings.star_img | img_url: '20x' }}">
+            <img
+              src="{{ section.settings.star_img | img_url: '20x' }}"
+              loading="lazy"
+              alt="{{ image.alt }}"
+              decoding="async"
+            >
+          </picture>
+          {{ section.settings.section_heading }}
+          <picture class="star-icon-right">
+            <source srcset="{{ section.settings.star_img | img_url: '20x' }}">
+            <img
+              src="{{ section.settings.star_img | img_url: '20x' }}"
+              loading="lazy"
+              alt="{{ image.alt }}"
+              decoding="async"
+            >
+          </picture>
+        </h2>
+        <p class="tt-description">{{ section.settings.section_sub_heading }}</p>
+      </div>
+
+      <div class="bs-tabs-wrap">
+        <ul class="bs-tabs gift">
+          {% for block in section.blocks %}
+            {% assign collection = collections[block.settings.tab_collection] %}
+            <li
+              class="{% if forloop.first %}active{% endif %}"
+              data-tab="bs-tab-{{ forloop.index }}"
+              data-collection="{{ collection.handle }}"
+            >
+              <a href="javascript:void(0)">{{ block.settings.tab_title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="bs-tab-contents">
+        {% for block in section.blocks %}
+          {% assign products = collections[block.settings.tab_collection].products %}
+          <div class="bs-product-grid product-slider {% if forloop.first %}active{% endif %}">
+            {% for product in products limit: 4 %}
+              <!-- PRODUCT CARD START -->
+              <div class="bs-product-card tt-product">
+                <div class="bs-product-img">
+                  <span class="tt-label-location product-featured-tag">
+                    {% render 'featured-tag', product: product %}
+                  </span>
+                  <span class="custom--share">
+                    <span class="custom-sharebtn">
+                      {% render 'share-btn-code',
+                        product: product,
+                        trackingid: trackingid,
+                        forloop--index: forloop.index
+                      %}
+                    </span>
+                  </span>
+                  <a href="{{ product.url }}">
+                    <img
+                      class="collection-img"
+                      src="{{ product.featured_image | img_url: '400x' }}"
+                      alt="{{ product.title }}"
+                      loading="lazy"
+                      fetchpriority="medium"
+                      decoding="async"
+                    >
+                  </a>
+                </div>
+                <div class="bs-product-details tt-description">
+                  <a class="bs-product-title tt-title" href="{{ product.url }}">{{ product.title }}</a>
+                  <div class="bs-product-price">
+                    <strong>{{ product.price | money }}</strong>
+                    {% if product.compare_at_price > product.price %}
+                      <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                      <span class="badge badge-discount">
+                        Save
+                        <span>
+                          {{-
+                            product.compare_at_price
+                            | minus: product.price
+                            | times: 100
+                            | divided_by: product.compare_at_price
+                            | round
+                          -}}
+                          %
+                        </span>
+                      </span>
+                    {% endif %}
+                  </div>
+                  <div class="custom-data-strip colpg">
+                    {% if settings['freegift-img'] %}
+                      {% assign pprice = product.selected_or_first_available_variant.price | divided_by: 100 %}
+                      {% assign fprice = settings['free-gift-amt'] | strip | plus: 1 %}
+                      <!-- code below will show free gift tag from metafield {{ pprice }}--{{ fprice }} -->
+                      <div class="freegift_badge_container">
+                        {% if pprice > fprice %}
+                          {% if settings['free-gift-img'] != blank %}
+                            <img
+                              src="{{ settings.free-gift-img | img_url:'250x' }}"
+                              width="100%"
+                              height="40px"
+                              alt="freegift"
+                              class="freegift_badge"
+                              srcset="{{ settings.free-gift-img | img_url:'250x' }}"
+                            >
+                          {% endif %}
+                        {% endif %}
+
+                        <!-- custom rating -->
+                        {% include 'manual-rating' %}
+                        <!-- custom rating end -->
+                      </div>
+                    {% endif %}
+                    {%- unless product.metafields.custom.show_lightning_deal -%}
+                      {% comment %} Add this condition on callout for lighting deal  {% endcomment %}
+                    {% endunless %}
+                    {% if product.tags contains 'single product' %}
+                      {% comment %}single product condtion start  {% endcomment %}
+                      {% if product.collections contains collections[settings['col-handle1']]
+                        and settings['show-callout']
+                      %}
+                        {% unless product.title == ''
+                          or product.title == ''
+                          or product.collections contains collections[settings['col-handle2']]
+                          or product.collections contains collections[settings['col-handle3']]
+                          or product.collections contains collections[settings['col-handle4']]
+                        %}
+                          {% assign per-amt = settings['per-amt'] | strip | plus: 0 %}
+                          <div class="salestags colllectionpg rpp callout1">
+                            <span class="textsaletag rr ">
+                              <img
+                                class="offer-code"
+                                src="{{'calloutimg.svg' |asset_url }}"
+                                alt="discounttag"
+                                width="18px"
+                                height="18px"
+                                srcset="{{ 'calloutimg.svg' | asset_url }}"
+                              >
+                              {{- settings['get-it-at'] }}
+                              <b>{{ product.selected_or_first_available_variant.price | times: per-amt | money }}</b>
+                              <br>
+                            </span>
+                            <span class="textsaletag">
+                              {{ settings.usecode -}}
+                            </span>
+                          </div>
+                        {% endunless %}
+                      {% endif %}
+                      {% comment %}first generic callout end   {% endcomment %}
+
+                      {% if product.collections contains collections[settings['col-handle2']]
+                        and settings['show-callout2']
+                      %}
+                        {% assign per-amt2 = settings['per-amt2'] | strip | plus: 0 %}
+                        <div class="salestags colllectionpg rpp callout2">
+                          <span class="textsaletag rr">
+                            <img
+                              class="offer-code"
+                              src="{{'calloutimg.svg' |asset_url }}"
+                              alt="discounttag"
+                              width="18px"
+                              height="18px"
+                            >
+                            {{- settings['get-it-at2'] -}}
+                            <b>{{ product.selected_or_first_available_variant.price | times: per-amt2 | money }}</b>
+                            <br>
+                          </span>
+                          <span class="textsaletag">
+                            {{ settings.usecode2 -}}
+                          </span>
+                        </div>
+                      {% endif %}
+                      {% comment %}2nd collection based callout end   {% endcomment %}
+                      {% if product.collections contains collections[settings['col-handle3']]
+                        and settings['show-callout3']
+                      %}
+                        {% assign per-amt3 = settings['per-amt3'] | strip | plus: 0 %}
+                        <div class="salestags colllectionpg  rpp callout3">
+                          <span class="textsaletag rr">
+                            <img
+                              class="offer-code"
+                              src="{{'calloutimg.svg' |asset_url }}"
+                              alt="discounttag"
+                              width="18px"
+                              height="18px"
+                            >
+
+                            {{- settings['get-it-at3'] }}
+                            <b>{{ product.selected_or_first_available_variant.price | times: per-amt3 | money }}</b>
+                            <br>
+                          </span>
+                          <span class="textsaletag">
+                            {{ settings.usecode3 }}
+                          </span>
+                        </div>
+                      {% endif %}
+                      {% comment %}3rd collection based callout end   {% endcomment %}
+                      {% if product.collections contains collections[settings['col-handle4']]
+                        and settings['show-callout4']
+                      %}
+                        {% assign per-amt4 = settings['per-amt4'] | strip | plus: 0 %}
+                        <div class="salestags colllectionpg rpp callout4">
+                          <span class="textsaletag rr "
+                            ><img
+                              class="offer-code"
+                              src="{{'calloutimg.svg' |asset_url }}"
+                              alt="discounttag"
+                              width="18px"
+                              height="18px"
+                            >
+                            {{- settings['get-it-at4'] }}
+                            <b>{{ product.selected_or_first_available_variant.price | times: per-amt4 | money }}</b>
+                            <br>
+                          </span>
+                          <span class="textsaletag">
+                            {{ settings.usecode4 }}
+                          </span>
+                        </div>
+                      {% endif %}
+                      {% comment %}4th collection based  callout end   {% endcomment %}
+
+                      {% if settings['show-callout5'] %}
+                        {% comment %}Added condition for specific product only {% endcomment %}
+                        {% if product.title == '' or product.title == '' %}
+                          {% assign per-amt5 = settings['per-amt5'] | strip | plus: 0 %}
+                          <div class="salestags colllectionpg rpp ppp gg">
+                            <span class="textsaletag rr">
+                              <img
+                                class="offer-code"
+                                src="{{ 'calloutimg.svg' | asset_url }}"
+                                alt="discounttag"
+                                width="18px"
+                                height="18px"
+                                srcset="{{ 'calloutimg.svg' | asset_url }}"
+                              >
+                              {{- settings['get-it-at5'] }}
+                              <b>{{ product.selected_or_first_available_variant.price | times: per-amt5 | money }}</b>
+                              | <br>
+                            </span>
+                            <span class="textsaletag">
+                              {{ settings.usecode5 }}
+                            </span>
+                          </div>
+                        {% endif -%}
+                      {%- endif %}
+                      {% comment %}fifth product based callout end   {% endcomment %}
+                    {% endif %}
+                    {% comment %}single product condtion end  {% endcomment %}
+                  </div>
+                  <div class="bs-atc-btn">
+                    {% if settings.product_item_show_cart %}
+                      <div class="productcardatc tt-row-btn">
+                        <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form">
+                          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                          <input type="hidden" name="quantity" value="1">
+                          <input type="hidden" name="return_to" value="{{ request.path }}">
+                          <button
+                            type="submit"
+                            id="{{ trackingid }}_atc_p0{{ forloop.index }}"
+                            class="tt-btn-addtocart{% if settings.ajax_addtocart %} addtocart-item-js{% endif %}{% unless product.available %} disable{% endunless %}{% if product.metafields.custom.out_of_stock %} disable{% endif %} thumbprod-button-bg"
+                            {% unless product.available %}
+                              disabled
+                            {% endunless %}
+                            {% if product.metafields.custom.out_of_stock %}
+                              disabled
+                            {% endif %}
+                          >
+                            {% if product.available %}
+                              {% if product.metafields.custom.out_of_stock %}
+                                Sold Out
+                              {% elsif product.selected_or_first_available_variant.inventory_management == 'shopify'
+                                and product.selected_or_first_available_variant.inventory_policy == 'continue'
+                                and product.selected_or_first_available_variant.inventory_quantity <= 0
+                              %}
+                                {{ 'products.general.preorder_html' | t }}
+                              {% else %}
+                                {{ 'products.general.add_to_cart_html' | t }}
+                              {% endif %}
+                            {% else %}
+                              {{ 'products.general.unavailable_html' | t }}
+                            {% endif %}
+                          </button>
+                        </form>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+        <!-- Dynamic View All Button -->
+        <div class="bs-tab-viewall">
+          <a
+            id="view-all-link"
+            class="link btn-border"
+            href="/collections/{{ collections[section.blocks[0].settings.tab_collection].handle }}"
+          >
+            View All
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Loop through each bs-tabs-section on the page
+    document.querySelectorAll(".bs-tabs-section").forEach((sectionEl) => {
+      const tabLinks = sectionEl.querySelectorAll(".bs-tabs li");
+      const tabContents = sectionEl.querySelectorAll(".bs-tab-contents .bs-product-grid");
+      const viewAllBtn = sectionEl.querySelector("#view-all-link");
+
+      // Slick init function scoped to each tab
+      function initSlickIfMobile(grid) {
+        if (window.innerWidth <= 1100 && !grid.classList.contains("slick-initialized")) {
+          $(grid).slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            infinite: false,
+            responsive: [
+              {
+                breakpoint: 780,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+            ],
+          });
+        }
+      }
+
+      // Activate a tab by index for this section
+      function activateTab(index) {
+        tabLinks.forEach((tab, i) => {
+          tab.classList.toggle("active", i === index);
+        });
+
+        tabContents.forEach((content, i) => {
+          if (i === index) {
+            content.classList.add("active");
+            initSlickIfMobile(content);
+          } else {
+            content.classList.remove("active");
+          }
+        });
+
+        const selectedTab = tabLinks[index];
+        const collectionHandle = selectedTab.getAttribute("data-collection");
+        if (collectionHandle && viewAllBtn) {
+          viewAllBtn.setAttribute("href", `/collections/${collectionHandle}`);
+        }
+      }
+
+      // Initial activation for each section
+      if (tabLinks.length > 0) {
+        activateTab(0);
+      }
+
+      // Tab click handlers
+      tabLinks.forEach((tab, index) => {
+        tab.addEventListener("click", function () {
+          activateTab(index);
+        });
+      });
+
+      // Resize re-init for all grids in this section
+      window.addEventListener("resize", function () {
+        tabContents.forEach((grid) => {
+          if ($(grid).hasClass("slick-initialized")) {
+            $(grid).slick("unslick");
+          }
+          initSlickIfMobile(grid);
+        });
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Horizontal Tabs",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background Color",
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "section_sub_heading",
+      "label": "Sub Heading",
+      "default": "Sub Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "star_img",
+      "label": "Star Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Unisex"
+        },
+        {
+          "type": "collection",
+          "id": "tab_collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Custom Horizontal Tabs Gift",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

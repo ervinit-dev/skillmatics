@@ -1,115 +1,142 @@
 <style>
-  #shopify-section-{{section.id}}.index-section{
-    background-color: {{section.settings.bgcolor}};
-    background-repeat: no-repeat;
-background-size: cover;background-position: center;
-  }
-  {% if section.settings.bg-desktop %}
-      @media (min-width: 768px) {
+    #shopify-section-{{section.id}}.index-section{
+      background-color: {{section.settings.bgcolor}};
+      background-repeat: no-repeat;
+  background-size: cover;background-position: center;
+    }
+    {% if section.settings.bg-desktop %}
+        @media (min-width: 768px) {
+       #shopify-section-{{section.id}}.index-section{
+      background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+    }
+      }
+      {% endif %}
+      {% if section.settings.bg-mobile %}
+        @media (max-width: 767px) {
+       #shopify-section-{{section.id}}.index-section{
+       background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
+    }
+      }
+      {% endif %}
+       @media (max-width: 767px) {
+         .section-tab-horizontal .tt-layout-product-item .col-6{padding-left:2px;padding-right:2px;}
+         .section-tab-horizontal .forsliders-margins{margin:0;margin-right: 5px;}
+       }
      #shopify-section-{{section.id}}.index-section{
-    background-image: url("{{section.settings.bg-desktop | img_url:'master'}}");
+      background-color: {{section.settings.sectionbg}};
+         background-repeat: no-repeat;
+  background-size: cover;
+     background-position: center;
+    }
+    {% if section.settings.gifting-bg-desktop %}
+        @media (min-width: 768px) {
+       #shopify-section-{{section.id}}.index-section{
+      background-image: url("{{section.settings.gifting-bg-desktop | img_url:'2560x'}}");
+    }
+          #tt-pageContent .shopify-section .container-indent:not(.nomargin):not([class^="tt-offset"]) {
+      padding-top: 50px!important;
+      padding-bottom: 50px!important;
   }
+      }
+      {% endif %}
+      {% if section.settings.gifting-bg-mobile %}
+        @media (max-width: 767px) {
+       #shopify-section-{{section.id}}.index-section{
+       background-image:url("{{section.settings.gifting-bg-mobile | img_url:'450x478'}}");
+         background-size: contain;
+          background-repeat: no-repeat;
+         background-position: initial;
     }
-    {% endif %}
-    {% if section.settings.bg-mobile %}
-      @media (max-width: 767px) {
-     #shopify-section-{{section.id}}.index-section{
-     background-image:url("{{section.settings.bg-mobile | img_url:'master'}}");
-  }
-    }
-    {% endif %}
-     @media (max-width: 767px) {
-       .section-tab-horizontal .tt-layout-product-item .col-6{padding-left:2px;padding-right:2px;}
-       .section-tab-horizontal .forsliders-margins{margin:0;margin-right: 5px;} 
-     } 
-   #shopify-section-{{section.id}}.index-section{
-    background-color: {{section.settings.sectionbg}};
-       background-repeat: no-repeat;
-background-size: cover;
-   background-position: center;
-  }
-  {% if section.settings.gifting-bg-desktop %}
-      @media (min-width: 768px) {
-     #shopify-section-{{section.id}}.index-section{
-    background-image: url("{{section.settings.gifting-bg-desktop | img_url:'2560x'}}");
-  }
-        #tt-pageContent .shopify-section .container-indent:not(.nomargin):not([class^="tt-offset"]) {
-    padding-top: 50px!important;
-    padding-bottom: 50px!important;
-}
-    }
-    {% endif %}
-    {% if section.settings.gifting-bg-mobile %}
-      @media (max-width: 767px) {
-     #shopify-section-{{section.id}}.index-section{
-     background-image:url("{{section.settings.gifting-bg-mobile | img_url:'450x478'}}");
-       background-size: contain;
-        background-repeat: no-repeat;
-       background-position: initial;
-  }
-    }
-    {% endif %}
-    @media (max-width: 650px) {
-      .gift-tabs {
-      justify-content: flex-start;
-      overflow-x: scroll;
-      white-space: nowrap;
-      flex-wrap: nowrap;
-    }
-    }
-    a#viewall {
-    COLOR: #FF805A;
-    }
+      }
+      {% endif %}
+      @media (max-width: 650px) {
+        .gift-tabs {
+        justify-content: flex-start;
+        overflow-x: scroll;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+      }
+      }
+      a#viewall {
+      COLOR: #3980c3;
+      }
 </style>
 {%- assign item = section.settings -%}
-<div class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent" data-sectionname="index_horizontaltabs" data-respjs="index_sectiontabs">
- 
+<div
+  class="{% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent"
+  data-sectionname="index_horizontaltabs"
+  data-respjs="index_sectiontabs"
+>
   <div class="section-tab-horizontal container{% if item.fullwidth %}-fluid-custom{% endif %} container-fluid-custom-mobile-padding">
-      <div class="tt-block-title">
-      {% unless item.text1 == '' %} <h2 class="tt-title">{{ item.text1 }}</h2>{% endunless %}
-      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
+    <div class="tt-block-title">
+      {% unless item.text1 == '' %}
+        <h2 class="tt-title">{{ item.text1 }}</h2>
+      {% endunless %}
+      {% unless item.text2 == '' %}
+        <div class="tt-description">{{ item.text2 }}</div>
+      {% endunless %}
     </div>
     {% if item.show_title %}<div class="tt-tab-wrapper">{% endif %}
 
-      <ul class="nav nav-tabs tt-tabs-default gift-tabs" role="tablist">
-        {%- for block in section.blocks -%}
+    <ul class="nav nav-tabs tt-tabs-default gift-tabs" role="tablist">
+      {%- for block in section.blocks -%}
         <li class="nav-item" aria-label="tablist-div" role="tab">
-          <a href="#{{ section.id }}{{ forloop.index }}" id="{{ section.settings.tracking-id }}tab_0{{ forloop.index }}"  aria-controls="{{ section.id }}{{ forloop.index }}" class="nav-link{% if forloop.first %} active{% endif %}" data-toggle="tab" >{{ block.settings.tab_name }}</a>
+          <a
+            href="#{{ section.id }}{{ forloop.index }}"
+            id="{{ section.settings.tracking-id }}tab_0{{ forloop.index }}"
+            aria-controls="{{ section.id }}{{ forloop.index }}"
+            class="nav-link{% if forloop.first %} active{% endif %}"
+            data-toggle="tab"
+          >
+            {{- block.settings.tab_name -}}
+          </a>
         </li>
-        {%- endfor -%}
-      </ul>
+      {%- endfor -%}
+    </ul>
 
-      <div class="tab-content">
-        {%- for block in section.blocks -%}
-          {% assign trackingid = section.settings.tracking-id | append: 'tab_0'|append: forloop.index %}
-          <!-- {{ trackingid }}-->
+    <div class="tab-content">
+      {%- for block in section.blocks -%}
+        {% assign trackingid = section.settings['tracking-id'] | append: 'tab_0' | append: forloop.index %}
+        <!-- {{ trackingid }} -->
         {%- assign name_collection = block.settings.collection -%}
-        {%- if name_collection == blank -%}{%- assign name_collection = "all" -%}{%- endif -%}
+        {%- if name_collection == blank -%}{%- assign name_collection = 'all' -%}{%- endif -%}
         {%- assign collection = collections[name_collection] -%}
-        <div id="{{ section.id }}{{ forloop.index }}"  aria-labelledby="tab-{{ section.id }}{{ forloop.index }}"  class="tab-pane{% if forloop.first %} active{% endif %}" role="tabpanel" {{ block.shopify_attributes }}>
+        <div
+          id="{{ section.id }}{{ forloop.index }}"
+          aria-labelledby="tab-{{ section.id }}{{ forloop.index }}"
+          class="tab-pane{% if forloop.first %} active{% endif %}"
+          role="tabpanel"
+          {{ block.shopify_attributes }}
+        >
           {%- if block.type == 'item2' -%}
-          <div class="row tt-layout-product-item">
-
-            <div class="ajaxcontent startajax" data-content="col_{{ collection.handle }}+num_{{ block.settings.limit}}+col-lg-{{ block.settings.toshow }}+template_{{ template }}+trackingid_{{ trackingid }}"></div>
-
-          </div>
-          {%- if block.settings.showbtn -%}
-          <div class="text-center tt_product_showmore">
-            <a href="{{ collection.url }}"  id="{{ section.settings.tracking-id }}viewall" class="link btn-border">{{ block.settings.btnname }}</a>
-          </div>
-          {%- endif -%}
+            <div class="row tt-layout-product-item">
+              <div
+                class="ajaxcontent startajax"
+                data-content="col_{{ collection.handle }}+num_{{ block.settings.limit}}+col-lg-{{ block.settings.toshow }}+template_{{ template }}+trackingid_{{ trackingid }}"
+              ></div>
+            </div>
+            {%- if block.settings.showbtn -%}
+              <div class="text-center tt_product_showmore">
+                <a href="{{ collection.url }}" id="{{ section.settings.tracking-id }}viewall" class="link btn-border">
+                  {{- block.settings.btnname -}}
+                </a>
+              </div>
+            {%- endif -%}
           {%- else -%}
-          
-          <div class="ajaxcontent startajax slider" data-content="col_{{ collection.handle }}+num_{{ block.settings.limit }}+col-lg-{{ block.settings.toshow }}+toshow_{{ block.settings.toshow }}+slider_true+step_{{ block.settings.step }}+autoplay_{{ block.settings.module_autoplay }}+speed_{{ block.settings.delay_time }}{% if item.show_title %}+showtitle_{% endif %}+template_{{ template }}+trackingid_{{ trackingid }}"></div>
-         
-          <div class="text-center tt_product_showmore">
-            <a  id="{{ section.settings.tracking-id }}viewall" href="{{ collection.url }}" class="link btn-border">View All</a>
-          </div>
-          
+            <div
+              class="ajaxcontent startajax slider"
+              data-content="col_{{ collection.handle }}+num_{{ block.settings.limit }}+col-lg-{{ block.settings.toshow }}+toshow_{{ block.settings.toshow }}+slider_true+step_{{ block.settings.step }}+autoplay_{{ block.settings.module_autoplay }}+speed_{{ block.settings.delay_time }}{% if item.show_title %}+showtitle_{% endif %}+template_{{ template }}+trackingid_{{ trackingid }}"
+            ></div>
+
+            <div class="text-center tt_product_showmore">
+              <a id="{{ section.settings.tracking-id }}viewall" href="{{ collection.url }}" class="link btn-border"
+                >View All</a
+              >
+            </div>
           {%- endif -%}
         </div>
-        {%- endfor -%}
-      </div>
+      {%- endfor -%}
+    </div>
 
     {%- if item.show_title -%}</div>{%- endif -%}
   </div>

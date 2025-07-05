@@ -307,9 +307,8 @@
             {% if RecommendedProduct.tags contains 'single product' %}           
 
               {% if RecommendedProduct.collections contains collections[settings['col-handle1']] and settings['show-callout'] %}
-                {% unless RecommendedProduct.title == 'Peek-A-Boo: Jungle Theme (Ages 6 months+)'
-                  or RecommendedProduct.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
-                  or RecommendedProduct.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
+                {% unless RecommendedProduct.title == ''
+                  or RecommendedProduct.title == ''
                    or  RecommendedProduct.collections contains collections[settings['col-handle2']] or RecommendedProduct.collections contains collections[settings['col-handle3']] or RecommendedProduct.collections contains collections[settings['col-handle4']]
                 %}                 
                     {% assign per-amt = settings['per-amt'] | strip | plus: 0 %}
@@ -398,9 +397,8 @@
 
           {% if settings['show-callout5'] %}
             {% comment %}Add conditions for specific product only {% endcomment %}
-            {% if RecommendedProduct.title == 'Peek-A-Boo: Jungle Theme (Ages 6 months+)'
-              or RecommendedProduct.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
-              or RecommendedProduct.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
+            {% if RecommendedProduct.title == ''
+              or RecommendedProduct.title == ''
             %}
               {% assign per-amt5 = settings['per-amt5'] | strip | plus: 0 %}
               <div class="salestags rec-5 colllectionpg rpp ppp">

@@ -1,332 +1,405 @@
 {% comment %}{{ 'section-blog.css' | asset_url | stylesheet_tag }}{% endcomment %}
-<link rel="stylesheet" href="{{ 'section-blog.css' | asset_url }}" media="print" onload="this.onload=null;this.media='all';">
+<link
+  rel="stylesheet"
+  href="{{ 'section-blog.css' | asset_url }}"
+  media="print"
+  onload="this.onload=null;this.media='all';"
+>
 {%- assign item = section.settings -%}
 {%- assign blog = blogs[item.blog] -%}
 {%- assign grid = item.items | plus: 0 -%}
 
 {%- capture image_size -%}600x{%- endcapture -%}
 <style>
-   #shopify-section-{{section.id}}.index-section{
-    background-color: {{section.settings.sectionbg}};
-       background-repeat: no-repeat;
-background-size: cover;
-   background-position: center;
-  }
-  /* .blog_bg.container-indent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-  #shopify-section-{{section.id}} {
-    position: relative;
-  } */
-  {% if section.settings.blog-bg-desktop %}
-      @media (min-width: 768px) {
      #shopify-section-{{section.id}}.index-section{
-    background-image: url('{{section.settings.blog-bg-desktop | img_url:'2560x'}}')!important;
-       background-size: contain !important;
-       background-repeat: no-repeat !important;
-       background-position: initial;
-       background: round;
-  }
+      background-color: {{section.settings.sectionbg}};
+         background-repeat: no-repeat;
+  background-size: cover;
+     background-position: center;
     }
-    {% endif %}
-    {% if section.settings.blog-bg-mobile %}
-      @media (max-width: 767px) {
-     #shopify-section-{{section.id}}.index-section{
-       background-image:url('{{section.settings.blog-bg-mobile | img_url:'450x478'}}')!important;
-       background-size: contain;
-        background-repeat: no-repeat;
-       background-position: initial;
+    /* .blog_bg.container-indent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
   }
+    #shopify-section-{{section.id}} {
+      position: relative;
+    } */
+    {% if section.settings.blog-bg-desktop %}
+        @media (min-width: 768px) {
+       #shopify-section-{{section.id}}.index-section{
+      background-image: url('{{section.settings.blog-bg-desktop | img_url:'2560x'}}')!important;
+         background-size: contain !important;
+         background-repeat: no-repeat !important;
+         background-position: initial;
+         background: round;
     }
-    {% endif %}
-    .blog_bg h2 span {
-    color: #D41F3B;
-}
+      }
+      {% endif %}
+      {% if section.settings.blog-bg-mobile %}
+        @media (max-width: 767px) {
+       #shopify-section-{{section.id}}.index-section{
+         background-image:url('{{section.settings.blog-bg-mobile | img_url:'450x478'}}')!important;
+         background-size: contain;
+          background-repeat: no-repeat;
+         background-position: initial;
+    }
+      }
+      {% endif %}
+      .blog_bg h2 span {
+      color: #D41F3B;
+  }
 </style>
 
 <div class="blog_bg {% if item.top_offset == 'none' %}nomargin {% elsif item.top_offset == 'small' %}tt-offset-small {% endif %}container-indent {{ item.custom_classes }}">
   <div class="container{% if item.fullwidth %}-fluid{% endif %}">
     {%- if item.show_title -%}
-    <div class="tt-block-title{% if item.title_to_left %} text-left{% endif %}{% if item.boxed_title and item.fullwidth %} container{% endif %}">
-      <h2 class="tt-title">
-        {%- if item.use_title_as_link -%}<a href="{{ blog.url }}" class="title-hover-underline" title="{{ item.button_text }}">{{ item.text1 }}</a>
-        {%- else -%}{{ item.text1 }}
-        {%- endif -%}
-      </h2>
-      {% unless item.text2 == '' %}<div class="tt-description">{{ item.text2 }}</div>{% endunless %}
-      {% unless item.default_carousel %}{% unless item.text3 == '' %}<p>{{ item.text3 }}</p>{% endunless %}{% endunless %}
-    </div>{% endif %}
+      <div class="tt-block-title{% if item.title_to_left %} text-left{% endif %}{% if item.boxed_title and item.fullwidth %} container{% endif %}">
+        <h2 class="tt-title">
+          {%- if item.use_title_as_link -%}
+            <a href="{{ blog.url }}" class="title-hover-underline" title="{{ item.button_text }}">{{ item.text1 }}</a>
+          {%- else -%}
+            {{ item.text1 }}
+          {%- endif -%}
+        </h2>
+        {% unless item.text2 == '' %}
+          <div class="tt-description">{{ item.text2 }}</div>
+        {% endunless %}
+        {% unless item.default_carousel -%}
+          {%- unless item.text3 == '' %}
+            <p>{{ item.text3 }}</p>
+          {% endunless -%}
+        {%- endunless %}
+      </div>
+    {% endif %}
     <div class="tt-blog-thumb-list">
       <div class="row arrow-location-tab   customslider-grid">
         {%- unless blog.empty? -%}
-        
-        {%- for article in blog.articles limit: item.limit -%}
-        <div class="col-12 col-sm-6 col-md-6 col-lg-{{ grid }}">
-          <div class="tt-blog-thumb respimgsize">
-            {%- if article.image != blank -%}
-            <div class="tt-img">
-              <a href="{{ article.url }}" aria-label="{{ article.title }}">
-                <img  id="{{ section.settings.tracking-id}}{{ forloop.index }}" class="lazyload"
-                     data-mainimage="{{ article.image | product_img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
-                     alt="{{ article.image.alt | escape }}" width="400px" height="400px"/>
-              </a>
-            </div>
-            {%- endif -%}
-            
-            <div class="tt-title-description">              
-              <div class="tt-background"></div>
-              {%- if article.tags.size > 0 and item.show_tags -%}<div class="tt-tag text-uppercase">
-                {%- for tag in article.tags -%}
-              		{%- assign a_url = tag | handle -%}{%- assign a_url = blog.url | append: '/tagged/' | append: a_url  -%}
-              		{{ tag | link_to: a_url }}
-              	{%- endfor -%}
-              </div>{% endif %}
-               <div class="tt-meta">
-                {%- if section.settings.blog_show_date -%}
-                <div class="tt-autor">                 
-                  {% if item.blog_show_date %}{{ article.published_at | date: '%B' }} {{ article.published_at | date: '%d, %Y' }}{% endif %}
-                </div>
+          {%- for article in blog.articles limit: item.limit -%}
+            <div class="col-12 col-sm-6 col-md-6 col-lg-{{ grid }}">
+              <div class="tt-blog-thumb respimgsize">
+                {%- if article.image != blank -%}
+                  <div class="tt-img">
+                    <a href="{{ article.url }}" aria-label="{{ article.title }}">
+                      <img
+                        id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+                        class="blog-imges"
+                        loading="lazy"
+                        data-mainimage="{{ article.image | product_img_url: '100x100' | replace: '100x100', 'respimgsize' }}"
+                        alt="{{ article.image.alt | escape }}"
+                        width="400px"
+                        height="400px"
+                        fetchpriority="medium"
+                        decoding="async"
+                      >
+                    </a>
+                  </div>
                 {%- endif -%}
-               </div>
-              <div class="article-title tt-title{% if settings.block_titles_uppercase %} text-uppercase{% endif %}">
-                <a  id="{{ section.settings.tracking-id}}{{ forloop.index }}"  href="{{ article.url }}" aria-label="{{ article.title }}">{{ article.title }}</a>
+
+                <div class="tt-title-description">
+                  <div class="tt-background"></div>
+                  {%- if article.tags.size > 0 and item.show_tags -%}
+                    <div class="tt-tag text-uppercase">
+                      {%- for tag in article.tags -%}
+                        {%- assign a_url = tag | handle -%}
+                        {%- assign a_url = blog.url | append: '/tagged/' | append: a_url -%}
+                        {{ tag | link_to: a_url }}
+                      {%- endfor -%}
+                    </div>
+                  {% endif %}
+                  <div class="tt-meta">
+                    {%- if section.settings.blog_show_date -%}
+                      <div class="tt-autor">
+                        {% if item.blog_show_date -%}
+                          {{- article.published_at | date: '%B' }}
+                          {{ article.published_at | date: '%d, %Y' -}}
+                        {%- endif %}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  <div class="article-title tt-title{% if settings.block_titles_uppercase %} text-uppercase{% endif %}">
+                    <a
+                      id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+                      href="{{ article.url }}"
+                      aria-label="{{ article.title }}"
+                    >
+                      {{- article.title -}}
+                    </a>
+                  </div>
+                  {%- if item.show_description -%}
+                    <p>
+                      {% if article.excerpt.size > 0 %}
+                        {%- if section.settings.truncate_excerpt -%}
+                          {{
+                            article.excerpt
+                            | strip_html
+                            | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols
+                          }}
+                        {%- else -%}
+                          {{ article.excerpt }}
+                        {%- endif -%}
+                      {%- else -%}
+                        {{
+                          article.content
+                          | strip_html
+                          | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols
+                        }}
+                      {%- endif -%}
+                    </p>
+                    <div class="readlink">
+                      <a
+                        id="{{ section.settings.tracking-id}}{{ forloop.index }}"
+                        href="{{ article.url }}"
+                        aria-label="{{ article.title }}"
+                        class="readmore-link link"
+                      >
+                        {{ 'blogs.article.read_more' | t }}
+                      </a>
+                    </div>
+                  {%- endif -%}
+                  <div class="tt-meta">
+                    {%- if section.settings.blog_show_author -%}
+                      <div class="tt-autor">
+                        {% if item.blog_show_author -%}
+                          {{- 'blogs.general.author_by_html' | t: author: article.author -}}
+                        {%- endif %}
+                      </div>
+                    {%- endif -%}
+                    {%- if item.show_comment -%}
+                      {%- if article.comments.size > 0 -%}
+                        {%- assign comment_url = article.url | append: '#comments' -%}
+                      {%- else -%}
+                        {%- assign comment_url = article.url | append: '#addcomment' -%}
+                      {%- endif -%}
+                      <div class="tt-comments">
+                        <a href="{{ comment_url }}"><i class="tt-icon icon-f-88"></i>{{ article.comments.size }}</a>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
               </div>
-              {%- if item.show_description -%} 
-              <p>{% if article.excerpt.size > 0 %}
-                {%- if section.settings.truncate_excerpt -%}{{ article.excerpt | strip_html | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols }}
-                {%- else -%}{{ article.excerpt }}
-                {%- endif -%}
-                {%- else -%}{{ article.content | strip_html | truncatewords: section.settings.truncate, section.settings.truncate_last_symbols }}{%- endif -%}
-              </p>
-                 <div class="readlink">                 
-                 <a  id="{{ section.settings.tracking-id}}{{ forloop.index }}"  href="{{ article.url }}" aria-label="{{ article.title }}" class="readmore-link link"> {{ "blogs.article.read_more" | t}} </a>
-                </div>
-              {%- endif -%}
-              <div class="tt-meta">
-                {%- if section.settings.blog_show_author-%}
-                <div class="tt-autor">
-                  {% if item.blog_show_author %}{{ "blogs.general.author_by_html" | t: author: article.author }}{% endif %}                 
-                </div>
-                {%- endif -%}
-                {%- if item.show_comment -%}
-                {%- if article.comments.size > 0 -%}{%- assign comment_url = article.url | append: '#comments' -%}{%- else -%}{%- assign comment_url = article.url | append: '#addcomment' -%}{%- endif -%}
-                <div class="tt-comments">
-                  <a href="{{ comment_url }}"><i class="tt-icon icon-f-88"></i>{{ article.comments.size }}</a>
-                </div>
-                {%- endif -%}
-               
-              </div>
             </div>
-          </div>
-        </div>
-        {%- endfor -%}
-        
+          {%- endfor -%}
+
         {%- else -%}
-        <span style="display: flex; justify-content: center;">This section doesn’t currently include any content. Add content to this section using the sidebar.</span>
+          <span style="display: flex; justify-content: center;"
+            >This section doesn’t currently include any content. Add content to this section using the sidebar.</span
+          >
         {%- endunless -%}
+      </div>
+      <div class="text-center va-btn">
+        <a href="{{ section.settings.blog_url }}" class=" btn-top">{{ section.settings.blog_text }}</a>
       </div>
     </div>
   </div>
 </div>
 {% schema %}
-  {
-    "name": "Blog Posts",
-    "class": "index-section",
-    "settings": [
-      {
-        "type": "select",
-        "id": "top_offset",
-        "label": "Top Offset",
-        "default": "normal",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "small",
-            "label": "Small"
-          },
-          {
-            "value": "normal",
-            "label": "Normal"
-          }
-        ]
-      },
-      {
-        "type": "textarea",
-        "id": "custom_classes",
-        "label": "Custom css classes",
-        "info": "For the custom styles. Add your styles in the theme.css.liquid"
-      },
-      {
-          "type": "image_picker",
-          "id": "blog-bg-desktop",
-          "label": "desktop background "
-        },
+ {
+   "name": "Blog Posts",
+   "class": "index-section",
+   "settings": [
      {
-          "type": "image_picker",
-          "id": "blog-bg-mobile",
-          "label": "mobile background Image "
-        },
+       "type": "select",
+       "id": "top_offset",
+       "label": "Top Offset",
+       "default": "normal",
+       "options": [
+         {
+           "value": "none",
+           "label": "None"
+         },
+         {
+           "value": "small",
+           "label": "Small"
+         },
+         {
+           "value": "normal",
+           "label": "Normal"
+         }
+       ]
+     },
+     {
+       "type": "textarea",
+       "id": "custom_classes",
+       "label": "Custom css classes",
+       "info": "For the custom styles. Add your styles in the theme.css.liquid"
+     },
+     {
+         "type": "image_picker",
+         "id": "blog-bg-desktop",
+         "label": "desktop background "
+    },
+    {
+         "type": "image_picker",
+         "id": "blog-bg-mobile",
+         "label": "mobile background Image "
+       },
+     {
+       "type": "checkbox",
+       "id": "fullwidth",
+       "label": "Fullwidth size",
+       "default": false
+     },
+     {
+       "type": "checkbox",
+       "id": "show_title",
+       "label": "Show Title Block",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "title_to_left",
+       "label": "Title to left",
+       "default": false
+     },
+     {
+       "type": "checkbox",
+       "id": "boxed_title",
+       "label": "Boxed title when fullwidth",
+       "default": false
+     },
+     {
+       "type": "text",
+       "id": "blog_text",
+       "label": "Blog text",
+     },
+     {
+       "type": "url",
+       "id": "blog_url",
+       "label": "Blog URL",
+     },
+     {
+       "type": "textarea",
+       "id": "text1",
+       "label": "Title",
+       "default": "LATES FROM BLOG"
+     },
+     {
+       "type": "textarea",
+       "id": "text2",
+       "label": "Small description",
+       "default": "Latest and most interesting news",
+	"info": "Empty field = hide field"
+     },
+     {
+       "type": "textarea",
+       "id": "text3",
+       "label": "Big description",
+	"info": "Empty field = hide field"
+     },
+     {
+       "type": "header",
+       "content": "Use title as link"
+     },
+     {
+       "type": "checkbox",
+       "id": "use_title_as_link",
+       "label": "Use title as a blog link",
+       "default": true
+     },
+     {
+       "type": "text",
+       "id": "button_text",
+       "label": "Hover text",
+	"default": "SHOW ALL"
+     },
+     {
+       "type": "header",
+       "content": "Blog settings"
+     },
+     {
+       "id": "blog",
+       "type": "blog",
+       "label": "Blog"
+     },
+     {
+       "type": "text",
+       "id": "limit",
+       "label": "Items Length. Integer",
+       "default": "8"
+     },
+     {
+       "type": "select",
+       "id": "items",
+       "label": "Items in row",
+       "options": [
+         { "value": "6", "label": "2" },
+         { "value": "4", "label": "3" },
+         { "value": "3", "label": "4" }
+       ],
+       "default": "4",
+       "info": "For screen size > 1024"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_tags",
+       "label": "Show tags",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_show_author",
+       "label": "Show author",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "blog_show_date",
+       "label": "Show date",
+       "default": true
+     },
+     {
+       "type": "checkbox",
+       "id": "show_comment",
+       "label": "Show comment",
+       "default": true
+     },
+     {
+       "type": "paragraph",
+       "content": "_____"
+     },
+     {
+       "type": "checkbox",
+       "id": "show_description",
+       "label": "Show description",
+       "default": true
+     },
+     {
+       "type": "paragraph",
+       "content": "Works only for the  \"Content\" field. Field \"Excerpt\" will show full."
+     },
+     {
+       "type": "checkbox",
+       "id": "truncate_excerpt",
+       "label": "Truncate Excerpt",
+       "default": false
+     },
+     {
+       "type": "text",
+       "id": "truncate",
+       "label": "Show Words",
+       "default": "15",
+       "info": "Integer"
+     },
+     {
+       "type": "text",
+       "id": "truncate_last_symbols",
+       "label": "Last Symbols",
+       "default": "..."
+     },
       {
-        "type": "checkbox",
-        "id": "fullwidth",
-        "label": "Fullwidth size",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "show_title",
-        "label": "Show Title Block",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "title_to_left",
-        "label": "Title to left",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "boxed_title",
-        "label": "Boxed title when fullwidth",
-        "default": false
-      },
-      {
-        "type": "textarea",
-        "id": "text1",
-        "label": "Title",
-        "default": "LATES FROM BLOG"
-      },
-      {
-        "type": "textarea",
-        "id": "text2",
-        "label": "Small description",
-        "default": "Latest and most interesting news",
-		"info": "Empty field = hide field"
-      },
-      {
-        "type": "textarea",
-        "id": "text3",
-        "label": "Big description",
-		"info": "Empty field = hide field"
-      },
-      {
-        "type": "header",
-        "content": "Use title as link"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_title_as_link",
-        "label": "Use title as a blog link",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "button_text",
-        "label": "Hover text",
-		"default": "SHOW ALL"
-      },
-      {
-        "type": "header",
-        "content": "Blog settings"
-      },
-      {
-        "id": "blog",
-        "type": "blog",
-        "label": "Blog"
-      },
-      {
-        "type": "text",
-        "id": "limit",
-        "label": "Items Length. Integer",
-        "default": "8"
-      },
-      {
-        "type": "select",
-        "id": "items",
-        "label": "Items in row",
-        "options": [
-          { "value": "6", "label": "2" },
-          { "value": "4", "label": "3" },
-          { "value": "3", "label": "4" }
-        ],
-        "default": "4",
-        "info": "For screen size > 1024"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_tags",
-        "label": "Show tags",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_author",
-        "label": "Show author",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_date",
-        "label": "Show date",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_comment",
-        "label": "Show comment",
-        "default": true
-      },
-      {
-        "type": "paragraph",
-        "content": "_____"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_description",
-        "label": "Show description",
-        "default": true
-      },
-      {
-        "type": "paragraph",
-        "content": "Works only for the  \"Content\" field. Field \"Excerpt\" will show full."
-      },
-      {
-        "type": "checkbox",
-        "id": "truncate_excerpt",
-        "label": "Truncate Excerpt",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "truncate",
-        "label": "Show Words",
-        "default": "15",
-        "info": "Integer"
-      },
-      {
-        "type": "text",
-        "id": "truncate_last_symbols",
-        "label": "Last Symbols",
-        "default": "..."
-      },
-       {
-          "label": "Tracking id",
-          "info": "Do Not Delete",
-          "id": "tracking-id",
-          "type": "text"
-        }
-	],
-    "presets": [
-      {
-        "name": "Blog Posts",
-        "category": "Blog"
-      }
-    ]
-  }
+         "label": "Tracking id",
+         "info": "Do Not Delete",
+         "id": "tracking-id",
+         "type": "text"
+       }
+],
+   "presets": [
+     {
+       "name": "Blog Posts",
+       "category": "Blog"
+     }
+   ]
+ }
 {% endschema %}

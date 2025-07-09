@@ -1,1 +1,730 @@
-{"sections":{"custom_slidershow_QX4EHG":{"type":"custom-slidershow","blocks":{"item_r7tKXT":{"type":"item","settings":{"collection":"shopify:\/\/pages\/raksha-bandhan-listicle-page","image":"shopify:\/\/shop_images\/Desktop_15_52888e0e-032e-467a-a898-1e751639b583.webp","mob-image":"shopify:\/\/shop_images\/Mobile_16_818bfc18-8c7a-49f2-95ee-162c9d04f194.webp"}},"item_FhFApP":{"type":"item","settings":{"collection":"https:\/\/www.skillmatics.in\/collections\/new-launches","image":"shopify:\/\/shop_images\/Desktop_3_ffb93f2b-1e06-4181-8db1-353a390eece7.webp","mob-image":"shopify:\/\/shop_images\/Mobile_1_5a7849cd-9382-48fa-8065-5970e099dadc.webp"}},"item_7jP3Ap":{"type":"item","settings":{"collection":"https:\/\/www.skillmatics.in\/collections\/bestsellers","image":"shopify:\/\/shop_images\/Desktop_b99eaef1-6345-4178-82c3-6a73a6f0bd77.webp","mob-image":"shopify:\/\/shop_images\/Mobile_13_d869da74-b3a8-4d5e-9675-33c5cca69f50.webp"}},"item_8zPqWi":{"type":"item","settings":{"collection":"https:\/\/www.skillmatics.in\/pages\/return-gifts-for-kids","image":"shopify:\/\/shop_images\/Return_Gifting_Banner_3.webp","mob-image":"shopify:\/\/shop_images\/Mobile_2_09e15e8d-9f8f-42c5-a77e-aa2a71323dd4.webp"}}},"block_order":["item_r7tKXT","item_FhFApP","item_7jP3Ap","item_8zPqWi"],"settings":{"tracking-id":"skill_home_banner_carousel_0"}},"section_multicolumn_QKnXVH":{"type":"section-multicolumn-index","blocks":{"item_ELVAtT":{"type":"item","settings":{"collection":"shopify:\/\/collections\/our-products-for-ages-0-3","image":"shopify:\/\/shop_images\/0-3_years_013a99c3-7800-4231-bab4-a17142ad95bf.webp","custom_name":""}},"item_qXjhic":{"type":"item","settings":{"collection":"shopify:\/\/collections\/3-6-years","image":"shopify:\/\/shop_images\/3_years_6d83ec94-8258-44ce-9a9b-0f8ebeecfa49.webp","custom_name":""}},"item_getywL":{"type":"item","settings":{"collection":"shopify:\/\/collections\/6-9-years","image":"shopify:\/\/shop_images\/8_years_b772d6b7-9931-49a0-a75b-d3ebb25776ef.webp","custom_name":""}},"item_Nntc9g":{"type":"item","settings":{"collection":"shopify:\/\/collections\/8-13-years","image":"shopify:\/\/shop_images\/6_years_da4ff9ba-f761-42a7-8c09-a4f14eae13aa.webp","custom_name":""}}},"block_order":["item_ELVAtT","item_qXjhic","item_getywL","item_Nntc9g"],"custom_css":[],"settings":{"text1":"Shop By Age","text2":"","multifetures-bg-desktop":"shopify:\/\/shop_images\/Shop_by_age_-_Desktop_7ede7c40-0d23-45e2-8a1a-4939cc41b98b.webp","multifetures-bg-mobile":"shopify:\/\/shop_images\/Shop_by_age_-_Mobile_7a67b40a-d4e3-487d-bec7-159311154e8d.webp","sectionbg":"rgba(0,0,0,0)","items":"3","mob-items":"6","tracking-id":"skill_home_sba_option_0"}},"custom_banner_xJDLXt":{"type":"custom-banner","blocks":{"item_hpfayC":{"type":"item","settings":{"collection":"https:\/\/www.skillmatics.in\/pages\/gifting","image":"shopify:\/\/shop_images\/Desktop_4_56f01108-d80f-45b6-a78c-08e300f146a3.webp","mob-image":"shopify:\/\/shop_images\/Mobile_4_4eaf89c7-3fcb-44d5-be04-d7a37e98b3f5.webp"}}},"block_order":["item_hpfayC"],"settings":{"tracking-id":"skill_home_secondary_banner"}},"custom_collection_list_Baf3yQ":{"type":"custom-collection-list","blocks":{"item_UtwMNa":{"type":"item","settings":{"collection":"rakhi-gifts-under-500","link":"","imaged":"shopify:\/\/shop_images\/Rs._499.webp","image":"shopify:\/\/shop_images\/Mobile_-_Rs._499.webp","custom_name":""}},"item_fa6dLy":{"type":"item","settings":{"collection":"rakhi-gifts-under-1000","link":"","imaged":"shopify:\/\/shop_images\/Rs._999.webp","image":"shopify:\/\/shop_images\/Mobile_-_Rs._999.webp","custom_name":""}},"item_UrVmAa":{"type":"item","settings":{"collection":"rakhi-gifts-under-1500","link":"","imaged":"shopify:\/\/shop_images\/Rs._1499.webp","image":"shopify:\/\/shop_images\/Mobile_-_Rs._1499.webp","custom_name":""}},"item_QU4Eg8":{"type":"item","settings":{"collection":"rakhi-gifts-under-2000","link":"","imaged":"shopify:\/\/shop_images\/Rs._1699.webp","image":"shopify:\/\/shop_images\/Mobile_-_Rs._1699_b4ec01b2-a36c-4f98-bdd2-7384502962ff.webp","custom_name":""}}},"block_order":["item_UtwMNa","item_fa6dLy","item_UrVmAa","item_QU4Eg8"],"custom_css":[],"name":"Custom Collection list","settings":{"top_offset":"normal","items-desk":"3","items":"6","imgpadding":1,"showtitle":true,"title":"Gift by Price","subtitle":"","collection-product-bg-desktop":"shopify:\/\/shop_images\/Gift_by_Price_-_Desktop.webp","collection-product-bg-mobile":"shopify:\/\/shop_images\/Gift_by_Price_-_Mobile.webp"}},"index_section_products_yzVWXW":{"type":"index-section-products","blocks":{"item_QrVBNC":{"type":"item","settings":{"changecolor":false,"type_color":"#999999","type_color_hover":"#2879fe","stars_empty_color":"#d4d4d4","stars_active_color":"#ffb503","title_color":"#191919","title_color_hover":"#2879fe","smalldescription":"#777777","price_base":"#191919","price_new":"#f8353e","price_old":"#191919","opt_active_border":"#2879fe","opt_btn_bg":"#f7f8fa","opt_btn_text":"#777777","opt_btn_bg_hover":"#2879fe","opt_btn_text_hover":"#ffffff","btn_bg_color":"#2879fe","btn_text_color":"#ffffff","btn_bg_color_hover":"#2267d8","btn_text_color_hover":"#ffffff","btn_custom_styles":"","btn_custom_styles_hover":"","pr_action_bg":"#ffffff","pr_action_bg_opacity":90,"pr_action_icon":"#191919","pr_action_bg_hover":"#191919","pr_action_bg_opacity_hover":90,"pr_action_icon_hover":"#ffffff","pr_action_icon_mobile":"#191919","pr_action_icon_mobile_hover":"#2879fe","changecolorother":false,"main_title":"#191919","main_title_hover":"#2879fe","desc_title_color":"#777777","slider_arrow_bg":"#f7f8fa","slider_arrow_icon":"#191919","slider_arrow_bg_hover":"#2879fe","slider_arrow_icon_hover":"#ffffff","showmore_bg":"#ffffff","showmore_border":"#2267d8","showmore_text":"#2267d8","showmore_bg_hover":"#2267d8","showmore_border_hover":"#2267d8","showmore_text_hover":"#ffffff","usebgcolor":true,"bgco":"#f7f3e8","bgdepad":"30","bgdepad_2":"30","bgmopad":"30","bgmopad_2":"30","showbgimage":false,"imagealign":"center","imagesize":"cover","usemiheight":false,"backgroundminheight3":"450","backgroundminheight2":"450","backgroundminheight1":"200"}}},"block_order":["item_QrVBNC"],"name":"Products","settings":{"top_offset":"normal","custom_classes":"","fullwidth":false,"nopaddings":false,"hideallelementsonindex":false,"show_title":true,"title_to_left":false,"boxed_title":false,"text1":"<span>Rakhi<\/span> Special","text2":"","text3":"","use_title_as_link":false,"show_button":true,"button_text":"View all","collection":"rakhi-special","items_always_in_center":true,"limit":"4","limit2":"2","items":"3","default_carousel":true,"boxed_buttons":false,"show_oneproduct_in_mobile":false,"use_adaptive_height":true,"toshow":"4","step":"1","module_autoplay":false,"delay_time":"7000"}},"index_section_products_2_b7tV8w":{"type":"index-section-products-2","blocks":{"item_9FahBX":{"type":"item","settings":{"changecolor":false,"type_color":"#999999","type_color_hover":"#2879fe","stars_empty_color":"#d4d4d4","stars_active_color":"#ffb503","title_color":"#191919","title_color_hover":"#2879fe","smalldescription":"#777777","price_base":"#191919","price_new":"#f8353e","price_old":"#191919","opt_active_border":"#2879fe","opt_btn_bg":"#f7f8fa","opt_btn_text":"#777777","opt_btn_bg_hover":"#2879fe","opt_btn_text_hover":"#ffffff","btn_bg_color":"#2879fe","btn_text_color":"#ffffff","btn_bg_color_hover":"#2267d8","btn_text_color_hover":"#ffffff","btn_custom_styles":"","btn_custom_styles_hover":"","pr_action_bg":"#ffffff","pr_action_bg_opacity":90,"pr_action_icon":"#191919","pr_action_bg_hover":"#191919","pr_action_bg_opacity_hover":90,"pr_action_icon_hover":"#ffffff","pr_action_icon_mobile":"#191919","pr_action_icon_mobile_hover":"#2879fe","changecolorother":false,"main_title":"#191919","main_title_hover":"#2879fe","desc_title_color":"#777777","slider_arrow_bg":"#f7f8fa","slider_arrow_icon":"#191919","slider_arrow_bg_hover":"#2879fe","slider_arrow_icon_hover":"#ffffff","showmore_bg":"#ffffff","showmore_border":"#2267d8","showmore_text":"#2267d8","showmore_bg_hover":"#2267d8","showmore_border_hover":"#2267d8","showmore_text_hover":"#ffffff","usebgcolor":false,"bgco":"#ffffff","bgdepad":"80","bgdepad_2":"80","bgmopad":"80","bgmopad_2":"80","showbgimage":false,"imagealign":"center","imagesize":"cover","usemiheight":false,"backgroundminheight3":"450","backgroundminheight2":"450","backgroundminheight1":"200"}}},"block_order":["item_9FahBX"],"name":"Products 2","settings":{"top_offset":"normal","custom_classes":"","featured-product-bg-desktop":"shopify:\/\/shop_images\/740px_New_Launches_Bg_835e8ca9-8218-401f-8e0e-8be87f745d3d.webp","featured-product-bg-mobile2":"shopify:\/\/shop_images\/650px_New_Launches_Bg.webp","fullwidth":false,"nopaddings":false,"hideallelementsonindex":false,"show_title":true,"title_to_left":false,"boxed_title":false,"text1":"New Launches","text2":"","text3":"","use_title_as_link":false,"show_button":true,"button_text":"View all","collection":"new-launches","items_always_in_center":true,"limit":"4","limit2":"2","items":"3","default_carousel":true,"boxed_buttons":false,"show_oneproduct_in_mobile":false,"use_adaptive_height":true,"toshow":"4","step":"1","module_autoplay":false,"delay_time":"7000"}},"index_section_tabs_jPhE7N":{"type":"index-section-tabs","blocks":{"item_WkNgkY":{"type":"item","settings":{"tab_name":"All Ages","collection":"gifting-all-ages","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"5000"}},"item_66MBxG":{"type":"item","settings":{"tab_name":"0-3 Years","collection":"our-products-for-ages-0-3","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"5000"}},"item_itrLJ8":{"type":"item","settings":{"tab_name":"3+ years","collection":"3-6-years","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"5000"}},"item_i4JngW":{"type":"item","settings":{"tab_name":"6+ Years","collection":"6-9-years","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"5000"}},"item_834C9P":{"type":"item","settings":{"tab_name":"8+ Years","collection":"8-13-years","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"5000"}}},"block_order":["item_WkNgkY","item_66MBxG","item_itrLJ8","item_i4JngW","item_834C9P"],"disabled":true,"custom_css":[".index-section {padding: 0px 0;}",".container-indent {padding-top: 24px; padding-bottom: 20px;}","@media (max-width: 575px) {.container-indent {padding-top: 10px; } li.nav-item {min-width: fit-content; } ul.nav.nav-tabs.tt-tabs-default {justify-content: flex-start; overflow: scroll; flex-wrap: nowrap; }}"],"settings":{"top_offset":"none","fullwidth":false,"show_title":false,"text1":"Now Trending","text2":"","bgcolor":"#e9f4f9","tracking-id":"skill_home_nt_"}},"index_section_tabs_ywEN6y":{"type":"index-section-tabs","blocks":{"item_VC3wCc":{"type":"item","settings":{"tab_name":"Bestsellers","collection":"bestsellers","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"7000"}},"item_7mWmYe":{"type":"item","settings":{"tab_name":"New Launches","collection":"new-launches","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"7000"}},"item_WRMpx3":{"type":"item","settings":{"tab_name":"Bundle Love","collection":"bundle-save","limit":"4","toshow":"4","step":"1","module_autoplay":false,"showbtn":true,"delay_time":"7000"}}},"block_order":["item_VC3wCc","item_7mWmYe","item_WRMpx3"],"disabled":true,"custom_css":[".index-section {padding: 20px 0;}"],"settings":{"top_offset":"none","fullwidth":false,"show_title":false,"text1":"Handpicked For You","text2":"","bgcolor":"#f1f9f5","tracking-id":"skill_home_hpfu_"}},"section_recently_viewed_nPWTHi":{"type":"section-recently-viewed","custom_css":["@media (max-width: 1024px) {.arrow-location-right-top .slick-arrow {top: 50% !important; }}","@media (min-width: 790px) {.container-indent.recently_view_products_wokiee {padding-bottom: 40px; background: #e9f4f9; }}"],"settings":{"fullscreen":false,"titleincenter":true,"title":"Recently Viewed Products","product_upsell_collection_count":"8","slickdesktoptoshow":"4"}},"section_testimonials3_kwBkiy":{"type":"section-testimonials3","blocks":{"column_xjgPfN":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_13_c8aec83d-3988-45a8-9b16-7048ed39910b.webp","custom_text":"<p>“My son just started playing peek-a-boo, so I got him this book. He loves it! He loves discovering the hiding animal on each page, then hiding them again. And he especially loves the mirror at the end and kisses the baby in the mirror!”<\/p>","custom_name":"Ravi"}},"column_XH9qDr":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_11.webp","custom_text":"<p>“This is a great way to teach hand eye coordination for little ones prior to starting school. The best bit for her was the blank magnetic board which freed her to use her 'artistic license'.”<\/p>","custom_name":"Tiara"}},"column_HyXaqc":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_14.webp","custom_text":"<p>“Got this fun craft for my 6 year old boy. He loves it! I love that it kept him so occupied and it is a mess free craft. Definitely recommend!”<\/p>","custom_name":"Shailesh"}},"column_76FnnT":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_10_b2af51fd-97e7-4577-bdf8-2ce7458c601a.webp","custom_text":"<p>“My son really enjoyed this craft set! He had fun planning the scenes and choosing the shiny colours. I really appreciate that there is no glue or paint. The outcome is so nice that it's now placed on all the walls of his bedroom”<\/p>","custom_name":"Kinjal"}},"column_6wRryy":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_16_1.webp","custom_text":"<p>“This is a great puzzle set for kids who love the ocean! Nice, colourful, giant puzzle pieces. It gets my kids off screens and focused on something educational. I highly recommend!”<\/p>","custom_name":"Rashmi"}},"column_RnrTEh":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_9_4.webp","custom_text":"<p>“When Guess in 10 arrived, we opened it and played it right away. We had soo much fun with it!!!  Quality and price is reasonable. I would recommend this awesome learning game to anyone with children of any age!!”<\/p>","custom_name":"Livnat"}},"column_NL4gmj":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_12_817c7011-ab96-423b-8ee7-0d883457ca7d.webp","custom_text":"<p>“I bought this for my niece. I think the fact that it's dry erase makes it fun to try again or quickly go on to the next activity. They pick it up and do it on their own at times. It's great”<\/p>","custom_name":"Aishwarya"}},"column_dMBRhc":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Frame_15.webp","custom_text":"<p>“The cards are thick & durable with different patterns and symbols. My 4-month-old daughter is fascinated by them. It's definitely her favourite activity and keeps her attention for a really long time. I'm very happy with my purchase.”<\/p>","custom_name":"Shweta"}}},"block_order":["column_xjgPfN","column_XH9qDr","column_HyXaqc","column_76FnnT","column_6wRryy","column_RnrTEh","column_NL4gmj","column_dMBRhc"],"settings":{"text1":"<span>Rakhi<\/span> Love From Parents","text2":"Take it from 1,00,000+ 4.8 star reviews","sectionbg":"#f1f9f5","enable_video_looping":true}},"1521705369018":{"type":"index-section-blog","disabled":true,"settings":{"top_offset":"none","custom_classes":"","fullwidth":false,"show_title":true,"title_to_left":false,"boxed_title":false,"blog_text":"","blog_url":"","text1":"<span>Rakhi<\/span> Gift Guide","text2":"","text3":"","use_title_as_link":true,"button_text":"","blog":"blog","limit":"4","items":"3","show_tags":false,"blog_show_author":false,"blog_show_date":true,"show_comment":false,"show_description":true,"truncate_excerpt":true,"truncate":"18","truncate_last_symbols":"...","tracking-id":"skill_home_blogs_b0"}},"index_section_blog_djpJrr":{"type":"index-section-blog","custom_css":[],"name":"Blog Posts","settings":{"top_offset":"normal","custom_classes":"","blog-bg-desktop":"shopify:\/\/shop_images\/Blog_Section_500_H_72382dd1-6761-4205-a4a0-f3794e25cb7c.webp","blog-bg-mobile":"shopify:\/\/shop_images\/Blog_Section_-_Mobile.webp","fullwidth":false,"show_title":true,"title_to_left":false,"boxed_title":false,"blog_text":"View All","blog_url":"shopify:\/\/blogs\/blog","text1":"Blogs","text2":"","text3":"","use_title_as_link":true,"button_text":"SHOW ALL","blog":"blog","limit":"4","items":"3","show_tags":true,"blog_show_author":false,"blog_show_date":true,"show_comment":false,"show_description":true,"truncate_excerpt":false,"truncate":"18","truncate_last_symbols":"...","tracking-id":"skill_home_blogs_b0"}}},"order":["custom_slidershow_QX4EHG","section_multicolumn_QKnXVH","custom_banner_xJDLXt","custom_collection_list_Baf3yQ","index_section_products_yzVWXW","index_section_products_2_b7tV8w","index_section_tabs_jPhE7N","index_section_tabs_ywEN6y","section_recently_viewed_nPWTHi","section_testimonials3_kwBkiy","1521705369018","index_section_blog_djpJrr"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_slidershow_QX4EHG": {
+      "type": "custom-slidershow",
+      "blocks": {
+        "item_r7tKXT": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://pages/skillmatics-raksha-bandhan-sale",
+            "image": "shopify://shop_images/Desktop_15_52888e0e-032e-467a-a898-1e751639b583.webp",
+            "mob-image": "shopify://shop_images/Mobile_16_818bfc18-8c7a-49f2-95ee-162c9d04f194.webp"
+          }
+        },
+        "item_FhFApP": {
+          "type": "item",
+          "settings": {
+            "collection": "https://www.skillmatics.in/collections/new-launches",
+            "image": "shopify://shop_images/Desktop_3_ffb93f2b-1e06-4181-8db1-353a390eece7.webp",
+            "mob-image": "shopify://shop_images/Mobile_1_5a7849cd-9382-48fa-8065-5970e099dadc.webp"
+          }
+        },
+        "item_7jP3Ap": {
+          "type": "item",
+          "settings": {
+            "collection": "https://www.skillmatics.in/collections/bestsellers",
+            "image": "shopify://shop_images/Desktop_b99eaef1-6345-4178-82c3-6a73a6f0bd77.webp",
+            "mob-image": "shopify://shop_images/Mobile_13_d869da74-b3a8-4d5e-9675-33c5cca69f50.webp"
+          }
+        },
+        "item_8zPqWi": {
+          "type": "item",
+          "settings": {
+            "collection": "https://www.skillmatics.in/pages/return-gifts-for-kids",
+            "image": "shopify://shop_images/Return_Gifting_Banner_3.webp",
+            "mob-image": "shopify://shop_images/Mobile_2_09e15e8d-9f8f-42c5-a77e-aa2a71323dd4.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_r7tKXT",
+        "item_FhFApP",
+        "item_7jP3Ap",
+        "item_8zPqWi"
+      ],
+      "settings": {
+        "tracking-id": "skill_home_banner_carousel_0"
+      }
+    },
+    "section_multicolumn_QKnXVH": {
+      "type": "section-multicolumn-index",
+      "blocks": {
+        "item_ELVAtT": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/our-products-for-ages-0-3",
+            "image": "shopify://shop_images/0-3_years_013a99c3-7800-4231-bab4-a17142ad95bf.webp",
+            "custom_name": ""
+          }
+        },
+        "item_qXjhic": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/3-6-years",
+            "image": "shopify://shop_images/3_years_6d83ec94-8258-44ce-9a9b-0f8ebeecfa49.webp",
+            "custom_name": ""
+          }
+        },
+        "item_getywL": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/6-9-years",
+            "image": "shopify://shop_images/8_years_b772d6b7-9931-49a0-a75b-d3ebb25776ef.webp",
+            "custom_name": ""
+          }
+        },
+        "item_Nntc9g": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://collections/8-13-years",
+            "image": "shopify://shop_images/6_years_da4ff9ba-f761-42a7-8c09-a4f14eae13aa.webp",
+            "custom_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_ELVAtT",
+        "item_qXjhic",
+        "item_getywL",
+        "item_Nntc9g"
+      ],
+      "custom_css": [],
+      "settings": {
+        "text1": "Shop By Age",
+        "text2": "",
+        "multifetures-bg-desktop": "shopify://shop_images/Shop_by_age_-_Desktop_7ede7c40-0d23-45e2-8a1a-4939cc41b98b.webp",
+        "multifetures-bg-mobile": "shopify://shop_images/Shop_by_age_-_Mobile_7a67b40a-d4e3-487d-bec7-159311154e8d.webp",
+        "sectionbg": "rgba(0,0,0,0)",
+        "items": "3",
+        "mob-items": "6",
+        "tracking-id": "skill_home_sba_option_0"
+      }
+    },
+    "custom_banner_xJDLXt": {
+      "type": "custom-banner",
+      "blocks": {
+        "item_hpfayC": {
+          "type": "item",
+          "settings": {
+            "collection": "https://www.skillmatics.in/pages/gifting",
+            "image": "shopify://shop_images/Desktop_4_56f01108-d80f-45b6-a78c-08e300f146a3.webp",
+            "mob-image": "shopify://shop_images/Mobile_4_4eaf89c7-3fcb-44d5-be04-d7a37e98b3f5.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_hpfayC"
+      ],
+      "settings": {
+        "tracking-id": "skill_home_secondary_banner"
+      }
+    },
+    "custom_collection_list_Baf3yQ": {
+      "type": "custom-collection-list",
+      "blocks": {
+        "item_UtwMNa": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-500",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._499.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._499.webp",
+            "custom_name": ""
+          }
+        },
+        "item_fa6dLy": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-1000",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._999.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._999.webp",
+            "custom_name": ""
+          }
+        },
+        "item_UrVmAa": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-1500",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._1499.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._1499.webp",
+            "custom_name": ""
+          }
+        },
+        "item_QU4Eg8": {
+          "type": "item",
+          "settings": {
+            "collection": "rakhi-gifts-under-2000",
+            "link": "",
+            "imaged": "shopify://shop_images/Rs._1699.webp",
+            "image": "shopify://shop_images/Mobile_-_Rs._1699_b4ec01b2-a36c-4f98-bdd2-7384502962ff.webp",
+            "custom_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_UtwMNa",
+        "item_fa6dLy",
+        "item_UrVmAa",
+        "item_QU4Eg8"
+      ],
+      "custom_css": [],
+      "name": "Custom Collection list",
+      "settings": {
+        "top_offset": "normal",
+        "items-desk": "3",
+        "items": "6",
+        "imgpadding": 1,
+        "showtitle": true,
+        "title": "Gift by Price",
+        "subtitle": "",
+        "collection-product-bg-desktop": "shopify://shop_images/Gift_by_Price_-_Desktop.webp",
+        "collection-product-bg-mobile": "shopify://shop_images/Gift_by_Price_-_Mobile.webp"
+      }
+    },
+    "index_section_products_yzVWXW": {
+      "type": "index-section-products",
+      "blocks": {
+        "item_QrVBNC": {
+          "type": "item",
+          "settings": {
+            "changecolor": false,
+            "type_color": "#999999",
+            "type_color_hover": "#2879fe",
+            "stars_empty_color": "#d4d4d4",
+            "stars_active_color": "#ffb503",
+            "title_color": "#191919",
+            "title_color_hover": "#2879fe",
+            "smalldescription": "#777777",
+            "price_base": "#191919",
+            "price_new": "#f8353e",
+            "price_old": "#191919",
+            "opt_active_border": "#2879fe",
+            "opt_btn_bg": "#f7f8fa",
+            "opt_btn_text": "#777777",
+            "opt_btn_bg_hover": "#2879fe",
+            "opt_btn_text_hover": "#ffffff",
+            "btn_bg_color": "#2879fe",
+            "btn_text_color": "#ffffff",
+            "btn_bg_color_hover": "#2267d8",
+            "btn_text_color_hover": "#ffffff",
+            "btn_custom_styles": "",
+            "btn_custom_styles_hover": "",
+            "pr_action_bg": "#ffffff",
+            "pr_action_bg_opacity": 90,
+            "pr_action_icon": "#191919",
+            "pr_action_bg_hover": "#191919",
+            "pr_action_bg_opacity_hover": 90,
+            "pr_action_icon_hover": "#ffffff",
+            "pr_action_icon_mobile": "#191919",
+            "pr_action_icon_mobile_hover": "#2879fe",
+            "changecolorother": false,
+            "main_title": "#191919",
+            "main_title_hover": "#2879fe",
+            "desc_title_color": "#777777",
+            "slider_arrow_bg": "#f7f8fa",
+            "slider_arrow_icon": "#191919",
+            "slider_arrow_bg_hover": "#2879fe",
+            "slider_arrow_icon_hover": "#ffffff",
+            "showmore_bg": "#ffffff",
+            "showmore_border": "#2267d8",
+            "showmore_text": "#2267d8",
+            "showmore_bg_hover": "#2267d8",
+            "showmore_border_hover": "#2267d8",
+            "showmore_text_hover": "#ffffff",
+            "usebgcolor": true,
+            "bgco": "#f7f3e8",
+            "bgdepad": "30",
+            "bgdepad_2": "30",
+            "bgmopad": "30",
+            "bgmopad_2": "30",
+            "showbgimage": false,
+            "imagealign": "center",
+            "imagesize": "cover",
+            "usemiheight": false,
+            "backgroundminheight3": "450",
+            "backgroundminheight2": "450",
+            "backgroundminheight1": "200"
+          }
+        }
+      },
+      "block_order": [
+        "item_QrVBNC"
+      ],
+      "name": "Products",
+      "settings": {
+        "top_offset": "normal",
+        "custom_classes": "",
+        "fullwidth": false,
+        "nopaddings": false,
+        "hideallelementsonindex": false,
+        "show_title": true,
+        "title_to_left": false,
+        "boxed_title": false,
+        "text1": "<span>Rakhi</span> Special",
+        "text2": "",
+        "text3": "",
+        "use_title_as_link": false,
+        "show_button": true,
+        "button_text": "View all",
+        "collection": "rakhi-special",
+        "items_always_in_center": true,
+        "limit": "4",
+        "limit2": "2",
+        "items": "3",
+        "default_carousel": true,
+        "boxed_buttons": false,
+        "show_oneproduct_in_mobile": false,
+        "use_adaptive_height": true,
+        "toshow": "4",
+        "step": "1",
+        "module_autoplay": false,
+        "delay_time": "7000"
+      }
+    },
+    "index_section_products_2_b7tV8w": {
+      "type": "index-section-products-2",
+      "blocks": {
+        "item_9FahBX": {
+          "type": "item",
+          "settings": {
+            "changecolor": false,
+            "type_color": "#999999",
+            "type_color_hover": "#2879fe",
+            "stars_empty_color": "#d4d4d4",
+            "stars_active_color": "#ffb503",
+            "title_color": "#191919",
+            "title_color_hover": "#2879fe",
+            "smalldescription": "#777777",
+            "price_base": "#191919",
+            "price_new": "#f8353e",
+            "price_old": "#191919",
+            "opt_active_border": "#2879fe",
+            "opt_btn_bg": "#f7f8fa",
+            "opt_btn_text": "#777777",
+            "opt_btn_bg_hover": "#2879fe",
+            "opt_btn_text_hover": "#ffffff",
+            "btn_bg_color": "#2879fe",
+            "btn_text_color": "#ffffff",
+            "btn_bg_color_hover": "#2267d8",
+            "btn_text_color_hover": "#ffffff",
+            "btn_custom_styles": "",
+            "btn_custom_styles_hover": "",
+            "pr_action_bg": "#ffffff",
+            "pr_action_bg_opacity": 90,
+            "pr_action_icon": "#191919",
+            "pr_action_bg_hover": "#191919",
+            "pr_action_bg_opacity_hover": 90,
+            "pr_action_icon_hover": "#ffffff",
+            "pr_action_icon_mobile": "#191919",
+            "pr_action_icon_mobile_hover": "#2879fe",
+            "changecolorother": false,
+            "main_title": "#191919",
+            "main_title_hover": "#2879fe",
+            "desc_title_color": "#777777",
+            "slider_arrow_bg": "#f7f8fa",
+            "slider_arrow_icon": "#191919",
+            "slider_arrow_bg_hover": "#2879fe",
+            "slider_arrow_icon_hover": "#ffffff",
+            "showmore_bg": "#ffffff",
+            "showmore_border": "#2267d8",
+            "showmore_text": "#2267d8",
+            "showmore_bg_hover": "#2267d8",
+            "showmore_border_hover": "#2267d8",
+            "showmore_text_hover": "#ffffff",
+            "usebgcolor": false,
+            "bgco": "#ffffff",
+            "bgdepad": "80",
+            "bgdepad_2": "80",
+            "bgmopad": "80",
+            "bgmopad_2": "80",
+            "showbgimage": false,
+            "imagealign": "center",
+            "imagesize": "cover",
+            "usemiheight": false,
+            "backgroundminheight3": "450",
+            "backgroundminheight2": "450",
+            "backgroundminheight1": "200"
+          }
+        }
+      },
+      "block_order": [
+        "item_9FahBX"
+      ],
+      "name": "Products 2",
+      "settings": {
+        "top_offset": "normal",
+        "custom_classes": "",
+        "featured-product-bg-desktop": "shopify://shop_images/740px_New_Launches_Bg_835e8ca9-8218-401f-8e0e-8be87f745d3d.webp",
+        "featured-product-bg-mobile2": "shopify://shop_images/650px_New_Launches_Bg.webp",
+        "fullwidth": false,
+        "nopaddings": false,
+        "hideallelementsonindex": false,
+        "show_title": true,
+        "title_to_left": false,
+        "boxed_title": false,
+        "text1": "New Launches",
+        "text2": "",
+        "text3": "",
+        "use_title_as_link": false,
+        "show_button": true,
+        "button_text": "View all",
+        "collection": "new-launches",
+        "items_always_in_center": true,
+        "limit": "4",
+        "limit2": "2",
+        "items": "3",
+        "default_carousel": true,
+        "boxed_buttons": false,
+        "show_oneproduct_in_mobile": false,
+        "use_adaptive_height": true,
+        "toshow": "4",
+        "step": "1",
+        "module_autoplay": false,
+        "delay_time": "7000"
+      }
+    },
+    "index_section_tabs_jPhE7N": {
+      "type": "index-section-tabs",
+      "blocks": {
+        "item_WkNgkY": {
+          "type": "item",
+          "settings": {
+            "tab_name": "All Ages",
+            "collection": "gifting-all-ages",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "5000"
+          }
+        },
+        "item_66MBxG": {
+          "type": "item",
+          "settings": {
+            "tab_name": "0-3 Years",
+            "collection": "our-products-for-ages-0-3",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "5000"
+          }
+        },
+        "item_itrLJ8": {
+          "type": "item",
+          "settings": {
+            "tab_name": "3+ years",
+            "collection": "3-6-years",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "5000"
+          }
+        },
+        "item_i4JngW": {
+          "type": "item",
+          "settings": {
+            "tab_name": "6+ Years",
+            "collection": "6-9-years",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "5000"
+          }
+        },
+        "item_834C9P": {
+          "type": "item",
+          "settings": {
+            "tab_name": "8+ Years",
+            "collection": "8-13-years",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "5000"
+          }
+        }
+      },
+      "block_order": [
+        "item_WkNgkY",
+        "item_66MBxG",
+        "item_itrLJ8",
+        "item_i4JngW",
+        "item_834C9P"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".index-section {padding: 0px 0;}",
+        ".container-indent {padding-top: 24px; padding-bottom: 20px;}",
+        "@media (max-width: 575px) {.container-indent {padding-top: 10px; } li.nav-item {min-width: fit-content; } ul.nav.nav-tabs.tt-tabs-default {justify-content: flex-start; overflow: scroll; flex-wrap: nowrap; }}"
+      ],
+      "settings": {
+        "top_offset": "none",
+        "fullwidth": false,
+        "show_title": false,
+        "text1": "Now Trending",
+        "text2": "",
+        "bgcolor": "#e9f4f9",
+        "tracking-id": "skill_home_nt_"
+      }
+    },
+    "index_section_tabs_ywEN6y": {
+      "type": "index-section-tabs",
+      "blocks": {
+        "item_VC3wCc": {
+          "type": "item",
+          "settings": {
+            "tab_name": "Bestsellers",
+            "collection": "bestsellers",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_7mWmYe": {
+          "type": "item",
+          "settings": {
+            "tab_name": "New Launches",
+            "collection": "new-launches",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        },
+        "item_WRMpx3": {
+          "type": "item",
+          "settings": {
+            "tab_name": "Bundle Love",
+            "collection": "bundle-save",
+            "limit": "4",
+            "toshow": "4",
+            "step": "1",
+            "module_autoplay": false,
+            "showbtn": true,
+            "delay_time": "7000"
+          }
+        }
+      },
+      "block_order": [
+        "item_VC3wCc",
+        "item_7mWmYe",
+        "item_WRMpx3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".index-section {padding: 20px 0;}"
+      ],
+      "settings": {
+        "top_offset": "none",
+        "fullwidth": false,
+        "show_title": false,
+        "text1": "Handpicked For You",
+        "text2": "",
+        "bgcolor": "#f1f9f5",
+        "tracking-id": "skill_home_hpfu_"
+      }
+    },
+    "section_recently_viewed_nPWTHi": {
+      "type": "section-recently-viewed",
+      "custom_css": [
+        "@media (max-width: 1024px) {.arrow-location-right-top .slick-arrow {top: 50% !important; }}",
+        "@media (min-width: 790px) {.container-indent.recently_view_products_wokiee {padding-bottom: 40px; background: #e9f4f9; }}"
+      ],
+      "settings": {
+        "fullscreen": false,
+        "titleincenter": true,
+        "title": "Recently Viewed Products",
+        "product_upsell_collection_count": "8",
+        "slickdesktoptoshow": "4"
+      }
+    },
+    "section_testimonials3_kwBkiy": {
+      "type": "section-testimonials3",
+      "blocks": {
+        "column_xjgPfN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_13_c8aec83d-3988-45a8-9b16-7048ed39910b.webp",
+            "custom_text": "<p>“My son just started playing peek-a-boo, so I got him this book. He loves it! He loves discovering the hiding animal on each page, then hiding them again. And he especially loves the mirror at the end and kisses the baby in the mirror!”</p>",
+            "custom_name": "Ravi"
+          }
+        },
+        "column_XH9qDr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_11.webp",
+            "custom_text": "<p>“This is a great way to teach hand eye coordination for little ones prior to starting school. The best bit for her was the blank magnetic board which freed her to use her 'artistic license'.”</p>",
+            "custom_name": "Tiara"
+          }
+        },
+        "column_HyXaqc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_14.webp",
+            "custom_text": "<p>“Got this fun craft for my 6 year old boy. He loves it! I love that it kept him so occupied and it is a mess free craft. Definitely recommend!”</p>",
+            "custom_name": "Shailesh"
+          }
+        },
+        "column_76FnnT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_10_b2af51fd-97e7-4577-bdf8-2ce7458c601a.webp",
+            "custom_text": "<p>“My son really enjoyed this craft set! He had fun planning the scenes and choosing the shiny colours. I really appreciate that there is no glue or paint. The outcome is so nice that it's now placed on all the walls of his bedroom”</p>",
+            "custom_name": "Kinjal"
+          }
+        },
+        "column_6wRryy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_16_1.webp",
+            "custom_text": "<p>“This is a great puzzle set for kids who love the ocean! Nice, colourful, giant puzzle pieces. It gets my kids off screens and focused on something educational. I highly recommend!”</p>",
+            "custom_name": "Rashmi"
+          }
+        },
+        "column_RnrTEh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_9_4.webp",
+            "custom_text": "<p>“When Guess in 10 arrived, we opened it and played it right away. We had soo much fun with it!!!  Quality and price is reasonable. I would recommend this awesome learning game to anyone with children of any age!!”</p>",
+            "custom_name": "Livnat"
+          }
+        },
+        "column_NL4gmj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_12_817c7011-ab96-423b-8ee7-0d883457ca7d.webp",
+            "custom_text": "<p>“I bought this for my niece. I think the fact that it's dry erase makes it fun to try again or quickly go on to the next activity. They pick it up and do it on their own at times. It's great”</p>",
+            "custom_name": "Aishwarya"
+          }
+        },
+        "column_dMBRhc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Frame_15.webp",
+            "custom_text": "<p>“The cards are thick & durable with different patterns and symbols. My 4-month-old daughter is fascinated by them. It's definitely her favourite activity and keeps her attention for a really long time. I'm very happy with my purchase.”</p>",
+            "custom_name": "Shweta"
+          }
+        }
+      },
+      "block_order": [
+        "column_xjgPfN",
+        "column_XH9qDr",
+        "column_HyXaqc",
+        "column_76FnnT",
+        "column_6wRryy",
+        "column_RnrTEh",
+        "column_NL4gmj",
+        "column_dMBRhc"
+      ],
+      "settings": {
+        "text1": "<span>Rakhi</span> Love From Parents",
+        "text2": "Take it from 1,00,000+ 4.8 star reviews",
+        "sectionbg": "#f1f9f5",
+        "enable_video_looping": true
+      }
+    },
+    "1521705369018": {
+      "type": "index-section-blog",
+      "disabled": true,
+      "settings": {
+        "top_offset": "none",
+        "custom_classes": "",
+        "fullwidth": false,
+        "show_title": true,
+        "title_to_left": false,
+        "boxed_title": false,
+        "blog_text": "",
+        "blog_url": "",
+        "text1": "<span>Rakhi</span> Gift Guide",
+        "text2": "",
+        "text3": "",
+        "use_title_as_link": true,
+        "button_text": "",
+        "blog": "blog",
+        "limit": "4",
+        "items": "3",
+        "show_tags": false,
+        "blog_show_author": false,
+        "blog_show_date": true,
+        "show_comment": false,
+        "show_description": true,
+        "truncate_excerpt": true,
+        "truncate": "18",
+        "truncate_last_symbols": "...",
+        "tracking-id": "skill_home_blogs_b0"
+      }
+    },
+    "index_section_blog_djpJrr": {
+      "type": "index-section-blog",
+      "custom_css": [],
+      "name": "Blog Posts",
+      "settings": {
+        "top_offset": "normal",
+        "custom_classes": "",
+        "blog-bg-desktop": "shopify://shop_images/Blog_Section_500_H_72382dd1-6761-4205-a4a0-f3794e25cb7c.webp",
+        "blog-bg-mobile": "shopify://shop_images/Blog_Section_-_Mobile.webp",
+        "fullwidth": false,
+        "show_title": true,
+        "title_to_left": false,
+        "boxed_title": false,
+        "blog_text": "View All",
+        "blog_url": "shopify://blogs/blog",
+        "text1": "Blogs",
+        "text2": "",
+        "text3": "",
+        "use_title_as_link": true,
+        "button_text": "SHOW ALL",
+        "blog": "blog",
+        "limit": "4",
+        "items": "3",
+        "show_tags": true,
+        "blog_show_author": false,
+        "blog_show_date": true,
+        "show_comment": false,
+        "show_description": true,
+        "truncate_excerpt": false,
+        "truncate": "18",
+        "truncate_last_symbols": "...",
+        "tracking-id": "skill_home_blogs_b0"
+      }
+    }
+  },
+  "order": [
+    "custom_slidershow_QX4EHG",
+    "section_multicolumn_QKnXVH",
+    "custom_banner_xJDLXt",
+    "custom_collection_list_Baf3yQ",
+    "index_section_products_yzVWXW",
+    "index_section_products_2_b7tV8w",
+    "index_section_tabs_jPhE7N",
+    "index_section_tabs_ywEN6y",
+    "section_recently_viewed_nPWTHi",
+    "section_testimonials3_kwBkiy",
+    "1521705369018",
+    "index_section_blog_djpJrr"
+  ]
+}

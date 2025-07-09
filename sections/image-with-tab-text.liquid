@@ -108,57 +108,25 @@
                   </div>
                 {% elsif block.type == 'item3' %}
                   <div class="faq-wrapper tab-desc-{% if block.settings.tab_name contains 'FAQ' and product.metafields.custom.faq_questions.value == blank %}hide {% endif %}">
-                    {% assign questions = product.metafields.custom.faq_questions.value %}
-                    {% assign answers = product.metafields.custom.faq_answers.value %}
-
-                    {% for i in (0..questions.size) %}
-                      {% if i == 0 %}
-                        <div class="faq-item-1 faq-div Active">
-                          <h4>
-                            {{ questions[i] }}
-                            <span class="plus-sign">+</span>
-                            <span class="minus-sign">-</span>
-                          </h4>
-                          <p>{{ answers[i] }}</p>
-                        </div>
-                      {% elsif i == 1 %}
-                        <div class="faq-item-2 faq-div">
-                          <h4>
-                            {{ questions[i] }}
-                            <span class="plus-sign">+</span>
-                            <span class="minus-sign">-</span>
-                          </h4>
-                          <p>{{ answers[i] }}</p>
-                        </div>
-                      {% elsif i == 2 %}
-                        <div class="faq-item-3 faq-div">
-                          <h4>
-                            {{ questions[i] }}
-                            <span class="plus-sign">+</span>
-                            <span class="minus-sign">-</span>
-                          </h4>
-                          <p>{{ answers[i] }}</p>
-                        </div>
-                      {% elsif i == 3 %}
-                        <div class="faq-item-4 faq-div">
-                          <h4>
-                            {{ questions[i] }}
-                            <span class="plus-sign">+</span>
-                            <span class="minus-sign">-</span>
-                          </h4>
-                          <p>{{ answers[i] }}</p>
-                        </div>
-                      {% elsif i == 4 %}
-                        <div class="faq-item-5 faq-div">
-                          <h4>
-                            {{ questions[i] }}
-                            <span class="plus-sign">+</span>
-                            <span class="minus-sign">-</span>
-                          </h4>
-                          <p>{{ answers[i] }}</p>
-                        </div>
-                      {% endif %}
-                    {% endfor %}
+                    {% assign faq_questions = product.metafields.custom.faq_questions.value %}
+                    {% assign faq_answers = product.metafields.custom.faq_answers.value %}
+                    
+                    {% if faq_questions != blank and faq_answers != blank %}
+                      <div class="faq-wrapper tab-desc-{% if block.settings.tab_name contains 'FAQ' %}show{% else %}hide{% endif %}">
+                        {% for i in (0..faq_questions.size) %}
+                          {% if faq_questions[i] != blank and faq_answers[i] != blank %}
+                            <div class="faq-item-{{ i | plus: 1 }} faq-div {% if i == 0 %}Active{% endif %}">
+                              <h4>
+                                {{ faq_questions[i] }}
+                                <span class="plus-sign">+</span>
+                                <span class="minus-sign">-</span>
+                              </h4>
+                              <p>{{ faq_answers[i] }}</p>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
                   </div>
                 {%- else -%}
                   {%- if product.metafields.custom.single_sku_pdp_description.value != blank

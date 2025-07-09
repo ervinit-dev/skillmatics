@@ -28,22 +28,18 @@
 {{ 'section-blog.css' | asset_url | stylesheet_tag }}
 {%- assign item = section.settings -%}
 {%- paginate blog.articles by item.blog_list -%}
-
-{% comment %}
       <a href="https://www.skillmatics.in/collections/bestsellers?utm_source=bloglist_banner&utm_medium=bloglist_banner_bestseller_collection&utm_campaign=bloglistbestsellerbau&utm_id=bloglistbanner">
     <img
-      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_18_a74b8eb5-78c3-429c-bacd-8bd8f9570e79.webp?v=1746704729"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Desktop_20_d34888ba-004f-41d6-bded-4d4f2f878589.webp?v=1752058622"
       class="mobile-hidden blog-b-desk"
     >
   </a>
   <a href="https://www.skillmatics.in/collections/bestsellers?utm_source=bloglist_banner&utm_medium=bloglist_banner_bestseller_collection&utm_campaign=bloglistbestsellerbau&utm_id=bloglistbanner">
     <img
-      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_14_bb1465a9-8b99-4241-8236-86f3be1005e7.webp?v=1746704729"
+      src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/Mobile_20_b5be9aba-ceb7-44e5-876e-b883ac999072.webp?v=1752058625"
       class="desktop-hidden blog-b-mbl"
     >
     </a>
-{% endcomment %}
-
   <div class="container-indent {% if blog.articles.size == forloop.index %}last-blog{% endif %}">
     <div class="container container-fluid-custom-mobile-padding">
       <h1 class="tt-title-subpages noborder">

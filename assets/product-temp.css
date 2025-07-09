@@ -377,7 +377,7 @@ ul.pdp-nav-tabs.nav.nav-tabs.tt-tabs-default {
 .faq-wrapper div h4 {
   padding: 0 !important;
 }
-.faq-wrapper div {
+.faq-wrapper .faq-div {
   margin-bottom: 16px;
   border-bottom: 1px solid rgba(6, 55, 79, 0.08);
   padding-bottom: 15px;

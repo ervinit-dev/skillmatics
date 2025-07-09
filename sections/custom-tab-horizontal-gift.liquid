@@ -90,9 +90,6 @@
                       class="collection-img"
                       src="{{ product.featured_image | img_url: '400x' }}"
                       alt="{{ product.title }}"
-                      loading="lazy"
-                      fetchpriority="medium"
-                      decoding="async"
                     >
                   </a>
                 </div>
@@ -108,7 +105,7 @@
                           {{-
                             product.compare_at_price
                             | minus: product.price
-                            | times: 100
+                            | times: 100.0
                             | divided_by: product.compare_at_price
                             | round
                           -}}
@@ -336,15 +333,13 @@
 </section>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Loop through each bs-tabs-section on the page
     document.querySelectorAll(".bs-tabs-section").forEach((sectionEl) => {
       const tabLinks = sectionEl.querySelectorAll(".bs-tabs li");
       const tabContents = sectionEl.querySelectorAll(".bs-tab-contents .bs-product-grid");
-      const viewAllBtn = sectionEl.querySelector("#view-all-link");
+      const viewAllBtn = sectionEl.querySelector(".view-all-link"); // Changed to class
 
-      // Slick init function scoped to each tab
       function initSlickIfMobile(grid) {
-        if (window.innerWidth <= 1100 && !grid.classList.contains("slick-initialized")) {
+        if (window.innerWidth <= 1100 && !$(grid).hasClass("slick-initialized")) {
           $(grid).slick({
             slidesToShow: 3,
             slidesToScroll: 1,
@@ -363,7 +358,12 @@
         }
       }
 
-      // Activate a tab by index for this section
+      function refreshSlick(grid) {
+        if ($(grid).hasClass("slick-initialized")) {
+          $(grid).slick("setPosition");
+        }
+      }
+
       function activateTab(index) {
         tabLinks.forEach((tab, i) => {
           tab.classList.toggle("active", i === index);
@@ -372,7 +372,12 @@
         tabContents.forEach((content, i) => {
           if (i === index) {
             content.classList.add("active");
-            initSlickIfMobile(content);
+
+            // Delay to allow visibility before init
+            setTimeout(() => {
+              initSlickIfMobile(content);
+              refreshSlick(content);
+            }, 100);
           } else {
             content.classList.remove("active");
           }
@@ -385,19 +390,101 @@
         }
       }
 
-      // Initial activation for each section
+      // Activate the first tab initially
       if (tabLinks.length > 0) {
         activateTab(0);
       }
 
-      // Tab click handlers
+      // Add click handlers per tab
       tabLinks.forEach((tab, index) => {
         tab.addEventListener("click", function () {
           activateTab(index);
         });
       });
 
-      // Resize re-init for all grids in this section
+      // Scoped resize event for this section
+      window.addEventListener("resize", function () {
+        tabContents.forEach((grid) => {
+          if ($(grid).hasClass("slick-initialized")) {
+            $(grid).slick("unslick");
+          }
+          initSlickIfMobile(grid);
+        });
+      });
+    });
+  });
+</script><script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".bs-tabs-section").forEach((sectionEl) => {
+      const tabLinks = sectionEl.querySelectorAll(".bs-tabs li");
+      const tabContents = sectionEl.querySelectorAll(".bs-tab-contents .bs-product-grid");
+      const viewAllBtn = sectionEl.querySelector(".view-all-link"); // Changed to class
+
+      function initSlickIfMobile(grid) {
+        if (window.innerWidth <= 1100 && !$(grid).hasClass("slick-initialized")) {
+          $(grid).slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            infinite: false,
+            responsive: [
+              {
+                breakpoint: 780,
+                settings: {
+                  slidesToShow: 2,
+                },
+              },
+            ],
+          });
+        }
+      }
+
+      function refreshSlick(grid) {
+        if ($(grid).hasClass("slick-initialized")) {
+          $(grid).slick("setPosition");
+        }
+      }
+
+      function activateTab(index) {
+        tabLinks.forEach((tab, i) => {
+          tab.classList.toggle("active", i === index);
+        });
+
+        tabContents.forEach((content, i) => {
+          if (i === index) {
+            content.classList.add("active");
+
+            // Delay to allow visibility before init
+            setTimeout(() => {
+              initSlickIfMobile(content);
+              refreshSlick(content);
+            }, 100);
+          } else {
+            content.classList.remove("active");
+          }
+        });
+
+        const selectedTab = tabLinks[index];
+        const collectionHandle = selectedTab.getAttribute("data-collection");
+        if (collectionHandle && viewAllBtn) {
+          viewAllBtn.setAttribute("href", `/collections/${collectionHandle}`);
+        }
+      }
+
+      // Activate the first tab initially
+      if (tabLinks.length > 0) {
+        activateTab(0);
+      }
+
+      // Add click handlers per tab
+      tabLinks.forEach((tab, index) => {
+        tab.addEventListener("click", function () {
+          activateTab(index);
+        });
+      });
+
+      // Scoped resize event for this section
       window.addEventListener("resize", function () {
         tabContents.forEach((grid) => {
           if ($(grid).hasClass("slick-initialized")) {

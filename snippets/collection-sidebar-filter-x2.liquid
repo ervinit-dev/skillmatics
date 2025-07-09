@@ -57,6 +57,13 @@
               value="{{lowest_price}}"
               data-value="{{lowest_price}}"
             {% endif %}
+            {% if collection.handle == 'rakhi-special' or collection.handle == 'all-ages' or collection.handle == 'all-products' %}
+                 value="{{minprice}}"
+               data-value="{{minprice}}"
+                 {% else %}
+                 value="{{lowest_price}}"
+               data-value="{{lowest_price}}"
+               {% endif %}
             {% comment %}
               {%- if filter.min_value.value -%}
               value="{{minprice}}"

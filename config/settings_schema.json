@@ -7641,6 +7641,16 @@
         "type": "image_picker",
         "id": "perfect_gift",
         "label": "Perfect Gift"
+      },
+      {
+        "type": "image_picker",
+        "id": "rakhi_special",
+        "label": "Rakhi Special"
+      },
+      {
+        "type": "image_picker",
+        "id": "limited_edition",
+        "label": "Limited Edition"
       }
     ]
   },

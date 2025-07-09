@@ -53,12 +53,12 @@
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner mobile-{%- unless  item.image == blank -%}hide{%- endunless -%}"
                     decoding="async"
-                    src="{{ item.image | img_url: '1600x'}}"
+                    srcset="{{ item.image | img_url: '1600x'}}"
                     id="{{ section.settings.tracking-id  | strip}}{{ forloop.index }}"
                     alt="banner image"
                     width="100%"
                     height="100%"
-                    loading="eager"
+                    decoding="async"
                     {%- if forloop.index == 1 -%}
                       fetch-priority="high"
                       loading="eager"
@@ -81,7 +81,7 @@
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner desktop-{%- unless  item.image == blank -%}hide {%- endunless -%} "
                     decoding="async"
-                    src="{{ item.mob-image | img_url: '450x'}}"
+                    srcset="{{ item.mob-image | img_url: '450x'}}"
                     id="{{ section.settings.tracking-id  | strip}}{{ forloop.index }}"
                     alt="banner image"
                     width="100%"

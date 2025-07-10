@@ -81,7 +81,7 @@
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner desktop-{%- unless  item.image == blank -%}hide {%- endunless -%} "
                     decoding="async"
-                    srcset="{{ item.mob-image | img_url: '450x'}}"
+                    srcset="{{ item.mob-image | img_url: '500x'}}"
                     id="{{ section.settings.tracking-id  | strip}}{{ forloop.index }}"
                     alt="banner image"
                     width="100%"

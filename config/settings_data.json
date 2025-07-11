@@ -845,7 +845,7 @@
     "discount_type": "minimum_quantity",
     "minQunat": 2,
     "minAmount": 0,
-    "minQunat2": 1,
+    "minQunat2": 0,
     "minAmount2": 0,
     "minQunat3": 0,
     "minAmount3": 0,

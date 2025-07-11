@@ -49,7 +49,7 @@
             <div class="offer-callout av-pdp-clout">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp|&nbsp  {{ settings.usecode }}    
            </div>
          {% endif %}  {% endcomment %}
-        {% if product.title == 'High Contrast Sensory Cloth Mat (0-18 months)' %}
+        
             {% if b_i.offer1 != blank %} 
               <div class="offer-callout 1">
                 {{ b_i.offer1 }}
@@ -57,8 +57,8 @@
                 <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" >
               </div>
             {% endif %} 
-        {% endif %}
-                                                                               
+
+        {% if product.title == 'High Contrast Sensory Cloth Mat (0-18 months)' %}
         {% if b_i.offer2 != blank %} 
           <div class="offer-callout 2">
             {{ b_i.offer2 }}
@@ -66,6 +66,7 @@
             <img loading="lazy"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button1"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739">
           </div>
         {% endif %} 
+          {% endif %}
           {% if b_i.offer3 != blank %} <div class="offer-callout 3">{{ b_i.offer3 }}</div>{% endif %}
           {% if b_i.offer4 != blank %} <div class="offer-callout 4">{{ b_i.offer4 }}</div>{% endif %}
          {% if b_i.offer5 != blank %} <div class="offer-callout 5">{{ b_i.offer5 }}</div>{% endif %}

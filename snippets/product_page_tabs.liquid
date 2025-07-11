@@ -56,9 +56,8 @@
                 <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" >
               </div>
             {% endif %} 
-                                                                               
+        {% if collection.handle == 'rakhi-prime-day-12-14' %}                                                          
         {% if b_i.offer2 != blank %} 
-          {% if collection.handle == 'rakhi-prime-day-12-14' %}
             <div class="offer-callout 2">
             {{ b_i.offer2 }}
             <p id="text-to-copy1" style="display:none">{{ b_i.offer2_cc }}</p>

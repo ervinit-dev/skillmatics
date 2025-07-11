@@ -673,6 +673,8 @@ span.tt-label-location-badge {    padding-left: 5px;}
   display: flex;
   justify-content: center;
   gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 .salestags.colllectionpg.rpp {
   display: flex;

@@ -868,7 +868,7 @@
     "free-gift-img": "shopify://shop_images/Eligible_for_free_gift_strip.webp",
     "free-gift-amt": "1498",
     "col-handle1": "save200-collection",
-    "show-callout": false,
+    "show-callout": true,
     "get-it-at": "Buy any 2 and get FLAT 20% OFF | <br>Use Code: RAKHI20",
     "per-amt": "",
     "usecode": "<p>Use Code: <strong>RAKHI20</strong></p>",

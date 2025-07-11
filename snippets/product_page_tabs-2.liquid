@@ -79,10 +79,7 @@
 
  
  {% endif %} {% comment %}4th collection based callout end   {% endcomment %}
-  {% if settings.show-callout5 %}
-  {% if product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
-                or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
-              %}   
+  {% if settings.show-callout5 %} 
            <div id="callout5" class="5 custom-avaible-offer">
               
                   {% assign per-amt5 = settings.per-amt5 | strip | plus: 0 %}
@@ -101,9 +98,6 @@
          
           {% endif %}
   {% endif %}{% comment %}5th product based callout end   {% endcomment %}
-
- 
- {% endif %}
 
 
       {%- when 'tab_unique' -%}

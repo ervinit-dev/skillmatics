@@ -49,9 +49,7 @@
             <div class="offer-callout av-pdp-clout">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp|&nbsp  {{ settings.usecode }}    
            </div>
          {% endif %}  {% endcomment %}
-        {% unless product.handle == 'lets-make-pasta-play-food-for-realistic-pretend-play-ages-3-7'
-            or product.title == 'Foil Fun Incredible India | No Mess Art Kit (Ages 4-12)'
-            or product.title == 'Disc-O Art | No Mess Art & Craft Activity (ages 4-12)' %}
+        {% if collection.handle == 'rakhi-prime-day-12-14' %}
             {% if b_i.offer1 != blank %} 
               <div class="offer-callout 1">
                 {{ b_i.offer1 }}
@@ -59,7 +57,7 @@
                 <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" >
               </div>
             {% endif %} 
-        {% endunless %}
+        {% endif %}
                                                                                
         {% if b_i.offer2 != blank %} 
           <div class="offer-callout 2">

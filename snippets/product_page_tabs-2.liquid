@@ -36,11 +36,11 @@
                             <div class="salestags pdp-callout">
                                 <span class="textsaletag">
                                     {{ settings.get-it-at }} 
-                                   <b> {{ pr_variant.price | times: per-amt | money }}</b>
+                              {% comment %}     <b> {{ pr_variant.price | times: per-amt | money }}</b>
                                  
                                     <span class="spc-coll">|</span> 
                                     {{ settings.usecode }}
-                                </span> 
+                                </span> {% endcomment %}
                             </div>
                       </div> 
                         

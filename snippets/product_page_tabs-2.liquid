@@ -25,9 +25,7 @@
  {% if product.tags contains 'single product'%}  
  
  {% if product.collections contains collections[settings.col-handle1] and settings.show-callout  %}  
-            {% unless product.title == 'Peek-A-Boo: Under The Sea | Interactive Cloth Book (Ages 6+ months)'
-                          or product.title == 'My Quiet Book | Sensory Activity Book (ages 1+)'
-                          or product.title contains 'Free Gift'
+            {% unless product.title contains 'Free Gift'
                 or product.collections contains collections[settings.col-handle2] or product.collections contains collections[settings.col-handle3] or product.collections contains collections[settings.col-handle4]
                         %}                           
                       <div id="callout1" class="custom-avaible-offer  price">

@@ -322,12 +322,12 @@
                           height="18px"
                         >
                         {{- settings['get-it-at'] }}
-                          <b>{{ pr_variant.price | times: per-amt | money }}</b> |
-                        <br>
+                     {% comment %}     <b>{{ pr_variant.price | times: per-amt | money }}</b> |
+                        <br>{% endcomment %}
                       </span>
-                          <span class="textsaletag">
+                     {% comment %}     <span class="textsaletag">
                           {{ settings.usecode -}}
-                        </span>
+                        </span>{% endcomment %}
                     </div>                 
                 {% endunless %}
                {% endif %}{% comment %}first generic based callout end   {% endcomment %}

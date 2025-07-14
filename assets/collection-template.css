@@ -178,7 +178,7 @@ h1.tt-title {
 
   /* product grid */
   .tt-product-listing > .tt-col-item {
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.2rem;
   }
   .container-fluid-custom-mobile-padding-02 {
     padding: 0;

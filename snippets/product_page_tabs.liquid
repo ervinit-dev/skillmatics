@@ -50,7 +50,7 @@
             <div class="offer-callout av-pdp-clout">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp|&nbsp  {{ settings.usecode }}    
            </div>
          {% endif %}  {% endcomment %}
-        {% unless product.title == 'Foil Fun Incredible India | No Mess Art Kit (Ages 4-12)' or product.title == 'Dot it! - Disney Edition | No mess sticker art (ages 3-7)' or product.title == 'Marble Run Craft Kit: Run Through Space (ages 8-13)' or product.title == 'Dot it! - Mandala Art | No Mess Sticker Art (ages 3-7)' or product.handle == 'lets-make-pasta-play-food-for-realistic-pretend-play-ages-3-7' %}
+        {% unless product.title == '' %}
            {% if b_i.offer1 != blank %} 
               <div class="offer-callout 1">
                 {{ b_i.offer1 }}

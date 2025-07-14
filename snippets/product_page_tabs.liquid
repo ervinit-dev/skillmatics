@@ -50,6 +50,7 @@
             <div class="offer-callout av-pdp-clout">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp|&nbsp  {{ settings.usecode }}    
            </div>
          {% endif %}  {% endcomment %}
+     <!---- Will reflect on all products unless Rakhi Specific product tags---->
         {% unless product.tags contains 'RAKHI-40' %}
            {% if b_i.offer1 != blank %} 
               <div class="offer-callout 1">
@@ -59,7 +60,7 @@
               </div>
             {% endif %} 
           {% endunless %}
-
+  <!---- Will reflect on all products unless Rakhi Specific product tags ends here---->
        
         {% if b_i.offer2 != blank %} 
           <div class="offer-callout 2">
@@ -69,6 +70,8 @@
           </div>
         {% endif %} 
      <!---- Specific product available offers start here---->
+
+       <!----Will reflect only on RAKHI-40 tag products---->
     {% if product.tags contains 'RAKHI-40' %}
         {% if b_i.offer5 != blank %} 
           <div class="offer-callout 5">{{ b_i.offer5 }}
@@ -77,6 +80,7 @@
          </div>
            {% endif %}
     {% endif %}
+           <!----Will reflect only on RAKHI-40 tag products ends her---->
     <!---- Specific product available offers endds here---->
           {% if b_i.offer3 != blank %} <div class="offer-callout 3">{{ b_i.offer3 }}</div>{% endif %}
           {% if b_i.offer4 != blank %} <div class="offer-callout 4">{{ b_i.offer4 }}</div>{% endif %}

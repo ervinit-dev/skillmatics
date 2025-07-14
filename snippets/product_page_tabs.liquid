@@ -2,6 +2,7 @@
   .offer-callout {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   .offer-callout img {
     cursor: pointer;
@@ -49,14 +50,15 @@
             <div class="offer-callout av-pdp-clout">{{ settings.get-it-at }}  <b>&nbsp {{ pr_variant.price | times: per-amt | money }} </b>&nbsp|&nbsp  {{ settings.usecode }}    
            </div>
          {% endif %}  {% endcomment %}
-        
-            {% if b_i.offer1 != blank %} 
+        {% unless product.title == 'Foil Fun Incredible India | No Mess Art Kit (Ages 4-12)' or product.title == 'Dot it! - Disney Edition | No mess sticker art (ages 3-7)' or product.title == 'Marble Run Craft Kit: Run Through Space (ages 8-13)' or product.title == 'Dot it! - Mandala Art | No Mess Sticker Art (ages 3-7)' or product.handle == 'lets-make-pasta-play-food-for-realistic-pretend-play-ages-3-7' %}
+           {% if b_i.offer1 != blank %} 
               <div class="offer-callout 1">
                 {{ b_i.offer1 }}
                 <p id="text-to-copy" style="display:none">{{ b_i.offer1_cc }}</p>
                 <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button" srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" >
               </div>
             {% endif %} 
+          {% endunless %}
 
         {% if product.tags contains 'Rakhi Prime' %}
         {% if b_i.offer2 != blank %} 
@@ -67,9 +69,18 @@
           </div>
         {% endif %} 
           {% endif %}
+     <!---- Specific product available offers start here---->
+    {% if product.title == 'Sandeezy: Ice Cream Parlour | Sensory Toy & Pretend Play Set (ages 3-7)' %}
+        {% if b_i.offer5 != blank %} 
+          <div class="offer-callout 5">{{ b_i.offer5 }}
+            <p id="text-to-copy2" style="display:none">{{ b_i.offer5_cc }}</p>
+            <img loading="lazy"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button2"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739">
+         </div>
+           {% endif %}
+    {% endif %}
+    <!---- Specific product available offers endds here---->
           {% if b_i.offer3 != blank %} <div class="offer-callout 3">{{ b_i.offer3 }}</div>{% endif %}
           {% if b_i.offer4 != blank %} <div class="offer-callout 4">{{ b_i.offer4 }}</div>{% endif %}
-         {% if b_i.offer5 != blank %} <div class="offer-callout 5">{{ b_i.offer5 }}</div>{% endif %}
           {% if b_i.offer6 != blank %} <div class="offer-callout 6">{{ b_i.offer6 }}</div>{% endif %}
           {% if b_i.offer7 != blank %} <div class="offer-callout 7">{{ b_i.offer7 }}</div>{% endif %}
           {% if b_i.offer8 != blank %} <div class="offer-callout 8">{{ b_i.offer8 }}</div>{% endif %}
@@ -97,60 +108,49 @@
   {%- endcase -%}
   {%- endfor -%}
   {%- endcapture -%}
-
 {%- if html_tabs != '' -%}
   <div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
 {%- endif -%}
 
 <script>
-    document.getElementById('copy-button').addEventListener('click', function() {
-    // Get the text to copy
-    const textToCopy = document.getElementById('text-to-copy').innerText;
+  document.addEventListener("DOMContentLoaded", function () {
+    function attachCopyListener(buttonId, textId) {
+      const copyBtn = document.getElementById(buttonId);
+      const textEl = document.getElementById(textId);
 
-    // Create a temporary textarea element
-    const tempTextArea = document.createElement('textarea');
-    tempTextArea.value = textToCopy;
+      if (!copyBtn || !textEl) return;
 
-    // Add it to the DOM
-    document.body.appendChild(tempTextArea);
+      copyBtn.addEventListener("click", function () {
+        const textToCopy = textEl.innerText.trim();
 
-    // Select the text
-    tempTextArea.select();
-    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+        // Use Clipboard API if available
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            alert("Copied to clipboard!");
+          }).catch((err) => {
+            alert("Failed to copy: " + err);
+          });
+        } else {
+          // Fallback for older browsers
+          const tempTextArea = document.createElement("textarea");
+          tempTextArea.value = textToCopy;
+          document.body.appendChild(tempTextArea);
+          tempTextArea.focus();
+          tempTextArea.select();
+          try {
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+          } catch (err) {
+            alert("Copy failed: " + err);
+          }
+          document.body.removeChild(tempTextArea);
+        }
+      });
+    }
 
-    // Copy the text
-    document.execCommand('copy');
-
-    // Remove the temporary element
-    document.body.removeChild(tempTextArea);
-
-    // Optional: Provide feedback to the user
-    alert('Copied to clipboard!');
-  });
-
-
-    document.getElementById('copy-button1').addEventListener('click', function() {
-    // Get the text to copy
-    const textToCopy = document.getElementById('text-to-copy1').innerText;
-
-    // Create a temporary textarea element
-    const tempTextArea = document.createElement('textarea');
-    tempTextArea.value = textToCopy;
-
-    // Add it to the DOM
-    document.body.appendChild(tempTextArea);
-
-    // Select the text
-    tempTextArea.select();
-    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
-
-    // Copy the text
-    document.execCommand('copy');
-
-    // Remove the temporary element
-    document.body.removeChild(tempTextArea);
-
-    // Optional: Provide feedback to the user
-    alert('Copied to clipboard!');
+    // Attach all copy buttons
+    attachCopyListener("copy-button", "text-to-copy");
+    attachCopyListener("copy-button1", "text-to-copy1");
+    attachCopyListener("copy-button2", "text-to-copy2");
   });
 </script>

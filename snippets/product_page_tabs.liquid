@@ -60,7 +60,7 @@
             {% endif %} 
           {% endunless %}
 
-        {% if product.tags contains 'Rakhi Prime' %}
+       
         {% if b_i.offer2 != blank %} 
           <div class="offer-callout 2">
             {{ b_i.offer2 }}
@@ -68,9 +68,8 @@
             <img loading="lazy"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button1"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739">
           </div>
         {% endif %} 
-          {% endif %}
      <!---- Specific product available offers start here---->
-    {% if product.title == 'Sandeezy: Ice Cream Parlour | Sensory Toy & Pretend Play Set (ages 3-7)' %}
+    {% if product.tags contains 'Rakhi-40' %}
         {% if b_i.offer5 != blank %} 
           <div class="offer-callout 5">{{ b_i.offer5 }}
             <p id="text-to-copy2" style="display:none">{{ b_i.offer5_cc }}</p>

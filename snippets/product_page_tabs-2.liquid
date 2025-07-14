@@ -25,7 +25,7 @@
  {% if product.tags contains 'single product'%}  
  
  {% if product.collections contains collections[settings.col-handle1] and settings.show-callout  %}  
-            {% unless product.title contains 'Sandeezy: Ice Cream Parlour | Sensory Toy & Pretend Play Set (ages 3-7)'
+            {% unless product.title contains ''
                or product.title contains 'Free Gift'
                 or product.collections contains collections[settings.col-handle2] or product.collections contains collections[settings.col-handle3] or product.collections contains collections[settings.col-handle4]
                         %}                           
@@ -34,11 +34,11 @@
                           
                             <div class="salestags pdp-callout">
                                 <span class="textsaletag">
-                               {% comment %}      {{ settings.get-it-at }}
+                            {{ settings.get-it-at }}
                                 <b> {{ pr_variant.price | times: per-amt | money }}</b>
                                  
                                     <span class="spc-coll">|</span> 
-                                    {{ settings.usecode }}{% endcomment %}Buy any 2 | Get FLAT 20% OFF | Use Code: <b>RAKHI20</b>
+                                    {{ settings.usecode }}{% comment %}Buy any 2 | Get FLAT 20% OFF | Use Code: <b>RAKHI20</b>{% endcomment %} 
                                 </span>
                             </div>
                       </div> 
@@ -82,7 +82,7 @@
  {% endif %} {% comment %}4th collection based callout end   {% endcomment %}
   {% if settings.show-callout5 %} 
            <div id="callout5" class="5 custom-avaible-offer">
-              {% if product.title contains 'Sandeezy: Ice Cream Parlour | Sensory Toy & Pretend Play Set (ages 3-7)' %}
+              {% if product.title contains '' %}
                   {% assign per-amt5 = settings.per-amt5 | strip | plus: 0 %}
                   
                   <div class="salestags pdp-callout">

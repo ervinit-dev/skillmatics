@@ -704,7 +704,7 @@ span.tt-label-location-badge {    padding-left: 5px;}
 }
 @media (max-width: 400px) {
   .textsaletag.rr {
-    gap: 3px;
+    gap: 0px;
   }
   .textsaletag.rr {
     font-size: 10px;

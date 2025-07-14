@@ -758,13 +758,13 @@
                             {% assign per-amt2 = settings['per-amt2'] | strip | plus: 0 %}
                             <div class="salestags colllectionpg rpp callout2">
                               <span class="textsaletag rr">
-                                <img
+                             {% comment %}   {<img
                                   class="offer-code"
                                   src="{{'calloutimg.svg' |asset_url }}"
                                   alt="discounttag"
                                   width="18px"
                                   height="18px"
-                                >                              
+                                >     {% endcomment %}                         
                                 {{- settings['get-it-at2'] -}}                              
                                 <b>{{ pr_variant.price | times: per-amt2 | money }}</b>
                                 <br>

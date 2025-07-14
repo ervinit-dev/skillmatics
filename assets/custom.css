@@ -712,6 +712,9 @@ span.tt-label-location-badge {    padding-left: 5px;}
   span.textsaletag p {
     font-size: 10px !important;
   }
+  .pdp-callout span.textsaletag p{
+    font-size: 12px !important;
+  }
 }
 span.free-tag {
   font-size: 15px;

@@ -887,7 +887,7 @@
     "get-it-at4": "Get it at",
     "per-amt4": "0.99",
     "usecode4": "<p>Use Code: <strong>Callout</strong></p>",
-    "show-callout5": true,
+    "show-callout5": false,
     "get-it-at5": "Get it at",
     "per-amt5": "0.98",
     "usecode5": "<p>Use Code: <strong>SAND</strong></p>",

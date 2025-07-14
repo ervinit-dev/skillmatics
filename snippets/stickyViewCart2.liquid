@@ -491,7 +491,7 @@ if (freeShippingHSElement) {
               // Check if coupon discount is not blank before showing
               if('{{ settings.coupon_discount_sticky }}' && '{{ settings.coupon_discount_sticky }}'.trim() !== ''){
                 document.querySelector('.stickyOfferDiv').style.display='flex';
-                document.querySelector('.stickyOffers2ndDiv').innerHTML=` <div class='stickyOfferDivInner2'>Add <span>${itemstoadforcoupon-applicableItemsCount}</span> single products and get <strong style="font-family: MikadoMedium">{{ settings.coupon_discount_sticky }}</strong></div>`
+                document.querySelector('.stickyOffers2ndDiv').innerHTML=` <div class='stickyOfferDivInner2'>Add <span>${itemstoadforcoupon-applicableItemsCount}</span> single product and get <strong style="font-family: MikadoMedium">{{ settings.coupon_discount_sticky }}</strong></div>`
               } else {
                 document.querySelector('.stickyOfferDiv').style.display='none';
               }

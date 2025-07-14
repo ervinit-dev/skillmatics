@@ -69,8 +69,6 @@
             <img loading="lazy"  src="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739" height="25" width="25" id="copy-button1"  srcset="https://cdn.shopify.com/s/files/1/0568/1945/0045/files/copy-01_25x25.webp?v=1743501739">
           </div>
         {% endif %} 
-     <!---- Specific product available offers start here---->
-
        <!----Will reflect only on RAKHI-40 tag products---->
     {% if product.tags contains 'RAKHI-40' %}
         {% if b_i.offer5 != blank %} 
@@ -81,7 +79,6 @@
            {% endif %}
     {% endif %}
            <!----Will reflect only on RAKHI-40 tag products ends her---->
-    <!---- Specific product available offers endds here---->
           {% if b_i.offer3 != blank %} <div class="offer-callout 3">{{ b_i.offer3 }}</div>{% endif %}
           {% if b_i.offer4 != blank %} <div class="offer-callout 4">{{ b_i.offer4 }}</div>{% endif %}
           {% if b_i.offer6 != blank %} <div class="offer-callout 6">{{ b_i.offer6 }}</div>{% endif %}

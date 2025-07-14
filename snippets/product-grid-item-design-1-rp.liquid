@@ -307,7 +307,7 @@
             {% if RecommendedProduct.tags contains 'single product' %}           
 
               {% if RecommendedProduct.collections contains collections[settings['col-handle1']] and settings['show-callout'] %}
-                {% unless RecommendedProduct.title == 'Sandeezy: Ice Cream Parlour | Sensory Toy & Pretend Play Set (ages 3-7)'
+                {% unless RecommendedProduct.title == ''
                    or  RecommendedProduct.collections contains collections[settings['col-handle2']] or RecommendedProduct.collections contains collections[settings['col-handle3']] or RecommendedProduct.collections contains collections[settings['col-handle4']]
                 %}                 
                     {% assign per-amt = settings['per-amt'] | strip | plus: 0 %}

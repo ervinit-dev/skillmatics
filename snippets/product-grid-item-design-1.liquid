@@ -295,7 +295,7 @@
                             width="18px"
                             height="18px"
                           >
-                        {{- settings['get-it-at'] }}
+                      {% comment %}   {{- settings['get-it-at'] }}{% endcomment %} 
                 {% comment %} <b>{{ pr_variant.price | times: per-amt | money }}</b>{% endcomment %}
                         <br>
                      </span>
@@ -743,8 +743,8 @@
                                       srcset="{{ 'calloutimg.svg' | asset_url }}"
                                     >
                                {% endcomment %}
-                                    {{- settings['get-it-at'] }}
-                                    <b>{{ pr_variant.price | times: per-amt | money }}</b> 
+                              {% comment %}       {{- settings['get-it-at'] }}
+                                    <b>{{ pr_variant.price | times: per-amt | money }}</b> {% endcomment %} 
                                     <br>
                                   </span>
                                      <span class="textsaletag">

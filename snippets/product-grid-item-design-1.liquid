@@ -296,9 +296,9 @@
                             height="18px"
                           >
                         {{- settings['get-it-at'] }}
-                {% comment %} <b>{{ pr_variant.price | times: per-amt | money }}</b>
-                        <br>
-                     </span>
+                {% comment %} <b>{{ pr_variant.price | times: per-amt | money }}</b>{% endcomment %}
+                  {% comment %}      <br>
+                         </span>
                          <span class="textsaletag">
                           {{ settings.usecode -}}
                         </span>{% endcomment %}

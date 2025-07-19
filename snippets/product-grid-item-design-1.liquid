@@ -733,7 +733,7 @@
                                 <div class="salestags colllectionpg rpp callout1">
                                   <span class="textsaletag rr ">
                                 {% comment %}        Buy any 2 | Get FLAT 20% OFF <br> <span>Use Code: <b>RAKHI20</b></span>        {% endcomment %}  
-                               {% comment %}
+                               
                                  <img
                                       class="offer-code"                            
                                       src="{{'calloutimg.svg' |asset_url }}"
@@ -743,7 +743,7 @@
                                       srcset="{{ 'calloutimg.svg' | asset_url }}"
                                     >
                               
-                                    {{- settings['get-it-at'] }}
+                              {% comment %}        {{- settings['get-it-at'] }}
                                     <b>{{ pr_variant.price | times: per-amt | money }}</b> 
                                     <br>
                                   </span> {% endcomment %}

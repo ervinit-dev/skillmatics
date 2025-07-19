@@ -313,18 +313,18 @@
                     {% assign per-amt = settings['per-amt'] | strip | plus: 0 %}
                     <div class="salestags colllectionpg rpp callout1">
                       <span class="textsaletag rr ">
-                        Buy any 2 | Get FLAT 20% OFF <br> <span>Use Code: <b>RAKHI20</b></span>
+                     {% comment %}    Buy any 2 | Get FLAT 20% OFF <br> <span>Use Code: <b>RAKHI20</b></span>{% endcomment %} 
                {% comment %}      <img
                           class="offer-code"
                           src="{{'calloutimg.svg' |asset_url }}"
                           alt="discounttag"
                           width="18px"
                           height="18px"
-                        >
+                        >{% endcomment %}
                         {{- settings['get-it-at'] }}
                        <b>{{ pr_variant.price | times: per-amt | money }}</b> 
                         <br>
-                      </span>{% endcomment %}
+                      </span>
                      <span class="textsaletag">
                           {{ settings.usecode -}}
                         </span>

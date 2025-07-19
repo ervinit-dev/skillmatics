@@ -757,21 +757,21 @@
                             {% if product.tags contains 'RAKHI-40' or product.collections contains collections[settings['col-handle2']] and settings['show-callout2'] %}
                             {% assign per-amt2 = settings['per-amt2'] | strip | plus: 0 %}
                             <div class="salestags colllectionpg rpp callout2">
-                              <span class="textsaletag rr">
-                             {% comment %}   {<img
+                      {% comment %}        <span class="textsaletag rr">
+                                {<img
                                   class="offer-code"
                                   src="{{'calloutimg.svg' |asset_url }}"
                                   alt="discounttag"
                                   width="18px"
                                   height="18px"
                                 >     {% endcomment %}                         
-                                {{- settings['get-it-at2'] -}}                              
-                              {% comment %}   <b>{{ pr_variant.price | times: per-amt2 | money }}</b>{% endcomment %} 
-                                <br>
+                          {% comment %}        {{- settings['get-it-at2'] -}}                              
+                                 <b>{{ pr_variant.price | times: per-amt2 | money }}</b>{% endcomment %} 
+                              {% comment %}    <br>
                                  </span>
                                       <span class="textsaletag">
                                 {{ settings.usecode2 -}}
-                              </span>
+                              </span>{% endcomment %}
                             </div>
                           {% endif %}  {% comment %}2nd collection based callout end   {% endcomment %}
                           {% if product.collections contains collections[settings['col-handle3']] and settings['show-callout3'] %}

@@ -50,7 +50,7 @@
           <div id="callout2" class="custom-avaible-offer">
          {% assign per-amt2 = settings.per-amt2 | strip | plus: 0 %}
                 <div id="callout1" class="salestags pdp-callout">                
-               {% comment %} <span class="textsaletag ">{{ settings.get-it-at2 }} <b>  {{ pr_variant.price | times: per-amt2 | money }}</b> <span class="spc-coll">|</span> {{ settings.usecode2 }} </span> {% endcomment %}
+                <span class="textsaletag ">{{ settings.get-it-at2 }} {% comment %}<b>  {{ pr_variant.price | times: per-amt2 | money }}</b> <span class="spc-coll">|</span> {{ settings.usecode2 }} {% endcomment %}</span>
                </div>
           </div>     
         {% endif %}{% comment %}2nd collection based callout end   {% endcomment %}

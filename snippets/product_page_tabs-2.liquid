@@ -45,7 +45,8 @@
                 {% endunless %}        
   {% endif %}{% comment %}first generic based callout end   {% endcomment %}
    
-{% if product.collections contains collections[settings.col-handle2] and settings.show-callout2  %}          
+{% if product.collections contains collections[settings.col-handle2] and settings.show-callout2  %}
+       {% if product.tags contains 'RAKHI-40' %}
           <div id="callout2" class="custom-avaible-offer">
          {% assign per-amt2 = settings.per-amt2 | strip | plus: 0 %}
                 <div id="callout1" class="salestags pdp-callout">                
@@ -53,7 +54,7 @@
                </div>
           </div>     
         {% endif %}{% comment %}2nd collection based callout end   {% endcomment %}
-
+{% endif %}
 
 {% if product.collections contains collections[settings.col-handle3] and settings.show-callout3 %}      
     

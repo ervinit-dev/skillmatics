@@ -186,14 +186,14 @@
       {% if settings.discount_type != 'minimum_quantity' %}
         <div class="stickyOffers2ndDiv">
           <div class="stickyOfferDivInner">
-            Add <span>{{ settings.minAmount }}</span> single product and get
+            Add any <span>{{ settings.minAmount }}</span> product and get
             <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky }} </strong>
           </div>
         </div>
       {% else %}
         <div class="stickyOffers2ndDiv">
           <div class="stickyOfferDivInner 1">
-            Add <span>{{ settings.minQunat }}</span> single product and get 
+            Add <span>{{ settings.minQunat }}</span> product and get 
             <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky }} </strong>
 
             {% comment %}
@@ -490,7 +490,7 @@ if (freeShippingHSElement) {
          }
          else{
          document.querySelector('.stickyOfferDiv').style.display='flex';
-      document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner 5'>Congrats! Apply <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_name }}</strong> to get <strong style="font-family: 'MikadoMedium'">{{settings.coupon_discount_sticky }}</strong>.</div><div class='stickyOfferDivInner 6'>Add <span>${itemstoadforcoupon2-applicableItemsCount}</span> more single product and get <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky2 }}</strong>.</div>`
+      document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner 5'>Congrats! Apply <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_name }}</strong> to get <strong style="font-family: 'MikadoMedium'">{{settings.coupon_discount_sticky }}</strong>.</div><div class='stickyOfferDivInner 6'>Add any <span>${itemstoadforcoupon2-applicableItemsCount}</span> product and get <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky2 }}</strong>.</div>`
          // document.querySelector('.stickyOffers2ndDiv').innerHTML =`<div class='stickyOfferDivInner 6'>Use <strong style="font-family: 'MikadoMedium';">{{ settings.coupon_name2 }}</strong> for <strong style="font-family: 'MikadoMedium';">{{settings.coupon_discount_sticky2 }}</strong> on {{ settings.minQunat2 }} or more!</div>`
          
         

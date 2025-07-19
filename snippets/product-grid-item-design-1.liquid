@@ -754,9 +754,9 @@
                             {% endunless %}
                             {% endif %}  {% comment %}first generic callout end   {% endcomment %}
               
-                            {% if product.tags contains 'RAKHI-40' or product.collections contains collections[settings['col-handle2']] and settings['show-callout2'] %}
+                     {% comment %}        {% if product.tags contains 'RAKHI-40' or product.collections contains collections[settings['col-handle2']] and settings['show-callout2'] %}
                             {% assign per-amt2 = settings['per-amt2'] | strip | plus: 0 %}
-                     {% comment %}  <div class="salestags colllectionpg rpp callout2">
+                       <div class="salestags colllectionpg rpp callout2">
                            <span class="textsaletag rr">
                                 {<img
                                   class="offer-code"
@@ -772,8 +772,8 @@
                                       <span class="textsaletag">
                                 {{ settings.usecode2 -}}
                               </span>
-                            </div>{% endcomment %}
-                          {% endif %}  {% comment %}2nd collection based callout end   {% endcomment %}
+                            </div>
+                          {% endif %} {% endcomment %} {% comment %}2nd collection based callout end   {% endcomment %}
                           {% if product.collections contains collections[settings['col-handle3']] and settings['show-callout3'] %}
                           
                               {% assign per-amt3 = settings['per-amt3'] | strip | plus: 0 %}

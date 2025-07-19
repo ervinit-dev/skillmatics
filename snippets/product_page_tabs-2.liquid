@@ -25,7 +25,8 @@
  {% if product.tags contains 'single product'%}  
  
  {% if product.collections contains collections[settings.col-handle1] and settings.show-callout  %}  
-            {% unless product.title contains 'Free Gift'
+            {% if product.tags contains 'RAKHI-40' %}
+   {% unless product.title contains 'Free Gift'
                 or product.collections contains collections[settings.col-handle2] or product.collections contains collections[settings.col-handle3] or product.collections contains collections[settings.col-handle4]
                         %}                           
                       <div id="callout1" class="custom-avaible-offer  price">
@@ -42,7 +43,7 @@
                             </div>
                       </div> 
                         
-                {% endunless %}        
+                {% endunless %}    {% endif %}    
   {% endif %}{% comment %}first generic based callout end   {% endcomment %}
    
 {% if product.collections contains collections[settings.col-handle2] and settings.show-callout2  %}          

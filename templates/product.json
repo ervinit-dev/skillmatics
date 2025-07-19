@@ -53,8 +53,8 @@
           "settings": {
             "title": "More Available Offers",
             "spantitle": "View more",
-            "offer1": "<p>Get<strong> FLAT 15% OFF</strong> | Use Code: <strong>RAKHI15</strong></p>",
-            "offer1_cc": "RAKHI15",
+            "offer1": "",
+            "offer1_cc": "",
             "offer2": "<p>Buy any <strong>2</strong> and get <strong>FLAT 20% OFF</strong> | Use Code: <strong>RAKHI20</strong></p>",
             "offer2_cc": "RAKHI20",
             "offer3": "<p>Get<strong> </strong>FLAT <strong>10%</strong> instant discount with OneCard. Max discount <strong>Rs</strong>. <strong>500</strong> on min. order value<strong> Rs. 500</strong></p>",

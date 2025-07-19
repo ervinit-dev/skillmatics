@@ -320,11 +320,11 @@
                           alt="discounttag"
                           width="18px"
                           height="18px"
-                        >
+                        >{% endcomment %}
                         {{- settings['get-it-at'] }}
-                       <b>{{ pr_variant.price | times: per-amt | money }}</b>
+                   {% comment %}    <b>{{ pr_variant.price | times: per-amt | money }}</b>{% endcomment %}
                         <br>
-                      </span>{% endcomment %} 
+                      </span> 
                      <span class="textsaletag">
                           {{ settings.usecode -}}
                         </span>

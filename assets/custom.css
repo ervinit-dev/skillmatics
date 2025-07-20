@@ -815,4 +815,7 @@ span.tt-badge:before {
     margin: 0;
     font-size: 12px;
   }
+  #callout2 .textsaletag {
+    font-size: 16px !important;
+  }
 }

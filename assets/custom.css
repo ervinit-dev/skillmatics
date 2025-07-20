@@ -802,6 +802,9 @@ span.tt-badge:before {
   .pdp-callout span.textsaletag{
     font-size: 11px !important;
   }
+  .textsaletag.rr{
+    font-size: 9px !important;
+  }
 }
 
 @media (max-width: 650px) {

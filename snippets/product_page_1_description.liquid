@@ -298,50 +298,48 @@
 {% if product.price > 0 %}
       <div class="col-item pdp-btn-atc">     
           {% if product.metafields.custom.out_of_stock %}
-  <button aria-label="Soldout" class="pdp-btncartbtn btn btn-lg disable">
-    Sold Out
-  </button>
-{% else %} 
-  <button id="skill_pdp_pd_atc" aria-label="Add to cart" class="btn btn-lg btn-addtocart
-    {% if settings.ajax_addtocart %} addtocart-js{% endif %}
-    {% if product_select_options == 'false' and product.selected_variant.available == false %} disable{% endif %}
-    btn--atc-
-    {% assign variant = product.selected_or_first_available_variant %}
-    {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'continue' and variant.inventory_quantity <= 0 %}
-      stc-preorder
-    {% elsif product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}
-      stc-preorder
-    {% endif %}
-    " >
-    
-    {% if product_select_options == 'true' %}
-      {{ 'products.general.select_options_html' | t }}
-    {% else %}
-      {% assign variant = product.selected_or_first_available_variant %}
-      {% if product.selected_variant.available == 'false' %}
-        {{ "products.general.unavailable_html" | t }}
-      {% else %}
-        {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'continue' and variant.inventory_quantity <= 0 %}
-          {{ "products.general.preorder_html" | t }}
-        {% elsif product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}
-          {{ "products.general.preorder_html" | t }}
-        {% else %}
-          {{ "products.general.add_to_cart_html" | t }}
-        {% endif %}
-      {% endif %}
-    {% endif %}
-  </button>
-{% endif %}
-
+            <button aria-label="Soldout" class="pdp-btncartbtn btn btn-lg disable">
+              Sold Out
+            </button>
+          {% else %} 
+            <button id="skill_pdp_pd_atc" aria-label="Add to cart" class="btn btn-lg btn-addtocart
+              {% if settings.ajax_addtocart %} addtocart-js{% endif %}
+              {% if product_select_options == 'false' and product.selected_variant.available == false %} disable{% endif %}
+              btn--atc-
+              {% assign variant = product.selected_or_first_available_variant %}
+              {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'continue' and variant.inventory_quantity <= 0 %}
+                stc-preorder
+              {% elsif product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}
+                stc-preorder
+              {% endif %}
+              " >
+              
+              {% if product_select_options == 'true' %}
+                {{ 'products.general.select_options_html' | t }}
+              {% else %}
+                {% assign variant = product.selected_or_first_available_variant %}
+                {% if product.selected_variant.available == 'false' %}
+                  {{ "products.general.unavailable_html" | t }}
+                {% else %}
+                  {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'continue' and variant.inventory_quantity <= 0 %}
+                    {{ "products.general.preorder_html" | t }}
+                  {% elsif product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}
+                    {{ "products.general.preorder_html" | t }}
+                  {% else %}
+                    {{ "products.general.add_to_cart_html" | t }}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            </button>
+          {% endif %}
       </div>
       {% endif %}
     </div>
       
-      {% if product.collections contains collections["all-products"] %}
+
         {% if product.available and product.variants.first.inventory_quantity > 0 %}
-          <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %}" id="skill_pdp_pd_buynow" data-buttonname="{{ 'products.general.buy_now_button' | t }}"
+          <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %} " id="skill_pdp_pd_buynow" data-buttonname="{{ 'products.general.buy_now_button' | t }}" {% if product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}style="display:none"{% endif %}
             data-loading="{{ 'products.general.loading' | t }}">
-            {% if product.tags contains 'no-note' %}style="display: none;"{% endif %}>
             <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded" onclick="onBuyNowClick(this,'.shopify-product-form')" id="gokwik-buy-now" {% if settings.hideFlow %} style="display:none !important;" {% endif %}>
               {{ settings.buynow-titile }}
               <div style="display:none" class="addloadr" id="btn-loader">
@@ -350,8 +348,6 @@
             </button>
           </div>
         {% endif %}
-      {% endif %}
-      
     {%- if settings.buy_in_one_click -%}
     {% if settings.terms_cond_checkbox_show %}
     <div class="checkbox-group prpage-term-conditions-checkbox term-conditions-checkbox-js">

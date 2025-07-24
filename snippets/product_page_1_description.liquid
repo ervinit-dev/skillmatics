@@ -327,7 +327,7 @@
     </div>
 {% if product.collections contains collections["all-products"] or product.collections contains collections["bundle-save"] %}
   {% if product.available and product.variants.first.inventory_quantity > 0 %}
-    <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' or product.tags contains 'no-note' %} hide{% endif %} {% if product.tags contains 'no-note' %} ritik {% endif %}" 
+    <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %} {% if product.tags contains 'no-note' %} ritik {% endif %}" 
          id="skill_pdp_pd_buynow" 
          data-buttonname="{{ 'products.general.buy_now_button' | t }}"
          data-loading="{{ 'products.general.loading' | t }}">

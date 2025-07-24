@@ -338,7 +338,7 @@
       
       {% if product.collections contains collections["all-products"] %}
         {% if product.available and product.variants.first.inventory_quantity > 0 %}
-          <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' or product.tags contains 'no-note' %} hide{% endif %} " id="skill_pdp_pd_buynow" data-buttonname="{{ 'products.general.buy_now_button' | t }}" {% if product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}style="display:none"{% endif %}
+          <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %} " id="skill_pdp_pd_buynow" data-buttonname="{{ 'products.general.buy_now_button' | t }}" {% if product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}style="display:none"{% endif %}
             data-loading="{{ 'products.general.loading' | t }}">
             <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded" onclick="onBuyNowClick(this,'.shopify-product-form')" id="gokwik-buy-now" {% if settings.hideFlow %} style="display:none !important;" {% endif %}>
               {{ settings.buynow-titile }}

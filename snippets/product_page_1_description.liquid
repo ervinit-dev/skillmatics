@@ -297,44 +297,43 @@
       </div>{% endif %}
 {% if product.price > 0 %}
       <div class="col-item pdp-btn-atc">     
-  {% if product.metafields.custom.out_of_stock %}
-    <button aria-label="Soldout" class="pdp-btncartbtn btn btn-lg disable">
-      Sold Out
-    </button>
-  {% else %} 
-    <button id="skill_pdp_pd_atc" aria-label="Add to cart" 
-      class="btn btn-lg btn-addtocart
-      {% if settings.ajax_addtocart %} addtocart-js{% endif %}
-      {% if product_select_options == 'false' and product.selected_variant.available == false %} disable{% endif %}
-      btn--atc-
-      {% if product.selected_or_first_available_variant.inventory_management == 'shopify' 
-         and product.selected_or_first_available_variant.inventory_policy == 'continue' %}
-        stc-preorder
-      {% endif %}"
-      {%- if settings.show_addtocart_popup_related -%}
-        {%- unless product.metafields.description.related_collection == blank -%}
-          data-relatedcollection="{{ product.metafields.description.related_collection }}"
-        {%- endunless -%}
-      {%- endif -%}
-    >
-      {% if product_select_options == 'true' %}
-        {{ 'products.general.select_options_html' | t }}
-      {% else %}
-        {% if product.selected_variant.available == 'false' %}
-          {{ "products.general.unavailable_html" | t }}
-        {% else %}
-          {% if product.selected_or_first_available_variant.inventory_management == 'shopify' 
-             and product.selected_or_first_available_variant.inventory_policy == 'continue' %}
-            {{ "products.general.preorder_html" | t }}
-          {% else %}
-            {{ "products.general.add_to_cart_html" | t }} 
-          {% endif %}
+        {% if product.metafields.custom.out_of_stock %}
+          <button aria-label="Soldout" class="pdp-btncartbtn btn btn-lg disable">
+            Sold Out
+          </button>
+        {% else %} 
+          <button id="skill_pdp_pd_atc" aria-label="Add to cart" 
+            class="btn btn-lg btn-addtocart
+            {% if settings.ajax_addtocart %} addtocart-js{% endif %}
+            {% if product_select_options == 'false' and product.selected_variant.available == false %} disable{% endif %}
+            btn--atc-
+            {% if product.selected_or_first_available_variant.inventory_management == 'shopify' 
+               and product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+              stc-preorder
+            {% endif %}"
+            {%- if settings.show_addtocart_popup_related -%}
+              {%- unless product.metafields.description.related_collection == blank -%}
+                data-relatedcollection="{{ product.metafields.description.related_collection }}"
+              {%- endunless -%}
+            {%- endif -%}
+          >
+            {% if product_select_options == 'true' %}
+              {{ 'products.general.select_options_html' | t }}
+            {% else %}
+              {% if product.selected_variant.available == 'false' %}
+                {{ "products.general.unavailable_html" | t }}
+              {% else %}
+                {% if product.selected_or_first_available_variant.inventory_management == 'shopify' 
+                   and product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+                  {{ "products.general.preorder_html" | t }}
+                {% else %}
+                  {{ "products.general.add_to_cart_html" | t }} 
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </button>
         {% endif %}
-      {% endif %}
-    </button>
-  {% endif %}
-</div>
-
+      </div>
       {% endif %}
     </div>
       

@@ -325,8 +325,9 @@
       </div>
       {% endif %}
     </div>
-
-    <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %}" 
+{% if product.collections contains collections["all-products"] or product.collections contains collections["bundle-save"] %}
+  {% if product.available and product.variants.first.inventory_quantity > 0 %}
+    <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true'%} hide{% endif %}" 
          id="skill_pdp_pd_buynow" 
          data-buttonname="{{ 'products.general.buy_now_button' | t }}"
          data-loading="{{ 'products.general.loading' | t }}">
@@ -343,7 +344,8 @@
       </button>
       
     </div>
-
+  {% endif %}
+{% endif %}
 
       
     {%- if settings.buy_in_one_click -%}

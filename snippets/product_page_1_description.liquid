@@ -309,7 +309,7 @@
           {% else %}
           {% if product.selected_variant.available == 'false' %}{{ "products.general.unavailable_html" | t }}
           {% else %}
-          {% if product.selected_or_first_available_variant.inventory_management == 'shopify' and product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+          {% if product.selected_or_first_available_variant.inventory_management == 'shopify' and product.selected_or_first_available_variant.inventory_policy == 'continue' and product.selected_or_first_available_variant.inventory_quantity <= 0 and product.tags contains 'no-note' %}
           {{ "products.general.preorder_html" | t }}
           {% else %}
           

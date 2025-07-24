@@ -312,12 +312,7 @@
     {% elsif product.tags contains 'no-note' and variant.inventory_quantity > 0 and variant.inventory_policy == 'continue' %}
       stc-preorder
     {% endif %}
-    "
-    {%- if settings.show_addtocart_popup_related -%}
-      {%- unless product.metafields.description.related_collection == blank -%}
-        data-relatedcollection="{{ product.metafields.description.related_collection }}"
-      {%- endunless -%}
-    {%- endif -%}>
+    " >
     
     {% if product_select_options == 'true' %}
       {{ 'products.general.select_options_html' | t }}

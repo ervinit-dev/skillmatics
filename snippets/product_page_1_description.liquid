@@ -337,17 +337,19 @@
       {% endif %}
     </div>
       
-     {% if product.collections contains collections["all-products"] or product.collections contains collections["bundle-save"] and product.available and product.variants.first.inventory_quantity > 0 and product.tags contains 'no-note' == false %}
-  <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %}" id="skill_pdp_pd_buynow" data-buttonname="{{ 'products.general.buy_now_button' | t }}"
-    data-loading="{{ 'products.general.loading' | t }}">
-    <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded" onclick="onBuyNowClick(this,'.shopify-product-form')" id="gokwik-buy-now" {% if settings.hideFlow %} style="display:none !important;" {% endif %}>
-      {{ settings.buynow-titile }}
-      <div style="display:none" class="addloadr" id="btn-loader">
-        <div class="cir-loader">Loading..</div>
-      </div>
-    </button>
-  </div>
-{% endif %}
+      {% if product.collections contains collections["all-products"] %}
+        {% if product.available and product.variants.first.inventory_quantity > 0 %}
+          <div class="pdp-gokwik buyinoneclick{% if product_select_options == 'true' %} hide{% endif %}" id="skill_pdp_pd_buynow" data-buttonname="{{ 'products.general.buy_now_button' | t }}"
+            data-loading="{{ 'products.general.loading' | t }}">
+            <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded" onclick="onBuyNowClick(this,'.shopify-product-form')" id="gokwik-buy-now" {% if settings.hideFlow %} style="display:none !important;" {% endif %}>
+              {{ settings.buynow-titile }}
+              <div style="display:none" class="addloadr" id="btn-loader">
+                <div class="cir-loader">Loading..</div>
+              </div>
+            </button>
+          </div>
+        {% endif %}
+      {% endif %}
 
     {% if product.tags == 'no-note' %}
 {% endif %}

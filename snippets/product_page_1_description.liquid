@@ -305,7 +305,8 @@
           stc-preorder{% endif %}"
                 {%- if settings.show_addtocart_popup_related -%}{%- unless product.metafields.description.related_collection == blank -%}data-relatedcollection="{{ product.metafields.description.related_collection }}"{%- endunless -%}{%- endif -%}
                 >
-          {% if product_select_options == 'true' %}{{ 'products.general.select_options_html' | t }}
+          {% if product_select_options == 'true' %}
+            {{ 'products.general.select_options_html' | t }}
           {% else %}
           {% if product.selected_variant.available == 'false' %}{{ "products.general.unavailable_html" | t }}
           {% else %}

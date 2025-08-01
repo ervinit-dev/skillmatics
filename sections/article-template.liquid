@@ -380,38 +380,35 @@
   </div>
 {%- endif -%}
 
-<script defer >
+<script defer>
   // Set the lightning deal start and end dates
-    const lightningStartDate = new Date('{{ settings.startdate }}'); // Example start date
-    const lightningEndDate = new Date('{{ settings.enddate }}'); // Example end date
-    const currentDate = new Date(); // Get the current date and time
- 
-     // Function to update the countdown timer
-    function updateCountdown() {
-        const currentDate = new Date();
-        const timeRemaining = lightningEndDate - currentDate; // Calculate time remaining
+  const lightningStartDate = new Date('{{ settings.startdate }}');
+  const lightningEndDate = new Date('{{ settings.enddate }}');
 
-        if (timeRemaining > 0) {
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown-{{section.id}}').innerHTML = 
-                `<div><span> ${hours}</span><br>Hours</div>:<div><span> ${minutes}</span><br>Mins</div>:<div><span>${seconds}</span><br>Secs</div>`;
-            document.getElementById('countdown-{{section.id}}').style.display = 'block'; // Show countdown
-        } else {
-            document.getElementById('countdown-{{section.id}}').style.display = 'none';
-           // Add 'hide' class to the section-lightning-deal container
-          document.querySelector("#LDdeal-{{ section.id }}").classList.add("hide");
+  // Function to update the countdown timer
+  function updateCountdown() {
+    const currentDate = new Date();
+    const timeRemaining = lightningEndDate - currentDate;
 
-  // Remove 'hide' class from the sold-all product container
-       //   document.querySelector("#soldallproduct-{{ section.id }}").classList.remove("hide");// Hide countdown if time's up
-        }
+    if (timeRemaining > 0) {
+      const totalHours = Math.floor(timeRemaining / (1000 * 60 * 60)); // Convert total ms to hours
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown-{{section.id}}').innerHTML = 
+        `<div><span>${totalHours}</span><br>Hours</div>:<div><span>${minutes}</span><br>Mins</div>:<div><span>${seconds}</span><br>Secs</div>`;
+      
+      document.getElementById('countdown-{{section.id}}').style.display = 'block';
+    } else {
+      document.getElementById('countdown-{{section.id}}').style.display = 'none';
+      document.querySelector("#LDdeal-{{ section.id }}").classList.add("hide");
+      // Optional: show sold out container if needed
+      // document.querySelector("#soldallproduct-{{ section.id }}").classList.remove("hide");
     }
+  }
 
-  
-    // Set an interval to update the countdown every second (1000 milliseconds)
-    setInterval(updateCountdown, 1000);
+  // Run updateCountdown every second
+  setInterval(updateCountdown, 1000);
 </script>
 
 {% schema %}

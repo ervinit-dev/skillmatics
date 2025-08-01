@@ -13,9 +13,9 @@
       "type": "collection-template",
       "settings": {
         "showimage1": true,
-        "image1": "shopify://shop_images/Desktop_39.webp",
-        "mob-image1": "shopify://shop_images/Webp_1.png",
-        "link1": "shopify://collections/summer-sale-2025",
+        "image1": "shopify://shop_images/Desktop_1_7852a846-fae0-479a-bd9e-5b402e163894.webp",
+        "mob-image1": "shopify://shop_images/Mobile_1_e3776bfb-6514-44f0-a7a6-5d51de7c6d23.webp",
+        "link1": "shopify://collections/rakhi-special",
         "showimage2": false,
         "coll-handle": "summer-sale-2025",
         "image2": "shopify://shop_images/Desktop_42.webp",

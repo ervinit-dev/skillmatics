@@ -4,7 +4,154 @@
   that includes the new comment id in its URL.
     Example: http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
 {%- endcomment -%}
+<style>
+  /* CountDown */
+.slide-count p {
+  color: #06374F;
+  font-family: MikadoMedium;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+.end-deal-counter div span {
+  color: #D41F3B;
+  font-family: MikadoMedium;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
+.end-deal-counter,.end-deal-counter div {
+  color: #06374F;
+  font-family: MikadoMedium;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.slide-count {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 8px;
+  justify-content: center;
+}
+.end-deal-counter {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+.end-deal-counter div {
+   display: block;
+   text-align: center
+}
+.slider-countdown .slide-cus-btn {
+  color: #FFF;
+  font-family: MikadoMedium;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  background: #CC3E3E;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:10px auto 0; 
+}
+.cust-time {
+  position: relative;
+}
+.slider-countdown {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 280px;
+}
 
+@media (min-width:1501px) and (max-width: 1700px){
+  .slide-count { gap: 10px; padding: 5px }
+  .end-deal-counter { gap: 10px; }
+  .end-deal-counter div span { font-size: 24px; line-height: 20px; }
+  .slider-countdown .slide-cus-btn { font-size: 16px; max-width: 200px; height: 35px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 14px; }
+  .slider-countdown { bottom: 8%; left: 50%; transform: translateX(-50%); max-width: 280px; }
+}
+
+@media (min-width:1401px) and (max-width: 1500px){
+  .slide-count { gap: 10px; padding: 5px }
+  .end-deal-counter { gap: 10px; }
+  .end-deal-counter div span { font-size: 18px; line-height: 20px; }
+  .slider-countdown .slide-cus-btn { font-size: 16px; max-width: 180px; height: 35px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 12px; }
+  .slider-countdown { bottom: 6%; left: 50%; transform: translateX(-50%); max-width: 240px; }
+}
+
+@media (min-width:1301px) and (max-width: 1400px){
+  .slide-count { gap: 10px; padding: 5px }
+  .end-deal-counter { gap: 10px; }
+  .end-deal-counter div span { font-size: 18px; line-height: 20px; }
+  .slider-countdown .slide-cus-btn { font-size: 16px; max-width: 180px; height: 35px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 10px; }
+  .slider-countdown { bottom: 6%; left: 50%; transform: translateX(-50%); max-width: 240px; }
+}
+  
+@media (min-width:1201px) and (max-width: 1300px){
+  .slide-count { gap: 10px; padding: 6px }
+  .end-deal-counter { gap: 8px; }
+  .end-deal-counter div span { font-size: 18px; line-height: 16px; }
+  .slider-countdown .slide-cus-btn { font-size: 16px; max-width: 160px; height: 30px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 10px; }
+  .slider-countdown { bottom: 6%; left: 50%; transform: translateX(-50%); max-width: 240px; }
+}
+
+@media (min-width:1000px) and (max-width: 1200px){
+  .slide-count { gap: 5px; padding: 4px }
+  .end-deal-counter { gap: 5px; }
+  .end-deal-counter div span { font-size: 16px; line-height: 16px; }
+  .slider-countdown .slide-cus-btn { font-size: 16px; max-width: 140px; height: 28px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 10px; }
+  .slider-countdown { bottom: 0px; left: 50%; transform: translateX(-50%); max-width: 200px; }
+}
+
+@media (min-width: 790px) and (max-width: 999px) {
+  .slide-count { gap: 5px; padding: 4px }
+  .end-deal-counter { gap: 5px; }
+  .end-deal-counter div span { font-size: 16px; line-height: 16px; }
+  .slider-countdown .slide-cus-btn { font-size: 16px; max-width: 140px; height: 28px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 10px; }
+  .slider-countdown { bottom: 0px; left: 50%; transform: translateX(-50%); max-width: 200px; }
+}
+
+@media (min-width: 651px) and (max-width: 789px) {
+  .slider-countdown { position: absolute; bottom: 5%; left: 14%; transform: translateX(-14%); width: 100%; max-width: 280px; }
+}
+@media (min-width: 420px) and (max-width:650px) {
+  .slider-countdown { bottom: 11px; left:115px; max-width: 105px; }
+  .slide-count { gap: 2px; padding: 3px }
+  .end-deal-counter { gap: 2px; }
+  .end-deal-counter div span { font-size: 10px; line-height: 12px; }
+  .slider-countdown .slide-cus-btn { font-size: 12px; max-width: 140px; height: 25px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 7px; }
+}
+@media (max-width: 420px){
+  .slide-count { gap: 2px; padding: 3px }
+  .end-deal-counter { gap: 2px; }
+  .end-deal-counter div span { font-size: 10px; line-height: 12px; }
+  .slider-countdown .slide-cus-btn { font-size: 12px; max-width: 140px; height: 25px; margin: 5px auto 0 }
+  .slide-count p,.end-deal-counter,.end-deal-counter div { font-size: 7px; }
+  .slider-countdown { bottom: 5px; left: 105px; max-width: 105px; }
+}
+</style>
 {%- assign new_comment = false -%}
 {%- if comment and comment.created_at -%}
   {%- assign new_comment = true -%}

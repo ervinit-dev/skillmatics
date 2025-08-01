@@ -7545,6 +7545,25 @@
     ]
   },
   {
+    "name": "Count Down",
+    "settings": [
+      {
+        "type": "text",
+        "id": "startdate",
+        "label": "Start Date and Time",
+        "default": "2024-10-28T10:00:00",
+        "info": "2024-10-28T10:00:00(without space)"
+      },
+      {
+        "type": "text",
+        "id": "enddate",
+        "label": "End Date and Time",
+        "default": "2024-11-30T00:00:00",
+        "info": "2024-11-30T00:00:00(without space)"
+      },
+    ]
+  },
+  {
     "name": "Custom Cart",
     "settings": [
       {

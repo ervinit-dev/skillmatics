@@ -1,1 +1,39 @@
-{"sections":{"main":{"type":"collection-template","settings":{"showimage1":false,"image1":"shopify:\/\/shop_images\/Desktop_39.webp","mob-image1":"shopify:\/\/shop_images\/Collection_page_with_CTA.webp","link1":"shopify:\/\/collections\/summer-sale-2025","showimage2":false,"coll-handle":"summer-sale-2025","image2":"shopify:\/\/shop_images\/Desktop_42.webp","mob-image2":"shopify:\/\/shop_images\/Collection_page_without_CTA.webp","link2":"","showimagebtm2":false,"imagebtm2":"shopify:\/\/shop_images\/Desktop_Bundle_Save_bottom_banner_d11a9147-08d0-414d-9fc4-84eda6e052c8.webp","mob-imagebtm2":"shopify:\/\/shop_images\/mobile_bundle_save_bottom_banner_77c336e6-773c-4bc6-a86a-70adc9da027f.webp","btmlink2":"shopify:\/\/collections\/bundle-save","showimagebtm":true,"imagebtm":"shopify:\/\/shop_images\/Desktop_-_dark_comfort_strip_CP_2_0d46c124-8be4-4369-b9ce-e05bf830faac.webp","mob-imagebtm":"shopify:\/\/shop_images\/Mobile_-_dark_comfort_strip_CP_2_468f2fd7-8916-417c-83bb-e4f9ac65cd90.webp","btmlink1":"","tracking-id":"skill_collect_gift_banner"}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "collection-template",
+      "settings": {
+        "showimage1": true,
+        "image1": "shopify://shop_images/Desktop_39.webp",
+        "mob-image1": "shopify://shop_images/Webp_1.png",
+        "link1": "shopify://collections/summer-sale-2025",
+        "showimage2": false,
+        "coll-handle": "summer-sale-2025",
+        "image2": "shopify://shop_images/Desktop_42.webp",
+        "mob-image2": "shopify://shop_images/Collection_page_without_CTA.webp",
+        "link2": "",
+        "showimagebtm2": false,
+        "imagebtm2": "shopify://shop_images/Desktop_Bundle_Save_bottom_banner_d11a9147-08d0-414d-9fc4-84eda6e052c8.webp",
+        "mob-imagebtm2": "shopify://shop_images/mobile_bundle_save_bottom_banner_77c336e6-773c-4bc6-a86a-70adc9da027f.webp",
+        "btmlink2": "shopify://collections/bundle-save",
+        "showimagebtm": true,
+        "imagebtm": "shopify://shop_images/Desktop_-_dark_comfort_strip_CP_2_0d46c124-8be4-4369-b9ce-e05bf830faac.webp",
+        "mob-imagebtm": "shopify://shop_images/Mobile_-_dark_comfort_strip_CP_2_468f2fd7-8916-417c-83bb-e4f9ac65cd90.webp",
+        "btmlink1": "",
+        "tracking-id": "skill_collect_gift_banner"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -154,7 +154,7 @@
   .end-deal-counter { gap: 15px; }
 }
 @media (min-width: 381px) and (max-width: 400px) {
-  .slider-countdown { bottom: 265px; left: 49%; max-width: 235px; transform: translateX(-49%); }
+  .slider-countdown { bottom: 265px; left: 49%; max-width: 255px; transform: translateX(-49%); }
   .end-deal-counter div span { font-size: 28px; line-height: 30px; }
   .end-deal-counter, .end-deal-counter div { font-size: 14px; }
   .end-deal-counter { gap: 15px; }
@@ -197,7 +197,7 @@
                   {%- if forloop.index == 1 -%}
                     {% comment %}  <link rel="preload" as="image" href="{{ item.image | img_url: ''}}">{% endcomment %}
                   {%- endif %}
-
+                  {% unless collection.handle == 'rakhi-special' %}
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner mobile-{%- unless  item.image == blank -%}hide{%- endunless -%}"
                     decoding="async"
@@ -220,12 +220,12 @@
                     {%- if forloop.index == 1 -%}
                     {% endif %}
                   >
-                {%- endunless -%}
+                {%- endunless -%} {%- endunless -%}
                 {%- unless item.image == blank -%}
                   {%- if forloop.index == 1 -%}
                     {% comment %}  <link rel="preload" as="image" href="{{ item.mob-image | img_url: '500x598'}}">{% endcomment %}
                   {%- endif %}
-
+{% unless collection.handle == 'rakhi-special' %}
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner desktop-{%- unless  item.image == blank -%}hide {%- endunless -%} "
                     decoding="async"
@@ -248,7 +248,7 @@
                     {%- if forloop.index == 1 -%}
                     {% endif %}
                   >
-                {%- endunless -%}
+                {%- endunless -%}{%- endunless -%}
                   {%- if forloop.index == 1 -%}
                     <div class="slider-countdown">
                       <div class="slide-count">

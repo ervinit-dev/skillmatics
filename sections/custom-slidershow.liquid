@@ -193,6 +193,7 @@
           <a href="{{item.collection }}" aria-label="bannerlinks" rel="link">
             <div class="grid-column-itemslider">
               <div class="custom-banner-gd">
+              
                 {%- unless item.image == blank -%}
                   {%- if forloop.index == 1 -%}
                     {% comment %}  <link rel="preload" as="image" href="{{ item.image | img_url: ''}}">{% endcomment %}

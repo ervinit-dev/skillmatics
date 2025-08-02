@@ -183,8 +183,8 @@
   .slide-count { padding: 2px 0 0 0; }
 }
 </style>
+{% unless collection.handle == 'rakhi-special' %}
 {% if section.settings.showimage1 and collection.handle == section.settings.coll-handle %}
-  {% unless collection.handle == 'rakhi-special' %}
 <div class="all-collection-{{ collection.handle }}">
 {% if section.settings.link2 != blank %}
     <a href="{{section.settings.link2 }}" aria-label="{{ collection.handle }} link">{% endif %}
@@ -207,7 +207,6 @@
       </div>
     
 </div>
-{% endunless %}
   {% endif %}
 {% include 'collection-template' current_pagination_limit: settings.pagination_limit %}
 {% if section.settings.showimagebtm2 %}
@@ -227,6 +226,7 @@
   {% if section.settings.btmlink != blank %}      </a>{% endif %}
 </div>
 {% endif %}
+{% endunless %}
 
 <script defer>
   // Set the lightning deal start and end dates

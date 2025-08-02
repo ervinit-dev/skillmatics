@@ -192,12 +192,12 @@
         <div class="slider-itemslider">
           <a href="{{item.collection }}" aria-label="bannerlinks" rel="link">
             <div class="grid-column-itemslider">
+              {% if collection.handle != 'rakhi-special' %}
               <div class="custom-banner-gd">
                 {%- unless item.image == blank -%}
                   {%- if forloop.index == 1 -%}
                     {% comment %}  <link rel="preload" as="image" href="{{ item.image | img_url: ''}}">{% endcomment %}
                   {%- endif %}
-                  {% unless collection.handle == 'rakhi-special' %}
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner mobile-{%- unless  item.image == blank -%}hide{%- endunless -%}"
                     decoding="async"
@@ -220,12 +220,11 @@
                     {%- if forloop.index == 1 -%}
                     {% endif %}
                   >
-                {%- endunless -%} {%- endunless -%}
+                {%- endunless -%} 
                 {%- unless item.image == blank -%}
                   {%- if forloop.index == 1 -%}
                     {% comment %}  <link rel="preload" as="image" href="{{ item.mob-image | img_url: '500x598'}}">{% endcomment %}
                   {%- endif %}
-{% unless collection.handle == 'rakhi-special' %}
                   <img
                     class="slidebanner{{ forloop.index }} slidebanner desktop-{%- unless  item.image == blank -%}hide {%- endunless -%} "
                     decoding="async"
@@ -248,7 +247,7 @@
                     {%- if forloop.index == 1 -%}
                     {% endif %}
                   >
-                {%- endunless -%}{%- endunless -%}
+                {%- endunless -%}
                   {%- if forloop.index == 1 -%}
                     <div class="slider-countdown">
                       <div class="slide-count">
@@ -256,6 +255,7 @@
                       </div>
                     </div>
                   {%- endif -%}
+                {% endif %}
               </div>
             </div>
           </a>

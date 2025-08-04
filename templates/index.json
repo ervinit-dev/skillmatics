@@ -20,6 +20,14 @@
             "mob-image": "shopify://shop_images/Mobile_25_f94b9858-a2a9-4885-8ec8-5c11b54c19ea.webp"
           }
         },
+        "item_776Hji": {
+          "type": "item",
+          "settings": {
+            "collection": "shopify://products/sandeezy-delicious-desserts-sensory-toy-pretend-play-set-ages-3-7",
+            "image": "shopify://shop_images/Desktop_26_69a4456f-b228-4645-9a62-a0490e324345.webp",
+            "mob-image": "shopify://shop_images/Mobile_26_6b4885ec-d9e9-478c-8023-69fd405910ee.webp"
+          }
+        },
         "item_FhFApP": {
           "type": "item",
           "settings": {
@@ -43,22 +51,14 @@
             "image": "shopify://shop_images/Desktop_29_be9f13e3-7bc3-41d2-bd14-f233bc345abf.webp",
             "mob-image": "shopify://shop_images/Mobile_29_4cde96fd-054f-4a8c-b1ce-1ff624d8ea4c.webp"
           }
-        },
-        "item_776Hji": {
-          "type": "item",
-          "settings": {
-            "collection": "https://www.skillmatics.in/pages/return-gifts-for-kids",
-            "image": "shopify://shop_images/Return_Gifting_Banner_3.webp",
-            "mob-image": "shopify://shop_images/Mobile_2_09e15e8d-9f8f-42c5-a77e-aa2a71323dd4.webp"
-          }
         }
       },
       "block_order": [
         "item_r7tKXT",
+        "item_776Hji",
         "item_FhFApP",
         "item_7jP3Ap",
-        "item_8zPqWi",
-        "item_776Hji"
+        "item_8zPqWi"
       ],
       "settings": {
         "tracking-id": "skill_home_banner_carousel_0"

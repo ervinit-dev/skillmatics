@@ -372,11 +372,11 @@
     {% if section.settings.estimate-date %}
    {% render 'pdp-delivery-date',item:item,section:section %}
       {% endif %}
- {% unless product.tags contains 'no-note' %} 
+ {% comment %}{% unless product.tags contains 'no-note' %} 
   <p class="pdp-note">
     <b>Note:</b> Order by 12 PM for guaranteed 2-day delivery in Mumbai.
   </p>
-  {% endunless %}
+  {% endunless %}{% endcomment %}
   <!-- <p class="whats-text-pdp">
     <a href="https://wa.me/+918422822545">{% render 'whatsapp-icon' %} Want help with this purchase? Whatsapp Us</a>
   </p> -->

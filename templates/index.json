@@ -16,31 +16,36 @@
           "type": "item",
           "settings": {
             "collection": "shopify://collections/rakhi-special",
-            "image": "shopify://shop_images/Desktop_6c7a305a-b2a1-411c-8f1a-5d07deac3fe8.webp",
-            "mob-image": "shopify://shop_images/Mobile_859fcd67-1b7a-473f-8913-7a35c00208d4.webp"
+            "image": "shopify://shop_images/Desktop_25_5212ab68-1147-4210-9dd3-f6f098568b13.webp",
+            "mob-image": "shopify://shop_images/Mobile_25_f94b9858-a2a9-4885-8ec8-5c11b54c19ea.webp"
           }
         },
         "item_FhFApP": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "collection": "https://www.skillmatics.in/collections/new-launches",
-            "image": "shopify://shop_images/Desktop_3_ffb93f2b-1e06-4181-8db1-353a390eece7.webp",
-            "mob-image": "shopify://shop_images/Mobile_1_5a7849cd-9382-48fa-8065-5970e099dadc.webp"
+            "image": "shopify://shop_images/Desktop_27_832e2d8f-1d9d-4518-bfab-353defc8c652.webp",
+            "mob-image": "shopify://shop_images/Mobile_27_0e195a46-b222-456a-90b2-65498dcbad07.webp"
           }
         },
         "item_7jP3Ap": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "collection": "https://www.skillmatics.in/collections/bestsellers",
-            "image": "shopify://shop_images/Desktop_b99eaef1-6345-4178-82c3-6a73a6f0bd77.webp",
-            "mob-image": "shopify://shop_images/Mobile_13_d869da74-b3a8-4d5e-9675-33c5cca69f50.webp"
+            "image": "shopify://shop_images/Desktop_28_43eb0642-e1a1-4b53-97be-f457eea5e5f0.webp",
+            "mob-image": "shopify://shop_images/Mobile_28_508f4e0d-3bd9-416f-af92-af2ce719b2ee.webp"
           }
         },
         "item_8zPqWi": {
           "type": "item",
-          "disabled": true,
+          "settings": {
+            "collection": "https://www.skillmatics.in/pages/return-gifts-for-kids",
+            "image": "shopify://shop_images/Desktop_29_be9f13e3-7bc3-41d2-bd14-f233bc345abf.webp",
+            "mob-image": "shopify://shop_images/Mobile_29_4cde96fd-054f-4a8c-b1ce-1ff624d8ea4c.webp"
+          }
+        },
+        "item_776Hji": {
+          "type": "item",
           "settings": {
             "collection": "https://www.skillmatics.in/pages/return-gifts-for-kids",
             "image": "shopify://shop_images/Return_Gifting_Banner_3.webp",
@@ -52,7 +57,8 @@
         "item_r7tKXT",
         "item_FhFApP",
         "item_7jP3Ap",
-        "item_8zPqWi"
+        "item_8zPqWi",
+        "item_776Hji"
       ],
       "settings": {
         "tracking-id": "skill_home_banner_carousel_0"

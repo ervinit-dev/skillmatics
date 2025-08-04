@@ -5,7 +5,7 @@
 {%- comment -%}
   The contents of the collection.liquid template can be found in /snippets/collection-template.liquid
 {%- endcomment -%}
- {% comment %} <style>
+ <style>
   /* CountDown */
 .all-collection-{{ collection.handle }} {
   position: relative
@@ -182,8 +182,8 @@
   .end-deal-counter { gap: 5px; }
   .slide-count { padding: 2px 0 0 0; }
 }
-</style> {% endcomment %}
-{% unless collection.handle == 'rakhi-special' %}
+</style>
+{% comment %}{% unless collection.handle == 'rakhi-special' %}{% endcomment %}
 {% if section.settings.showimage1 and collection.handle == section.settings.coll-handle %}
 <div class="all-collection-{{ collection.handle }}">
 {% if section.settings.link2 != blank %}
@@ -200,15 +200,15 @@
       <img id ="{{ section.settings.tracking-id }}"  src="{{ section.settings.image1 | img_url:'1600x' }}" class="desktop-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.image1 | img_url:'2000x'}}">
       <img id ="{{ section.settings.tracking-id }}" src="{{ section.settings.mob-image1 | img_url:'700x' }}" class="mobile-only" loading="eager" fetchpriority="high" decoding="async" alt="{{ collection.handle }}" width="100%" height="100%" srcset="{{ section.settings.mob-image1 | img_url:'700x'}}">
  {% if section.settings.link1 != blank %}</a>{% endif %}
-      {% comment %} <div class="slider-countdown">
+      <div class="slider-countdown">
         <div class="slide-count">
           <div class="end-deal-counter coun-timer-deal" id="countdown-{{section.id}}"></div>
         </div>
-      </div> {% endcomment %}
+      </div>
     
 </div>
   {% endif %}
-  {% endunless %}
+ {% comment %} {% endunless %}{% endcomment %}
 {% include 'collection-template' current_pagination_limit: settings.pagination_limit %}
 {% if section.settings.showimagebtm2 %}
 <div class="collection-{{ collection.handle }}">
@@ -229,7 +229,7 @@
 {% endif %}
 
 
-{% comment %} <script defer>
+<script defer>
   // Set the lightning deal start and end dates
   const lightningStartDate = new Date('{{ settings.startdate }}');
   const lightningEndDate = new Date('{{ settings.enddate }}');
@@ -258,7 +258,7 @@
 
   // Run updateCountdown every second
   setInterval(updateCountdown, 1000);
-</script> {% endcomment %}
+</script>
 
 {% schema %}
   {

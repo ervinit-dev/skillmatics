@@ -1071,7 +1071,7 @@
               "widgetgallery_grid": false,
               "widgetgallery_title": "",
               "widgetgallery_url": "",
-              "collection": "",
+              "collection": "all",
               "collection_limit": "4",
               "widgetbanner_url": "",
               "widgetbanner_title": "",

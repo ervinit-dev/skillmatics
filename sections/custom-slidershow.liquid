@@ -247,14 +247,15 @@
                     {% endif %}
                   >
                 {%- endunless -%}
-                {% comment %}
+               
                   {%- if forloop.index == 1 -%}
+                     {% comment %}
                     <div class="slider-countdown">
                       <div class="slide-count">
                         <div class="end-deal-counter coun-timer-deal" id="countdown-{{ section.id }}"></div>
                       </div>
-                    </div>
-                  {%- endif -%}{% endcomment %}
+                    </div>{% endcomment %}
+                  {%- endif -%}
               </div>
             </div>
           </a>

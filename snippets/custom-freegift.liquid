@@ -11,25 +11,6 @@
             }
         }
     }
-    
-    // Enhanced function to hide quantity selectors immediately
-    function hideGiftQuantitySelectors() {
-        // Hide any existing free gift quantity selectors
-        document.querySelectorAll('[class*="hs-item-"]').forEach(item => {
-            const titleElement = item.querySelector('[class*="title"], .product-title, h3, h4, .item-title');
-            if (titleElement && titleElement.textContent.includes('Free Gift')) {
-                item.style.display = 'none'; // Hide immediately
-                setTimeout(() => {
-                    try {
-                        item.remove(); // Remove after hiding
-                    } catch(e) {
-                        console.log(e);
-                    }
-                }, 10);
-            }
-        });
-    }
-    
     function validateOfferRefresh(cart){
         if((cart.total_price/100)<giftamt){
           localStorage.setItem("_cfg_vld",'false');
@@ -37,12 +18,10 @@
         }
         localStorage.setItem("_cfg_vld",'true');
         checkFreeGift(cart)
-        // Immediately hide any free gift quantity selectors
-        hideGiftQuantitySelectors();
-    }
+        {% comment %} removeQuantity(cart) {% endcomment %}
+      }
 
     validateOfferRefresh({{ cart |json }})
-    
     function addGift(lineItemId){
         const buttonClicked = document.querySelector(`[data-id="free-gift-${lineItemId}"]`)
         document.querySelectorAll('.free-gift-container button').forEach((item)=>{
@@ -50,7 +29,6 @@
             item.style.opacity='0.8';                   
         });
         buttonClicked.innerText='Adding...';
-        
         var params = {
             type: 'POST',
             url: '/cart/add.js',
@@ -61,29 +39,19 @@
             dataType: 'json',
             success: function() {
                 console.log('free gift added');      
-                
-                // Hide quantity selectors immediately before cart update
-                hideGiftQuantitySelectors();
-                
-                // Update cart
                 window.HS_SLIDE_CART_UPDATE();
                 localStorage.setItem("_cfg_ad",'true');              
-                console.log("addingbtn clicked1");
-                
-                // Hide again after cart update with slight delay
-                setTimeout(() => {
-                    hideGiftQuantitySelectors();
-                    removeQuantity(JSON.parse(localStorage.getItem('items') || '[]'));
-                }, 50);
-                
-                // Find the element with the class 'hs-text-free-shipping'
-                var claimedtext = document.querySelector('.hs-text-free-shipping');
-                
-                // Check if the element exists
-                if (claimedtext) {
-                    // Change the inner text of the element
-                    claimedtext.innerText = "Congratulations! You have claimed your free gift!";
-                }
+               console.log("addingbtn clicked1");
+              // Find the element with the class 'hs-text-free-shipping'
+var claimedtext = document.querySelector('.hs-text-free-shipping');
+
+// Check if the element exists
+if (claimedtext) {
+    // Change the inner text of the element
+    claimedtext.innerText = "Congratulations! You have claimed your free gift!";
+}
+//
+           
             }
         };
         $.ajax(params);
@@ -138,9 +106,7 @@
                         document.querySelector('.free-gift-container').remove();
                     }
                 }
-                removeQuantity(JSON.parse(localStorage.getItem('items') || '[]'))
-                // Also hide any visible quantity selectors
-                hideGiftQuantitySelectors();
+                removeQuantity(JSON.parse(localStorage.getItem('items')))
             }else{
                 if(document.querySelector('.free-gift-container')){
                     document.querySelector('.free-gift-container').remove();
@@ -148,42 +114,5 @@
             }
         }
     }
-
-    // Add observer to continuously watch for and hide free gift quantity selectors
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList') {
-                mutation.addedNodes.forEach(function(node) {
-                    if (node.nodeType === 1) { // Element node
-                        // Check if this is a cart item that might be a free gift
-                        if (node.className && node.className.includes('hs-item')) {
-                            const titleElement = node.querySelector('[class*="title"], .product-title, h3, h4, .item-title');
-                            if (titleElement && titleElement.textContent.includes('Free Gift')) {
-                                node.style.display = 'none';
-                                setTimeout(() => {
-                                    try {
-                                        node.remove();
-                                    } catch(e) {
-                                        console.log(e);
-                                    }
-                                }, 10);
-                            }
-                        }
-                    }
-                });
-            }
-        });
-    });
-
-    // Start observing cart container
-    setTimeout(() => {
-        const cartContainer = document.querySelector('.hs-cart-items, .cart-items, #cart-items, [class*="cart"]');
-        if (cartContainer) {
-            observer.observe(cartContainer, { 
-                childList: true, 
-                subtree: true 
-            });
-        }
-    }, 1000);
 
 </script>

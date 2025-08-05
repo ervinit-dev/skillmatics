@@ -57,7 +57,7 @@
                 {%- endif -%}  
               </td>
               <td>
-                <div class="detach-quantity-desctope cfac">
+                <div class="detach-quantity-desctope">
                   <div class="tt-input-counter style-01 input-counter">
                     <span class="minus-btn"{% if item.quantity == 1 %} style="display: none;"{% endif %}></span>
                     <input{% if inv_qua == 1 %} disabled{% endif %} type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" size="{{ inv_qua }}" title="{% if inv_qua < 100000 %}{{inv_qua}} {{ 'products.product.in_stock' | t }}{% else %}{{ 'products.product.many_in_stock' | t }}{% endif %}">

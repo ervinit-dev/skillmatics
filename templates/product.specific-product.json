@@ -71,6 +71,7 @@
         },
         "1571175093640": {
           "type": "related_products_type2",
+          "disabled": true,
           "settings": {
             "fullscreen": false,
             "titleincenter": true,

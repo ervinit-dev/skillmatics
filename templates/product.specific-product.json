@@ -81,6 +81,7 @@
         },
         "1580737710022": {
           "type": "recently_view_products",
+          "disabled": true,
           "settings": {
             "fullscreen": false,
             "titleincenter": true,
@@ -160,27 +161,6 @@
         "custom_related_slickdesktoptoshow": "4"
       }
     },
-    "pdp_key_skill_yW7KJy": {
-      "type": "pdp-key-skill",
-      "settings": {
-        "text1": "Develop key skills",
-        "text2": "",
-        "sectionbg": "#e9e7e7",
-        "items": "4",
-        "mob-items": "4"
-      }
-    },
-    "pdp_text_content_aCpa87": {
-      "type": "pdp-text-content",
-      "settings": {
-        "img": "shopify://shop_images/whatsapp_icon_ec473110-4591-495f-be50-7636061aface.png",
-        "text1": "<p><b>Join our WhatsApp Community now and be a part of something extraordinary!</b></p><p>Unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>\n<br>\n<p class=\"winner-text\">Your <b>FREE GIFT</b> awaits! Join now to become <b>one of 5 lucky winners</b> to win a <b>surprise gift this month.</b></p>",
-        "text2": "<p><img src=\"https://cdn.shopify.com/s/files/1/0568/1945/0045/files/wa-icons-re_30x30.webp?v=1738916219\" loading=\"lazy\" alt=\"WhatsApp\" width=\"30px\" height=\"30px\" srcset=\"https://cdn.shopify.com/s/files/1/0568/1945/0045/files/wa-icons-re_30x30.webp?v=1738916219\"><b>Join our WhatsApp Community<b></b></b></p><p>And unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>\n<br>\n\n<p class=\"winner-text\">Your <b>FREE GIFT</b> awaits! Join now to become <b>one of 5 lucky winners</b> to win a <b>surprise gift this month.</b></p>",
-        "btn-text": "Join now",
-        "btn-link": "https://chat.whatsapp.com/FIrNz5S8yndHJug9FP5SHz",
-        "sectionbg": "#f1f9f5"
-      }
-    },
     "image_with_tab_text_FpbRem": {
       "type": "image-with-tab-text",
       "blocks": {
@@ -222,6 +202,27 @@
         "text2": "ABOUT OUR STORE",
         "bgcolor": "",
         "image": "{{ product.metafields.pdp.about_image.value }}"
+      }
+    },
+    "pdp_key_skill_yW7KJy": {
+      "type": "pdp-key-skill",
+      "settings": {
+        "text1": "Develop key skills",
+        "text2": "",
+        "sectionbg": "#e9e7e7",
+        "items": "4",
+        "mob-items": "4"
+      }
+    },
+    "pdp_text_content_aCpa87": {
+      "type": "pdp-text-content",
+      "settings": {
+        "img": "shopify://shop_images/whatsapp_icon_ec473110-4591-495f-be50-7636061aface.png",
+        "text1": "<p><b>Join our WhatsApp Community now and be a part of something extraordinary!</b></p><p>Unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>\n<br>\n<p class=\"winner-text\">Your <b>FREE GIFT</b> awaits! Join now to become <b>one of 5 lucky winners</b> to win a <b>surprise gift this month.</b></p>",
+        "text2": "<p><img src=\"https://cdn.shopify.com/s/files/1/0568/1945/0045/files/wa-icons-re_30x30.webp?v=1738916219\" loading=\"lazy\" alt=\"WhatsApp\" width=\"30px\" height=\"30px\" srcset=\"https://cdn.shopify.com/s/files/1/0568/1945/0045/files/wa-icons-re_30x30.webp?v=1738916219\"><b>Join our WhatsApp Community<b></b></b></p><p>And unlock exclusive deals, fantastic offers, parenting wisdom, and playful activities!</p>\n<br>\n\n<p class=\"winner-text\">Your <b>FREE GIFT</b> awaits! Join now to become <b>one of 5 lucky winners</b> to win a <b>surprise gift this month.</b></p>",
+        "btn-text": "Join now",
+        "btn-link": "https://chat.whatsapp.com/FIrNz5S8yndHJug9FP5SHz",
+        "sectionbg": "#f1f9f5"
       }
     },
     "index_section_text_plus_image_NCE7Wn": {
@@ -372,9 +373,9 @@
   "order": [
     "custom_banner_pdp_jJqmgK",
     "main",
+    "image_with_tab_text_FpbRem",
     "pdp_key_skill_yW7KJy",
     "pdp_text_content_aCpa87",
-    "image_with_tab_text_FpbRem",
     "index_section_text_plus_image_NCE7Wn",
     "section_more_about_prod_EDCxec",
     "alireviews-section-8196b555-9838-4cfc-a0dc-3a5273fb72ed",

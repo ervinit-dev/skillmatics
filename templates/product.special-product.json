@@ -369,12 +369,18 @@
     "opinew-reviews-product-page-code": {
       "type": "apps",
       "settings": {}
+    },
+    "section_bundle_Vf7Cap": {
+      "type": "section-bundle",
+      "name": "Bundle and save",
+      "settings": {}
     }
   },
   "order": [
     "custom_banner_pdp_jJqmgK",
     "main",
     "image_with_tab_text_FpbRem",
+    "section_bundle_Vf7Cap",
     "pdp_key_skill_yW7KJy",
     "pdp_text_content_aCpa87",
     "index_section_text_plus_image_NCE7Wn",

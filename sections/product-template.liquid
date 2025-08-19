@@ -130,9 +130,9 @@
       {% include 'product_page_tabs_horizontal' %}
     {%- endif -%}
   {%- endif -%}
-  
+  {% unless template contains "special-product" %}
   {%- include 'bundle-product' -%}
-  {{  template }} ---------------------
+  {% endunless %}
   {% if template contains 'bundle' %}{%- include 'section-pdp-bundle-tab' -%}{% endif %}
   
   {%- include 'product-page-upsellcollection-type2' -%}

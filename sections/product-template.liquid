@@ -132,8 +132,9 @@
   {%- endif -%}
   
   {%- include 'bundle-product' -%}
-  {% if template contains 'bundle' %}{%- include 'section-pdp-bundle-tab' -%}{% endif %}
   {{  template }} ---------------------
+  {% if template contains 'bundle' %}{%- include 'section-pdp-bundle-tab' -%}{% endif %}
+  
   {%- include 'product-page-upsellcollection-type2' -%}
 
   {%- capture upsellcollection -%}{%- include "product-page-upsellcollection" -%}{%- endcapture -%}

@@ -24,7 +24,7 @@
 {%- endif -%}
 
 {%- if template contains 'collection' -%}
-<script src="{{ 'collections-filtres.js' | asset_url }}" async></script>
+<script src="{{ 'collections-filtres.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {%- if content_for_layout contains "index_sectiontabs" or content_for_layout contains "countdown" or template contains 'collection' or settings.home_page_layout == "home-page_layout-2" and template == "index" -%}

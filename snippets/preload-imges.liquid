@@ -3,6 +3,7 @@
   <!-- homepage link -->
   {% endif %}
 {% if template contains 'collection'%}
+  <link rel="preload" as="script" href="{{ 'collections-filtres.js' | asset_url }}">
 <!-- collection link -->
 <link rel="preload" href="{{ 'collection-template.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ 'collection-template.css' | asset_url }}"></noscript>

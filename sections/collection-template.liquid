@@ -228,7 +228,7 @@
 </div>
 {% endif %}
 
-
+{% comment %}
 <script defer>
   // Set the lightning deal start and end dates
   const lightningStartDate = new Date('{{ settings.startdate }}');
@@ -258,7 +258,7 @@
 
   // Run updateCountdown every second
   setInterval(updateCountdown, 1000);
-</script>
+</script>{% endcomment %}
 
 {% schema %}
   {

@@ -165,7 +165,6 @@
     {% unless template.name == 'Product' %}
 
     {% endunless %}
-     {%- include 'include_js' -%}
   </head>
   <body
     class="page{{ template }}"
@@ -354,7 +353,7 @@
         });
         {% endif %}
     </script>
-   {% comment %} {%- include 'include_js' -%}{% endcomment %}
+    {%- include 'include_js' -%}
     {%- include 'currencies' -%}
     {%- include 'modal-newsletter' -%}
     {%- include 'modal-subscribe_message' -%}

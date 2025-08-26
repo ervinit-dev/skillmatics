@@ -339,14 +339,11 @@ window.HS_SLIDE_CART_UPDATED = function(cart) {
    var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free')); 
    if (SkfreeGiftItem) {
 console.log("freegidttitle",SkfreeGiftItem);
-     const freeShippingHSElement = document.querySelector('.hs-content-text-rewards');
-     // const freeShippingHSElement = document.querySelector('.hs-text-free-shipping');
+     const freeShippingHSElement = document.querySelector('.hs-text-free-shipping');
 
 if (freeShippingHSElement) {
     // Add the inner text to the element if found
-     freeShippingHSElement.classList.add('hide'); // Hide the element
-   
-   // freeShippingHSElement.innerText = "Congratulations! You've unlocked a free gift!";
+    freeShippingHSElement.innerText = "Congratulations! You've unlocked a free gift!";
 }
 }
   //

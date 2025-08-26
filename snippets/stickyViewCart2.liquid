@@ -336,8 +336,7 @@
 }
 window.HS_SLIDE_CART_UPDATED = function(cart) {
   //
-   var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free')); 
-   const selectChoiceElement = document.getElementById('select-choice');
+   var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free'));  
    if (SkfreeGiftItem) {
 console.log("freegidttitle",SkfreeGiftItem);
      const freeShippingHSElement = document.querySelector('.hs-text-free-shipping');
@@ -345,13 +344,12 @@ console.log("freegidttitle",SkfreeGiftItem);
 if (freeShippingHSElement) {
     // Add the inner text to the element if found
     freeShippingHSElement.innerText = "Congratulations! You've unlocked a free gift!";
+    freeShippingHSElement.classList.add('hide');
 }
- if (selectChoiceElement) {
-        selectChoiceElement.classList.add('hide'); // Hide the element
-    }
+
 }else {
-    if (selectChoiceElement) {
-        selectChoiceElement.classList.remove('hide'); // Show the element
+    if (freeShippingHSElement) {
+        freeShippingHSElement.classList.remove('hide'); // Show the element
     }
 }
   //

@@ -336,24 +336,15 @@
 }
 window.HS_SLIDE_CART_UPDATED = function(cart) {
   //
-   var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free'));  
+   var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free')); 
    if (SkfreeGiftItem) {
 console.log("freegidttitle",SkfreeGiftItem);
- // const freeShippingHSElement = document.querySelector('.hs-text-free-shipping');
-     const freeShippingHSElement = document.querySelector('.hs-content-text-rewards');
+     const freeShippingHSElement = document.querySelector('.hs-text-free-shipping');
 
 if (freeShippingHSElement) {
     // Add the inner text to the element if found
-    //freeShippingHSElement.innerText = "Congratulations! You've unlocked a free gift!";
-    freeShippingHSElement.classList.add('hide');
+    freeShippingHSElement.innerText = "Congratulations! You've unlocked a free gift!";
 }
-
-}else {
-  // const freeShippingHSElement = document.querySelector('.hs-text-free-shipping');
-   const freeShippingHSElement = document.querySelector('.hs-content-text-rewards');
-    if (freeShippingHSElement) {
-        freeShippingHSElement.classList.remove('hide'); // Show the element
-    }
 }
   //
   //console.log("cart updated",cart)

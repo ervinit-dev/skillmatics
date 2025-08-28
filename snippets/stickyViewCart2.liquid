@@ -193,7 +193,7 @@
       {% else %}
         <div class="stickyOffers2ndDiv">
           <div class="stickyOfferDivInner 1">
-            Add <span>{{ settings.minQunat }}</span> single product and get
+            Add any <span>{{ settings.minQunat }}</span> products to get
             <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky }} </strong>
 
             {% comment %}
@@ -323,20 +323,21 @@
 <script defer>
   window.allproductsIds=[];
    window.HS_SLIDE_CART_ADD_TO_CART=function({ id, quantity }){
-    console.log("added to cart product");
-   document.querySelector('#atcToast').style.display='block';   
+    document.querySelector('#atcToast').style.display='block';
+   
  /*   document.querySelector('#stickyViewCart1').style.display='block';
     if(window.location.pathname.includes("products/")){
     document.querySelector('#stickyViewCart2').style.display='none';}
       var cartItem= parseInt(document.querySelector('.stickyViewCart .textSpan span').innerText) +1;*/
-  // document.querySelector('.stickyViewCart .textSpan span').innerText = `${cartItem}`;   
+  // document.querySelector('.stickyViewCart .textSpan span').innerText = `${cartItem}`;
+   
    
    setTimeout(()=>{
-    document.querySelector('#atcToast').style.display='none';
-   },1000);
+       document.querySelector('#atcToast').style.display='none';
+   },3000);
 }
 window.HS_SLIDE_CART_UPDATED = function(cart) {
- console.log("cart is updated t");
+  //
    var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free')); 
    if (SkfreeGiftItem) {
 console.log("freegidttitle",SkfreeGiftItem);
@@ -490,7 +491,7 @@ if (freeShippingHSElement) {
               // Check if coupon discount is not blank before showing
               if('{{ settings.coupon_discount_sticky }}' && '{{ settings.coupon_discount_sticky }}'.trim() !== ''){
                 document.querySelector('.stickyOfferDiv').style.display='flex';
-                document.querySelector('.stickyOffers2ndDiv').innerHTML=` <div class='stickyOfferDivInner2'>Add any <span>${itemstoadforcoupon-applicableItemsCount}</span> products and get <strong style="font-family: MikadoMedium">{{ settings.coupon_discount_sticky }}</strong></div>`
+                document.querySelector('.stickyOffers2ndDiv').innerHTML=` <div class='stickyOfferDivInner2'>Add any <span>${itemstoadforcoupon-applicableItemsCount}</span> products to get <strong style="font-family: MikadoMedium">{{ settings.coupon_discount_sticky }}</strong></div>`
               } else {
                 document.querySelector('.stickyOfferDiv').style.display='none';
               }
@@ -531,7 +532,7 @@ if (freeShippingHSElement) {
               let innerHTML = '';
               
               if(coupon1Valid){
-                innerHTML += `<div class='stickyOfferDivInner5'>Congrats! Apply <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_name }}</strong> to get <strong style="font-family: 'MikadoMedium'">{{settings.coupon_discount_sticky }}</strong></div>`;
+                innerHTML += `<div class='stickyOfferDivInner5'>Congrats! Apply <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_name }}</strong> to get <strong style="font-family: 'MikadoMedium'">{{settings.coupon_discount_sticky }}</strong> or</div>`;
               }
               
               if(coupon2Valid){
@@ -567,7 +568,7 @@ if (freeShippingHSElement) {
               }
               
               if(coupon3Valid){
-                innerHTML += `<div class='stickyOfferDivInner8'>Add any <span>${itemstoadforcoupon3-applicableItemsCount}</span> product and get <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky3 }}</strong></div>`;
+                innerHTML += `<div class='stickyOfferDivInner8'>Add <span>${itemstoadforcoupon3-applicableItemsCount}</span> more single product and get <strong style="font-family: 'MikadoMedium'">{{ settings.coupon_discount_sticky3 }}</strong></div>`;
               }
               
               document.querySelector('.stickyOffers2ndDiv').innerHTML = innerHTML;
@@ -810,7 +811,7 @@ function fetchCart() {
     })
     .then(cart => {    
       // window.HS_SLIDE_CART_UPDATED(cart);       
-      toggleStickyCarts(cart);       
+       toggleStickyCarts(cart);       
      // console.log('Cart updated24');
     })
     .catch(error => console.error('Error fetching cart:', error));

@@ -336,7 +336,7 @@
    },1000);
 }
 window.HS_SLIDE_CART_UPDATED = function(cart) {
-  //
+ console.log("cart is updated t");
    var SkfreeGiftItem = cart.items.find(item => item.title.includes('Free')); 
    if (SkfreeGiftItem) {
 console.log("freegidttitle",SkfreeGiftItem);

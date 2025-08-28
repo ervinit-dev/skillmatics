@@ -291,7 +291,7 @@
       <div class="col-item pdp-btn-qty">
         <div class="tt-input-counter style-01 1">
           <span class="minus-btn"></span>
-          <input class="quant" type="number" name="quantity" value="1" size="5" aria-label="Quantity" max="{{product.selected_or_first_available_variant.inventory_quantity | plus: 0}}">
+          <input class="quant" type="number" name="quantity" value="1" size="5" aria-label="Quantity" max="{{product.selected_or_first_available_variant.inventory_quantity | minus: 0}}">
           <span class="plus-btn"></span>
         </div>
       </div>{% endif %}

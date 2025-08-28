@@ -479,7 +479,6 @@
         "item_i4JngW",
         "item_834C9P"
       ],
-      "disabled": true,
       "custom_css": [
         ".index-section {padding: 0px 0;}",
         ".container-indent {padding-top: 24px; padding-bottom: 20px;}",
@@ -543,7 +542,6 @@
         "item_7mWmYe",
         "item_WRMpx3"
       ],
-      "disabled": true,
       "custom_css": [
         ".index-section {padding: 20px 0;}"
       ],

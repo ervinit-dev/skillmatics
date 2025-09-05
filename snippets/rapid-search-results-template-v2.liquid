@@ -28,8 +28,17 @@
   {% assign should_load_snapshot = true %}
 {% endif %}
 
-{% if content_for_header contains rps_metafields.storeFrontScriptDomain
-  and rps_settings.shopify_public_settings.foc_v2_migrated == true
+{% if content_for_header contains rps_metafields.storeFrontScriptDomain %}
+  {% assign rps_installed = true %}
+{% endif %}
+
+{% if rps_installed %}
+  <script type="application/json" id="rpsSectionSettingsScript">
+    {{ section.settings | json }}
+  </script>
+{% endif %}
+
+{% if rps_installed
   and rps_settings.enabled == true
   and rps_settings.limit_exceeded == false
   and rps_settings.last_import != false
@@ -46,10 +55,6 @@
 
     <h1 class="rps-results-page-title">{{ search_title }}</h1>
   {% endif %}
-
-  <script type="application/json" id="rpsSectionSettingsScript">
-    {{ section.settings | json }}
-  </script>
 
   <script type="application/json" id="rpsCartInfo">
     {{ cart | json }}

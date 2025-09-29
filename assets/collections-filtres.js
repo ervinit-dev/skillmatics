@@ -36,6 +36,7 @@ typeof JSON!="object"&&(JSON={}),function(){"use strict";function f(e){return e<
     },
     initShowMore: function() {
       obj.initShowMoreEvent();
+      obj.initInfiniteScroll();
     },
     initShowMoreEvent: function() {
       if (e(".show-more a").length > 0) {
@@ -47,6 +48,25 @@ typeof JSON!="object"&&(JSON={}),function(){"use strict";function f(e){return e<
         })
       }
     },
+    //
+    initInfiniteScroll: function() {
+      var loading = false;
+      e(window).on("scroll", function() {
+        var showMore = e(".show-more a");
+        if (
+          !loading &&
+          showMore.length &&
+          e(window).scrollTop() > showMore.offset().top - 20
+        ) {
+          loading = true;
+          showMore.trigger("click");
+          setTimeout(function() {
+            loading = false;
+          }, 1500);
+        }
+      });
+    },
+    //
     showMoreHandler: function() {
       var scrollURL = e('.show-more a').last().attr("href");
       e.ajax({
@@ -471,10 +491,12 @@ monitorURLChanges();
 
 if($('.autoscroll_yes').length){
   $(window).scroll(function(){
+    // console.log('Window scrolled');
     autoscrollhandler();
   });
 }
 function autoscrollhandler(){
+   //console.log('auto handler');
   var _as = $('.autoscroll');
   if(_as.length == 0) return false;
   var contY = parseInt(_as.parent().offset().top);

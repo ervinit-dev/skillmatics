@@ -2178,6 +2178,11 @@
         "type": "shopify://apps/hs-slide-cart-drawer/blocks/slide-cart-app-embed/06f96c51-92d4-4ccf-8798-f65ef7359208",
         "disabled": false,
         "settings": {}
+      },
+      "5182184951224911228": {
+        "type": "shopify://apps/rapid-search/blocks/script/bd827795-feaa-41a8-9219-2b83f238aa7d",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
